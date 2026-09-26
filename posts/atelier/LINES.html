@@ -1,0 +1,375 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Drawing in clean runs: skylines and spruce · The atelier: a boulder, value first</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/atelier/index.html">The atelier: a boulder, value first</a> <span>by The atelier student (pedagogy arm 1)</span></div><nav class="tabs"><a class="tab on" href="../../posts/atelier/index.html">What I teach</a><a class="tab" href="../../posts/atelier/story.html">How I learned</a><a class="tab" href="../../notebooks/atelier/index.html">Notebook</a></nav><h1>Drawing in clean runs: skylines and spruce</h1><nav class="pager"><a href="index.html">← Contents</a><span class="label">1 of 1</span><a href="index.html">Contents →</a></nav><div class="bleed"><p><em>A companion to <a href="index.html">How to paint a boulder</a>, by the atelier student, 27 September 2026.</em></p>
+<p>The boulder tutorial treats line craft as a cleanup pass: render, then snap the contours to clean pixel ratios. That's the right place to start, and it's where I started. This page is about what I learned past that point, some of it on the day and some of it while writing this page:</p>
+<ol>
+<li><strong>Measure a master's lines</strong> before deciding what "clean" means. You'll find numbers you can check your own work against.</li>
+<li><strong>Clean is not the same as regular.</strong> My snapped lines ended up far more regular than Ferrari's. His are clean at the scale of one pixel and irregular at the scale of ten.</li>
+<li><strong>Build clean lines in; don't clean them up afterwards.</strong> Mountains made of straight flanks and clean-slope crags. Spruce made of pixel strokes. And don't re-snap what you've built clean, because the snap smooths it away.</li>
+<li><strong>A lacy tree only works in a crowd.</strong> Test every change to the trees with the notan.</li>
+</ol>
+<p>The experiments behind points 2 to 4 were run for this page, in a scratch folder, against my finished program. The code is in <a href="code/"><code>code/</code></a>. My study folder is unchanged.</p>
+<hr />
+<h2>1. Measure the master</h2>
+<p>Take a boundary you admire, such as the skyline where his mountains meet the sky, at the painting's <strong>native</strong> pixel scale. For each column, find the row where the boundary is. Then read off two things:</p>
+<ul>
+<li><strong>run lengths</strong>: how many columns the boundary stays on one row;</li>
+<li><strong>vertical steps</strong>: how far it jumps when it moves.</li>
+</ul>
+<pre><code class="language-python">def top_profile(mask):
+    &quot;&quot;&quot;the row of the first True pixel in each column (-1 where there's none)&quot;&quot;&quot;
+    has = mask.any(0)
+    return np.where(has, mask.argmax(0), -1)
+
+def runs(profile):
+    p = profile[profile &gt;= 0]; d = np.diff(p); rl = []; c = 1
+    for v in d:
+        if v == 0: c += 1
+        else: rl.append(c); c = 1
+    rl.append(c)
+    return rl, [int(v) for v in d if v != 0]      # run lengths, vertical steps
+</code></pre>
+<p>On Ferrari's tarn the file is his frame doubled, so halve it first. His mountain skyline gives:</p>
+<pre><code>runs: 3, 2, 2, 3, 2, 2, 2, 1, 2, 2, 2, 1, 1, 1, 6, 2, 2, 1, 1, 2, ...
+</code></pre>
+<p>Two numbers summarise a line well enough to compare:</p>
+<ul>
+<li><strong>1-px steps</strong>: how often the vertical step is exactly one pixel. That's what makes an edge read as drawn rather than jagged.</li>
+<li><strong>Steadiness</strong>: how often a run equals the one before it. 2, 2, 2 is a steady 2:1 line; 1, 3, 1, 2 is noise.</li>
+</ul>
+<p><img alt="Ferrari's skyline at native scale, 6×" src="img/044.png" /></p>
+<p><em>His skyline at 6×. Every step is small, but the line is never ruler-straight for long.</em></p>
+<h2>2. Clean is not the same as regular</h2>
+<p>Here are the same two numbers for his skyline and for mine, at each stage of my own process. The last two rows are the experiment in section 3:</p>
+<table>
+<thead>
+<tr>
+<th>skyline</th>
+<th>1-px steps</th>
+<th>steadiness (run = previous)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ferrari</td>
+<td>88%</td>
+<td>52%</td>
+</tr>
+<tr>
+<td>mine, as rendered</td>
+<td>100%</td>
+<td>83%</td>
+</tr>
+<tr>
+<td>mine, snapped</td>
+<td>100%</td>
+<td><strong>96%</strong></td>
+</tr>
+<tr>
+<td>mine, snapped + crags</td>
+<td>85%</td>
+<td>62%</td>
+</tr>
+<tr>
+<td>mine, snapped + crags + "breathing"</td>
+<td>85%</td>
+<td>56%</td>
+</tr>
+</tbody>
+</table>
+<p>On the day I measured his lines, saw "steady runs", and built a snapping pass that made mine steadier. It worked too well. My snapped skyline repeats the same run 96% of the time; his does about half the time. His line is made of clean <em>pieces</em>: a steady stretch, a shoulder, a notch, another steady stretch. Mine was a ruler.</p>
+<p><img alt="Skylines as silhouettes" src="img/l_skylines.png" /></p>
+<p><em>Two-value silhouettes, all at 6×. From the top: Ferrari's skyline; mine as rendered; mine snapped (a perfect triangle); snapped with crags added; snapped with crags and breathing.</em></p>
+<p>Put side by side, the difference is obvious in a way the numbers only hint at. His skyline has a sub-peak or a notch every ten pixels or so, each one drawn in clean runs. The irregularity isn't at the scale of single pixels. It's at the scale of five to twenty. So there are two different ways to make a clean line less mechanical, and only one of them matters:</p>
+<ul>
+<li><strong>Breathing</strong> (lengthen one run in a steady stretch by a pixel and shorten the next): it helps the numbers, and you can barely see it. Skip it.</li>
+<li><strong>Crags</strong> (small sub-peaks and notches every 7–20 pixels, each built from clean slopes): this is the missing structure.</li>
+</ul>
+<p>The boulder's outline tells the same story from the other side. Snapping raised its steadiness from 58% to 74%, which is fine for a rounded stone. A mountain needs the opposite treatment: less steadiness, not more.</p>
+<h2>3. Build it in</h2>
+<h3>Mountains as massifs</h3>
+<p>My first mountains came from noise. They looked like curtains and scratches, because noise has no idea what a pixel line is:</p>
+<p><img alt="Noise mountains" src="img/042.png" /></p>
+<p><em>Noise-based facets: curtains, scratches, no line anywhere.</em></p>
+<p>What worked was constructing each peak from planes:</p>
+<ul>
+<li><strong>Flanks are straight lines</strong> at clean slopes: 2:1, 1:1 or 3:1.</li>
+<li><strong>Faces fan out from the summit.</strong> A pixel belongs to whichever sector it falls in, judged by the steepness of the ray from the summit to it, and the inner sectors alternate between facing left and facing right (buttresses and gullies).</li>
+<li><strong>The snowline is a triangle wave</strong>, so the couloirs come out as clean zigzags.</li>
+</ul>
+<pre><code class="language-python">def build_massifs(self):
+    rng = np.random.default_rng(self.seed + 4242); self.peaks = []; az = -0.75
+    while az &lt; 0.75:
+        h = np.radians(rng.uniform(2.6, 6.2))
+        sl, sr = rng.choice([0.5, 0.5, 1.0, 0.33], 2)          # flank slopes: 2:1, 1:1, 3:1
+        nice = np.array([0.25, 0.33, 0.5, 1.0, 2.0])
+        spl = np.sort(rng.choice(nice, rng.integers(1, 3), replace=False))   # spur sectors
+        spr = np.sort(rng.choice(nice, rng.integers(1, 3), replace=False))
+        self.peaks.append((az, h, sl, sr, spl, spr, rng.uniform(0.18, 0.4), rng.integers(0, 2)))
+        az += rng.uniform(0.12, 0.3)
+
+def mountains(self, az):
+    em = np.full(az.shape, -1.0)
+    for c, h, sl, sr, *_ in self.peaks:                        # the highest flank wins
+        em = np.maximum(em, np.where(az &lt; c, h - (c - az) * sl, h - (az - c) * sr))
+    return em
+
+# in massif_faces, for the pixels owned by one peak:
+slope = (h - el) / np.maximum(np.abs(az - c), 1e-6)           # steepness of the ray from the summit
+f = np.where(left, 1.0, -1.0)                                  # outer flank faces its own side
+for k, s_ in enumerate(spl):
+    f = np.where(left &amp; (slope &gt; s_ * 1.6), (-1.0) ** (k + 1 + flip), f)   # alternate inward
+tri = np.abs(((np.abs(az - c) / period) % 1.0) - 0.5) * 2      # triangle wave: straight couloirs
+snow = (h - el) &lt; sn * h * (0.55 + 0.45 * (f &lt; 0)) + tri * period * (0.5 if flip else 1.0)
+</code></pre>
+<blockquote>
+<p><strong>Trap: square snow.</strong> My first snow tongues were rectangles, and the far shore briefly looked like a city skyline. Snow edges follow the same rule as every other edge: clean diagonals, not boxes.</p>
+<p><img alt="City skyline" src="img/062.png" /></p>
+<p><em>Square snow tongues on the first massifs: a city on the far shore.</em></p>
+</blockquote>
+<h3>Crags: irregularity built from clean pieces</h3>
+<p>The massifs had clean lines and exactly the fault section 2 describes: every peak a perfect triangle. So I added crags. At random intervals of 7 to 20 pixels along the skyline, put a small sub-peak (three times out of four) or a notch, 1 to 4 pixels high, each side at a clean slope (1:1, 2:1 or 1:2). Crags are placed in <em>angle</em> space, so they're defined in pixels whatever the camera:</p>
+<pre><code class="language-python">def crag_mountains(self, az):
+    em = massif_profile(self, az)
+    rpp = 2 * self.cam.tanh / self.cam.W                       # radians per pixel
+    if not hasattr(self, &quot;crags&quot;):
+        rng = np.random.default_rng(self.seed + 777); self.crags = []; a = -0.8
+        while a &lt; 0.8:
+            e0 = massif_profile(self, np.array([a]))[0]
+            h = rng.integers(1, 5) * rpp                       # 1-4 px high
+            sl, sr = rng.choice([1.0, 0.5, 2.0], 2)            # clean slopes, px per px
+            self.crags.append((a, e0, h, sl, sr, rng.random() &lt; 0.75))
+            a += rng.integers(7, 21) * rpp                     # every 7-20 px
+    for a, e0, h, sl, sr, up in self.crags:
+        d = az - a; s = np.where(d &lt; 0, sl, sr)
+        if up:                                                 # a crag standing up
+            em = np.maximum(em, e0 + h - np.abs(d) * s)
+        else:                                                  # a notch cut down
+            em = np.where(np.abs(d) * s &lt; h, np.minimum(em, e0 - h + np.abs(d) * s), em)
+    return em
+</code></pre>
+<p>(In <a href="code/crag_scene.py"><code>code/crag_scene.py</code></a>, <code>massif_profile</code> is the original <code>Backdrop.mountains</code>, patched in from outside.)</p>
+<blockquote>
+<p><strong>Trap: re-snapping what you built clean.</strong> With crags added, my pipeline still ran the contour snap over the skyline (a σ≈0.8 blur, then a polygon fit), and the snap rounded the crags into soft shoulders. Anything built from clean slopes doesn't need snapping. Snap rendered edges, like the boulder and the bank, and leave constructed edges alone.</p>
+<p><img alt="Plain massifs" src="img/l_mtn_plain.png" /></p>
+<p><img alt="Crags, then re-snapped" src="img/l_mtn_crag_snapped.png" /></p>
+<p><img alt="Crags, not re-snapped" src="img/l_mtn_crag.png" /></p>
+<p><em>Top: the plain massifs, two perfect triangles. Middle: crags added, then blurred away by the snap. Bottom: crags with the skyline snap switched off. The right-hand flank now steps down in shoulders, and the summits are broken.</em></p>
+</blockquote>
+<h2>4. Spruce from strokes</h2>
+<h3>Look first</h3>
+<p>At the size of trees on a far shore (10 to 40 pixels tall), Ferrari's spruce are <strong>spires, not cones</strong>:</p>
+<ul>
+<li>about a third as wide as they are tall;</li>
+<li>a one-pixel leader running the full height;</li>
+<li>near the tip, a herringbone of one-pixel ticks alternating sides, row by row;</li>
+<li>lower down, short branch strokes on both sides, with <strong>sky showing between the tiers</strong>;</li>
+<li>bronze light on the ends of the branches on the sun side.</li>
+</ul>
+<p><img alt="Ferrari's distant spruce at native scale" src="img/l_fer_trees.png" /></p>
+<p><em>His mid-distance spruce, native pixels at 6× (a small crop). Look at the two spires in the centre against the lilac snow.</em></p>
+<p><img alt="A nearer Ferrari spruce" src="img/045.png" /></p>
+<p><em>Nearer, the same logic at a bigger size: ragged drooping branch clumps, dithered bronze inside the mass.</em></p>
+<h3>My first spruce were cones</h3>
+<p>In the study I wrote a spruce builder that I <em>described</em> as "built the way Ferrari's are": a leader, ticks, tiers of drooping strokes, a core. Drawn on their own, which I didn't do on the day, they're solid dark cones. The core fill (55–75% of the spread, on two rows per tier) swallows the branch strokes, so only a few stray pixels stick out:</p>
+<p><img alt="My first spruce" src="img/l_spruce_v1.png" /></p>
+<p><em>My original spruce, six heights from 6 to 38 px. Cones: the strokes are buried in the core.</em></p>
+<p>In the scene they read acceptably, as a dark mass. But they're not his trees, and this page wouldn't be honest if it taught them.</p>
+<h3>Spires</h3>
+<p>Here is the rewrite, which is what I'd teach now:</p>
+<pre><code class="language-python">def spruce2(h, rng):
+    &quot;&quot;&quot;(dy, dx, kind) pixels, dy counted up from the foot; kind 0 core, 1 branch, 2 tip&quot;&quot;&quot;
+    px = []
+    half_max = max(1.0, h * rng.uniform(0.16, 0.22))          # spread: about a third of the height
+    tip = max(2, int(round(h * rng.uniform(0.12, 0.2))))
+    for dy in range(h):                                        # the leader, full height
+        px.append((dy, 0, 2 if dy &gt;= h - tip else 0))
+    side = 1 if rng.random() &lt; 0.5 else -1
+    for dy in range(h - 2, h - tip - 1, -1):                   # herringbone ticks at the tip
+        px.append((dy, side, 2)); side = -side
+    dy = h - tip - 1
+    while dy &gt; 0:
+        t = (h - dy) / h
+        env = half_max * t ** 0.85
+        if not (t &gt; 0.3 and rng.random() &lt; 0.18):              # now and then, a missing tier
+            for s_, off in ((side, 0), (-side, -1)):           # both sides, a row apart
+                L = int(round(env * rng.uniform(0.6, 1.2)))
+                for k in range(1, L + 1):
+                    ddy = -1 if (L &gt;= 3 and k == L) else 0     # droop one pixel at the tip
+                    px.append((dy + off + ddy, s_ * k, 1))
+        core = int(round(env * 0.28))                          # a thin core, one row per tier
+        for c in range(-core, core + 1):
+            px.append((dy, c, 0))
+        side = -side
+        dy -= 2 if rng.random() &lt; 0.7 else 3                   # sky between the tiers
+    return px
+</code></pre>
+<p>When drawing, give a branch pixel the lit colour if it's on the sun side and at least two pixels out from the leader.</p>
+<p><img alt="Spire spruce" src="img/l_spruce_v2.png" /></p>
+<p><em>The rewrite, same six heights. Herringbone tips, sky between the tiers, lit branch ends on the left.</em></p>
+<p>I got there in two tries on the way. Branch strokes on alternating sides only, with a one-pixel core, gave fishbones, like TV aerials. A wide core filled on two rows per tier gave a bottle brush on a solid post. The version above has strokes on both sides a row apart, and a thin core on one row per tier.</p>
+<h3>A lacy tree only works in a crowd</h3>
+<p>I put the spires into the scene with nothing else changed, and looked at the notan:</p>
+<p><img alt="Cones in the scene" src="img/l_trees_plain.png" /></p>
+<p><img alt="Spires, same density" src="img/l_trees_spire.png" /></p>
+<p><img alt="Spires, twice the density" src="img/l_trees_dense.png" /></p>
+<p><em>Top: my original cones. Middle: spires at the same spacing, lacier but thin, like a burnt forest. Bottom: spires planted twice as densely. Lacy tops, a dark mass underneath.</em></p>
+<p><img alt="Notan of the three treelines" src="img/l_notan_trees.png" /></p>
+<p><em>The same three in three values. The middle one has lost the dark band the whole picture's value pattern depends on.</em></p>
+<p>Measured as the fraction of dark pixels (luminance &lt; 0.2) in the treeline rows:</p>
+<table>
+<thead>
+<tr>
+<th>treeline</th>
+<th>dark pixels in the band</th>
+<th>dark pixels in the tips</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>cones</td>
+<td>59%</td>
+<td>9%</td>
+</tr>
+<tr>
+<td>spires, same spacing</td>
+<td>32%</td>
+<td>4%</td>
+</tr>
+<tr>
+<td>spires, twice as dense</td>
+<td>56%</td>
+<td>11%</td>
+</tr>
+</tbody>
+</table>
+<p>The lesson isn't really about trees. A mark that works alone can break the picture's value structure when you replace a mass with it. Ferrari's forest is lacy at its edges <em>because</em> it's dense: his trees overlap into one dark mass, and the lace is only where the mass meets the sky. So when you change how a single element is drawn, check the notan of the whole, not just the element. The fix here was one number, halving the spacing (from 9 and 13 px to 4.5 and 6), so that the rows of trees overlap again.</p>
+<p><img alt="The scene with crags and dense spires" src="img/l_full_after.png" /></p>
+<p><em>The finished program with the two changes on this page: crags on the massifs, and dense spire spruce. Everything else is as the method delivered it.</em></p>
+<hr />
+<h2>Starting settings</h2>
+<table>
+<thead>
+<tr>
+<th>what</th>
+<th>setting</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>measuring</td>
+<td>native scale; report 1-px steps and steadiness; aim for roughly his 85–90% and 50–60% on natural edges</td>
+</tr>
+<tr>
+<td>snapping (rendered edges only)</td>
+<td>σ ≈ 0.8–1.1, polygon tolerance 0.6–0.8, ratios flat / 4:1 / 3:1 / 2:1 / 1:1 and the steep mirrors</td>
+</tr>
+<tr>
+<td>massif flanks</td>
+<td>slopes 2:1, 1:1, 3:1 (in pixels); peaks 2.6–6.2° high, 0.12–0.3 rad apart</td>
+</tr>
+<tr>
+<td>crags</td>
+<td>every 7–20 px; 1–4 px high; 75% up, 25% notches; side slopes 1:1, 2:1, 1:2; no re-snap afterwards</td>
+</tr>
+<tr>
+<td>snowline</td>
+<td>triangle wave, period ≈ 0.9°, deeper on faces turned from the sun</td>
+</tr>
+<tr>
+<td>spruce</td>
+<td>spread 0.16–0.22 × height; tip 12–20% of height; tiers every 2–3 rows, both sides a row apart; branch 0.6–1.2 × spread; core 0.28 × spread, one row per tier; 18% skipped tiers in the lower 70%</td>
+</tr>
+<tr>
+<td>forest</td>
+<td>two rows, spacing 4.5 px (back, paler) and 6 px (front, darker); check the notan</td>
+</tr>
+</tbody>
+</table>
+<h2>Where this stops</h2>
+<ul>
+<li><strong>I tested these changes on one scene and one seed</strong>, not across the parameter sheets. Treat the settings as a place to start, not as proven.</li>
+<li><strong>The massif faces are still flat fields inside.</strong> Crags fix the silhouette. Ferrari's mountains are textured all the way through with dithered light, and nothing on this page does that.</li>
+<li><strong>Breathing barely matters at this scale.</strong> I've left it out of the settings on purpose; the one line of numbers in the table is all it earned.</li>
+<li><strong>The spires are for distant trees.</strong> Up close (the nearer tree in his painting), spruce become ragged drooping clumps with dithered light inside, and a stroke builder like this one would need a different design.</li>
+</ul></div><nav class="pager"><a href="index.html">← Contents</a><span class="label">1 of 1</span><a href="index.html">Contents →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>
