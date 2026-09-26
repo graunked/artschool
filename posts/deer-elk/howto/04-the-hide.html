@@ -1,0 +1,184 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>4. The hide at hero size (60–30 px) · Roosevelt elk and black-tailed deer</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/deer-elk/index.html">Roosevelt elk and black-tailed deer</a> <span>by The elk and deer student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/deer-elk/index.html">What I teach</a><a class="tab" href="../../../posts/deer-elk/story.html">How I learned</a><a class="tab" href="../../../notebooks/deer-elk/index.html">Notebook</a></nav><h1>4. The hide at hero size (60–30 px)</h1><nav class="pager"><a href="../howto/03-gaits-and-postures.html">← 3. Gaits and postures after Muybridge</a><span class="label">4 of 7</span><a href="../howto/05-light-and-rim.html">5. Light and hour: the palette, and the back-light rim →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>render.py</code>, <code>coat.py</code>, <code>paint.py</code>, <code>hide.py</code>, <code>fringe.py</code>, <code>s0_copy.py</code> in <code>~/work/pixelart-studies/elements/deer-elk/src/</code>.</em></p>
+<p>This page is how the rig becomes pixels when the animal is big enough to have a hide: 30 to 60 px of body length, the hero tier. It's the tier where my work is weakest against Ferrari, so I'll be exact about what works and what doesn't.</p>
+<p><img alt="pipeline" src="fig/pipeline_bull60.png" /></p>
+<p><em>fig. One 60 px bull through the pipeline: silhouette; hide regions; the continuous value field; quantised steps; the palette.</em></p>
+<h2>1. Tubes to an index canvas</h2>
+<p><code>render.rasterize</code> samples every tube's surface densely (points closer than half a supersample pixel apart), projects them orthographically for a yaw and camera elevation, z-buffers them at <code>ss</code> × <code>ss</code> supersampling, and reduces each block to one pixel: a coverage, a mean normal, a majority material, a depth. A light-space z-buffer gives self-shadow; the same points projected along the sun onto z = 0 give the cast shadow.</p>
+<p>Two things I learned the hard way:</p>
+<ul>
+<li><strong>Sample by profile change, not just by arc length.</strong> Where the radius changes fast along a tube, arc-length spacing leaves gaps, which showed as white slits in the torso (nb014). Count the profile change as length, and interpolate stations with PCHIP.</li>
+<li><strong>Supersample more when the animal is small</strong>: <code>ss = clip(round(260 / size_px), 3, 12)</code>. A 60 px elk needs 4×, a 16 px one 12×, or thin parts flicker in and out between frames.</li>
+</ul>
+<p>The output is an <strong>index canvas</strong>: per pixel, a hide material (<code>R.mat</code>) and a step 0–5 (<code>R.step</code>). The palette (<a href="05-light-and-rim.html">next page</a>) turns those into colour, so one canvas serves every hour.</p>
+<h2>2. Hide regions in body coordinates</h2>
+<p>The coat pattern is the far read, so it has to be anatomically placed. My first regions were vertical cuts at a fixed x and looked pasted on. The fix: compute each surface point's pose-free position on the torso (its station x, its height <code>zl</code>, the angle round the section) and draw the regions there, so they move with the body in any pose.</p>
+<pre><code class="language-python">if elk:
+    out[:] = BODY
+    # the cape: the dark neck colour runs back over the shoulder on a diagonal, from just
+    # behind the withers down to behind the elbow, and covers the brisket
+    cape_x = 0.19 + (1.0 - zl) * 0.34 + (0.03 if ind.sex == &quot;m&quot; else 0.0)
+    out[x &gt; cape_x] = DARK
+    out[(zl &lt; np.interp(x, [xr, xf], [0.66, 0.56]) + 0.05) &amp; (x &gt; xr + 0.15)] = BELLY   # dark belly line
+    # rump patch: an oval about the tail, bordered dark on the thighs, open at the croup
+    ex = (x - (xr + 0.015)) / 0.15; ez = (zl - 0.80) / 0.17
+    e = ex * ex + ez * ez
+    out[(e &lt; 1.6) &amp; (zl &lt; 0.9) &amp; (x &lt; xr + 0.2)] = DARK
+    out[e &lt; 1.0] = PALE
+</code></pre>
+<p>The rest of the pattern, from the naturalist's description and the photos:</p>
+<ul>
+<li><strong>Elk</strong>: dark head, neck, mane, brisket and legs; the face (<code>FACE</code>) a shade lighter than the neck, so a front view has a head; a cream muzzle band; the tail the colour of the patch.</li>
+<li><strong>Blacktail</strong>: grey-brown all over (rust in summer), a white throat patch high under the jaw, a dark forehead V, big ears with pale insides and dark rims, <strong>a broad tail black outside and white beneath</strong>, and <strong>no white rump unless the tail is flagged</strong>. A white rump patch is the mule deer's mark.</li>
+<li><strong>Calves and fawns</strong>: spots in rows along the back, each row offset half a step, only in spring and summer; by September they're plain. My first spots were random and read as a rash (nb058); rows at 0.1 H spacing read as spots (nb059).</li>
+</ul>
+<p><img alt="fawn spots, random" src="../img/nb058.png" />
+<img alt="fawn spots, rows" src="../img/nb059.png" /></p>
+<h2>3. A value field that doesn't saturate</h2>
+<p>From each pixel's mean normal and shadow flag, a continuous step coordinate x in 0–5: light 5 and 4, halftone 3, reflected 2, shadow 1, core 0.</p>
+<pre><code class="language-python">litf = (v &gt; 0.04) &amp; ~sh                                      # v = n . L
+x[litf] = 2.8 + 2.35 * np.clip((v[litf] - 0.04) / 0.9, 0, 1)
+x[~litf] = 1.1
+x[~litf &amp; ~sh &amp; (v &gt; -0.3)] = 0.45                           # the core, just past the terminator
+x[~litf] += 1.0 * np.clip(-n[..., 2] - 0.2, 0, 1)[~litf]     # bounce from the lit ground onto the belly
+x[far] -= 1.1                                                # far legs, far ear, far antler: a step down
+x[shoulder] = max(x, min(3.0, x + 1.6))                      # the shoulder bulge may not draw a strap
+x[antler] = min(x, 3.4)                                      # beams stay dark; only tips are ivory
+</code></pre>
+<p><strong>Check that the lit family actually spans its steps.</strong> My first mapping put every surface facing up or out on the top step; I found it by printing one torso column (row, material, step, x, n·L): 274 of 320 flank pixels were step 5. A flank that's one value is dead no matter what you dither on it. The linear mapping above gives a lit back, a mid flank and a halftone lower flank.</p>
+<p><strong>Watch the far side.</strong> The far legs and ear, a step down, are what make a side view read as a body with depth instead of a cut-out.</p>
+<h2>4. What the Ferrari copy gave: planes, edge bands, the saturated reflected step</h2>
+<p>Ferrari never painted an elk, so I copied the closest thing in his work: the warm orange boulder in <em>V19</em>, about the size of a 60 px elk's body. I read it from his index map, printed as characters sorted by value:</p>
+<pre><code>33333c8aaccccccccfcfffcffffffffffa872iee99      c, f  = the two lit colours, mixed in a 2x2 order
+13353c8accccfcfcfcfcfcfcfcfcfffffa72257eee      a, 8  = the turn: a dull rose, then a SATURATED red-brown
+3333c8acaccccccfcfcfcfffffffffffca7227577e      7, 2  = shadow; the lit face meets lighter snow with no edge
+</code></pre>
+<p>The whole lit face is one gradient between two adjacent colours, rendered as a 2×2 Bayer fill (fitting the density of <code>f</code> as a linear function of position reproduced 81% of his face pixels exactly; a dome got 50%). The form turns only in a 1–2 px band at the edge, and the reflected colour there is more saturated than the lit ones.</p>
+<p><img alt="boulder copy" src="../img/s0_boulder_copy_8x.png" /></p>
+<p><em>Ferrari | my copy (68% of his pixels exactly, 81% of the face).</em></p>
+<p><code>hide.apply</code> carries three rules from it:</p>
+<pre><code class="language-python"># edges turned away from the sun fall one step; in the shadow family the rim takes the reflected step
+x[away &amp; litf] = np.minimum(x[away &amp; litf], np.floor(x[away &amp; litf]) - 0.01)
+x[away &amp; ~litf] = np.maximum(x[away &amp; ~litf], 2.0)
+# edges toward the sun take the pure upper step (his crown is pure f)
+x[tow &amp; litf] = np.minimum(np.floor(x[tow &amp; litf]) + 1.0, 5.0)
+# found edges for dark hide: a dark neck or leg against grass steps up at its sun-side edge
+x[tow &amp; dark &amp; ~litf] = np.maximum(x[tow &amp; dark &amp; ~litf], 3.0)
+</code></pre>
+<p>and the palette boosts chroma on step 2 by 30%, his saturated <code>8</code>.</p>
+<p>The found-edge rule for dark hide is the one I'd keep above all. A chocolate neck against green grass has nearly the grass's value; without a lighter pixel on its sun side it melts into the ground, and an outline would make it a cartoon.</p>
+<h2>5. What it didn't give: hide is not rock</h2>
+<p><strong>The checker.</strong> On a hide, the boulder's 2×2 checker reads as sandstone. Keep the order but make the cells 1 px wide and 2 px tall, staggered per column, so the mixed tone becomes short vertical dashes: hair lying down the flank.</p>
+<pre><code class="language-python">def hair_quant(x, seed=0):
+    H, W = x.shape
+    yy, xx = np.mgrid[0:H, 0:W]
+    ph = ((xx * 7919 + seed * 104729) &gt;&gt; 3) &amp; 1          # per-column phase: stagger the dashes
+    t = (BAYER[((yy + ph) // 2) % 2, xx % 2] + 0.5) / 4
+    fl = np.floor(x)
+    return np.clip(fl + ((x - fl) &gt; t), 0, 5).astype(np.int32)
+</code></pre>
+<p><img alt="dither" src="fig/dither_rock_vs_hair.png" /></p>
+<p><em>fig. The same cow with the boulder's 2×2 Bayer, and with hair dashes. The difference is small at this size and it's the right direction; the flank is still a gradient, not planes.</em></p>
+<p>Below 28 px there's no dither at all: marks are single pixels and a checker is noise.</p>
+<p><strong>The flattening.</strong> The boulder is a facet, so the copy pulls the interior toward one value (0.5). On a barrel that deadened the side; hide uses 0.2. Honestly, with the fixed value map the difference is now small:</p>
+<p><img alt="flatten" src="fig/flatten.png" /></p>
+<h2>6. Fur edges</h2>
+<p>Where two hide colours meet, the boundary is a fringe, not a line (the studio's synthesis: "a mass outline isn't drawn as a line"). <code>fringe.interlock</code> makes 1-px teeth on alternate 2-row blocks across vertical boundaries and hanging teeth across horizontal ones; <code>fringe.hang</code> hangs the bull's mane below the neck as irregular 1–3 px dark ticks. Both are deterministic in (seed, pixel), so a standing animal holds still.</p>
+<pre><code class="language-python">ys, xs = np.nonzero(m[:, :-1] == a)                    # a | b boundaries
+sel = m[ys, xs + 1] == b
+blk = (ys // 2 + (_h(ys // 2, xs, seed) &lt; 0.3)) % 2 == 0   # alternate 2-row blocks, a little jitter
+out[ys[sel][blk], xs[sel][blk]] = b
+</code></pre>
+<p><img alt="fringe" src="fig/fringe_off_on.png" /></p>
+<p><em>fig. Fur edges off and on: look at the cape edge on the shoulder and the mane under the neck.</em></p>
+<h2>7. Antlers are drawn, not rendered</h2>
+<p>Rasterised, antlers came out as pale lichen with white snowballs on the tips (nb041). <code>render.thin_lines</code> clears their splats and redraws every beam and tine as a clean 1-px Bresenham run through its centreline, 2 px near the base with the shadow-side pixel a step darker. Beams are dark; only the last fifth of each tine is ivory.</p>
+<p><img alt="antler blur" src="../img/nb041.png" /></p>
+<p>And economy by size, in <code>paint_index</code>: below 30 px keep the beams and the two long tines on the near side only; below 16 px the <a href="06-small-figures.html">glyph antler</a> takes over.</p>
+<h2>8. Contact</h2>
+<p>Every animal gets an occlusion shadow under its torso, whatever the sun, projected from the torso's footprint, so it sits on the meadow; plus the true cast shadow. Keep the cast shadow a step lighter than the ground's darks, or in iso it swallows the legs.</p>
+<h2>Where it stops</h2>
+<p><img alt="bull vs photo" src="../img/trip_t7_1.png" /></p>
+<p><em>Photo reduced to 60 px | my bull | Ferrari's boulder at the same scale, 6×.</em></p>
+<p>Against the photo, my bull is less weighty: his shoulder and ham are lit masses with darker ribs between, and mine is a lit barrel with hair dashes. Against Ferrari my planes are too few: his boulder has three clear planes and an edge band, my barrel has a gradient. The fix I'd make next is in the rig, not the dither: model shoulder, ribcage and ham as separate convex masses, give each its own lit plane in the value field (the boulder rule, applied per mass), and put the hair dashes only at the seams between them.</p></div><nav class="pager"><a href="../howto/03-gaits-and-postures.html">← 3. Gaits and postures after Muybridge</a><span class="label">4 of 7</span><a href="../howto/05-light-and-rim.html">5. Light and hour: the palette, and the back-light rim →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

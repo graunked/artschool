@@ -1,0 +1,194 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>1. The board: photo against render, in silhouette and at size · Roosevelt elk and black-tailed deer</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/deer-elk/index.html">Roosevelt elk and black-tailed deer</a> <span>by The elk and deer student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/deer-elk/index.html">What I teach</a><a class="tab" href="../../../posts/deer-elk/story.html">How I learned</a><a class="tab" href="../../../notebooks/deer-elk/index.html">Notebook</a></nav><h1>1. The board: photo against render, in silhouette and at size</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 7</span><a href="../howto/02-building-a-cervid.html">2. Building a cervid that isn&#x27;t a horse →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>board.py</code>, <code>sizes.py</code>, <code>sizes_c.py</code>, <code>cmp_photo.py</code> in <code>~/work/pixelart-studies/elements/deer-elk/src/</code>.</em></p>
+<p>Every correction that made my elk stop reading as a horse came off one instrument. I'd have got there an hour sooner if I'd built it before the first render instead of after, so it's first here.</p>
+<p>It has three parts:</p>
+<ol>
+<li><strong>the notan board</strong>: photo | render at the same shoulder height, standing on the same ground line, the render as a black silhouette;</li>
+<li><strong>the grey and colour boards</strong>: the same layout, once the silhouette is right;</li>
+<li><strong>the size board</strong>: the photo <em>area-reduced</em> to 60, 30, 16 and 8 px of body length, beside the render at those sizes.</li>
+</ol>
+<h2>Choosing the photos</h2>
+<p>You need side views, or near side views, of real animals standing on visible ground, with the whole animal in frame. From the naturalist's sheets and my own Openverse fetches (<code>python3 ~/work/pixelart-studies/tools/imgfetch.py "roosevelt elk cow" -n 10 -o refs/roosevelt_elk_cow --sheet</code>), I used four:</p>
+<table>
+<thead>
+<tr>
+<th>photo</th>
+<th>why</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>a Roosevelt cow standing alert, her calf bedded at her feet</td>
+<td>the cow's neck carriage and body length; a real bedded calf</td>
+</tr>
+<tr>
+<td>"Majestic Bull", a Roosevelt bull side-on in autumn</td>
+<td>the mane, the orange body, antlers from the side</td>
+</tr>
+<tr>
+<td>Muybridge, <em>Animal Locomotion</em> plate 692, frame 15: an elk trotting</td>
+<td>a gait, drawn from life, on a measured ground line</td>
+</tr>
+<tr>
+<td>a Columbian blacktail buck walking</td>
+<td>the deer's proportions and ears</td>
+</tr>
+</tbody>
+</table>
+<p>The searches worth making were specific: "roosevelt elk cow", "elk trotting" and "muybridge elk" (which returned Muybridge's own plates) were gold. Generic ones ("elk bedded down") returned half junk.</p>
+<h2>Aligning a photo to a render</h2>
+<p>For each photo, open it and read two numbers off it by eye: <strong>the ground row</strong> (where the hooves stand) and <strong>the withers row</strong> (the top of the shoulder). Those set the scale; the ground row sets the placement. That's all the alignment needs, because the render knows its own ground row.</p>
+<pre><code class="language-python">BOARD = [
+    # file, crop, ground row, withers row, individual, gait, phase, yaw
+    (REF + 'roosevelt_elk_cow/openverse_Roosevelt_elk_cow_calf_5b89d184.jpg', (220, 110, 730, 560), 545, 228, ('elk', 'f'), 'alert', 0, 0),
+    (REF + 'roosevelt_elk_cow/openverse_Majestic_Bull_21c2381d.jpg', (110, 20, 690, 630), 612, 282, ('elk', 'm'), 'stand', 0, 0),
+    (REF + 'elk_trotting/openverse_Elk_trotting_rbm_QP301M8_1887_692a_15_2699e75e.jpg', (0, 20, 918, 780), 745, 372, ('elk', 'm'), 'trot', 0.3, 0),
+    (NAT + 'blacktail_deer/commons_Columbian_black_tailed_deer_Odocoileus_hemionus__e3d0e22e.jpg', (190, 150, 800, 570), 555, 300, ('deer', 'm'), 'walk', 0.1, 180),
+]
+HPX = 150   # shoulder height in px on the board
+
+
+def panel(i, phase=None, gait=None):
+    f, crop, gr, wr, (spn, sex), g, ph, yaw = BOARD[i]
+    im = Image.open(f).convert('L').crop(crop)
+    s = HPX / (gr - wr)                                   # scale so the shoulder is HPX tall
+    im = im.resize((int(im.width * s), int(im.height * s)))
+    grow = int((gr - crop[1]) * s)                        # the photo's ground row, after crop and scale
+    ind = rig.Individual(spn, sex, 'adult', 'autumn', 1)
+    R, _, k = paint.paint_index(ind, gait or g, ph if phase is None else phase,
+                                View(yaw=yaw, elev=0, sun_el=50, sun_az=-140, ss=3),
+                                size_px=HPX * 1.62)       # my size convention: body length = 1.62 H
+    gimg = paint.notan(R) if NOTAN else paint.grey(R, bg=0.92)
+    H = max(im.height, gimg.shape[0] + max(0, grow - R.ground_row)) + 4
+    out = np.full((H, im.width + gimg.shape[1] + 12), 255, np.uint8)
+    out[:im.height, :im.width] = np.array(im)
+    y0 = grow - R.ground_row                              # put my ground row on the photo's
+    ys, ye = max(0, y0), min(H, y0 + gimg.shape[0])
+    out[ys:ye, im.width + 12:im.width + 12 + gimg.shape[1]] = gimg[ys - y0:ye - y0]
+    return out
+</code></pre>
+<p>Render at camera elevation 0 for the board, so nothing is foreshortened, and match the photo's facing and gait phase as well as you can (Muybridge's frame 15 is phase ≈ 0.3 of my trot).</p>
+<h2>Read it in notan</h2>
+<p>A notan is the render as solid black on grey. It removes hide, light and dither, which is where the eye goes first and where the errors aren't. What's left is exactly the naturalist's first three things: body to leg to neck, head against back line, the outline of the patch.</p>
+<p><img alt="notan, first" src="../img/nb019.png" /></p>
+<p><em>nb019. My first board (in grey, but read it as a silhouette). Every row: the torso is far too long, the neck is a tube stuck on the front of a box, the legs are posts, the bull's antler is a TV aerial.</em></p>
+<p><img alt="notan, before" src="../img/nb025.png" />
+<img alt="notan, after" src="../img/nb029.png" /></p>
+<p><em>nb025 and nb029. The notan board forty minutes and a dozen runs apart.</em></p>
+<p><img alt="notan, final" src="fig/board_final_notan.png" /></p>
+<p><em>fig. The final rig on the same board.</em></p>
+<p><strong>How to read it, and what I found, in the order the board showed me:</strong></p>
+<ol>
+<li><strong>Measure body length in shoulder heights.</strong> Mine was 1.4; the photos are 1.05 (the cow) to 1.3 (Muybridge's bull). This is the horse. Fix it before anything else.</li>
+<li><strong>Look where the neck leaves the body.</strong> It must rise from the withers on top and the brisket below, as one wedge. If there's a notch between back and neck, or the neck starts halfway down the chest, it's a llama.</li>
+<li><strong>Look at the back end.</strong> The croup slopes to the tail root; the buttock rounds down into the hams, whose rear edge runs to the hock. A square end is a box. (A knob at the top of my rump turned out to be the torso's end cap showing above a ham placed too far forward. I found it by printing, for each of the rearmost columns, which rig parts owned its pixels.)</li>
+<li><strong>Look at the hind leg.</strong> It bends: the hock sits well behind the line from stifle to hoof.</li>
+<li><strong>Look at the leg thickness.</strong> An elk's cannon is about 0.035 H. In the notan, legs should be the thinnest things there.</li>
+<li><strong>Look at the antlers.</strong> A bull elk's beams leave the head going <em>back</em>, sweeping over the shoulders; the tines come off the front of the beam, pointing forward and up.</li>
+</ol>
+<h2>Then at size</h2>
+<p>The board at 150 px is for proportion. The size board is the real test, because the animal will be seen at 60 px or less. The photo is shrunk by area-averaging (<code>Image.BOX</code>), which is what a camera would record at that distance, to the same body length as the render:</p>
+<pre><code class="language-python">for L in (60, 30, 16, 8):
+    s = (L / 1.62) / Hphoto                               # Hphoto = ground row - withers row
+    p = im.resize((max(1, int(im.width * s)), max(1, int(im.height * s))), Image.BOX)
+    R, _, k = paint.paint_index(ind, g, ph, View(yaw=yaw, elev=0, sun_el=50, sun_az=-140, ss=8), size_px=L)
+    cells.append((np.array(p), paint.grey(R, bg=0.92)))
+</code></pre>
+<p><img alt="size board, early" src="../img/nb022.png" /></p>
+<p><em>nb022. The early rig at 60, 30, 16 and 8 px beside its photos. At 16 and 8 px the leg thickness is the loudest thing in each figure: table legs.</em></p>
+<p><img alt="size board, colour, final" src="fig/sizes_final_colour.png" /></p>
+<p><em>fig. The final rig in colour. At 8 px the reduced photo is a pale smudge with a darker front; the render is a pale body, a dark front, a pale rump pixel, a head, legs. Pixel art may be more legible than the photo; it may not be less.</em></p>
+<p>What to look for at each size:</p>
+<ul>
+<li><strong>60 px:</strong> the silhouette as in the notan; the patch (the cape edge and the rump) in the right place.</li>
+<li><strong>30 and 16 px:</strong> the head height against the back line; whether the legs are still the thinnest marks; whether the antlers still sweep back or have become a post.</li>
+<li><strong>8 px:</strong> only the far read: a dark front, a pale back, a head up or down, legs. If the photo's smudge has a dark front and your figure doesn't, you've lost the elk.</li>
+</ul>
+<h2>The Muybridge frame</h2>
+<p>For gaits, Muybridge is a board on his own. Plate 692 (a trot) and 695 (a gallop, and the same animal from behind) show where every hoof is in each of 24 frames, on a measured grid.</p>
+<p><img alt="Muybridge 692" src="../img/nb009.jpg" /></p>
+<p><em>nb009. Plate 692. My first board was frame 15 of this plate beside my trotting bull (nb014); it caught a sampling bug (white slits in the body) and the long torso in one image.</em></p>
+<p><img alt="first comparison" src="../img/nb014.png" /></p>
+<h2>Where it stops</h2>
+<p>The board checks proportion and pattern, not weight. In the final board the bull's silhouette matches, but the photo's weight is in the lit shoulder and ham masses with darker ribs between, and a silhouette can't show that. The next instrument I'd build is the same board in value only, photo reduced to 60 px beside my render, each quantised to six steps, compared plane by plane.</p></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 7</span><a href="../howto/02-building-a-cervid.html">2. Building a cervid that isn&#x27;t a horse →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

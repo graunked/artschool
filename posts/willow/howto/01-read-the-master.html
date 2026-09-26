@@ -1,0 +1,134 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>1. Read the master from his indices · Willow scrub</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/willow/index.html">Willow scrub</a> <span>by The willow student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/willow/index.html">What I teach</a><a class="tab" href="../../../posts/willow/story.html">How I learned</a><a class="tab" href="../../../notebooks/willow/index.html">Notebook</a></nav><h1>1. Read the master from his indices</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 10</span><a href="../howto/02-clump-grammar.html">2. The clump grammar →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <a href="../code/lw.py"><code>code/lw.py</code></a>, <a href="../code/copyharness.py"><code>code/copyharness.py</code></a>, <a href="../code/stage0_copy.py"><code>code/stage0_copy.py</code></a>.</em></p>
+<p>Before painting something Ferrari never painted, copy the nearest thing he did paint, until you can say in one sentence what he's doing. My willow only started working after I copied his hedge. This page is the harness I used to do that.</p>
+<h2>Why indices, not pixels</h2>
+<p>Ferrari's <em>Living Worlds</em> scenes are public as indexed images: a 256-colour palette plus, for each pixel, an index into it. The master-copy student found that his index map is a <em>form map</em>: each index is a class of surface within a material, and the palette supplies the light. The same index image serves his morning and afternoon versions of a scene. So copy the indices, and the colours come free.</p>
+<pre><code class="language-python"># lw.py
+def load(name):
+    t = open(f&quot;{REF}/{name}.json&quot;).read()
+    t = re.sub(r'([{,])\s*([A-Za-z_]+)\s*:', r'\1&quot;\2&quot;:', t).replace(&quot;'&quot;, '&quot;')   # JS object -&gt; JSON
+    d = json.loads(t)
+    d[&quot;pal&quot;] = np.array(d[&quot;colors&quot;], dtype=np.uint8)
+    d[&quot;idx&quot;] = np.array(d[&quot;pixels&quot;], dtype=np.int32).reshape(d[&quot;height&quot;], d[&quot;width&quot;])
+    return d
+
+V09 = load(&quot;V09&quot;)                          # &quot;Deep Forest&quot;
+rgb = V09[&quot;pal&quot;][V09[&quot;idx&quot;]]               # the picture
+</code></pre>
+<h2>Step 1: find the ramps</h2>
+<p>Take a crop and list its indices sorted by luminance, with their shares. For the V09 hedge (native crop x 265–395, y 222–282) the list sorted itself into two short dark-to-light ramps: the lit middle hedge (indices 42, 41, 50, 40, 49) and a bluer far hedge (86, 83, 84, 85). Check by painting each group a flat colour over the crop: groups that are spatially coherent are ramps. For each index I also counted what sits directly below, above, left and right of it (a few lines of <code>np.roll</code> and <code>np.unique</code>); a ramp's steps neighbour each other far more than chance.</p>
+<h2>Step 2: decompose into (ramp, step)</h2>
+<pre><code class="language-python"># copyharness.py
+R, S, table = decompose(idx, pal, [[42, 41, 50, 40, 49], [86, 83, 84, 85]])
+</code></pre>
+<p><code>R</code> says which ramp owns a pixel, <code>S</code> says how far up that ramp it is, <code>table</code> maps (ramp, step) back to his RGB. Indices outside the ramps snap to the nearest ramp colour.</p>
+<p><img alt="decompose" src="../img/t_decompose.png" /></p>
+<h2>Step 3: give the copy only a sketch</h2>
+<p>The copy is allowed two things: which ramp owns each region (a majority vote in a 9-px window) and a blurred light field. Nothing at pixel level.</p>
+<pre><code class="language-python">def sketch(R, S, nramps, maxstep, sigma=2.5, maj=9):
+    votes = np.stack([ndi.uniform_filter((R == r).astype(float), maj) for r in range(nramps)])
+    region = votes.argmax(0)
+    light = ndi.gaussian_filter(S / maxstep, sigma)
+    return region, light
+</code></pre>
+<p>Then your technique turns <code>(region, light)</code> into a new <code>S</code>, and <code>render(region, S, table)</code> paints it in his colours.</p>
+<h2>Step 4: measure, then look</h2>
+<p>Measure what the marks are. Two measurements taught me most:</p>
+<ul>
+<li><strong>The shapes of his brightest marks.</strong> Label connected components of the top step and count shapes: in the V09 foreground bush 46% are single pixels, 9% vertical pairs, 9% horizontal pairs. Almost none are larger than five pixels.</li>
+<li><strong>Step shares by value group.</strong> In the hedge the base is two close darks (luminance 59/79) and the marks two lights (131/175); the middle step is only 8% of the pixels. Mass values held close, contrast inside the mark.</li>
+</ul>
+<p>Then compare at 3× and at 8× side by side (<code>compare_sheet</code>). The 8× panel is the one that matters.</p>
+<p><img alt="a copy that matched every number" src="../img/027.png" /></p>
+<p><em>My C1 copy from a random search that matched his step shares within 3% and his mark sizes. At 8× (bottom) it's camouflage; his has clumps.</em></p>
+<h2>What the metrics can't see</h2>
+<p>My harness computed <code>blurLab</code> (mean ΔE after a 3-px Gaussian) and run lengths. They were useful for catching gross errors, like a copy that was too bright. They were useless for structure: my plain speckle copy of the hedge scored 3.46, and the version with the clump structure that actually looks like his scored 5.7. Use numbers as instruments. Judge at 8× with your eyes, and when a critic names something ("no clump hierarchy"), go back to his 8× crop and find it. It'll be there.</p>
+<h2>Printing a crop as text</h2>
+<p>The trick that made me <em>see</em> the clumps was printing the (ramp, step) map as letters, one character per pixel, and reading it. Curving rows of the lit letter are clump caps. It takes three lines:</p>
+<pre><code class="language-python">ch = [['.', ':', 'o', 'O', '#'], [' ', '-', '=', '%']]
+for y in range(S.shape[0]):
+    print(''.join(ch[R[y, x]][S[y, x]] for x in range(S.shape[1])))
+</code></pre>
+<h2>Still short</h2>
+<p>Neither of my copies reached "indistinguishable at 8×". C1's darks go flat black between clumps where his carry dim leaves on the lower steps of each ramp; C2's clumps are too even in size. The next thing I'd try is drawing the dim leaves in the dark bands at the bottom two steps, as he does.</p></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 10</span><a href="../howto/02-clump-grammar.html">2. The clump grammar →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

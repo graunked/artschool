@@ -1,0 +1,230 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>2. Building a cervid that isn&#x27;t a horse · Roosevelt elk and black-tailed deer</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/deer-elk/index.html">Roosevelt elk and black-tailed deer</a> <span>by The elk and deer student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/deer-elk/index.html">What I teach</a><a class="tab" href="../../../posts/deer-elk/story.html">How I learned</a><a class="tab" href="../../../notebooks/deer-elk/index.html">Notebook</a></nav><h1>2. Building a cervid that isn&#x27;t a horse</h1><nav class="pager"><a href="../howto/01-the-board.html">← 1. The board: photo against render, in silhouette and at size</a><span class="label">2 of 7</span><a href="../howto/03-gaits-and-postures.html">3. Gaits and postures after Muybridge →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>rig.py</code> in <code>~/work/pixelart-studies/elements/deer-elk/src/</code>.</em></p>
+<p>The game's old animals were capsules: an elk was a body 1.85 long on legs 0.88, a neck 0.55, a ball of a head. Those are a horse's proportions, and no amount of painting fixes them. This page is the rig I built instead. It's a 3-D rig so it sweeps every facing, gait and size for free, but every number in it came off the <a href="01-the-board.html">board</a>, not from a textbook.</p>
+<p><img alt="skeleton" src="fig/skeleton.png" /></p>
+<p><em>fig. The rig in side view, in units of shoulder height H: torso stations (red: the back line; blue: the belly line), the near-side tubes' centrelines, and the thick parts' outlines. Cow, bull, doe.</em></p>
+<h2>Tubes, not capsules</h2>
+<p>Everything is a <code>Tube</code>: a centreline of stations, each with an elliptical section (<code>a</code> along the tube's "up" normal, <code>b</code> across), a material function for the hide, and a <code>thin</code> flag for the parts that get redrawn as 1-px lines at small sizes (lower legs, ears, antlers, tail). Work in shoulder heights (H = 1) with the withers near x = 0.23, and scale to metres at the end, so the same numbers make a 1.45 m elk and a 0.92 m deer.</p>
+<h2>The torso: loft it from stations read off photos</h2>
+<p>This is the part that stops it being a horse. Thirteen stations, each (x, back height, belly height, half-width), smoothed with PCHIP:</p>
+<pre><code class="language-python">ELK_TORSO = [
+    # x      ztop   zbot   hw   (Roosevelt cow side views; the croup slopes to the tail root and
+    # the buttock rounds down into the hams)
+    (0.475, 0.74, 0.60, 0.05),   # brisket, forward of the forelegs
+    (0.43, 0.88, 0.54, 0.12),
+    (0.34, 0.985, 0.52, 0.16),   # chest, deep
+    (0.23, 1.00, 0.50, 0.18),    # withers over the girth
+    (0.09, 0.985, 0.51, 0.20),
+    (-0.06, 0.965, 0.53, 0.21),  # barrel
+    (-0.22, 0.955, 0.575, 0.20),
+    (-0.33, 0.955, 0.62, 0.18),  # flank tuck
+    (-0.42, 0.95, 0.60, 0.175),  # hip; the ham drops behind the tuck
+    (-0.50, 0.925, 0.61, 0.155),
+    (-0.56, 0.885, 0.64, 0.12),
+    (-0.60, 0.83, 0.68, 0.07),   # buttock
+    (-0.615, 0.78, 0.71, 0.03),
+]
+</code></pre>
+<p>What to read in those numbers, and to check on your own photos:</p>
+<ul>
+<li><strong>Length.</strong> Brisket to buttock is 1.09 H for the elk and 1.03 H for the deer. My first stations, from memory, were 1.4 H. This is the single biggest horse-maker.</li>
+<li><strong>The back line is level</strong>, with the withers a touch above the croup for the elk, level with it for the deer.</li>
+<li><strong>The chest is deep</strong>, down to 0.50 H just behind the forelegs, and it pushes forward of them as the brisket.</li>
+<li><strong>The belly rises into the flank tuck</strong> (0.62 H), and the ham drops behind it again (0.60). That little reversal is what makes the hindquarters read as a leg joining a body, not the end of a sausage.</li>
+<li><strong>The rear end rounds down</strong>: the croup slopes to the tail root and the buttock is a curve, not a cap.</li>
+</ul>
+<h2>The neck: a wedge</h2>
+<pre><code class="language-python"># the neck is a wedge: very deep where it leaves withers and brisket, tapering fast, then
+# nearly parallel up to the throat latch
+npts = np.array([nb - ndir * 0.12, nb, nb + ndir * sp.neck_len * 0.28, mid, poll])
+na = np.array([r0a * 1.05, r0a, r0a * 0.62 + r1a * 0.38, r0a * 0.38 + r1a * 0.62, r1a])
+</code></pre>
+<p>The base starts 0.12 H <em>inside</em> the chest, so the neck's top line runs straight off the withers with no notch and its bottom line off the brisket. For a cow it's 0.26 H deep at the base and 0.09 H at the throat; a bull in September is 0.33 and 0.15, plus a separate <code>mane</code> tube hanging under it. A thin neck rising steeply from the front of the box was the first thing both critics called a horse's.</p>
+<h2>Legs by anatomy</h2>
+<p>Each leg is IK from a root (elbow or stifle) to a hoof target, then dressed as separate segments:</p>
+<pre><code class="language-python">if fore:
+    top = P[0] + np.array([-0.01, 0, 0.10])       # forearm: deep fore-and-aft at the top (muscle)
+    ra1 = np.array([r[0] * 1.35, r[0] * 1.15, r[0] * 0.9, r[1] * 1.05, r[1]])
+else:
+    # the ham: from under the croup, its rear edge continuous with the buttock
+    top = P[0] + np.array([-0.11, 0, 0.06])
+    ra1 = np.array([r[0] * 1.55, r[0] * 1.4, r[0] * 1.0, r[1] * 1.2, r[1]])
+out.append(tube_from_points(name + &quot;1&quot;, seg1, ra1, ra1 * 0.62, ...))   # a blade from the side, slim from the front
+# hock point: the calcaneus sticks out behind the hock
+hp = P[1] + back * r[1] * 1.0 + np.array([0, 0, r[1] * 0.4])
+# knee (carpus) knob on the foreleg, a slim flat-sided cannon, a fetlock knob, a pastern,
+# and a small dark wedge of a hoof, toe forward, flat sole
+</code></pre>
+<ul>
+<li><strong>Thin.</strong> Cannon radius 0.019 H for the elk, 0.016 for the deer. At 60 px that's a 1-px line, as it should be.</li>
+<li><strong>The hind leg bends.</strong> The gaskin (0.38 H) is longer than the space between stifle and hock allows straight, so the hock always sits behind the line, and its point sticks out behind. The studio critic's round 3: "the hind leg's hock is the most readable joint on a deer; give it its angle."</li>
+<li><strong>Forelegs bend forward at the carpus, hind legs back at the hock</strong>: that's <code>bend_forward=fore</code> in the IK solve.</li>
+</ul>
+<h2>Antlers: angle the tines from the beam</h2>
+<p>I got this wrong twice, and both critics' first note was about it. A bull elk's beam leaves the skull going up, out and <strong>back</strong>, sweeping over the shoulders; the tines come off the <strong>front</strong> of the beam. If you set each tine's angle from the head, the tines come out like a comb on a vertical beam, or a pitchfork held up. Set it from the beam's own direction where the tine leaves:</p>
+<pre><code class="language-python">for k, (u, L, ang) in enumerate([(0.05, 0.30, 95), (0.15, 0.26, 80), (0.40, 0.36, 62), (0.62, 0.28, 55), (0.80, 0.20, 48)]):
+    p0 = point on the beam at fraction u
+    T = the beam's direction there
+    F = hd - (hd @ T) * T; F /= norm(F)          # &quot;forward&quot;, made perpendicular to the beam
+    a = np.radians(ang + rng.normal(0, 6))
+    d = T * np.cos(a) + F * np.sin(a) + out_v * 0.12
+    d2 = T * np.cos(a * 0.6) + F * np.sin(a * 0.6)   # the tip curls back toward the beam
+    tp = [p0, p0 + d * L * 0.55, p0 + d * L * 0.55 + d2 * L * 0.45]
+</code></pre>
+<p>Brow tine at 95°, nearly straight forward over the face; the longest (the trez) at 40% up; the crown near the top at 48°. The antlers are fixed to the skull (<code>hd</code>, <code>hup</code> are the head's axes), so they lay back automatically when the bull lifts his nose to bugle. A blacktail buck carries a small dichotomous fork on the same principle.</p>
+<p><img alt="notan antlers early" src="../img/nb025.png" />
+<img alt="notan antlers final" src="fig/board_final_notan.png" /></p>
+<p><em>nb025, fig. The pitchfork, then the final.</em></p>
+<h2>Who: species, sex, age, season, seed</h2>
+<p><code>Individual(species, sex, age, season, seed).spec()</code> edits the species' numbers:</p>
+<pre><code class="language-python">if self.sex == &quot;m&quot; and self.age == &quot;adult&quot; and self.species == &quot;elk&quot;:
+    # bulls: bigger front end, heavier neck, the mane
+    sp = replace(sp, neck_r0=(0.33, 0.17), neck_r1=(0.15, 0.10), mane=0.13, head_len=0.38, ...,
+                 torso=[(x, zt + (0.02 if x &gt; 0 else 0), zb - 0.05 * max(0, 1 - abs(x - 0.15) / 0.55), hw * 1.08) ...])
+if self.age == &quot;young&quot;:
+    # calves and fawns: legs long for the body, big head and ears, short neck
+    ...  torso squashed toward 0.62 H, legs x1.06, head x0.82, ears x1.05, H x0.62
+# individual variation, a few percent: H, neck length, head length
+</code></pre>
+<p>Antler state comes from the season (the naturalist's calendar): none in spring, velvet in summer, hard in autumn and winter, a spike on a yearling.</p>
+<p><img alt="true scale" src="fig/ages_true_scale.png" /></p>
+<p><em>fig. Everyone at true relative scale (one px/m for the whole row): elk bull, cow, yearling, calf; blacktail buck, doe, fawn.</em></p>
+<h2>The seven errors, in the order the board found them</h2>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>what I had</th>
+<th>what the photo shows</th>
+<th>where it's fixed</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>torso 1.4 H long</td>
+<td>1.05–1.3 H</td>
+<td>the stations</td>
+</tr>
+<tr>
+<td>2</td>
+<td>a tube of a neck on the front of a box</td>
+<td>a wedge from withers and brisket</td>
+<td><code>npts</code>, <code>na</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td>a box end</td>
+<td>a sloping croup, a rounded buttock into the hams</td>
+<td>last four stations, the ham tube</td>
+</tr>
+<tr>
+<td>4</td>
+<td>legs 2 px at 60 px</td>
+<td>cannon ≈ 0.035 H: 1 px</td>
+<td><code>fore_r</code>, <code>hind_r</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td>a straight hind leg</td>
+<td>the hock behind the line, its point out</td>
+<td><code>hind_len</code>, the <code>hk</code> tube</td>
+</tr>
+<tr>
+<td>6</td>
+<td>antlers vertical, then tines forward from the head</td>
+<td>beam back, tines angled off the beam</td>
+<td><code>antlers()</code></td>
+</tr>
+<tr>
+<td>7</td>
+<td>a tail pointing forward into the rump</td>
+<td>it hangs behind</td>
+<td>a sign in <code>tdir</code> (found in the last hour, from behind)</td>
+</tr>
+</tbody>
+</table>
+<p>Two more that came later, from the colour renders: <strong>the head carriage</strong> (see <a href="03-gaits-and-postures.html">gaits</a>) and <strong>a front view with no face</strong>: an elk's face must be a shade lighter than its neck, or seen from the front the head vanishes into the dark chest (the <code>FACE</code> material, <a href="04-the-hide.html">the hide</a>).</p>
+<h2>Where it stops</h2>
+<p>The bull's neck and mane are still thinner than a September Roosevelt bull's; I deepened them in the last change and they're closer, not there. The deer's ears smear into its antler base at 60 px. And the rig has no muscle: the shoulder is one extra ellipsoid, the ribs and ham are the torso's own curve. The weight in the photos is in those masses, which is the next thing I'd model.</p></div><nav class="pager"><a href="../howto/01-the-board.html">← 1. The board: photo against render, in silhouette and at size</a><span class="label">2 of 7</span><a href="../howto/03-gaits-and-postures.html">3. Gaits and postures after Muybridge →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

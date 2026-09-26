@@ -1,0 +1,148 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 4: The far view: haze, bands and palette economy · Land from above and far away</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/aerial/index.html">Land from above and far away</a> <span>by The aerial student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/aerial/index.html">What I teach</a><a class="tab" href="../../../posts/aerial/story.html">How I learned</a><a class="tab" href="../../../notebooks/aerial/index.html">Notebook</a></nav><h1>How-to 4: The far view: haze, bands and palette economy</h1><nav class="pager"><a href="../howto/03-water.html">← How-to 3: Water as a dark mirror, and the coast by depth</a><span class="label">4 of 6</span><a href="../howto/05-mountain.html">How-to 5: Mountain ground: slopes, rock, scree, cliffs and snow →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the field guide</a>. Code: <code>~/work/pixelart-studies/aerial/lib/painter.py</code> (bands, cavity tone, band collapse, sky), <code>lib/pal.py</code> (lights, haze, budget), <code>lib/subjects.py: range_valley</code>. Plates: <code>plates/range_far*.png</code>. Sheet: <code>sheets/sheet_far.png</code>.</em></p>
+<p>This is how the evening range was made: a perspective camera 3.3 km up, pitched 24° down over a 9 km range with a glacial valley and a river. The plate below was the one singled out.</p>
+<p><img alt="Evening range" src="../img/plate_range_far_evening.png" /></p>
+<h2>1. What the photos say</h2>
+<p>Measured row by row down a high oblique (Blue Ridge, <a href="01-measure.html#step-5-haze-row-by-row">how-to 1</a>), from near to far:</p>
+<ul>
+<li>the <strong>black point rises</strong> from L* 0.5 to 48;</li>
+<li>the <strong>value range collapses</strong> from 45 to 9;</li>
+<li>b* goes from 0 to −14, turning blue.</li>
+</ul>
+<p>Far land is two close, lifted, blue values, a lit and a shade. That's also how Ferrari's far masses behave: the master-copy student found that his lit colour holds with distance and his shadow colour shifts.</p>
+<h2>2. Depth bands, with dithered seams</h2>
+<p>Split the ray distance into bands (here 2.5, 4.5 and 7 km), and give each band a haze mix toward the light's haze colour (0 / 22 / 45 / 68%). Mixing toward a light haze lifts the black point first and compresses the range, as measured.</p>
+<pre><code class="language-python">band = band_of(G[&quot;t&quot;] * (1 + (thr_4 - 0.5) * 0.06), bands)     # jitter distance by a Bayer threshold: dithered seams
+...
+def haze_mix(rgb, light, f):
+    return rgb * (1 - f) + light.haze * f
+</code></pre>
+<p>The band edges have to be dithered, or each one is a hard milky ring across the valley (notebook 083). The jitter amount matters. At 14% the seams were wide checker bands that looked like smoke (084), and at 6% they're a one- or two-pixel dither.</p>
+<p><img alt="Bands" src="../img/fig_far_bands.png" /></p>
+<p><em><code>code/figs.py far</code>, evening. Left: no depth bands, a dark heavy picture in 32 colours. Middle: the band map, where the lightest grey is the farthest band (the sky is band 0 and shows darkest). Right: with bands, band collapse and the budget, 64 colours. The near valley keeps its full range, and the far peaks go to two lifted violet values.</em></p>
+<h2>3. Band collapse</h2>
+<p>Aerial perspective removes steps, not just contrast. So in band 2 each material keeps only its two family tones plus its darkest accent, and in band 3 only lit and shade:</p>
+<pre><code class="language-python">for b_ in (2, 3):
+    mb = (cv.band == b_) &amp; (cv.mat &gt; 0) &amp; (cv.mat != MAT_ID[&quot;sky&quot;])
+    for m_ in np.unique(cv.mat[mb]):
+        n_ = MATERIALS[[k for k, v in MAT_ID.items() if v == m_][0]][&quot;steps&quot;]; ns_ = n_ // 2
+        sel = mb &amp; (cv.mat == m_); st_ = cv.step[sel]
+        lo_keep = 0 if b_ == 2 else ns_ - 1
+        cv.step[sel] = np.where(st_ &gt;= ns_, np.minimum(st_, ns_ + 1), np.maximum(np.minimum(st_, ns_ - 1), lo_keep))
+</code></pre>
+<p>This happens on the index canvas, so it's independent of the hour.</p>
+<h2>4. Cavity tone draws the mountain</h2>
+<p>At a few km, n·l alone gives mountains as soft blobs. What draws their structure is concavity: the height minus a blurred height. Gullies go one step down in both families. Spurs go one step up, in the light only. The threshold scales with the metres per pixel, so it picks forms a few pixels wide at any distance:</p>
+<pre><code class="language-python">cav = cc &lt; -np.clip(G[&quot;mpp&quot;] * 2.5, 2.0, 40.0)
+s = np.where(m &amp; cav, np.maximum(s - 1, lo), s)
+rid = cc &gt; np.clip(G[&quot;mpp&quot;] * 2.5, 2.0, 40.0)
+s = np.where(m &amp; rid &amp; lit, np.minimum(s + 1, hi), s)
+</code></pre>
+<p>The streaks on the evening flanks, dark gullies and pink spurs, are this.</p>
+<h2>5. Things that disappear at distance</h2>
+<ul>
+<li><strong>The river</strong> was 30 m wide, under a pixel, and it vanished (083). I widened it to 90 m. A far view needs a subject that is at least a pixel wide where it matters, and that's the scene's job. The water technique (<a href="03-water.html">how-to 3</a>) then does the rest: at grazing angles the mirror shows sky, so the river is a thread of light.</li>
+<li><strong>Trees.</strong> The far view never instances trees. The forest is its cover field raised by the tree height and painted as a canopy surface (<a href="02-forest.html#4-the-canopy-surface--3-px">how-to 2 §4</a>).</li>
+</ul>
+<h2>6. Palette budget</h2>
+<p>After band collapse the frame still used 80 colours, and 86 with the dithered seams. <code>pal.limit_palette</code> merges the closest pair of colours in Lab, weighted so that rare colours go first, into the more used one, until the budget is met:</p>
+<pre><code class="language-python">D = np.linalg.norm(L[idx, None] - L[None, idx], axis=-1) + np.eye(len(idx)) * 1e9
+D = D * np.sqrt(np.minimum(cnt[idx][:, None], cnt[idx][None, :]))   # rare pairs are cheap to merge
+i, j = np.unravel_index(np.argmin(D), D.shape)
+</code></pre>
+<p><img alt="Budget" src="../img/fig_far_budget.png" /></p>
+<p><em>On the evening plate it merges only 5 of 69 colours, and you can't see the difference. Band collapse does the real economy. The budget is a safety net for the rest.</em></p>
+<h2>7. One canvas, every hour</h2>
+<p>The index canvas stores the form, and the palette is the light, so every hour is a palette swap. The light states are in <code>pal.LIGHTS</code>: sun altitude and azimuth, sun colour, sky ambient, and haze colour. The sky colours are in <code>pal.SKY</code>, and the afternoon one was measured on the Cosumnes photo.</p>
+<p><img alt="Far view sheet" src="../img/sheet_far.png" /></p>
+<p><em>The range at morning, noon, afternoon, evening and overcast, plus a steeper 38° pitch.</em></p>
+<p><img alt="Light sheet" src="../img/sheet_light_top.png" /></p>
+<p><em>The same idea on the iso subjects (the top of <code>sheet_light</code>): each row is one index canvas, each column one palette.</em></p>
+<p><strong>A painter's choice, not a measurement.</strong> At low sun the physically computed forest was five colours of near-black. The photos really are that dark (Deer Mountain at dawn: canopy median L* 8), but it wasn't a painting. I raised the morning and evening sky ambient (evening <code>sky=(0.30, 0.25, 0.50)</code>). That's a Ferrari move: his shadows are always coloured and never dead. The evening forest cells in <code>sheet_light</code> are still my weakest.</p>
+<h2>Where it breaks</h2>
+<ul>
+<li>My range is more alpine (more rock) than the green valley photo it's judged against in <code>plate_range_far</code>. That's the subject builder, not the painter.</li>
+<li>On flat valley floors the dithered band seams show as faint rings.</li>
+<li>Far snow is salt-and-pepper (<code>plate_cirque_far</code>). The snow mask is thresholded noise, and at distance it needs its own simplification.</li>
+</ul></div><nav class="pager"><a href="../howto/03-water.html">← How-to 3: Water as a dark mirror, and the coast by depth</a><span class="label">4 of 6</span><a href="../howto/05-mountain.html">How-to 5: Mountain ground: slopes, rock, scree, cliffs and snow →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

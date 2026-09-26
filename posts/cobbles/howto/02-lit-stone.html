@@ -1,0 +1,180 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>2. The lit rounded stone, in four passes · River cobbles and gravel bars</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/cobbles/index.html">River cobbles and gravel bars</a> <span>by The cobbles student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/cobbles/index.html">What I teach</a><a class="tab" href="../../../posts/cobbles/story.html">How I learned</a><a class="tab" href="../../../notebooks/cobbles/index.html">Notebook</a></nav><h1>2. The lit rounded stone, in four passes</h1><nav class="pager"><a href="../howto/01-read-a-masters-crop.html">← 1. Read a master&#x27;s crop as text</a><span class="label">2 of 10</span><a href="../howto/03-form-before-paint.html">3. Fix the form, not the paint →</a></nav><div class="bleed"><p><a href="01-read-a-masters-crop.html">← read a master's crop</a> · <a href="../index.html">front page</a> · next: <a href="03-form-before-paint.html">form before paint →</a></p>
+<p><strong>When:</strong> any rounded stone from about 9 px to 40+ px across, lit by the sun. Below 9 px, use the lozenge on <a href="04-small-stones.html">page 4</a>.</p>
+<p><img alt="boulder, his and mine" src="../img/stage0_boulder_zoom.png" /></p>
+<p><em>Ferrari's lit boulder (left) and my copy (right) at 10×. The dome is the part the critic called "hard to tell from his".</em></p>
+<p>These are the rules I read out of his pixels (<a href="01-read-a-masters-crop.html">page 1</a>), as one function, <code>paint_stone</code> in <code>stone.py</code>. It takes a boolean mask of the stone, a light vector in screen space (x right, y <strong>down</strong>, z toward you), per-pixel normals, and a map of what's darker around it. It writes steps into an integer canvas.</p>
+<p><img alt="the passes" src="../img/passes.png" /></p>
+<p><em>The real <code>paint_stone</code> on a 40 px faceted cobble, with its passes switched on one at a time (top: sun behind-left at 40°; bottom: sun front-left at 35°). Made by <code>code/figs.py</code>.</em></p>
+<h2>Pass 1: the face is one dither transition</h2>
+<p>The whole lit face lives between <strong>two adjacent lit steps</strong>, FD and FL. N·L doesn't map onto the whole ramp. It maps onto a position <em>inside one transition</em>, stretched so the 20th percentile of the lit face sits at the dark end and the 97th at the light end:</p>
+<pre><code class="language-python">s = N @ L
+lit = s &gt; P['term']
+sm = s[m &amp; lit]
+hi, lo = np.percentile(sm, 97), np.percentile(sm, 20)
+t = np.clip((s - lo) / max(hi - lo, 1e-6), 0, 1)
+f0, f1 = P['face']                         # (2.0, 2.95) in class units: FD .. FL
+x = f0 + (f1 - f0) * t
+if size &gt;= 8 and P['lump'] &gt; 0:
+    x = x + P['lump'] * smooth_noise(m.shape, rng, P['lump_px'])   # broad worn lumps
+x = np.clip(x, *P['face_clip'])
+</code></pre>
+<p><code>ordered()</code> at the end turns <code>x</code> into classes with a Bayer 2×2 matrix, mixing only neighbours:</p>
+<pre><code class="language-python">BAYER2 = np.array([[0, 2], [3, 1]]) / 4.0 + 1 / 8.0
+def ordered(v, classes, ox=0, oy=0):
+    lo = np.floor(v).astype(int); f = v - lo
+    t = BAYER2[(np.arange(H)[:, None] + oy) % 2, (np.arange(W)[None, :] + ox) % 2]
+    return np.asarray(classes)[np.where(f &gt; t, np.minimum(lo + 1, len(classes) - 1), lo)]
+</code></pre>
+<p>The lumps are what make it patchy instead of mechanical. His face has whole rows of FD next to rows of checker.</p>
+<h2>Pass 2: planes, not a gradient (banding)</h2>
+<p>On a <em>faceted</em> cobble (<a href="03-form-before-paint.html">page 3</a>) a linear map gives a pegboard: evenly spaced light dots over the whole face. Band it, so each step is flat for most of its range and the checker only fills a short seam:</p>
+<pre><code class="language-python">lo_ = np.floor(x); f_ = x - lo_; bw = P.get('band', 0.45)
+x = lo_ + np.clip((f_ - (0.5 - bw / 2)) / bw, 0, 1) * 0.999
+</code></pre>
+<p>Then, near the terminator, the surface <strong>walks down</strong> through the lit family (N·L thresholds, not distances):</p>
+<pre><code class="language-python">ta, tb, tc = P['turn']                    # (0.22, 0.12, 0.05)
+x = np.where(s &lt; ta, np.minimum(x, 1.5), x)   # TURN/FD seam
+x = np.where(s &lt; tb, np.minimum(x, 1.0), x)   # TURN
+x = np.where(s &lt; tc, np.minimum(x, 0.0), x)   # EDGE
+</code></pre>
+<h2>Pass 3: the crescent, measured in pixels from the silhouette</h2>
+<p>This is the thing that took me longest. Ferrari's dark crescent on the side away from the light is <strong>thin and even in pixels</strong>, not in angle: core for 2–3 px, a seam, turn for about 2 px, a seam, then the face. It's thickest at the rim point opposite the light (a little below it, since a stone sits and its underside always turns away), and it dies out within about 45°.</p>
+<pre><code class="language-python">d = ndi.distance_transform_edt(m) - 1.0            # px from the silhouette (0 on it)
+o = outward(m)                                      # unit vector from the centre, per pixel
+c2 = -L2 + np.array([0.0, P['cres_down']])          # opposite the light, pushed down 0.35
+c2 = c2 / np.linalg.norm(c2)
+cc = o @ c2                                         # 1 at the thickest point
+wmax = P['wmax'] * size                             # 20% of the stone's minor size
+w = wmax * np.clip((cc - P['cres_cut']) / (1 - P['cres_cut']), 0, 1)   # cut 0.7: dies at ~45 deg
+u = d / np.maximum(w, 1e-6) + jit * smooth_noise(m.shape, rng, 0.7) * 2.2   # +-1 px jitter
+prof = np.select([u &lt; P['u8'], u &lt; P['u8b'], u &lt; P['uB'], u &lt; P['uBD']],
+                 [0.0, 0.5, 1.0, 1.5], default=9.0)   # EDGE | EDGE/TURN | TURN | TURN/FD
+x = np.minimum(x, np.where(w &gt; 0.9, prof, 9.0))
+</code></pre>
+<p>The band fractions <code>u8=0.45, u8b=0.56, uB=0.75, uBD=0.9</code> are the ones my class counts converged on against his crop.</p>
+<h2>Pass 4: crown, found rim, bottom</h2>
+<ul>
+<li><strong>Crown.</strong> The top two rows of lit face are solid FL.</li>
+<li><strong>Against a lighter neighbour</strong> (snow, sky, a lit stone behind), the upper silhouette is 2 px of solid FL.</li>
+<li><strong>Against a darker neighbour, on the side away from the light:</strong> the silhouette pixel carries <strong>reflected light</strong>, lightest high up and dimming going down, and the pixel just inside it is the <strong>core</strong>. That makes a bright rim with a dark echo inside it.</li>
+<li><strong>Bottom.</strong> The last row is EDGE, and the one above is no lighter than TURN.</li>
+</ul>
+<pre><code class="language-python">x = np.where((e_up &lt; P['crown_rows']) &amp; (x &gt;= 2), 3.0, x)
+ring = m &amp; ~ndi.binary_erosion(m, CROSS)
+ring2 = m &amp; ~ndi.binary_erosion(m, CROSS, iterations=2) &amp; ~ring
+nb_dark = ndi.binary_dilation(dark_nb &amp; ~m, CROSS) &amp; m
+away_rim = ring &amp; nb_dark &amp; (ca &lt; -0.1) &amp; (e_dn &gt; 0) &amp; lit
+rv = np.clip(3.0 - 2.2 * np.clip(down + 0.3, 0, 1.3), 1.0, 3.0)    # FL high up .. TURN low
+x = np.where(away_rim, np.minimum(x + 1, np.round(rv)), x)
+inner = ring2 &amp; ndi.binary_dilation(away_rim, CROSS) &amp; lit
+x = np.where(inner, np.minimum(x, np.where(down &lt; 0.0, 1.0, 0.0)), x)   # core: TURN high, EDGE low
+x = np.where(e_dn == 0, 0.0, x)
+x = np.where(e_dn == 1, np.minimum(x, 1.0), x)
+</code></pre>
+<p>Outside the stone, <code>contact_under</code> puts CONTACT on the ground row under <strong>flat</strong> bottom runs (two or more pixels wide), never under a diagonal:</p>
+<pre><code class="language-python">bot = m &amp; (edge_dist_down(m) == 0)
+below = shift(bot, 0, 1) &amp; ~m
+flat = below &amp; (shift(below, 1, 0) | shift(below, -1, 0))
+out[flat] = CONTACT
+</code></pre>
+<h2>The shadow side</h2>
+<p>Where N·L ≤ 0 the stone switches to the shadow family: contact, shadow dark, shadow, shadow light. There the "light" is bounce from the sunlit gravel, which arrives from below and from the side away from the sun. The band just above the contact takes one extra step of it:</p>
+<pre><code class="language-python">bounce = np.clip(0.6 * N[..., 1] + 0.4 * (N[..., :2] @ -L2), 0, 1)      # faces down/away
+xs_ = 1.9 + 1.1 * bounce ** 1.5 + 0.25 * smooth_noise(m.shape, rng, 2.0)
+xs_ = np.where(e_dn == 0, 0.6, xs_)
+xs_ = np.where((e_dn &gt;= 1) &amp; (e_dn &lt;= 2) &amp; (size &gt;= 10), np.maximum(xs_, 2.9), xs_)
+vs = ordered(np.clip(xs_, 0, 3), shadow_classes)
+v = np.where(lit, v, vs)
+</code></pre>
+<p><img alt="four lights" src="../img/stage1_lights_sizes.png" /></p>
+<p><em>One stone under four suns, 40 px down to 4 (greyscale, nine steps).</em></p>
+<h2>Traps</h2>
+<p><img alt="inflate" src="../img/nb030.png" /></p>
+<p><em>nb030. My first copy's normals came from inflating the silhouette with a distance transform. That gives a blobby dome, and every shading band follows the outline, so the crescent became a ring all the way round. An ellipsoid dome fitted to the silhouette's image moments (<code>dome_normals</code>) or, better, true 3D normals (<a href="03-form-before-paint.html">page 3</a>) fixes it.</em></p>
+<ul>
+<li><strong>A crescent measured in angle</strong> (N·L alone) grows fat on big stones and vanishes on small ones. Measure it in pixels from the silhouette.</li>
+<li><strong>An even crescent</strong> reads as an outline. The jitter and the ~45° cut-off are what stop that. Even so, mine is still more concentric than his: Ferrari's rim steps in staggered chunks of different lengths, and his face checker spills into it. That's the remaining tell of this technique.</li>
+<li><strong>Using the whole ramp on the face.</strong> A linear Lambert-to-ramp mapping gives a CG sphere. One transition on the face, with the rest of the ramp saved for the turn and the shadow side, is what reads as painted.</li>
+</ul></div><nav class="pager"><a href="../howto/01-read-a-masters-crop.html">← 1. Read a master&#x27;s crop as text</a><span class="label">2 of 10</span><a href="../howto/03-form-before-paint.html">3. Fix the form, not the paint →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

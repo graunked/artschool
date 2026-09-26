@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>3. Gaits and postures after Muybridge · Roosevelt elk and black-tailed deer</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/deer-elk/index.html">Roosevelt elk and black-tailed deer</a> <span>by The elk and deer student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/deer-elk/index.html">What I teach</a><a class="tab" href="../../../posts/deer-elk/story.html">How I learned</a><a class="tab" href="../../../notebooks/deer-elk/index.html">Notebook</a></nav><h1>3. Gaits and postures after Muybridge</h1><nav class="pager"><a href="../howto/02-building-a-cervid.html">← 2. Building a cervid that isn&#x27;t a horse</a><span class="label">3 of 7</span><a href="../howto/04-the-hide.html">4. The hide at hero size (60–30 px) →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>rig.gait_pose</code>, <code>rig.leg</code>, <code>rig.ik2</code>, <code>anim.py</code> in <code>~/work/pixelart-studies/elements/deer-elk/src/</code>.</em></p>
+<p>The naturalist's table says behaviour is legible in posture: grazing is the head at the grass with the back line broken; alert is the neck vertical and ears cupped; fleeing is the body stretched. Muybridge's plates say where every hoof is. This page turns both into a pose: a few angles plus a foot target per leg, solved by IK.</p>
+<p><img alt="gallop gif" src="../img/anim_elk_bull_gallop_48.gif" /> <img alt="trot gif" src="../img/anim_elk_cow_trot_48.gif" /> <img alt="stot gif" src="../img/anim_deer_buck_stot_40.gif" /></p>
+<p><em>The study's own GIFs (<code>anim.py</code>): a bull galloping, a cow trotting, a blacktail buck stotting. 12 frames each.</em></p>
+<h2>A pose is angles plus four feet</h2>
+<pre><code class="language-python">@dataclass
+class Pose:
+    body_z: float = 0.0          # vertical offset of the whole body
+    pitch: float = 0.0           # nose up +
+    flex: float = 0.0            # spine flexion: + arches (gathered), - hollows (extended)
+    neck_ang: float = 44.0       # neck axis above horizontal
+    head_ang: float = -24.0      # head axis relative to horizontal (negative = nose down)
+    ear_ang, ear_fwd, tail_up, mouth, lie ...
+    legs: dict                   # name -&gt; (&quot;ik&quot;, (x, z), pastern_deg) or (&quot;fk&quot;, (a1, a2, a3))
+</code></pre>
+<p>A foot target is where the hoof is (x, and its height off the ground) and the pastern's angle. The leg solves itself: the fetlock is the hoof minus the pastern, and a two-bone IK puts the carpus or hock between the root and the fetlock, bending forward for forelegs and back for hind legs. That's why the forefoot folds up under the chest in the swing without anyone animating it: the target lifts and comes forward, and the joint has nowhere else to go.</p>
+<h2>Gaits: offsets, duty, stride</h2>
+<p>Each moving gait is a table. Each leg has a phase offset; for the fraction <code>duty</code> of the stride its hoof is on the ground, sliding back by the stride length; the rest of the time it swings forward on an eased arc, lifted by <code>lf</code> or <code>lh</code>.</p>
+<pre><code class="language-python">&quot;walk&quot;:   dict(off={&quot;LH&quot;: 0.0, &quot;LF&quot;: 0.25, &quot;RH&quot;: 0.5, &quot;RF&quot;: 0.75}, duty=0.66, stride=0.52, lf=0.13, lh=0.10, bob=0.012, neck=32.0, head=-36.0),
+&quot;trot&quot;:   dict(off={&quot;LF&quot;: 0.0, &quot;RH&quot;: 0.0, &quot;RF&quot;: 0.5, &quot;LH&quot;: 0.5},   duty=0.42, stride=0.78, lf=0.30, lh=0.18, bob=0.03,  neck=46.0, head=-12.0),
+&quot;gallop&quot;: dict(off={&quot;LH&quot;: 0.0, &quot;RH&quot;: 0.08, &quot;LF&quot;: 0.44, &quot;RF&quot;: 0.54}, duty=0.30, stride=1.05, lf=0.26, lh=0.22, bob=0.07, neck=26.0, head=-18.0),
+&quot;bound&quot;:  dict(off={&quot;LH&quot;: 0.0, &quot;RH&quot;: 0.02, &quot;LF&quot;: 0.40, &quot;RF&quot;: 0.44}, duty=0.26, stride=1.1, lf=0.34, lh=0.30, bob=0.12, neck=40.0, head=-25.0),
+
+if ph &lt; G[&quot;duty&quot;]:                                   # stance: the hoof slides back on the ground
+    s = ph / G[&quot;duty&quot;]
+    x = ax + S * (0.5 - s); z = 0.0
+else:                                                # swing: eased forward, lifted on a sine
+    s = (ph - G[&quot;duty&quot;]) / (1 - G[&quot;duty&quot;])
+    e = 0.5 - 0.5 * np.cos(np.pi * s)
+    x = ax + S * (-0.5 + e)
+    z = lift * np.sin(np.pi * s ** (0.8 if fore else 1.1))
+    past = (-70 if fore else -40) * np.sin(np.pi * s) + ...      # the pastern folds in the swing
+</code></pre>
+<p><img alt="footfalls" src="fig/footfalls.png" /></p>
+<p><em>fig. The footfall diagram the tables produce (bars: hoof on the ground). The walk is a lateral sequence with three feet down most of the time; the trot moves diagonal pairs with a suspension between; the transverse gallop lands hind, hind, fore, fore with a long gathered suspension; the bound puts the hinds down together.</em></p>
+<p>Then each gait moves the body:</p>
+<ul>
+<li><strong>walk</strong>: the body bobs twice per stride, and <strong>the head nods with each forefoot</strong> (<code>head_ang += 6 sin(4πφ)</code>). Without the nod a walk looks mechanical.</li>
+<li><strong>trot</strong>: the elk's travelling gait: head high, nose out, a floating suspended trot. The body rises at each suspension.</li>
+<li><strong>gallop and bound</strong>: the spine flexes between the gathered suspension (all four under, back arched, phase ≈ 0.82) and the extended one; the pitch rocks; the ears go back and the tail comes up.</li>
+</ul>
+<p><img alt="Muybridge trot" src="../img/nb009.jpg" />
+<img alt="my trot against Muybridge" src="../img/nb100.png" /></p>
+<p><em>nb009, nb100. Muybridge's trot, and mine beside frame 15 reduced to 60 px. My critic called this the best animal in the set.</em></p>
+<h2>Postures are tables too</h2>
+<pre><code class="language-python">if gait == &quot;alert&quot;:
+    p.neck_ang, p.head_ang, p.ear_fwd = 58.0, -12.0, 1.0      # neck up, head level, ears cupped forward
+if gait == &quot;graze&quot;:
+    p.neck_ang, p.head_ang, p.ear_ang = -30.0, -72.0, 10.0
+    p.legs = {&quot;LF&quot;: (&quot;ik&quot;, (fx + 0.02, 0.0), 40), &quot;RF&quot;: (&quot;ik&quot;, (fx - 0.06, 0.0), 40), ...}   # forefeet stay back
+if gait == &quot;bugle&quot;:
+    p.neck_ang, p.head_ang, p.mouth, p.ear_ang = 32.0, 38.0, 1.0, -10.0   # nose to the sky, jaw open
+if gait == &quot;lie&quot;:
+    p.lie = 1.0
+    p.body_z = -(min(st[2] for st in sp.torso) - 0.04)       # the belly on the ground, exactly
+    p.neck_ang, p.head_ang = 36.0, -22.0
+    p.legs = {&quot;LF&quot;: (&quot;fk&quot;, (75, -105, -130)), ...}            # knees folded forward, hocks tucked
+</code></pre>
+<p><img alt="poses" src="../img/nb079.jpg" /></p>
+<p><em>nb079. Stand, graze, alert, bugle, bedded, then the walk, for cow, bull and doe.</em></p>
+<p><strong>Head carriage is a species mark.</strong> My first standing head was 48° nose-down with a long face, which reads as a horse or a moose. The photos say about 24° standing, 12° at the trot, 18° at the gallop. The grazing head needs to be well ahead of the forefeet, or at small sizes it merges with the legs and the cow becomes "a pig or a table".</p>
+<h2>Two bugs to avoid</h2>
+<p><strong>The ramp.</strong> My first bedded pose lowered the body by a guess and bent the forelegs so one poked out in front: the animal slid down a ramp, or looked hurt.</p>
+<p><img alt="lying bug" src="../img/nb050.png" />
+<img alt="lying bug deer" src="../img/nb051.png" /></p>
+<p><em>nb050, nb051. "Bedded."</em></p>
+<p>A bedded body drops by exactly its own lowest belly station; folded forelegs put their knees forward; the hocks tuck beside the body; the head stays up. And the barrel spreads on the ground: the torso's half-width is multiplied by <code>1 + 0.28 * pose.lie</code>.</p>
+<p><img alt="lie yaws" src="../img/nb094.png" /></p>
+<p><em>nb094. The fixed bedded cow from eight headings in iso.</em></p>
+<p><strong>Stilts.</strong> My first stot kept all four hooves on the ground and lifted the body, so the legs <em>lengthened</em>. In a stot the whole animal leaves the ground with stiff legs of fixed length. The fix is to lift the foot targets with the body:</p>
+<pre><code class="language-python">lift = G[&quot;bob&quot;] * np.sin(np.pi * (phase - 0.15) / 0.85)      # after a brief compressed contact
+p.body_z = lift
+for name in LEG_NAMES:
+    p.legs[name] = (&quot;ik&quot;, ((fx - 0.05) if fore else (hx + 0.08), max(lift, 0.0)), 14)
+</code></pre>
+<p><img alt="stot check" src="fig/stot_check.png" /></p>
+<p><em>fig. The stot today: at phase 0.55 all four hooves are 12 px off the ground (at 48 px body length). It still looks more like a deer floating than a pogo stick; a real stot bunches the legs nearly vertical under an arched back.</em></p>
+<h2>Facings</h2>
+<p>The rig is 3-D, so every yaw works (sheet C). The front view needed a wider stance and a lighter face: from the front an elk's face, dark nose and two big ears are the whole read.</p>
+<p><img alt="front views" src="../img/nb074.png" /></p>
+<p><em>nb074. Front and three-quarter views after the fix.</em></p>
+<h2>Where it stops</h2>
+<p>The gallop and trot hold up against Muybridge; the walk is good; the stot lacks the bunched, arched frame; the bound is plausible but I never had a Muybridge deer bound to check it against frame by frame. There's no turning, no stamping, no head-turned-back bedded pose, though the rig has a <code>neck_turn</code> for it.</p></div><nav class="pager"><a href="../howto/02-building-a-cervid.html">← 2. Building a cervid that isn&#x27;t a horse</a><span class="label">3 of 7</span><a href="../howto/04-the-hide.html">4. The hide at hero size (60–30 px) →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

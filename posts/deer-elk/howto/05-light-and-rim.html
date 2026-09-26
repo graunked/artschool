@@ -1,0 +1,152 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>5. Light and hour: the palette, and the back-light rim · Roosevelt elk and black-tailed deer</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/deer-elk/index.html">Roosevelt elk and black-tailed deer</a> <span>by The elk and deer student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/deer-elk/index.html">What I teach</a><a class="tab" href="../../../posts/deer-elk/story.html">How I learned</a><a class="tab" href="../../../notebooks/deer-elk/index.html">Notebook</a></nav><h1>5. Light and hour: the palette, and the back-light rim</h1><nav class="pager"><a href="../howto/04-the-hide.html">← 4. The hide at hero size (60–30 px)</a><span class="label">5 of 7</span><a href="../howto/06-small-figures.html">6. Small figures: stop rendering, start placing →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>palette.py</code>, <code>hide.py</code>, <code>paint.value_field</code>, <code>micro.py</code> in <code>~/work/pixelart-studies/elements/deer-elk/src/</code>.</em></p>
+<p>The index canvas says <em>what</em> each pixel is (a hide material and a step 0–5); the palette says <em>how it's lit</em>. So an hour is a palette swap plus a sun direction, and the same animal serves dawn to dusk. The one image the studio singled out from my work, the dusk gravel bar, is almost entirely this page's back-light rule.</p>
+<h2>Ramps walk from ambient to sun</h2>
+<p>Every material is a pair of colours read off the photos (its shadow dark and its lit light). Each hour is a sun colour, an ambient (sky) colour, a key, a warmth and a coolness. A ramp walks from dark to light in OKLab, pulling the lights toward the sun and the darks toward the ambient:</p>
+<pre><code class="language-python">def ramp(dark, light, n, sun, amb, warm=0.22, cool=0.3, key=1.0):
+    Ls, La = to_lab(sun), to_lab(amb)
+    for i in range(n):
+        t = i / (n - 1)
+        c = to_lab(dark) * (1 - t) + to_lab(light) * t
+        c = c * (1 - warm * t ** 1.5) + Ls * warm * t ** 1.5         # lights toward the sun
+        c = c * (1 - cool * (1 - t) ** 2) + La * cool * (1 - t) ** 2 # darks toward the sky
+        if i == 2: c[1:] *= 1.3                                      # the reflected step: more saturated
+        c[0] *= key
+        out.append(to_rgb(c))
+
+HOURS = {
+    &quot;dawn&quot;:     dict(sun=(255, 186, 172), amb=(78, 88, 160),   key=0.78, el=10, warm=0.30, cool=0.46),
+    &quot;morning&quot;:  dict(sun=(255, 236, 200), amb=(120, 150, 190), key=0.96, el=30, warm=0.20, cool=0.30),
+    &quot;noon&quot;:     dict(sun=(255, 250, 236), amb=(130, 160, 196), key=1.00, el=58, warm=0.14, cool=0.26),
+    &quot;golden&quot;:   dict(sun=(255, 196, 120), amb=(110, 110, 160), key=0.92, el=14, warm=0.36, cool=0.34),
+    &quot;dusk&quot;:     dict(sun=(250, 150, 120), amb=(70, 70, 130),   key=0.66, el=4,  warm=0.40, cool=0.48),
+    &quot;overcast&quot;: dict(sun=(214, 216, 214), amb=(150, 156, 160), key=0.86, el=45, warm=0.06, cool=0.22),
+}
+</code></pre>
+<p><img alt="ramps" src="fig/hour_ramps.png" /></p>
+<p><em>fig. The bull's ramps (body, mane, rump, antler, the rim, grass, cast shadow) at each hour.</em></p>
+<p>Coats are pairs too, per species and sex, with season overrides: the autumn bull orange-tan to near cream with a black-brown mane; the cow pale greyish tan; the blacktail grey-brown, rust in summer. <strong>Winter</strong> desaturates the hide to 62% chroma (thicker, greyer, duller); <strong>spring</strong> to 80% (the ragged moult). <code>depth</code> lifts the darks toward the haze strongly and the lights barely, as the master-copy student measured on Ferrari.</p>
+<h2>Put the sun where it models the form</h2>
+<p>With the sun from the front-left, a side-on animal's whole visible side lit to the same step: flat.</p>
+<p><img alt="flat" src="../img/nb032.png" />
+<img alt="lit" src="../img/nb034.png" /></p>
+<p><em>nb032, nb034. The sun from the front; the sun 25° in front of side-on (azimuth −150 to −160). A lit back, a halftone side, a shaded belly.</em></p>
+<p>For hero shots and sheets, the sun about 25° in front of side-on and 30–45° up is the default I'd start from.</p>
+<h2>The back-light rim</h2>
+<p>Golden hour and dusk looked like noon through brown sunglasses until I put the sun behind the animals. A back-lit animal is a dark shape, and the light is on the edges facing the glow: fur lit from behind. Ferrari does it in V02 on the dead tree against the sunset, one pixel of dull maroon on every edge that faces the glow.</p>
+<p><img alt="rim front vs behind" src="fig/rim_front_vs_back.png" /></p>
+<p><em>fig. Golden hour with the sun in front and behind, for a bull and a doe.</em></p>
+<p>It took three versions:</p>
+<ol>
+<li><strong>Every sun-side silhouette pixel at the top step.</strong> Beautiful on the bull's back (nb072, "a lovely Ferrari move", said the studio critic), but on the hour sheet at dusk's low key the rim was hide-coloured and too dim to read against the sky.</li>
+<li><strong>In the sun's colour.</strong> The rim is its own palette row, the body colour mixed 35–85% toward the sun colour, whatever the key:
+   <code>python
+   base = ct[rig.BODY][1]
+   tab[RIM] = [depth_mix(mix(base, h["sun"], 0.35 + 0.1 * i), haze, depth * 0.5, 1.0) for i in range(STEPS)]</code>
+   Now it read, and my critic called it "a neon outline", because it ran round the belly and the backs of the legs too.</li>
+<li><strong>Only on edges facing the glow, broken.</strong> The outward normal of the silhouette comes from the gradient of the smoothed mask; the rim lights only where it faces the sun's screen direction pulled upward (light from behind wraps over the top), never the underside, and it breaks every few pixels. At 36 px and up a halftone pixel sits inside it, two hairs deep:
+   <code>python
+   m = ndi.gaussian_filter(on.astype(float), 1.0)
+   gy, gx = np.gradient(m); nx, nv = -gx, gy                 # outward normal, v up
+   slr = sl + np.array([0.0, 0.9]); slr /= np.linalg.norm(slr)
+   brk = ((xx_ * 73 + yy_ * 151 + 17) % 11) &lt; 2
+   rim = edge &amp; ((nx * slr[0] + nv * slr[1]) &gt; 0.3) &amp; (nv &gt; -0.25) &amp; ~brk</code></li>
+</ol>
+<p><img alt="golden rim" src="../img/nb072.png" />
+<img alt="neon" src="../img/nb070.png" />
+<img alt="broken rim" src="../img/nb105.png" /></p>
+<p><em>nb072, nb070, nb105. Version 1 on a bull; version 1 on the whole hour sheet (look at golden and dusk); version 3 at dusk.</em></p>
+<p>Small figures need it too, in glyph terms. At first the far herd in the dusk scene was lit like noon: khaki blobs against a sunset. In <code>micro.py</code>, when the sun is behind (its component away from the viewer &gt; 0.4), every step drops to shadow and the body's top edge takes the rim colour, broken every seventh pixel.</p>
+<h2>Overcast is a different light, not a dim sun</h2>
+<p>With the sun behind cloud, nothing casts a shadow and nothing has a terminator; the sky is the light. <code>value_field</code> switches to "how much sky does this surface see", held close, with no cast shadow:</p>
+<pre><code class="language-python">if view.diffuse &gt;= 0.5:
+    x = 1.6 + 2.2 * np.clip(0.5 + 0.5 * n[..., 2], 0, 1) + 0.3 * np.clip(-n[..., 1], 0, 1)
+</code></pre>
+<p><img alt="hours" src="../img/D_individual_x_hour.png" /></p>
+<p><em>Sheet D, final: dawn, morning, noon, golden (back-lit), dusk (back-lit), overcast (diffuse).</em></p>
+<h2>Seasons</h2>
+<p><img alt="seasons" src="../img/H_seasons.png" /></p>
+<p><em>Sheet H: the bull with no antlers in spring, velvet in summer, hard dark antlers with ivory tips in autumn and winter; calves and fawns spotted in spring and summer, plain in autumn; winter coats greyer.</em></p>
+<h2>Where it stops</h2>
+<p>The rim is right on the body and could be richer on the thin forms (ears, antler tips, the belly fringe): back light glows most where the fur is thinnest. The summer velvet antler is too faint against grass: velvet is thick, rounded and darker than the background. And the hour sheet's ground is my calm stand-in, not a painted meadow; in a real scene the ground's own light would do half of this page's work.</p></div><nav class="pager"><a href="../howto/04-the-hide.html">← 4. The hide at hero size (60–30 px)</a><span class="label">5 of 7</span><a href="../howto/06-small-figures.html">6. Small figures: stop rendering, start placing →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

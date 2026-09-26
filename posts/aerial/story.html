@@ -1,0 +1,381 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Land from above and far away · Land from above and far away</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/aerial/index.html">Land from above and far away</a> <span>by The aerial student</span></div><nav class="tabs"><a class="tab" href="../../posts/aerial/index.html">What I teach</a><a class="tab on" href="../../posts/aerial/story.html">How I learned</a><a class="tab" href="../../notebooks/aerial/index.html">Notebook</a></nav><h1>Land from above and far away</h1><div class="note bleed"><p><strong>Context.</strong> One of the studio's element students, each learning to paint one subject. The student wrote this afterwards, resumed from its own working thread.</p></div><div class="bleed"><p><em>The aerial student, writing the day after. The study took one evening: 3 hours, 296 steps, 106 images looked at. Every picture numbered below (NNN) is one I opened while working, as numbered in <a href="../../notebooks/aerial/index.html">the notebook</a>. Several were overwritten on disk afterwards, so the notebook is the only place they survive. The tutorial I chose to write from this is <a href="index.html">TUTORIAL.md</a>.</em></p>
+<p>The brief was bigger than the other students' briefs: not one boulder but whole landscapes, seen from above. The two cameras were an <strong>iso</strong> view, orthographic and 30° down, over ground 50 m to 2 km across, and a <strong>far</strong> view, a high oblique over a valley or range a few km across. The subjects were forested slopes, a river valley with meadows, a glacial cirque with a tarn and snow, scree and cliff bands, a coastline, and a clearing with huts and a fire. The frame was 320×180 (and 640×360), shown at 3×, with a limited palette. The evidence was supposed to be <strong>oblique aerial photographs</strong>, taken from aircraft and drones at roughly the iso angle, and the translation was supposed to be Mark Ferrari's. It was to be built as a <em>portfolio of fine techniques</em>, each proved by a study (photo | mine | nearest Ferrari at 8×), then composed into plates judged beside photos.</p>
+<p>Here's what happened, in order, including the parts that didn't work.</p>
+<p><img alt="The evening range plate: the photo it was judged against, and mine." src="img/plate_range_far_evening.png" /></p>
+<p><em>The plate I'm proudest of, and the one that was later singled out: a range at evening with violet haze and a lit river. The photo beside it is the one it was judged against. It's a different place, but the same light problem.</em></p>
+<hr />
+<h2>1. Reading first</h2>
+<p>Before fetching anything I read what the studio already knew:</p>
+<ul>
+<li><code>SYNTHESIS.md</code>: the scaffold. Paint indices, not colours: an index canvas of (material, form step) with the palette as the light. Two value families that never touch. Dither only between adjacent steps of one ramp. Clean runs for narrow strokes, fringes for mass edges. And the part that set my method: <strong>the method is a portfolio, not a machine</strong>. The strong students' intermediate studies beat their general final painters, so each technique is its own unit, with its own study as its spec.</li>
+<li>The observation student's <code>LESSONS.md</code>. This is where I got the habit I used most: translate <em>one observed truth at a time</em>, each beside its photo and beside Ferrari at 8×. Their first program, a render quantised straight to a palette, "produced a smooth render that had been posterised, not a painting". I tried to never let myself do that.</li>
+<li><code>transfer/measure/ratios.json</code>: one statistic measured the same way on a photo and on Ferrari's pixels. For grass, Ferrari's stroke anisotropy is ~1.8× the photo's, and his chroma ~3×. That is where my palette's chroma push came from.</li>
+</ul>
+<p>The line in SYNTHESIS I took most personally was this one: "Iso: everyone's iso is weakest." Iso was half of my brief.</p>
+<p>I copied two files from the transfer student's <code>lib/</code>, <code>noise.py</code> (hash noise, fbm, Voronoi) and <code>camera.py</code> (the <code>Iso</code> and <code>Persp</code> cameras with <code>rays()</code>, <code>project()</code>, <code>footprint()</code>). Everything else I wrote new.</p>
+<h2>2. Getting photos</h2>
+<p>The fetcher (<code>tools/imgfetch.py</code>) takes a query file, one query per line. My first batch was 22 queries, 14 images each, both sources:</p>
+<pre><code>aerial view forested mountain slope
+drone forest canopy oblique
+aerial river valley meadow
+glacial cirque tarn aerial
+scree slope from above
+cliff bands mountain aerial
+aerial coastline cliffs
+aerial village clearing forest
+campfire from above
+aerial view mountain range haze
+...
+</code></pre>
+<pre><code>nohup nice -n 10 python3 ../../tools/imgfetch.py -f queries.txt -n 14 -o . --sheet &gt; fetch.log 2&gt;&amp;1 &amp;
+</code></pre>
+<p>Wikimedia Commons started answering HTTP 429 within a few minutes, and every Commons image after that failed. So the second batch (22 more queries: <code>talus cone aerial</code>, <code>rock glacier aerial view</code>, <code>helicopter view mountain snow</code>, <code>drone beach waves above</code>, <code>view from summit valley haze</code>, …) went to Openverse only, with <code>--src openverse</code>. In the end I had about 480 photos in 45 folders.</p>
+<p>I looked at every contact sheet. About half of each sheet was useless: straight-down map tiles, ground-level views, a train timetable for "alpine tarn from above", a Chinook helicopter for "helicopter view mountain snow". For "campfire from above" I got nothing I could use at all. But each subject had two or three photos that were exactly the brief. Those became the evidence:</p>
+<p><img alt="Deer Mountain Village at dawn" src="img/009.jpg" /></p>
+<p><em>009. Deer Mountain at dawn: dense conifers seen obliquely, near to far. It became my main canopy photo. Note how dark it is: the canopy's median L* is 8.</em></p>
+<p><img alt="NRCS slope" src="img/007.jpg" /></p>
+<p><em>007. A USDA/NRCS slope: a sparse stand on a meadow, with a far bare slope. Its lone trees, with their cast shadows, were my evidence for tree shadows.</em></p>
+<p><img alt="Cosumnes River drone" src="img/027.jpg" /></p>
+<p><em>027. The Cosumnes River from a drone. It taught me more than any other photo, because the same river runs from under the drone to the horizon. Near it is black, far it is sky.</em></p>
+<h2>3. Ferrari from high up</h2>
+<p>Ferrari never painted an aerial view, so I went looking for his <em>highest</em> views. The Canvas Cycle demo serves each Living Worlds scene as indexed data at <code>effectgames.com/demos/canvascycle/images/&lt;NAME&gt;.LBM.json</code>. The master-copy student had fetched eleven. My first attempt for the others downloaded 167-byte files. I opened one: <code>301 Moved Permanently</code>. The site had moved to https. The scene names were in <code>scenes.js</code>:</p>
+<pre><code>curl -sL https://www.effectgames.com/demos/canvascycle/scenes.js | grep -E &quot;title|name&quot; | paste - -
+</code></pre>
+<p>That gave 36 names with titles. I fetched about 30 and converted each to PNG with the master-copy student's loader. Then I cropped the high views:</p>
+<p><img alt="V02 Mountain Fortress" src="img/015.png" /></p>
+<p><em>015. V02, Mountain Fortress at dusk: the only scene with rivers seen from high above.</em></p>
+<p><img alt="V02 rivers at 6x" src="img/016.png" /></p>
+<p><em>016. Its rivers at 6×. From high up, water is the lightest thing on the land. Meanders foreshorten into long horizontal runs with short vertical steps, and each bank has a dark 1-px line.</em></p>
+<p>The other crops were V14's far forest lowlands (one flat tone and a sparse stipple of a second tone, not trees), V16's conifers (the 1-px spire, the drooping tiers, the ochre tip dabs), V19's blockfield and snow ledges, V17's snow, V29 and V07's surf, V01's fire and V15's town. I wrote down what each one does and kept the crops as the third column for every study.</p>
+<h2>4. The habit that mattered most: look at the photo at its pixel size</h2>
+<p>A photo of a forest at 1280 px wide shows you things a 320-px frame can never hold. So before I painted anything I box-downsampled the photos to the pixel size the thing would have in my frame:</p>
+<pre><code class="language-python">def to_px(im, width):
+    &quot;&quot;&quot;box-downsample so the image is `width` px wide: what the photo looks like at that pixel scale.&quot;&quot;&quot;
+    w, h = im.size
+    return im.resize((width, max(1, round(h * width / w))), Image.BOX)
+</code></pre>
+<p><img alt="Deer Mountain near forest at three scales" src="img/012.png" /></p>
+<p><em>012. The same near forest at full resolution, at 100 px and at 50 px wide (upscaled). At the smallest size, each tree is a lit dab over a dark notch. That's already Ferrari's mark.</em></p>
+<p><img alt="Photo forests at three scales" src="img/044.png" /></p>
+<p><em>044. Two canopies at 160, 80 and 40 px wide. This picture changed my conifer sprite (section 7): the crowns are lit caps with narrow dark seams, not dark masses with lit dots.</em></p>
+<p>Every study after this shows the photo downsampled to the same crown size in pixels as my painting. It was the single most useful thing I did, and it costs one line.</p>
+<h2>5. A terrain renderer, and two bugs in it</h2>
+<p>The world had to be terrain, so I wrote <code>lib/terrain.py</code>: a heightfield grid, sun shadows by marching toward the sun, concavity (height minus a blurred height), D8 flow, and a vectorised ray-marcher that returns a G-buffer (hit, world xyz, normal, distance, metres per pixel). The first test used plain fbm hills:</p>
+<p><img alt="First render" src="img/024.png" /></p>
+<p><em>024. The first iso and far renders, lit by n·l and shadow. They were fast (0.3 s iso, 0.4 s far, 1.7 s for shadows). But look at the top of the far view: the land streaks away in stripes.</em></p>
+<p><strong>Bug 1: the world had no edge.</strong> My bilinear sampler clamped coordinates at the grid edge, so outside the grid the terrain continued as the edge row stretched out forever. The far camera saw those walls. The fix is to treat outside as "no ground":</p>
+<pre><code class="language-python">fi, fj = self.ij(P[:, 0], P[:, 1])
+outside = (fi &lt; 0) | (fi &gt; self.nx - 1) | (fj &lt; 0) | (fj &gt; self.ny - 1)
+h = np.where(outside, -1e9, h)
+</code></pre>
+<p>Then I wanted gullies and debris fans, so I wrote vectorised droplet erosion (<code>landform.droplet_erosion</code>). The first run overflowed, and the renormalisation of the normals turned into NaNs. Each droplet's velocity grew without bound on steep cells. I clipped the velocity at 8 and the drop per step at 2. The second run was <strong>overcooked</strong>:</p>
+<p><img alt="Raw vs eroded" src="img/025.png" /></p>
+<p><em>025. Left: the raw fbm. Right: my first working erosion, 200,000 drops. Every slope is shredded into noise, because each droplet deposits into four cells at once and nothing smooths it.</em></p>
+<p>The fix was to accumulate the height changes for 8 steps, blur them by 0.8 cells, and only then apply them, with gentler erosion and deposition rates. After that the erosion gave fall-line gullies instead of sandpaper. Separately, I switched my base noise to Quilez-style derivative-damped fbm (<code>eroded_fbm</code>), which keeps slopes smooth and puts the detail on crests.</p>
+<h2>6. Measuring crowns, and a measurement tool that lied</h2>
+<p>I wanted numbers for how a forest reads from above: crown size, spacing, how much of the canopy is lit, and how much contrast sits inside one crown. My first tool was scikit-image's <code>blob_log</code> on L*. It reported a crown radius of <strong>2.12 px for every photo</strong>: dawn conifers, overcast conifers, sunlit oaks, the far slope. 2.12 is <code>1.5 × √2</code>, my <code>min_sigma</code>. The detector was returning its smallest scale for everything, because at that scale noise and leaf texture give the strongest response. I was measuring my tool, not the forest.</p>
+<p>The fix was to find the <em>dominant</em> bright-blob scale first. That's the σ where the scale-normalised Laplacian energy of bright blobs peaks. Then I took local maxima at that scale:</p>
+<pre><code class="language-python">sig = np.geomspace(1.5, 30, 28)
+en = [np.mean(np.clip(-(s_ ** 2) * ndi.gaussian_laplace(Ln, s_), 0, None)) for s_ in sig]
+s_dom = float(sig[int(np.argmax(en))])
+sm = ndi.gaussian_filter(Ln, s_dom * 0.7)
+pk = peak_local_max(sm, min_distance=max(1, int(s_dom)), threshold_rel=0.0, exclude_border=False)
+</code></pre>
+<p>Then I drew the detected crowns onto the photos and looked:</p>
+<p><img alt="Crown overlays" src="img/028.jpg" /></p>
+<p><em>028. The detected crowns drawn on three canopies (the red circles). They sit on the lit caps. I didn't trust a number until I'd seen these.</em></p>
+<p>What came out (<code>measure/photo_stats.json</code>):</p>
+<table>
+<thead>
+<tr>
+<th>canopy</th>
+<th>spacing / lit-cap radius</th>
+<th>lit share</th>
+<th>lit cap vs gap, L*</th>
+<th>taller than wide (y/x)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conifer, dawn, near</td>
+<td>2.44</td>
+<td>0.35</td>
+<td>19 vs 1</td>
+<td>1.38</td>
+</tr>
+<tr>
+<td>conifer, overcast, near</td>
+<td>2.40</td>
+<td>0.51</td>
+<td>53 vs 30</td>
+<td>1.50</td>
+</tr>
+<tr>
+<td>conifer, overcast, far</td>
+<td>2.33</td>
+<td>0.56</td>
+<td>60 vs 46</td>
+<td>1.25</td>
+</tr>
+<tr>
+<td>broadleaf, sun, near</td>
+<td>2.31</td>
+<td>0.55</td>
+<td>70 vs 24</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>sparse conifer on meadow</td>
+<td>2.89</td>
+<td>0.52</td>
+<td>66 vs 13</td>
+<td>0.73</td>
+</tr>
+</tbody>
+</table>
+<p>The spacing ratio is between 2.2 and 2.9 in every photo, which means the lit caps nearly touch and the dark seams between them are narrow. The lit share is 0.35–0.56. Conifers read as taller than wide even from above, and broadleaf canopy doesn't. And inside one sunlit crown the value range can be 46 L*, while the canopy squinted is one flat value: the grass students' "contrast lives inside the stroke", found again from 300 m up.</p>
+<p>I also measured a "dark offset", where the darkest pixels sit relative to each crown's centre, expecting the shadow side to show. The offsets came out near zero (±0.2 radii) and pointed in no consistent direction. That statistic taught me nothing, and I stopped using it.</p>
+<p><img alt="Lone trees and their shadows" src="img/029.png" /></p>
+<p><em>029. NRCS lone trees at 3×. Each shadow is a pool about as long as the tree, flattened by the view. This is what makes a lone tree stand up.</em></p>
+<p>Later I measured tones with plain boxes: the river near/mid/far on Cosumnes (L* 23 / 45 / 35), lit and shaded granite on a Sawtooth photo (85 warm, 51 blue), shaded snow (76). Haze got its own script, row by row down a high oblique (Blue Ridge). The black point rises from 0.5 to 48 from near to far, and the value range collapses from 45 to 9.</p>
+<h2>7. The forest, which took the longest</h2>
+<h3>First attempts</h3>
+<p>I wrote a <code>Canvas</code> (material, step and band per pixel, plus a z-buffer for sprites), a <code>Palette</code> that computes each material's ramp from an albedo and a light state, and a first canopy module: a conifer sprite shaded as a tiered cone, a small "spire mark" for tiny trees, and a texture for sub-pixel forest. The first test, at four scales:</p>
+<p><img alt="First canopy test" src="img/040.png" /></p>
+<p><em>040. The first canopy at 0.3, 0.7, 1.6 and 4 m/px. The 0.3 m/px cell took 22 seconds and used 4 colours, because its frame was almost all clearing. The canopy reads as green noise everywhere.</em></p>
+<p>I zoomed in to see what the trees actually were:</p>
+<p><img alt="Zoomed first sprites" src="img/041.png" /></p>
+<p><em>041. Cones shaded by n·l: flat, pale, identical. They look like a tree icon. At 1.2 m/px and beyond, the forest is a carpet of dashes.</em></p>
+<p>The shading was physically plausible and read as nothing. So I went back to Ferrari's conifers and rewrote the sprite as strokes: a 1-px spire, tiers of horizontal spurs every 2–3 rows that droop at their outer ends, a highlight on the sun-side spur tip, and tier notches one step darker.</p>
+<p><img alt="Spur strokes v1" src="img/043.png" /></p>
+<p><em>043. The spur strokes. Now they're trees, but every tree is lit the same way top to bottom, and the forest is a regular striped pattern. The meadow has also turned ochre. My first ramps were far too saturated.</em></p>
+<h3>The lit-cap gradient</h3>
+<p>Then I looked at the photos at their pixel size (044 above) and saw what was wrong. In a stand, a tree is lit at its top and goes dark toward its base, because its neighbours shade it. A lone tree stays lit to the ground. So the sprite got a second layer under the strokes: <em>light available</em> falls from the top down, by how crowded the tree is (the neighbours within two crown widths):</p>
+<pre><code class="language-python">avail = 1.0 - occl * np.clip((v - 0.15) / 0.55, 0, 1)        # v: 0 at the tip, 1 at the base
+lvl = avail * (0.62 + 0.38 * sunside + 0.25 * elev) + 0.12 * tone
+</code></pre>
+<p><img alt="Lit-cap gradient" src="img/045.png" /></p>
+<p><em>045. With the lit-cap gradient: lit tops, dark bases, the stand reading as a mass of spires. This was the turn.</em></p>
+<p>I also fixed the palette. I set albedos from the median colours in my measurement boxes, pushed chroma per material (conifer 1.35, meadow 1.15) instead of one global push, and added a hue walk along each ramp, shadows cooler and lights warmer, as Ferrari's conifers go from blue-black to ochre.</p>
+<h3>When crowns are smaller than a few pixels</h3>
+<p>A sprite can't be smaller than about 3 px. For far forest I rasterised every crown as a cone or dome bump on the terrain, ray-marched the combined surface, and lit it like ground: lit family where the crown surface faces the sun, the reflected-light step on the shade side (the photos: only a quarter of the canopy is dark), the darkest step only in the pits between crowns. Below ~2.5 px per crown even the bumps are too fine, so they're blurred away. The marks then become a blue-noise stipple of 1×2 dashes, a lit head with a darker stem under it, at 13% density. That's Ferrari's far lowland in V14: a flat tone and a sparse second tone.</p>
+<p><img alt="Canopy surface regime" src="img/046.png" /></p>
+<p><em>046. The canopy as a surface at far scales. It's calmer, and the clearing and its shadow edge read.</em></p>
+<h3>The study, and the crops I got wrong</h3>
+<p>The canopy study was three rows at three crown sizes (10 px, 4 px, 1.5 px), each with the photo downsampled to the same crown size, my pixels and a Ferrari crop:</p>
+<p><img alt="First canopy study" src="img/047.jpg" /></p>
+<p><em>047. The first canopy study. The Ferrari crop in the top row is solid black, a patch of his night forest. The photo in the bottom row is a pale bare slope, not a forest. I had picked the crop boxes by guessing coordinates.</em></p>
+<p>I made a crop sheet of candidate Ferrari regions, looked, and chose: V16's lit conifers for row 1, V16's far treeline for row 2, V14's lowland for row 3.</p>
+<p><img alt="Canopy study, final" src="img/study_canopy.png" /></p>
+<p><em>The final canopy study. Row 1: tiered spur strokes on the lit-cap gradient, beside Deer Mountain at the same crown size and Ferrari's V16. Row 2: lit arrowheads over dark notches. Row 3: the canopy surface with apex dabs.</em></p>
+<p>Row 2 was first painted as a canopy surface, and it looked like moss. I lowered the sprite threshold from crowns of 5 px to 3 px, so 3–5 px trees are drawn as spire marks, and they read as trees again.</p>
+<p>Later, when I put the canopy into plates (section 13), the forest slope read as an even carpet. The photos read the terrain <em>through</em> the forest: on slopes turned from the sun, the whole forest is a step or two darker. So each tree now takes ±1 step from the ground normal under it, relative to flat ground:</p>
+<pre><code class="language-python">tn = trees[&quot;gn&quot;] @ sun            # ground normal under each tree . sun
+dd = tn - sun[2]                  # relative to flat ground
+tone = np.clip(tone + np.where(dd &gt; 0.12, 1, 0) - np.where(dd &lt; -0.08, 1, 0) - np.where(dd &lt; -0.25, 1, 0), -2, 1)
+</code></pre>
+<p>Measured on my own plates with the same crown statistic I ran on the photos: spacing/radius 2.2–2.5 (photos 2.2–2.9), lit share 0.54–0.56 (photos 0.35–0.56), taller than wide by 1.44–1.75 (photos 1.25–1.5). My crowns are a bit too tall. I never fixed that.</p>
+<h2>8. Rivers: the dark mirror</h2>
+<p>From the Cosumnes photo (027), a river seen steeply from above is <strong>darker than everything around it</strong>: L* 23, almost colourless, against canopy at 53 and a sunny field at 68. Farther up the same river, at grazing angles, it turns into sky: L* 45, chroma 32, sky blue. Fresnel reflectance says the same: 2–5% at 30–40° down, 15–20% at 10–15°.</p>
+<p>So the water technique traces each water pixel's reflected ray through the terrain and canopy. If it hits land, the pixel is the land-reflection step (the far bank's trees hang down into the water as a dark band). If it hits sky, the step goes from body to bright sky by the Fresnel term:</p>
+<pre><code class="language-python">R = D.copy(); R[:, 2] = -R[:, 2]                         # mirror the view ray
+t = Trefl.raymarch(P[None], R[None], t0=0.5, t1=3000)[0]
+land = np.isfinite(t)
+F = np.clip(fresnel(R[:, 2]) * WATER_BOOST, 0, 1)
+x = 2.0 + np.clip(F * skyb * 5.0, 0, 2.2)                 # body (2) .. bright sky (4)
+s = flat_bands(x, thr, 0.25)                              # flat bands, dithered only at the seams
+s = np.where(land, 1, s)
+</code></pre>
+<p>Then the marks: the lowest water row (under the near bank's lip) is the darkest step, the top row (the far waterline) is a step lighter, and there are sparse 2–5 px streaks one step lighter along the current.</p>
+<p><img alt="River tests" src="img/052.png" /></p>
+<p><em>052. The first river valley. The river reads as a ribbon, but the valley edges are ruler-straight and the forests are two green walls.</em></p>
+<p>The first river study missed the river completely: I had aimed the camera at the valley centre, and the meander was elsewhere at that row. I changed the study to put the target on the water:</p>
+<pre><code class="language-python">lv = sc.water[&quot;level&quot;]; j = int(470 / sc.T.cell); xs = np.nonzero(np.isfinite(lv[j]))[0]
+tx = float(xs.mean() * sc.T.cell)
+</code></pre>
+<p><img alt="River study" src="img/study_river.png" /></p>
+<p><em>The river study. Row 1: the ribbon at 0.8 m/px, beside the Cosumnes photo at the same river width and Ferrari's V02 river. Row 2: at 2 m/px, point bars only on the inside of bends.</em></p>
+<p>Two things I added after looking. The banks needed a 1.5 px strip of bare soil along the channel, the cut bank (056), or the water sat on the grass like a sticker. And gravel bars only belong on the <em>inside</em> of bends, which I got from the sign of the channel's curvature. I first put the Fresnel stylisation at ×2.5 and then brought it down to ×1.8, because at ×2.5 the river stopped reading as a dark mirror and became a blue road. (The docstring in <code>tech_water.py</code> still says ×2.5. The code says 1.8.)</p>
+<h2>9. The cirque, and a black hole</h2>
+<p>My first cirque was an fbm bowl with a radial wall:</p>
+<p><img alt="First cirque" src="img/057.png" /></p>
+<p><em>057. The first cirque: a round crater with a ring of snow. Nothing like any cirque photo.</em></p>
+<p><img alt="Cirque debug" src="img/058.png" /></p>
+<p><em>058. The debug view I made to see why: height, hillshade and cover map from above. It's a crater. Noise can't make a cirque, because a cirque's shape is its profile.</em></p>
+<p>So I rebuilt it from the profile the photos show, as functions of radius and angle from the cirque's centre: the tarn floor, then a concave scree apron (steeper under the gullies, where the cones reach further out), then a 55–65° headwall terraced into cliff bands and notched by 13 gullies at random angles, then the crest. The walls are high at the back and open toward the camera:</p>
+<pre><code class="language-python">R0 = 150 + 25 * wob - 45 * g          # apron toe (cones reach further out under gullies)
+R1 = 245 + 30 * wob + 25 * g          # headwall foot
+R2 = 350 + 25 * wob + 35 * g          # crest
+apron = np.clip((r - R0) / (R1 - R0), 0, 1)
+h_apron = 0.6 * (R1 - R0) * apron ** 1.3 * (1 + 0.4 * g)       # concave-up cones
+wallt = np.clip((r - R1) / (R2 - R1), 0, 1)
+h_wall = 1.9 * (R2 - R1) * wallt ** 0.9
+</code></pre>
+<p><img alt="Radial rebuild debug" src="img/059.png" /></p>
+<p><em>059. The rebuilt cirque from above: height, hillshade and cover. The gullies radiate from the back wall, and the apron and floor are rings around the tarn.</em></p>
+<p>Then the render had a hole in it:</p>
+<p><img alt="Black hole" src="img/060.png" /></p>
+<p><em>060. The rebuilt cirque, with a black mountain-shaped hole over the floor.</em></p>
+<p>I traced a single ray from the middle of the hole and printed the ray height against the terrain height every 100 m. The ray clearly passed under the terrain at about t = 1800. The ray-marcher on the plain terrain found the hit at 1733. On the eroded terrain with the tarn's water level added, it returned <code>inf</code>. The marcher clips each ray to the slab between the terrain's lowest and highest points and stops at the slab's floor. Adding the water level raised the minimum height. The rays that meet the floor right at its lowest point then left the slab before any step had landed below the surface, so the bisection never ran. The fix was a two-cell margin past the slab floor:</p>
+<pre><code class="language-python">tout = np.maximum(ta, tb) + self.cell * 2 / np.maximum(np.abs(dz), 0.05)
+</code></pre>
+<p>The same run showed a second problem: <code>ndi.label</code> of "below the tarn level" had flooded half the valley. I limited the tarn to within 160 m of the centre.</p>
+<p><img alt="Cirque fixed" src="img/063.png" /></p>
+<p><em>063. The cirque with the hole fixed and the mountain techniques on: scree grain, ledges, snow in gullies. The floor is still a flat green lawn. That's wrong (section 13).</em></p>
+<p>Then I printed the material fractions in the frame: rock 54%, meadow 24%, snow 2%, ledges 0.1%. Almost none of what I had designed was being painted. The ledge mask needed a height-phase test on the terraced wall. The scree needed a higher cover weight so that it beat meadow on the apron. The erosion was also wrecking the terraces, so I ran 40,000 drops instead of 150,000.</p>
+<h2>10. Scree, cliffs and snow</h2>
+<p><strong>Scree, first attempt: cobbles.</strong> I shaded Voronoi cells as stones everywhere on the fan, with a light top, a dark bottom and joints between them:</p>
+<p><img alt="Scree v1" src="img/068.jpg" /></p>
+<p><em>068. The first scree study. Top row, middle: my scree reads as a cobbled street. Every cell is a stone, and there's no matrix between them.</em></p>
+<p>The photos (Canyon de Chelly, Isfjorden) show a quiet matrix with blocks scattered on it: few at the apex, many at the toe. So I deleted the Voronoi stones, kept the matrix as a grain stipple whose density grows down the fan, and made blocks into instanced sprites. Each block is Ferrari's stone: a flat lit top row with 45° ends, a mid body, a dark bottom row, the sun-side end a step lighter, and a one-row cast shadow shifted to the shade side. The first sprites didn't show up at all. The occlusion test that hides objects behind ridges compared each stone's depth to the terrain's depth with a tolerance of 2× the stone's size, and on a 30° slope seen from 30°, most stones failed it. At ×6 they appeared:</p>
+<p><img alt="Stones" src="img/076.png" /></p>
+<p><em>076. Stones on the matrix at 8×: light top rows, dark bottoms, one-row shadows.</em></p>
+<p><img alt="Scree study" src="img/study_scree.png" /></p>
+<p><em>The scree study. Row 1: one talus cone at 0.5 m/px (the <code>talus_cone</code> subject, built just for this). Row 2: the grain at 1.2 m/px with fall-line channels, a dark groove with a lit levee beside it.</em></p>
+<p><strong>Cliffs: bricks.</strong> Banded cliffs were a terraced height with a lit lip on each ledge and a dark line under it. My first cliffs had ledges as black zigzag lines on a flat grey (070), and the rock between read as a brick wall: my planar facets were isotropic Voronoi cells, so the rock broke into squares. I stretched the facets 3:1 along the fall line (<code>LF.facets(X * 1.6, Y * 0.5, ...)</code>), and the rock broke into flutes, like the Cascades photos.</p>
+<p><img alt="First cliff and snow study" src="img/070.jpg" /></p>
+<p><em>070. The first cliff and snow study. Top: ledges as black zigzags on flat grey. Bottom: the snow panel with its black hole, the rays that missed the terrain.</em></p>
+<p><strong>Snow: a black hole again.</strong> The first snow panel had a big black shape in it (070, bottom row). It was the same bug in a new costume: iso rays that miss the terrain have no material, and material 0 renders black. There was no sky. I added a sky (flat bands, dithered at the seams) for every ray that misses. The snow itself follows the photos. Lit snow is two flat values, all the drawing is in the blue shadowed hollows, the downhill edge is a darker lip, and a few rocks poke through along the edges. My first snow mask was thresholded noise, which gave salt-and-pepper snow. Blurring the weight before thresholding gave coherent fields.</p>
+<p><img alt="Cliff and snow study" src="img/study_cliff_snow.png" /></p>
+<p><em>The cliff and snow study. Top: ledges as snow strips and lit lips on fluted risers. Bottom: a snowfield at 1.6 m/px, beside the Neve Glacier photo and Ferrari's V17 snow.</em></p>
+<h2>11. Huts, fire and the coast</h2>
+<p>Huts from 30° down read by four things, in order: two roof planes of very different value, the cast shadow, one lit wall edge under the eave, and a bare-earth apron with paths. I rasterised each hut from its 3D planes by splatting points into the index canvas, so each face carries its own step. Its shadow, the convex hull of the hut projected along the sun, goes in first and moves the ground under it into its shadow family (<code>Canvas.to_shadow</code>, which keeps the ground's texture). The paths join the huts along a minimum spanning chain.</p>
+<p><img alt="Village test" src="img/082.png" /></p>
+<p><em>082. The first village at 0.25 and 0.5 m/px, afternoon and evening. The huts read at once, and so do their shadows. After this I took out the lone trees the clearing had inherited from the forest subject (one stood next to the fire) and gave the trodden soil more weight, so the aprons and paths hold together.</em></p>
+<p>The fire is an ember ring, a 1–2 px flame, smoke drifting downwind as sparse pixels thinning with height, and at dusk a dithered glow pool on the ground.</p>
+<p>The coast is zoned by depth, not distance: shallow turquoise over sand, dark over rock, deep blue beyond. The first surf was white blobs:</p>
+<p><img alt="Surf v1" src="img/086.png" /></p>
+<p><em>086. Surf as crests where depth crosses 0.6 / 1.4 / 2.4 m, 0.2 m wide. They came out as fat white worms.</em></p>
+<p><img alt="Surf v2" src="img/087.png" /></p>
+<p><em>087. The fix: a thin crest line, and landward of it a lace of foam whose density falls off as (1 − d)². That's what the drone photos of breaking waves show.</em></p>
+<p><img alt="Huts and coast studies" src="img/092.png" /></p>
+<p><em>092. The huts and coast studies together. My V15 Ferrari crop was night-black again. I recropped it to a lit window in the town.</em></p>
+<h2>12. The far view</h2>
+<p>The far view is a perspective camera 3 km up over a 9 km range (<code>range_valley</code>): ridged noise over a U-shaped trough, 160,000 erosion drops, a river, forest to a treeline, snow above a snowline. For aerial perspective I split the ray distance into depth bands and mixed each band's colours toward the light's haze colour (0 / 22 / 45 / 68%).</p>
+<p><img alt="Far v1" src="img/083.png" /></p>
+<p><em>083. The first far view. There's a hard milky ring where band 1 starts, and the river is invisible. At 30 m wide it's under a pixel.</em></p>
+<p>The ring is the band edge. I dithered it by jittering the distance with a Bayer threshold before binning:</p>
+<pre><code class="language-python">band = band_of(G[&quot;t&quot;] * (1 + (thr_4 - 0.5) * 0.06), bands)
+</code></pre>
+<p>At 14% jitter the seams became wide checker bands that looked like smoke (084), so I cut it to 6%.</p>
+<p><img alt="Far v2" src="img/084.png" /></p>
+<p><em>084. The 14% jitter: the band seams are wide checkered smoke. The widened river now reads.</em></p>
+<p>I widened the river to 90 m so that it reads. I added cavity tone: gullies go one step down in both families, spurs one step up in the light. At a few km, this is what draws the mountain.</p>
+<p>Two more parts were in from the first far render. The haze photos showed that far masses collapse to two values, a lit and a shade, close together. So in band 2 each material keeps only its two family tones plus its darkest accent, and in band 3 only lit and shade. Even so, the frame used 80 colours, and 86 with the dithered seams. So I added a palette budget: merge the closest pair of colours, weighting rare ones first, until 64 are left. On this plate the budget does less than it sounds: the evening version needs 69 colours without it, so it merges only five.</p>
+<p>The evening plate came out of this. Violet haze, a lifted black point, and the river as a thread of lit sky down the valley.</p>
+<h2>13. Plates, and judging them against photos</h2>
+<p>Every plate is 320×180 beside an oblique photo of similar framing, box-downsampled to the same size and shown at 3×.</p>
+<p><img alt="Plates round 1" src="img/097.jpg" /></p>
+<p><em>097. The first round of plates. Forest slope: an even carpet with a hole in it, next to a photo whose forest reads by its ridge and meadows. River: a green board with a blue snake. Cirque: convincing walls around a lawn.</em></p>
+<p>What I did about each:</p>
+<ul>
+<li><strong>Forest.</strong> I raised the relief (<code>relief=0.3</code>), added meadow gaps, and added the per-tree slope tone from section 7 (099, below). It's better. It still doesn't have what the photo has: a ridge against a far valley, a track, a composition. The painter can't invent those. The scene has to have them.</li>
+</ul>
+<p><img alt="Forest plate after" src="img/099.png" /></p>
+<p><em>099. The forest plate after the relief, gaps and slope tone.</em>
+- <strong>River.</strong> I made the forest edges ragged and added groves. The valley walls are still too straight.
+- <strong>Cirque.</strong> Photos of cirque floors (Sawtooth, Opabin) show pale glaciated slabs with pockets of turf and krummholz. I added slabs and krummholz (106).</p>
+<p><img alt="Plates round 2" src="img/106.jpg" /></p>
+<p><em>106. The second round. Cirque with slabs and krummholz. The headwall plate, now with trees and stones on the apron. The cirque as a far view, where the far snow is still salt-and-pepper. The village at dusk. The range at evening.</em></p>
+<h2>14. Sheets, and processes that died</h2>
+<p>The sheets sweep subject × scale, subject × light, subject × seed, and the far view × light. Each cell is painted from the same index canvas. Only the palette changes with the hour.</p>
+<p><img alt="Sheet: scale" src="img/100.png" /></p>
+<p><em>100. Subject × scale. The top row is the canopy handing off from spur strokes (0.3 m/px) to spire marks to the canopy surface (4.8 m/px) without a visible pop.</em></p>
+<p><img alt="Sheet: light" src="img/101.png" /></p>
+<p><em>101. Subject × light. The evening forest was five colours of near-black. The photos really are that dark (Deer Mountain at dawn: canopy L* 8), but it wasn't a painting. I lifted the morning and evening sky ambient. That was my choice, not a measurement.</em></p>
+<p>The sheets ran as background jobs with a pool of four worker processes, and they died twice with <code>BrokenPipeError</code> from the pool's workers: the harness had killed the parent process. Relaunching the chain in its own session (<code>subprocess.Popen(..., start_new_session=True)</code>) fixed it.</p>
+<p><img alt="640 venetian blinds" src="img/105.jpg" /></p>
+<p><em>105. The village at 640×360. At 0.18 m/px the crowns are over 20 px, and the regular tier spacing reads as horizontal venetian-blind stripes across the whole forest. The spur stroke needs irregular tiers above ~15 px. I found this at the end and didn't fix it.</em></p>
+<h2>What I'd tell the next student</h2>
+<ul>
+<li><strong>Look at the photo at the pixel size it will have.</strong> One <code>resize(..., Image.BOX)</code>. It shows you the mark.</li>
+<li><strong>Draw your detector's output on the photo before you believe a number.</strong> My first crown sizes were my <code>min_sigma</code>.</li>
+<li><strong>Pick the technique by how many pixels the thing is,</strong> not by what it is. A conifer at 10 px, at 4 px and at 1 px is three techniques.</li>
+<li><strong>Noise can't make a landform whose identity is its profile.</strong> Cirques, talus cones and coves had to be written as profiles.</li>
+<li><strong>Print the material fractions in the frame.</strong> I had designed ledges and snow, and 0.1% and 2% of the pixels were painting them.</li>
+<li><strong>Black shapes are missing data, not dark things.</strong> Both black holes in my renders were rays that returned nothing.</li>
+<li><strong>Pick Ferrari crops by looking, not by coordinates.</strong> Three of my crops were night-black the first time.</li>
+</ul>
+<p>What was used afterwards: the crown numbers (spacing 2.2–2.9 lit-cap radii, lit share 0.35–0.56), the dark-mirror river and the haze measurements went into voxsim's far-painting work, where they fixed a milky forest, and <code>lib/</code> was named as the input for the far and biome lanes. The plate that was singled out was the evening range.</p></div><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>

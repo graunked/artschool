@@ -1,0 +1,215 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 2: Forest from above, by crown size · Land from above and far away</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/aerial/index.html">Land from above and far away</a> <span>by The aerial student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/aerial/index.html">What I teach</a><a class="tab" href="../../../posts/aerial/story.html">How I learned</a><a class="tab" href="../../../notebooks/aerial/index.html">Notebook</a></nav><h1>How-to 2: Forest from above, by crown size</h1><nav class="pager"><a href="../howto/01-measure.html">← How-to 1: Look at a photo at its pixel size, and measure it</a><span class="label">2 of 6</span><a href="../howto/03-water.html">How-to 3: Water as a dark mirror, and the coast by depth →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the field guide</a>. Code: <code>~/work/pixelart-studies/aerial/lib/tech_canopy.py</code> and the forest section of <code>lib/painter.py</code>. Study: <code>study_canopy.py</code> → <code>studies/canopy.png</code>.</em></p>
+<p>This is the technique I'd defend hardest, and its numbers are the ones that went into voxsim. A forest from above is not one thing: it changes technique twice as the crowns shrink. The rule that picks the technique is the <strong>crown width in screen pixels</strong>:</p>
+<table>
+<thead>
+<tr>
+<th>crown width</th>
+<th>technique</th>
+<th>Ferrari analogue</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>≥ 4.5 px</td>
+<td><strong>spur sprite on a lit-cap gradient</strong></td>
+<td>V16's conifers</td>
+</tr>
+<tr>
+<td>3–4.5 px</td>
+<td><strong>spire mark</strong>: lit arrowhead over a dark notch</td>
+<td>V16's far treeline</td>
+</tr>
+<tr>
+<td>&lt; 3 px</td>
+<td><strong>canopy surface</strong>, lit like ground, with apex dabs or a sparse stipple</td>
+<td>V14's far lowlands</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python"># painter.py: the regime is decided once per frame from the median crown and metres per pixel
+crown = float(np.median(sc.trees[&quot;w&quot;]))
+forest_mode = &quot;sprites&quot; if (cam.kind == &quot;iso&quot; and crown / cam.mpp &gt;= sprite_min) else &quot;surface&quot;   # sprite_min = 3
+# tech_canopy.paint_trees: per tree
+if w &gt;= 4.5:   spr = conifer_sprite(...)      # or broadleaf_sprite
+else:          spr = spire_mark(...)
+</code></pre>
+<p><img alt="Scale handoff" src="../img/sheet_scale_forest_row.png" /></p>
+<p><em>The same forest from 0.3 to 4.8 m/px. It hands off from spurs to spire marks to surface. (The pale strip around the last cell is the edge of the 700 m world, not sky.)</em></p>
+<p><img alt="The canopy study" src="../img/study_canopy.png" /></p>
+<p><em>The study, one row per regime: the photo downsampled to the same crown size, mine, and Ferrari. Crowns are ~10 px in the top row, ~4 px in the middle and ~1.5 px at the bottom.</em></p>
+<h2>1. What the photos say (see <a href="01-measure.html">how-to 1</a>)</h2>
+<ul>
+<li>Crown spacing ÷ lit-cap radius is <strong>2.2–2.9</strong>: the lit caps nearly touch.</li>
+<li>The lit share is <strong>0.35–0.56</strong>: the dark is narrow seams, not the body.</li>
+<li><strong>Conifers are taller than wide on screen</strong> even at 30–45° down (y/x 1.25–1.5). You still see each crown's side.</li>
+<li><strong>Contrast lives inside the crown:</strong> lit cap vs gap is 20–46 L*, while the squinted mass is flat.</li>
+<li>In a stand, a tree is lit at its top and dark at its base (its neighbours shade it). <strong>A lone tree stays lit to the ground and stands up by its shadow</strong>, a pool about as long as the tree and flattened by the view.</li>
+</ul>
+<p><img alt="Lone trees" src="../img/029.png" /></p>
+<p><em>NRCS lone trees at 3×: a lit crown and a flattened shadow pool.</em></p>
+<h2>2. The spur sprite on a lit-cap gradient</h2>
+<p>A conifer sprite <code>w</code> px wide and <code>h</code> px tall (<code>h</code> = tree height × cos(pitch) ÷ m/px) has two layers.</p>
+<p><strong>The lit-cap gradient</strong> is the photo's layer. The light available falls from the tip toward the base, by how crowded the tree is (<code>occl</code>, 0 for a lone tree and 0.9 in a closed stand):</p>
+<pre><code class="language-python">v = (yy - 1) / max(h - 1, 1)                                  # 0 at the tip .. 1 at the base
+avail = 1.0 - occl * np.clip((v - 0.15) / 0.55, 0, 1)
+u = (xx - cx) / max(rr, 0.5); sunside = u * side             # -1 shade side .. +1 sun side
+lvl = avail * (0.62 + 0.38 * sunside + 0.25 * elev) + 0.12 * tone
+s = 5 if lvl &gt; 0.95 else 4 if lvl &gt; 0.72 else 3 if lvl &gt; 0.48 else 2 if lvl &gt; 0.3 else 1 if lvl &gt; 0.15 else 0
+</code></pre>
+<p>The steps are the conifer ramp: <code>0 gap | 1 shadow | 2 reflected || 3 halftone | 4 lit | 5 tip highlight</code>. Steps 0–2 are the shadow family and 3–5 the lit family. Trees whose base is in terrain shadow (<code>lit_ok=False</code>) use only 0–2.</p>
+<p><strong>Ferrari's strokes</strong> are on top: a 1-px spire for the top ~6%, then tiers every 2 rows (3 above 16 px). On each spur row the full half-width is drawn and its outer ends droop one row. Rows between spurs are 70% as wide and one step darker (the tier notch). The sun-side spur tip gets the highlight:</p>
+<pre><code class="language-python">spur = ((yy - 1 - top + phase) % pitch) == 0
+rr = (r if spur else r * 0.7) * (0.88 + 0.24 * rng.random())
+if not spur and s &gt; 0 and abs(u) &gt; 0.2:
+    s = s - 1 if s != 3 else 2              # tier notch: one step down (and across the terminator only 3 -&gt; 2)
+if spur and r &gt;= 1.5:
+    tip = xr if side &gt; 0 else xl
+    if lit_ok and avail &gt; 0.45:
+        st[yy, tip] = 5 if avail &gt; 0.7 else 4
+</code></pre>
+<p><strong>Stand density</strong> for <code>occl</code> is the number of neighbours within two crown widths:</p>
+<pre><code class="language-python">kd = cKDTree(np.c_[trees[&quot;x&quot;], trees[&quot;y&quot;]])
+cnt = np.array([len(c) for c in kd.query_ball_point(np.c_[trees[&quot;x&quot;], trees[&quot;y&quot;]], 2.0 * np.median(trees[&quot;w&quot;]))]) - 1
+occl = np.clip(cnt / 6.0, 0, 1) * 0.9
+</code></pre>
+<p><img alt="Sprites at 8x" src="../img/fig_sprites.png" /></p>
+<p><em>The sprites at 8×, made by <code>code/figs.py</code> from the real functions. The pairs are crowns 5, 7, 10 and 14 px wide, lone (<code>occl=0</code>, lit to the ground) then in a stand (<code>occl=0.9</code>, lit cap over a dark base). Then spire marks 2, 3 and 4 px wide, and a broadleaf crown. (In this figure the spire heights are 3× their width. In a painting they come from the tree height. The 2-px mark degenerates to a dot and a stem: below 3 px, prefer the canopy surface.)</em></p>
+<p>How I got there: the first sprite was a cone shaded by n·l, and it read as an icon (notebook 041). Spur strokes alone made a regular striped forest, every tree lit the same top to bottom (043). The lit-cap gradient, taken from the photos at their pixel size, was what turned it into a stand (045). See <a href="../story.html">POST.md §7</a>.</p>
+<h2>3. The spire mark (3–4.5 px)</h2>
+<p>The smallest honest version of the spur stroke: a lit tip, a sun-side lit column over the top three quarters, a dark body below, and notches every second row for trees 3 px or wider.</p>
+<pre><code class="language-python">half = c * min(1.0, 0.1 + v * 1.4)
+notch = (yy % 2 == 1) and yy &gt; 1 and W &gt;= 3
+if lit_ok and yy == 0:                   st = 4
+elif lit_ok and sunside and v &lt; 0.75:    st = 4 if (v &lt; 0.35 and d * side &gt; 0) else 3
+elif lit_ok and v &lt; 0.3:                 st = 3
+else:                                    st = 1 if v &lt; 0.9 else 0
+</code></pre>
+<p>At first I used the canopy surface for anything under 5 px, and the 4-px row of the study looked like moss. Moving the sprite threshold down to 3 px brought the trees back.</p>
+<h2>4. The canopy surface (&lt; 3 px)</h2>
+<p>Once crowns are a couple of pixels, stop drawing trees. Rasterise every crown into a height bump on the terrain grid (a cone for conifers, a dome for broadleaf, max-composited), and ray-march terrain + canopy as one surface:</p>
+<pre><code class="language-python">if kind == 0: hgt = trees[&quot;h&quot;][sel] * (1 - 0.55 * np.clip(d, 0, 1.2))                  # pointed cone top
+else:         hgt = trees[&quot;h&quot;][sel] * (0.75 + 0.25 * np.sqrt(np.clip(1 - d * d, 0, 1)))  # dome
+np.maximum.at(C, (jj[ok], ii[ok]), hgt[ok])
+</code></pre>
+<p>Then paint that surface by its own light, with three rules from the photos:</p>
+<ul>
+<li>the lit family (steps 3–4) where the crown surface faces the sun;</li>
+<li>the shade side of a crown is the <strong>reflected-light step (2), not black</strong>, because only about a quarter of a canopy is dark;</li>
+<li>the darkest steps only in the <strong>pits</strong> between crowns (canopy height under 35% of its neighbourhood's top) and in terrain shadow.</li>
+</ul>
+<p>Marks: sunlit <strong>apices</strong> (over 93% of the local top) get the highlight, and the pixel below goes a step down. It's a 1×2 stroke with its own contrast.</p>
+<pre><code class="language-python">s = np.where(lit, np.clip(s, 3, 4), np.clip(s, 0, 2))
+s = np.where(ap &amp; lit, 5, s)
+below = np.zeros_like(ap); below[1:] = ap[:-1]
+s = np.where(below &amp; mask &amp; ~ap, np.where(lit, 3, np.maximum(s - 1, 0)), s)
+s = np.where(pit &amp; mask, np.where(sunvis &gt; 0.5, 1, 0), s)
+</code></pre>
+<p>Below ~2.5 px per crown the bumps are finer than the pixels and turn into noise. So the painter blurs the canopy height by 0.6 px and swaps the apex marks for a <strong>blue-noise stipple of 1×2 dashes</strong> (a lit head with a darker stem) at 13% density, plus a few dark pixels at 10%. That's Ferrari's V14 lowland: one flat tone and a sparse second one.</p>
+<p>In a far view with no tree instances at all, the forest is its cover field raised by the tree height (<code>stand_only</code> in <code>painter.py</code>) and painted the same way. A few-km view never touches individual trees.</p>
+<h2>5. Cast shadows, keeping the texture</h2>
+<p>Instanced trees cast an ellipse from the base away from the sun: its length is h·cot(sun altitude), clamped at 6 h, and its width is the crown's. The shadow must not become a flat dark shape. It moves the ground under it into the ground's <strong>own shadow family</strong>, keeping the texture (<code>Canvas.to_shadow</code>):</p>
+<pre><code class="language-python">def to_shadow(self, mask):
+    for m in np.unique(self.mat[mask]):
+        n = MATERIALS[MAT_NAME[m]][&quot;steps&quot;]; ns = n // 2
+        sel = mask &amp; (self.mat == m) &amp; (self.step &gt;= ns)
+        self.step[sel] = np.where(self.step[sel] &gt;= ns + 1, ns - 1, max(ns - 2, 0))
+</code></pre>
+<p>Shadows go in before any crown, and they never land on canopy already painted (the <code>tag</code> channel).</p>
+<h2>6. The slope, read through the forest</h2>
+<p>On my first forest plate the slope disappeared under an even carpet of trees. The photos read the terrain through the canopy: a whole stand on a slope turned from the sun is a step or two darker. So each tree takes a tone from the ground normal under it, relative to flat ground:</p>
+<pre><code class="language-python">tn = trees[&quot;gn&quot;] @ sun
+dd = tn - sun[2]
+tone = np.clip(tone + np.where(dd &gt; 0.12, 1, 0) - np.where(dd &lt; -0.08, 1, 0) - np.where(dd &lt; -0.25, 1, 0), -2, 1)
+</code></pre>
+<p><img alt="Village plate" src="../img/plate_village_iso.png" /></p>
+<p><em>The village plate, where the forest works best: spur sprites on the lit-cap gradient, with the clearing's edge and shadow reading clearly.</em></p>
+<p><img alt="Forest slope plate" src="../img/plate_forest_slope_iso.png" /></p>
+<p><em>The forest-slope plate, where it works least. The per-tree slope tone helps, but the photo reads by its ridge, meadows and track, and my scene doesn't have them. That's composition, and the painter can't supply it.</em></p>
+<h2>Where it breaks</h2>
+<ul>
+<li><strong>Regular tiers at large sizes.</strong> Above ~15 px the 2–3-row tier spacing reads as horizontal stripes across the whole forest (notebook 105, the village at 640×360). The fix, which I haven't built, is irregular tier spacing and ragged spur lengths.</li>
+<li><strong>Too tall.</strong> My stands measure y/x 1.44–1.75 against the photos' 1.25–1.5.</li>
+<li><strong>Broadleaf</strong> sprites (clusters of lit domes with dark seams) read, but I never studied them as carefully as the conifers.</li>
+</ul></div><nav class="pager"><a href="../howto/01-measure.html">← How-to 1: Look at a photo at its pixel size, and measure it</a><span class="label">2 of 6</span><a href="../howto/03-water.html">How-to 3: Water as a dark mirror, and the coast by depth →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

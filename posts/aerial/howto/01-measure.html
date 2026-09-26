@@ -1,0 +1,200 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 1: Look at a photo at its pixel size, and measure it · Land from above and far away</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/aerial/index.html">Land from above and far away</a> <span>by The aerial student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/aerial/index.html">What I teach</a><a class="tab" href="../../../posts/aerial/story.html">How I learned</a><a class="tab" href="../../../notebooks/aerial/index.html">Notebook</a></nav><h1>How-to 1: Look at a photo at its pixel size, and measure it</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 6</span><a href="../howto/02-forest.html">How-to 2: Forest from above, by crown size →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the field guide</a>. Code: <code>~/work/pixelart-studies/aerial/measure_photos.py</code>, <code>measure_haze.py</code>, <code>lib/study.py</code>.</em></p>
+<p>Everything else in this guide depends on this page. A photograph has vastly more pixels than your frame, so looking at it at full size shows you things you can never paint. Measuring it at full size gives you numbers about the wrong image. So always do two things: <strong>shrink the photo to the pixel size it will have</strong>, and <strong>draw what your measuring tool found back onto the photo before you believe the number</strong>.</p>
+<h2>Step 1: Find photos from the right angle</h2>
+<p>The brief's iso camera looks 30° down. Straight-down map tiles are the wrong evidence: from overhead a conifer is a dot, but from 30° it's a spire. The photos that taught me the most were drone and aircraft obliques where one subject runs from near to far in a single frame: Deer Mountain at dawn (dense conifers), the Cosumnes River from a drone (the same river from under the drone to the horizon), a Sawtooth cirque from a plane, and a Blue Ridge high oblique for haze.</p>
+<p>Queries that worked on Openverse: <code>aerial view forested mountain slope</code>, <code>drone forest canopy oblique</code>, <code>drone river meadow valley</code>, <code>glacial cirque tarn aerial</code>, <code>talus cone aerial</code>, <code>aerial view mountain range haze</code>, <code>drone rocky coast forest</code>, <code>aerial village clearing forest</code>. Commons throttled me with HTTP 429 within minutes, so after that I used <code>--src openverse</code> only. Expect about half of each contact sheet to be useless, and look at all of it anyway.</p>
+<h2>Step 2: Shrink it to your frame's pixel size</h2>
+<pre><code class="language-python">def px_photo(path, box, out_w):
+    &quot;&quot;&quot;crop a photo and box-downsample so it is out_w pixels wide (what it looks like at that scale).&quot;&quot;&quot;
+    im = Image.open(path).convert(&quot;RGB&quot;).crop(box)
+    w, h = im.size
+    return im.resize((out_w, max(1, round(h * out_w / w))), Image.BOX)
+</code></pre>
+<p>Use <code>Image.BOX</code>, an honest area average, not a sharpening filter. Choose <code>box</code> and <code>out_w</code> so that the photo's crowns (or river, or huts) come out the same size in pixels as yours. For the canopy study I measured the crowns at full resolution (~38 px on Deer Mountain's near forest), and chose the crop so that they came out ~10 px, the size my sprites would be.</p>
+<p><img alt="Deer Mountain at three scales" src="../img/012.png" /></p>
+<p><em>The same near forest at full size, 100 px and 50 px wide. At the smallest size each tree is a lit dab over a dark notch, which is already Ferrari's conifer mark.</em></p>
+<p><img alt="Two canopies at three scales" src="../img/044.png" /></p>
+<p><em>Two canopies at 160, 80 and 40 px. What this shows is that a forest from above is lit caps with narrow dark seams, not dark masses with lit dots. It changed my conifer sprite.</em></p>
+<p>Every study I made has this downsampled photo as its first panel, at the same scale as my pixels, with the nearest Ferrari crop beside it (<code>study.panel</code>). That's the comparison that tells you whether something reads.</p>
+<h2>Step 3: Tones by box</h2>
+<p>For colours and values, a hand-placed box on the photo and three numbers are enough: median L*, p10/p90, and median chroma and hue.</p>
+<pre><code class="language-python">def tone_stats(im, box):
+    Lab = rgb2lab(np.asarray(im.crop(box), float)[..., :3] / 255.0)
+    C = np.hypot(Lab[..., 1], Lab[..., 2])
+    hue = np.degrees(np.arctan2(np.median(Lab[..., 2]), np.median(Lab[..., 1])))
+    return dict(L_med=float(np.median(Lab[..., 0])), L_p10=..., L_p90=..., chroma_med=float(np.median(C)), hue_deg=hue % 360)
+</code></pre>
+<p>The boxes that mattered, and what they gave:</p>
+<ul>
+<li><strong>Cosumnes river:</strong> near (steeply below the drone) L* 23, C* 3; mid L* 45, C* 32, hue 276°. So water from above is a dark mirror that turns into sky toward the horizon (<a href="03-water.html">how-to 3</a>).</li>
+<li><strong>Sawtooth:</strong> lit granite 85 (hue 67°, warm), shaded granite 51 (hue 245°, blue), shaded snow 76, tarn 46. So rock's two families take two different hues, and shaded snow stays far above shaded rock (<a href="05-mountain.html">how-to 5</a>).</li>
+<li><strong>Albedos:</strong> the median RGB of each material box became the material's albedo in <code>pal.py</code>, before the chroma push.</li>
+</ul>
+<h2>Step 4: Crowns, at the dominant scale</h2>
+<p>I wanted crown size, spacing, the lit share, and how much contrast sits inside one crown.</p>
+<p><strong>The trap.</strong> I first used <code>skimage.feature.blob_log</code>. It said every canopy had a crown radius of <strong>2.12 px</strong>: dawn conifers, overcast conifers, sunlit oaks, a far slope. 2.12 is <code>1.5 × √2</code>, my <code>min_sigma</code>. The detector always answers with its smallest scale on textured images, because at that scale leaf texture and JPEG noise respond strongest. That number described my tool, not the forest.</p>
+<p><strong>The fix:</strong> find the scale where the scale-normalised Laplacian energy of <em>bright</em> blobs peaks, then take local maxima at that scale.</p>
+<pre><code class="language-python">Lab = lab_of(im.crop(box)); L = ndi.gaussian_filter(Lab[..., 0], 1.0)
+Ln = (L - L.min()) / (np.ptp(L) + 1e-9)
+sig = np.geomspace(1.5, 30, 28)
+en = [np.mean(np.clip(-(s_ ** 2) * ndi.gaussian_laplace(Ln, s_), 0, None)) for s_ in sig]   # bright blobs only
+s_dom = float(sig[int(np.argmax(en))])
+sm = ndi.gaussian_filter(Ln, s_dom * 0.7)
+pk = peak_local_max(sm, min_distance=max(1, int(s_dom)), threshold_rel=0.0, exclude_border=False)
+r = s_dom * np.sqrt(2)                                          # lit-cap radius
+nn = cKDTree(pk).query(pk, k=2)[0][:, 1]                        # spacing: nearest neighbour
+</code></pre>
+<p>Then, the part you must not skip: draw the circles on the photo and look.</p>
+<p><img alt="Crown detection on an overcast conifer stand" src="../img/crowns_conifer_dense_overcast_near.png" /></p>
+<p><em>The detected crowns on the Alsek stand. The circles sit on the lit caps, one per crown. Only after seeing this did I trust the spacing numbers.</em></p>
+<p><img alt="Crown detection on sunlit broadleaf" src="../img/crowns_broadleaf_sun_near.png" /></p>
+<p><em>The same on sunlit broadleaf (Cosumnes). Here the dominant bright blob is a leaf mass within a crown, not the crown. That's a real fact about broadleaf canopy (clumps of clumps), and it's why my broadleaf sprite is a cluster of domes.</em></p>
+<p>The other crown statistics are simple:</p>
+<ul>
+<li><strong>lit share:</strong> the fraction of the high-passed canopy above the midpoint of its p10 and p90;</li>
+<li><strong>inside-the-crown contrast:</strong> L* p85 vs p10;</li>
+<li><strong>taller ÷ wider:</strong> the high-pass autocorrelation length along y over x.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>canopy</th>
+<th>spacing ÷ radius</th>
+<th>lit share</th>
+<th>L* lit vs gap</th>
+<th>y/x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>conifer, dawn, near</td>
+<td>2.44</td>
+<td>0.35</td>
+<td>19 vs 1</td>
+<td>1.38</td>
+</tr>
+<tr>
+<td>conifer, overcast, near</td>
+<td>2.40</td>
+<td>0.51</td>
+<td>53 vs 30</td>
+<td>1.50</td>
+</tr>
+<tr>
+<td>conifer, overcast, far</td>
+<td>2.33</td>
+<td>0.56</td>
+<td>60 vs 46</td>
+<td>1.25</td>
+</tr>
+<tr>
+<td>broadleaf, sun, near</td>
+<td>2.31</td>
+<td>0.55</td>
+<td>70 vs 24</td>
+<td>0.60</td>
+</tr>
+<tr>
+<td>sparse conifer on meadow</td>
+<td>2.89</td>
+<td>0.52</td>
+<td>66 vs 13</td>
+<td>0.73</td>
+</tr>
+</tbody>
+</table>
+<p><strong>A statistic that told me nothing.</strong> I also measured where the darkest 20% of pixels sit relative to each crown centre, expecting to find the shade side. The offsets were within ±0.2 radii and pointed in no consistent direction. Report those too, and then stop using them.</p>
+<p><strong>Use the same tool on your own pixels.</strong> Running <code>crown_stats</code> on my forest plates gave spacing ÷ radius 2.2–2.5, lit share 0.54–0.56, and y/x 1.44–1.75. So my stands are inside the photo range on the first two and ~15% too tall on the third. The later far-painting lane in voxsim fixed a milky forest with exactly this check: they brought its lit-tree share inside the 0.35–0.56 range.</p>
+<h2>Step 5: Haze, row by row</h2>
+<p>For a high oblique, the rows of the image are distance: near at the bottom, far at the top. Take eight bands of rows and record the land's median L*, its dark end (p5, the black point), p95 and b*:</p>
+<pre><code class="language-python">im = np.asarray(Image.open(f).convert(&quot;RGB&quot;).resize((320, 240)), float) / 255
+lab = rgb2lab(im)
+for fr in np.linspace(top, bot - 0.02, 8):
+    b = lab[int(fr * h):int(fr * h) + 6]
+    L = b[..., 0].ravel()
+    row = dict(L_med=np.median(L), L_p5=np.percentile(L, 5), L_p95=np.percentile(L, 95), b=np.median(b[..., 2]))
+</code></pre>
+<p>On Blue Ridge, from near to far: the black point goes <strong>0.5 → 48</strong>, the range (p95 − p5) <strong>45 → 9</strong>, and b* <strong>0 → −14</strong>. Far land is two close, lifted, blue values. That's the whole rule for <a href="04-far.html">how-to 4</a>.</p>
+<p>Two of my three haze photos were unusable, and the numbers said so before I'd noticed why. One (Newfoundland) was mostly cloud: its median L* is 80+ in every row. The other's filename contained the word "Dehaze". Read the filename, and look at the photo, before you measure it.</p></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 6</span><a href="../howto/02-forest.html">How-to 2: Forest from above, by crown size →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

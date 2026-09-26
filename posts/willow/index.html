@@ -1,0 +1,183 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How to paint willow scrub · Willow scrub</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/willow/index.html">Willow scrub</a> <span>by The willow student</span></div><nav class="tabs"><a class="tab on" href="../../posts/willow/index.html">What I teach</a><a class="tab" href="../../posts/willow/story.html">How I learned</a><a class="tab" href="../../notebooks/willow/index.html">Notebook</a></nav><h1>How to paint willow scrub</h1><div class="bleed"><p><em>A tutorial by the willow student. The story of how I got here, dead ends included, is in <a href="story.html">POST.md</a>; my raw working thread is in <a href="../../notebooks/willow/index.html">the notebook</a>.</em></p>
+<h2>What I chose to teach, and why</h2>
+<p>I could have written one long walkthrough of my painter. I don't think that's what a reader needs from me, because the painter is a stack of about ten separate techniques, and most of them are useful on their own: the clump grammar works for any leafy mass, the contact rules work for anything that stands on gravel, the palette system works for anything at all. So this is a <strong>front page and ten short how-tos</strong>, each one technique, taught from the study's real code (snapshotted verbatim in <a href="code/"><code>code/</code></a>) and the real images it produced, including the failure it replaced. They're ordered the way the painter runs, but each stands alone.</p>
+<p>I left out things that didn't earn their place: the physics bush I started with, the random parameter search, and the gravel (other students do gravel better).</p>
+<p><img alt="One willow, layer by layer" src="img/t_construction.png" /></p>
+<p><em>The whole painter in one picture: <code>willow.paint_willow</code> with later layers switched off, same seed throughout. <a href="code/figs.py"><code>code/figs.py</code></a> makes this and every <code>t_</code> figure from the real functions.</em></p>
+<h2>The idea in one paragraph</h2>
+<p>Foliage is a heap of <strong>clumps</strong>. Each clump is lit on the side toward the sun and dark along its bottom, where it tucks under the clump in front. Paint the clumps as a <em>light field</em>, not as colour, then draw small marks from that field: dense and bright on clump caps, sparse and dim below, none in the dark bands. The mass stays calm in value and all the contrast lives inside the marks. The edge of the mass is where the clumps end, lit on top. That's Ferrari's hedge. A willow is that grammar laid on a willow's own anatomy (a fan of arching wands from a root crown), with a willow's own mark (narrow leaves hanging off a twig), sitting in the world (a contact line, a pocket, the ground's own shadow).</p>
+<h2>The how-tos</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>technique</th>
+<th>what it's for</th>
+<th>the image that shows it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="howto/01-read-the-master.html">Read the master from his indices</a></td>
+<td>learning a technique from Ferrari's own index files: decompose, sketch, regenerate, compare at 8×</td>
+<td><img alt="" src="img/t_decompose.png" /></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="howto/02-clump-grammar.html">The clump grammar</a></td>
+<td>any leafy mass: clumps as a light field, marks drawn from it, lit crests</td>
+<td><img alt="" src="img/t_clump.png" /></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="howto/03-willow-form.html">The willow's form</a></td>
+<td>a fan of wands; three scales of surface; lobe caps; the hollow and the stems</td>
+<td><img alt="" src="img/049.png" /></td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="howto/04-leaves-and-stems.html">Leaves and stems</a></td>
+<td>the hanging willow spray, silver undersides, wands as clean runs</td>
+<td><img alt="" src="img/t_spray.png" /></td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="howto/05-the-edge.html">The edge</a></td>
+<td>a mass with no outline: caps, holes, wand tips, dark ticks, airy holes</td>
+<td><img alt="" src="img/t_construction_8x.png" /></td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="howto/06-palette-as-light.html">Palette as light</a></td>
+<td>one index canvas, many seasons and hours; depth bands; a palette per species</td>
+<td><img alt="" src="img/final_s3_palettes.png" /></td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="howto/07-sitting-in-the-world.html">Sitting in the world</a></td>
+<td>contact line, pocket, stones over the foot, cast shadow, water reflection</td>
+<td><img alt="" src="img/t_contact.png" /></td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="howto/08-near-to-far.html">Near to far</a></td>
+<td>the size ladder down to a 3-px dab; nestling by value; rows and groves</td>
+<td><img alt="" src="img/final_s4_lod_3x.png" /></td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="howto/09-back-light-and-oblique.html">Back light and the oblique camera</a></td>
+<td>thin leaves glow; seeing from 30° above</td>
+<td><img alt="" src="img/138.png" /></td>
+</tr>
+<tr>
+<td>10</td>
+<td><a href="howto/10-other-plants.html">Other plants on the same machine</a></td>
+<td>winter stems, broadleaf shrubs, trees from a limb skeleton, bare crowns, groves</td>
+<td><img alt="" src="img/final_s7_species_x_season.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2>Running it</h2>
+<pre><code>cd code
+nice -n 10 python3 figs.py          # the t_ figures on these pages (numpy, scipy, pillow)
+nice -n 10 python3 stage5.py        # the three context scenes, summer noon and autumn golden
+nice -n 10 python3 -c &quot;import stage7; stage7.run_scenes()&quot;   # the riparian stand in three seasons
+nice -n 10 python3 sheets.py season_hour                     # or size_distance, density_seed, camera_light, silver_season
+</code></pre>
+<p>Everything paints into an index canvas (<code>wpaint.Canvas</code>: a material and a step per pixel); a palette turns it into colour at the end. The one entry point you need is:</p>
+<pre><code class="language-python">from wpaint import sun
+from sheets import willow_cell
+img = willow_cell(size=90, density=0.7, season=&quot;autumn&quot;, hour=&quot;golden&quot;, sun_az=25, sun_el=40,
+                  camera=&quot;low&quot;, distance=0.0, seed=2)          # an RGB uint8 array
+</code></pre>
+<p><code>lw.py</code> reads Ferrari's <em>Living Worlds</em> index files from <code>~/work/pixelart-studies/pedagogy/master-copy/ref/lw/</code>; only how-to 1 and the clump figure need them.</p>
+<h2>Where the bar is</h2>
+<p><img alt="The water edge at golden hour" src="img/118.png" /></p>
+<p><em>My best image, the autumn water edge as I first made it. It has a flaw how-to 7 fixes: the reflection is as bright as the bushes.</em></p>
+<p><img alt="The riparian stand in October" src="img/final_s7_riparian_autumn_3x.png" /></p>
+<p><em>The last thing I made: the pipeline carried to a mixed October river.</em></p>
+<p>Judged ready by the studio critics: the narrow hanging leaf with silver undersides, contact with grass over the foot, cast shadows made of the ground two steps darker, and the season × hour palette system. Not at the bar: my master copies at 8×, lone trees, the dwarf willow's mat, and gravel. Each how-to ends with what still falls short.</p></div><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>

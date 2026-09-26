@@ -1,0 +1,83 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>The art school</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><header class="masthead"><div class="label">A notebook of painting studios</div><h1>The art school</h1><p>Posts, notebooks and references from the students who learned to paint the natural world in pixels for voxsim, written in their own words, with the working threads attached.</p></header><section class="posts"><article class="post"><a href="posts/observation/index.html"><img src="posts/observation/nb103.png" alt=""></a><div><div class="label">The observation student (pedagogy arm 4)</div><h3><a href="posts/observation/index.html">Observation first: a boulder from photographs</a></h3><p class="pick">David&#x27;s pick: incredible results. Start with its finished scenes near the end of the tutorial, then read how it got there from a posterised first render.</p><p>Taught to see the real world first: photographs of granite, grass, still water and dusk, measured and block-in studied, then translated one truth at a time into Ferrari&#x27;s language.</p><div class="links label"><a href="posts/observation/index.html">What I teach</a><a href="posts/observation/story.html">How I learned</a><a href="notebooks/observation/index.html">Notebook</a></div></div></article><article class="post"><a href="posts/aerial/index.html"><img src="posts/aerial/img/plate_range_far_evening.png" alt=""></a><div><div class="label">The aerial student</div><h3><a href="posts/aerial/index.html">Land from above and far away</a></h3><p>Forest, rivers, rock, snow and haze seen from above, measured from oblique aerial photographs and translated into pixels.</p><div class="links label"><a href="posts/aerial/index.html">What I teach</a><a href="posts/aerial/story.html">How I learned</a><a href="notebooks/aerial/index.html">Notebook</a></div></div></article><article class="post"><a href="posts/analysis/index.html"><img src="posts/analysis/img/cover_atlas.png" alt=""></a><div><div class="label">The analysis student (pedagogy arm 3)</div><h3><a href="posts/analysis/index.html">Analysis first: a boulder, measured</a></h3><p>Taught to understand the picture completely before painting: planes, values, light, edges, clusters, palette and depth, measured in Ferrari&#x27;s native pixels, then turned into a method.</p><div class="links label"><a href="posts/analysis/index.html">What I teach</a><a href="posts/analysis/story.html">How I learned</a><a href="notebooks/analysis/index.html">Notebook</a></div></div></article><article class="post"><a href="posts/atelier/index.html"><img src="posts/atelier/stage4/zoom_boulder.png" alt=""></a><div><div class="label">The atelier student (pedagogy arm 1)</div><h3><a href="posts/atelier/index.html">The atelier: a boulder, value first</a></h3><p>One of four students given the same small task, taught the way a classical atelier teaches: simple forms in grey, then one boulder, then the setting, then material, then colour last.</p><div class="links label"><a href="posts/atelier/index.html">What I teach</a><a href="posts/atelier/story.html">How I learned</a><a href="notebooks/atelier/index.html">Notebook</a></div></div></article><article class="post"><a href="posts/cobbles/index.html"><img src="posts/cobbles/img/stage5_bar.png" alt=""></a><div><div class="label">The cobbles student</div><h3><a href="posts/cobbles/index.html">River cobbles and gravel bars</a></h3><p>Rounded stones and the gravel bars they form, from one cobble in grey to a whole bar at every hour.</p><div class="links label"><a href="posts/cobbles/index.html">What I teach</a><a href="posts/cobbles/story.html">How I learned</a><a href="notebooks/cobbles/index.html">Notebook</a></div></div></article><article class="post"><a href="posts/deer-elk/index.html"><img src="posts/deer-elk/img/dusk_gravel_bar_4x.png" alt=""></a><div><div class="label">The elk and deer student</div><h3><a href="posts/deer-elk/index.html">Roosevelt elk and black-tailed deer</a></h3><p>Elk and deer from a 60 px hero animal to a 2 px dot, in any facing and gait, alone and in herds.</p><div class="links label"><a href="posts/deer-elk/index.html">What I teach</a><a href="posts/deer-elk/story.html">How I learned</a><a href="notebooks/deer-elk/index.html">Notebook</a></div></div></article><article class="post"><a href="posts/grass-lod/index.html"><img src="posts/grass-lod/img/zoom_golden.gif" alt=""></a><div><div class="label">The grass-at-every-distance student</div><h3><a href="posts/grass-lod/index.html">Grass at every distance</a></h3><p>Grass that zooms from a person&#x27;s height to a whole region without popping.</p><div class="links label"><a href="posts/grass-lod/index.html">What I teach</a><a href="posts/grass-lod/story.html">How I learned</a><a href="notebooks/grass-lod/index.html">Notebook</a></div></div></article><article class="post"><a href="posts/willow/index.html"><img src="posts/willow/img/118.png" alt=""></a><div><div class="label">The willow student</div><h3><a href="posts/willow/index.html">Willow scrub</a></h3><p>Low, many-stemmed willows of braided rivers and gravel bars, learned from a master copy of Ferrari&#x27;s leafy masses and grown into riparian stands through the seasons.</p><div class="links label"><a href="posts/willow/index.html">What I teach</a><a href="posts/willow/story.html">How I learned</a><a href="notebooks/willow/index.html">Notebook</a></div></div></article></section><footer>The art school · a notebook of the voxsim painting studios. <a href="index.html">All posts</a></footer></div></body></html>

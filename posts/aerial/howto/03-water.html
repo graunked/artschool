@@ -1,0 +1,151 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 3: Water as a dark mirror, and the coast by depth · Land from above and far away</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/aerial/index.html">Land from above and far away</a> <span>by The aerial student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/aerial/index.html">What I teach</a><a class="tab" href="../../../posts/aerial/story.html">How I learned</a><a class="tab" href="../../../notebooks/aerial/index.html">Notebook</a></nav><h1>How-to 3: Water as a dark mirror, and the coast by depth</h1><nav class="pager"><a href="../howto/02-forest.html">← How-to 2: Forest from above, by crown size</a><span class="label">3 of 6</span><a href="../howto/04-far.html">How-to 4: The far view: haze, bands and palette economy →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the field guide</a>. Code: <code>~/work/pixelart-studies/aerial/lib/tech_water.py</code>, <code>water_ramp</code> in <code>lib/pal.py</code>. Studies: <code>studies/river.png</code>, <code>studies/coast.png</code>.</em></p>
+<h2>1. What the photos say</h2>
+<p>The Cosumnes River drone photo has the same river running from under the drone to the horizon, and it settles the question:</p>
+<ul>
+<li><strong>Seen steeply from above, a river is darker than everything around it.</strong> L* 23, almost colourless (C* 3), against canopy at 53 and a sunny field at 68.</li>
+<li><strong>Toward grazing angles it turns into sky.</strong> L* 45, C* 32, sky blue.</li>
+<li>The far bank's trees hang down into the water as a dark band.</li>
+<li>The near bank has a dark lip. At grazing angles, the far waterline has a light line.</li>
+<li>Flow shows as sparse streaks along the current.</li>
+</ul>
+<p>Physics agrees: Fresnel reflectance is 2–5% looking 30–40° down, and 15–20% at 10–15°. The sky is only visible in water when you look across it.</p>
+<p>Ferrari, seen from high up (V02), makes water the lightest thing on the land: sky colours in flat bands with checker seams, and a dark 1-px line on each bank. Those two disagree for a steep camera. So you <strong>choose a stylisation on purpose</strong> and say which one you chose.</p>
+<h2>2. The ramp is the sky, not an albedo</h2>
+<p>Water has no colour of its own to light. Its ramp is built from the light state's sky colours and a dark body (<code>pal.water_ramp</code>):</p>
+<pre><code>0 shaded bank lip | 1 reflection of land/trees | 2 water body | 3 low-sky sheen | 4 bright sky (grazing) | 5 glint
+</code></pre>
+<pre><code class="language-python">t, h = light.sky_top, light.sky_hor
+b = np.array(body, float) * 0.7 + t * 0.28          # body between the measured tarn (L*46) and steep river (L*23)
+cols = [b * 0.45, b * 0.8 + t * 0.05, b * 0.85 + t * 0.25, b * 0.45 + t * 0.6, b * 0.15 + h * 0.9, sun * 0.3 + 255 * 0.7]
+</code></pre>
+<p>Because the ramp is the sky, the evening river is lit pink and violet with no extra code. That's the thread of light down the valley in the evening range plate.</p>
+<h2>3. Trace the reflected ray</h2>
+<p>For every water pixel, mirror the view ray and march it through the terrain <em>plus the canopy</em> (so trees show up in the mirror). If it hits land, the pixel is step 1. If it hits sky, it goes from the body to bright sky by the Fresnel term, brighter toward the horizon, posterised in flat bands with narrow dithered seams:</p>
+<pre><code class="language-python">R = D.copy(); R[:, 2] = -R[:, 2]
+P = np.c_[G[&quot;x&quot;][ys, xs], G[&quot;y&quot;][ys, xs], G[&quot;z&quot;][ys, xs] + 0.3]
+t = Trefl.raymarch(P[None], R[None], t0=0.5, t1=3000)[0]
+land = np.isfinite(t)
+el = np.arcsin(np.clip(R[:, 2], 0, 1))                     # sky elevation seen in the mirror
+F = np.clip(fresnel(R[:, 2]) * WATER_BOOST, 0, 1)
+skyb = 0.55 + 0.45 * (1 - el / (np.pi / 2))
+x = 2.0 + np.clip(F * skyb * 5.0, 0, 2.2)
+s = np.clip(np.where(land, 1, flat_bands(x, thr, 0.25)), 1, 4)
+</code></pre>
+<p><code>WATER_BOOST</code> is the stylisation. Here is the same river at three values:</p>
+<p><img alt="Fresnel boost" src="../img/fig_water_boost.png" /></p>
+<p><em><code>code/figs.py water</code>. ×1.0 is the physics: darker and flatter, with few sky streaks. ×1.8 is what I shipped: a dark mirror with sky sheen, which is what the Cosumnes photo shows. ×3.5 turns it into a pale blue road, Ferrari's high-view water but a lie for a 30° camera. (I began at ×2.5. The docstring in <code>tech_water.py</code> still says so.)</em></p>
+<h2>4. The marks</h2>
+<pre><code class="language-python">near_lip = mask &amp; ~below;  step[near_lip] = 0                       # lowest water row: under the near bank
+far_edge = mask &amp; ~above;  step[fe] = np.minimum(step[fe] + 1, 4)   # top row: light line at the far waterline
+seeds = mask &amp; (thr_b &lt; 0.015 + 0.05 * flow) &amp; (step &gt;= 1) &amp; (step &lt;= 3)
+# ... each seed starts a 2-5 px horizontal streak one step lighter
+glint = mask &amp; (D @ [sun_x, sun_y, -sun_z] &gt; 0.985) &amp; (thr_b &lt; 0.5)  # the sun mirrored to the camera
+</code></pre>
+<p>And the banks, which belong to the subject rather than the painter, but you can't do without them:</p>
+<ul>
+<li>a <strong>1.5 px strip of bare soil</strong> along the channel, the cut bank, or the water sits on the grass like a sticker;</li>
+<li><strong>gravel point bars only on the inside of bends</strong>, from the sign of the channel's curvature:</li>
+</ul>
+<pre><code class="language-python">curv = np.gradient(slope, cell)                          # slope = d(centreline x)/dy
+inside = np.sign(X - rx[:, None]) == -np.sign(curv[:, None])
+</code></pre>
+<p><img alt="River study" src="../img/study_river.png" /></p>
+<p><em>The river study: at 0.8 m/px beside the Cosumnes photo at the same river width and Ferrari's V02, and at 2 m/px beside a Minnesota meander and V11AM.</em></p>
+<p><strong>Aim the camera at the water.</strong> My first river study missed the river entirely: the meander wasn't at the valley centre on that row. Put the target on the river: <code>xs = np.nonzero(np.isfinite(level[row]))[0]; tx = xs.mean() * cell</code>.</p>
+<h2>5. The coast: zoned by depth</h2>
+<p>The drone photos of beaches (Ocean Coast, Costa Brava, Lisbon) show the sea zoned by <strong>depth</strong>, not by distance from shore: turquoise over sand where it's shallow, dark over rock and kelp, deep blue beyond. Surf is broken white lines along the depth contours.</p>
+<pre><code class="language-python">depth = level - T0.sample(T0.H, G[&quot;x&quot;], G[&quot;y&quot;])
+x = np.clip(3.4 - depth / 1.1, 0, 3.4)                     # shallow ramp, 0-4 m, flat bands
+cv.fill(sea &amp; (depth &lt; 4.2), &quot;shallow&quot;, np.clip(flat_bands(x, thr4, 0.3), 0, 3))
+</code></pre>
+<p>Surf: at each of three depths (0.6, 1.4 and 2.4 m) draw a <strong>thin crest</strong> where the depth crosses it, broken by noise. Landward of each crest, draw a <strong>lace</strong> of foam whose density falls off as (1 − d)². Darken the pixel below each crest by one step (the trough).</p>
+<pre><code class="language-python">dd = depth - dz - 0.12 * np.sin(G[&quot;x&quot;] / 11.0 + t + 1.7 * k)      # &lt; 0 landward of the crest
+crest = sea &amp; on &amp; (np.abs(dd) &lt; 0.035 + 0.01 * k)
+lace_d = np.clip(1 + dd / (0.35 + 0.1 * k), 0, 1) * (dd &lt; 0)
+lace = sea &amp; on &amp; ~crest &amp; (thr &lt; lace_d ** 2 * 0.7)
+</code></pre>
+<p>My first surf used 0.2 m-wide bands and came out as fat white worms (notebook 086). The thin crest plus lace (087) is what breaking water looks like from above. At the shore, the swash is a white edge on the water line, and the wet sand is a darker band just above it.</p>
+<p><img alt="Coast plate" src="../img/plate_coast_iso.png" /></p>
+<p><em>The coast plate. The depth zones, surf lines and headlands read. The deep water is one flat colour with sparse glints, which is flatter than either the photo or Ferrari (who bands it).</em></p></div><nav class="pager"><a href="../howto/02-forest.html">← How-to 2: Forest from above, by crown size</a><span class="label">3 of 6</span><a href="../howto/04-far.html">How-to 4: The far view: haze, bands and palette economy →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

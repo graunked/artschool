@@ -1,0 +1,422 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Ferrari&#x27;s tarn, in numbers · Analysis first: a boulder, measured</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/analysis/index.html">Analysis first: a boulder, measured</a> <span>by The analysis student (pedagogy arm 3)</span></div><nav class="tabs"><a class="tab on" href="../../posts/analysis/index.html">What I teach</a><a class="tab" href="../../posts/analysis/story.html">How I learned</a><a class="tab" href="../../notebooks/analysis/index.html">Notebook</a></nav><h1>Ferrari&#x27;s tarn, in numbers</h1><nav class="pager"><a href="toolkit/README.html">← The instruments</a><span class="label">2 of 2</span><a href="index.html">Contents →</a></nav><div class="bleed"><p><em>A reference card for anyone painting in this language. Everything below was measured on Mark Ferrari's</em> Alpine Tarn at Dusk <em>at its native 634×469 pixels, with the scripts in <a href="toolkit/README.html">toolkit/</a>. How each was measured, and how to read it, is in <a href="index.html">the tutorial</a>. All values are CIE L* (0 black, 100 white). "Squint" means blurred with a Gaussian of σ = 2.5 native pixels.</em></p>
+<h2>The file</h2>
+<ul>
+<li>1268×938 PNG, an exact 2× nearest-neighbour upscale: <strong>634×469 native, 172 colours</strong>.</li>
+<li>Pure black (0,0,0) is <strong>19%</strong> of all pixels.</li>
+</ul>
+<h2>Composition, share of picture area</h2>
+<table>
+<thead>
+<tr>
+<th>plane</th>
+<th>area</th>
+<th></th>
+<th>plane</th>
+<th>area</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sky</td>
+<td>18%</td>
+<td></td>
+<td>water</td>
+<td>17%</td>
+</tr>
+<tr>
+<td>framing trees</td>
+<td>16%</td>
+<td></td>
+<td>right bank (near, in shade)</td>
+<td>13%</td>
+</tr>
+<tr>
+<td>left bank (near, lit)</td>
+<td>11%</td>
+<td></td>
+<td>far forest</td>
+<td>9%</td>
+</tr>
+<tr>
+<td>far banks</td>
+<td>7%</td>
+<td></td>
+<td>left meadow (middle)</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>mountain</td>
+<td><strong>4%</strong></td>
+<td></td>
+<td>island</td>
+<td>2%</td>
+</tr>
+</tbody>
+</table>
+<h2>Values</h2>
+<ul>
+<li><strong>Three-value notan</strong>: groups centred at 16 / 42 / 70; cuts at <strong>28.9 and 55.6</strong>.</li>
+<li><strong>Balance: 51% dark, 27% middle, 21% light.</strong></li>
+<li>Squint median per plane (5–95% range):</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>plane</th>
+<th>median</th>
+<th>range</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>sky</td>
+<td>71</td>
+<td>45–75, the low end only at tree edges</td>
+</tr>
+<tr>
+<td>mountain</td>
+<td>48</td>
+<td>17–72, the only plane spanning all three groups</td>
+</tr>
+<tr>
+<td>far forest</td>
+<td>20</td>
+<td>9–44</td>
+</tr>
+<tr>
+<td>framing trees</td>
+<td>16</td>
+<td>5–40</td>
+</tr>
+<tr>
+<td>far banks</td>
+<td>18</td>
+<td>10–28</td>
+</tr>
+<tr>
+<td>island</td>
+<td>28</td>
+<td>16–52</td>
+</tr>
+<tr>
+<td>water</td>
+<td>29</td>
+<td>14–70</td>
+</tr>
+<tr>
+<td>left meadow</td>
+<td>42</td>
+<td>22–55</td>
+</tr>
+<tr>
+<td>left bank</td>
+<td>43</td>
+<td>28–51</td>
+</tr>
+<tr>
+<td>right bank</td>
+<td>14</td>
+<td>4–22</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Nothing is white. The sky runs L* 71–79, and only a few crest pixels pass 80.</li>
+</ul>
+<h2>Light</h2>
+<ul>
+<li>Low sun from the left, slightly behind the scene. Lit faces are warm (b* &gt; 12); shade is violet or dull olive.</li>
+<li><strong>The sky is iso-luminant</strong>: flat across the columns (L* 73.5–74.7); from top to horizon, violet (L* 71.5, b* −8.7) to peach (L* 79, b* +21).</li>
+<li>Ground brightens as it recedes: left bank L* 30–45 at the bottom to 53 at its far edge; right bank 5 to 20.</li>
+<li>Hummocks and the island: brightest just under the crest (island L* 52), dark at the base (27).</li>
+</ul>
+<h2>Reflection</h2>
+<ul>
+<li>An exact mirror. The axis is the far shoreline (row 228), with vertical scale <strong>1.00</strong>.</li>
+<li>Reflected minus source: lights (L* &gt; 55) <strong>−13.1</strong>, mids (30–55) <strong>−4.5</strong>, darks (&lt; 30) <strong>+1.2</strong>; a* <strong>−5.1</strong>.</li>
+<li>Reflected sky is about 4 L* darker than the sky.</li>
+</ul>
+<h2>Edges (rise width, 20→80%)</h2>
+<ul>
+<li>Silhouettes against sky: 50% hard (≤ 2 px), median contrast 69 L*.</li>
+<li>Banks and grass interiors: 58–64% soft (&gt; 4.5 px).</li>
+<li>Lost edges, as ΔL* across the boundary: far banks against their reflections <strong>0.3</strong>; framing trees against far forest <strong>2.5</strong>; mountain against sky <strong>5</strong>.</li>
+</ul>
+<h2>Clusters and dither</h2>
+<table>
+<thead>
+<tr>
+<th>plane</th>
+<th>colours covering 90%</th>
+<th>vertical neighbour same</th>
+<th>mean cluster (px)</th>
+<th>2×2 checker</th>
+<th>vertical stripe</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>left bank (near, lit)</td>
+<td><strong>4</strong></td>
+<td>0.70</td>
+<td>6.2</td>
+<td>4.6%</td>
+<td><strong>33%</strong></td>
+</tr>
+<tr>
+<td>right bank (near, shade)</td>
+<td><strong>4</strong></td>
+<td>0.68</td>
+<td>5.6</td>
+<td>4.1%</td>
+<td>31%</td>
+</tr>
+<tr>
+<td>left meadow</td>
+<td>7</td>
+<td>0.56</td>
+<td>4.5</td>
+<td>6.1%</td>
+<td>15%</td>
+</tr>
+<tr>
+<td>framing trees</td>
+<td><strong>3</strong></td>
+<td>0.56</td>
+<td>5.2</td>
+<td>7.1%</td>
+<td>8%</td>
+</tr>
+<tr>
+<td>far banks</td>
+<td>9</td>
+<td></td>
+<td>3.5</td>
+<td>12.8%</td>
+<td>5%</td>
+</tr>
+<tr>
+<td>island</td>
+<td>18</td>
+<td></td>
+<td>2.9</td>
+<td>14.0%</td>
+<td>3%</td>
+</tr>
+<tr>
+<td>mountain</td>
+<td>15</td>
+<td>0.42</td>
+<td>3.3</td>
+<td>9.6%</td>
+<td>3%</td>
+</tr>
+<tr>
+<td>sky</td>
+<td>8</td>
+<td>0.47</td>
+<td>3.0</td>
+<td><strong>24.5%</strong></td>
+<td>0.3%</td>
+</tr>
+<tr>
+<td>water</td>
+<td><strong>69</strong></td>
+<td>0.33</td>
+<td>2.3</td>
+<td>8.4%</td>
+<td>6%</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>Near lit grass recipe</strong>: base ochre (196,131,70), L60, <strong>38%</strong>; mid-brown stroke (115,92,35), L40, <strong>35%</strong>; olive (62,59,23), L24, <strong>11%</strong>; black-green gap (10,34,10), L10, <strong>12%</strong>.</li>
+<li><strong>Near shaded grass</strong>: near-black olive (28,31,4) 31%, black 28%, olive (62,59,23) 23%, grey-olive (66,63,42) 17%.</li>
+<li><strong>Conifers</strong>: black <strong>61%</strong>, ochre (136,101,50) <strong>22%</strong>, dark (46,43,32) <strong>14%</strong>.</li>
+<li><strong>Sky</strong>: flat bands 6–10 rows tall, joined by 1–3 rows of checker.</li>
+</ul>
+<h2>Palette</h2>
+<ul>
+<li>Two hue families: sun (ochre and orange, b* +15 to +45) and air (violet-pink, b* −15 to +20). The only greens are dark olives (a* &lt; 0).</li>
+<li>Chroma peaks at mid values (L* 40–70) and collapses in the darks.</li>
+</ul>
+<h2>Depth, near to far</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>near banks</th>
+<th>framing trees</th>
+<th>left meadow</th>
+<th>island</th>
+<th>far banks</th>
+<th>far forest</th>
+<th>mountain</th>
+<th>sky</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>squint L*</td>
+<td>21</td>
+<td>16</td>
+<td>42</td>
+<td>28</td>
+<td>18</td>
+<td>20</td>
+<td>48</td>
+<td>71</td>
+</tr>
+<tr>
+<td>darkest 3% of pixels</td>
+<td><strong>0</strong></td>
+<td><strong>0</strong></td>
+<td>10</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+<td><strong>36</strong></td>
+<td>71</td>
+</tr>
+<tr>
+<td>median chroma</td>
+<td>23</td>
+<td>0</td>
+<td>28</td>
+<td>18</td>
+<td>8</td>
+<td>8</td>
+<td>19</td>
+<td>22</td>
+</tr>
+<tr>
+<td>b*</td>
+<td>+22</td>
+<td>0</td>
+<td>+27</td>
+<td>+17</td>
+<td>+8</td>
+<td>0</td>
+<td><strong>−5</strong></td>
+<td>+1</td>
+</tr>
+</tbody>
+</table>
+<h2>Silhouettes</h2>
+<table>
+<thead>
+<tr>
+<th>contour</th>
+<th>1:1 steps</th>
+<th>2:1</th>
+<th>flat run of 3–6, then one step</th>
+<th>drop of ≥ 3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mountain crest (left)</td>
+<td>41%</td>
+<td>3%</td>
+<td><strong>53%</strong></td>
+<td>0</td>
+</tr>
+<tr>
+<td>mountain right shoulder</td>
+<td>43%</td>
+<td>29%</td>
+<td>5%</td>
+<td>14%</td>
+</tr>
+<tr>
+<td>conifer line</td>
+<td>18%</td>
+<td>12%</td>
+<td>1%</td>
+<td>46%</td>
+</tr>
+</tbody>
+</table>
+<p>Masses meet water on a <strong>dead-flat base with a 1-px darker contact line</strong>. Shore stones: flat top and bottom, 45° ends, a light top row over a dark bottom row.</p></div><nav class="pager"><a href="toolkit/README.html">← The instruments</a><span class="label">2 of 2</span><a href="index.html">Contents →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>

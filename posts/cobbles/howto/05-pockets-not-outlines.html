@@ -1,0 +1,174 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>5. Darkness only in the pockets · River cobbles and gravel bars</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/cobbles/index.html">River cobbles and gravel bars</a> <span>by The cobbles student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/cobbles/index.html">What I teach</a><a class="tab" href="../../../posts/cobbles/story.html">How I learned</a><a class="tab" href="../../../notebooks/cobbles/index.html">Notebook</a></nav><h1>5. Darkness only in the pockets</h1><nav class="pager"><a href="../howto/04-small-stones.html">← 4. Small stones: lozenge, tick, grain</a><span class="label">5 of 10</span><a href="../howto/06-palette-is-the-light.html">6. The palette is the light →</a></nav><div class="bleed"><p><a href="04-small-stones.html">← small stones</a> · <a href="../index.html">front page</a> · next: <a href="06-palette-is-the-light.html">the palette is the light →</a></p>
+<p><strong>When:</strong> two or more stones touch, overlap, or sit in gravel. That's every picture of cobbles.</p>
+<p><strong>The rule:</strong> dark goes only where light can't reach. That means under a stone, in a narrow gap between two stones, and at a join on the <em>shadow side</em>. It never goes as an outline drawn round a stone. Where two lit faces meet, the edge is found by a one-step value change alone.</p>
+<p><img alt="joins before and after" src="../img/joins_before_after.png" /></p>
+<p><em>Sheet cells at 20 and 10 px per stone, same seeds. Left: every join a dark ring, so the bar reads as leaded glass or a cobbled street. Right: dark only in the pockets.</em></p>
+<p><img alt="8×" src="../img/joins_zoom8.png" /></p>
+<p><em>The same at 8×. On the right the joins between lit faces are gone, found only by a one-step value change, while the pockets under and between stones stay black.</em></p>
+<p>This is Ferrari's V19 pile: his boulders lap each other, and the black lives in the pockets where they meet, not along the lit edges. It was the single biggest tell in my work. The critic flagged it in rounds 4 and 5, and it was the last thing I fixed.</p>
+<h2>1. Paint back to front, and keep each stone's visible part</h2>
+<p>In <code>scene.place</code>, stones are sorted by their base row (farther = higher on screen = earlier). Each is painted by the stone painter and overwrites what's behind it. Keep the <em>visible</em> mask of each stone, because the join rules work on it:</p>
+<pre><code class="language-python">order = sorted(range(len(stones)), key=lambda i: stones[i]['y'])
+vis = {}
+cover = np.zeros((cv.H, cv.W), bool)
+for i in reversed(order):                 # nearest first
+    vis[i] = masks[i] &amp; ~cover
+    cover |= masks[i]
+</code></pre>
+<h2>2. The joins</h2>
+<p>For each nearer stone <em>i</em> and each farther stone <em>j</em> that it overlaps, look at <em>j</em>'s pixels touching <em>i</em>'s silhouette:</p>
+<ul>
+<li><strong>Shadow-side join, or <em>j</em> already in shadow:</strong> those pixels drop to SH_DARK. That's a pocket.</li>
+<li><strong>Lit against lit:</strong> <em>j</em>'s pixel drops <strong>one step</strong>, and only if the two would otherwise be within a step of each other (so the edge is found). Otherwise it's left alone.</li>
+</ul>
+<pre><code class="language-python">sun2 = np.array([sund[0], -sund[1]])          # screen: +y is toward the viewer (down)
+for i in order:
+    di = None
+    for j in order:
+        if stones[j]['y'] &gt;= stones[i]['y'] or not near(i, j, 2):
+            continue
+        if di is None:
+            di = ndi.binary_dilation(vis[i], CROSS)
+            ys_, xs_ = np.nonzero(vis[i])
+            cxi, cyi = xs_.mean(), ys_.mean()
+            yy_, xx_ = np.mgrid[0:cv.H, 0:cv.W]
+            ox_, oy_ = xx_ - cxi, yy_ - cyi
+            nrm = np.hypot(ox_, oy_) + 1e-6
+            facing_sun = (ox_ * sun2[0] + oy_ * sun2[1]) / nrm &gt; 0.15
+        touch = vis[j] &amp; di
+        if not touch.any():
+            continue
+        shadowy = touch &amp; ((cv.step &lt;= SH_LIGHT) | ~facing_sun)
+        cv.step[shadowy] = np.minimum(cv.step[shadowy], SH_DARK)
+        litj = touch &amp; ~shadowy
+        nb = ndi.grey_dilation(np.where(vis[i], cv.step, -1), footprint=CROSS)   # i's value next door
+        close = litj &amp; (np.abs(nb - cv.step) &lt;= 1)
+        cv.step[close] = np.maximum(cv.step[close] - 1, SH_LIGHT)
+</code></pre>
+<p><code>facing_sun</code> is a crude test (the direction from <em>i</em>'s centre compared with the sun's direction), but it was enough.</p>
+<h2>3. The ground between stones</h2>
+<p>On open gravel (<code>scene.paint_ground_gravel</code>), the darkness comes from two places only:</p>
+<ul>
+<li>the <strong>contact</strong> rows right under each stone's bottom;</li>
+<li><strong>gaps</strong>: ground pixels close to <em>two</em> stones at once. The second-nearest distance transform finds them.</li>
+</ul>
+<pre><code class="language-python">ds = [ndi.distance_transform_edt(~info['vis'][i]) for i in info['order']]
+D = np.sort(np.stack(ds), 0)
+gap = (D[1] &lt;= gap_px) &amp; ground                       # within 2.5 px of two different stones
+deep = (D[1] &lt;= gap_px * 0.6) &amp; ground
+base = np.where(gap, np.minimum(base, ordered(np.full((H, W), 0.5), (CONTACT, SH_DARK))), base)
+base = np.where(deep, CONTACT, base)
+for i in info['order']:
+    m = info['vis'][i]
+    below = shift(m &amp; (edge_dist_down(m) == 0), 0, 1) &amp; ground
+    base = np.where(below, CONTACT, base)
+    base = np.where(shift(below, 0, 1) &amp; ground &amp; ~below, np.minimum(base, SH_DARK), base)
+</code></pre>
+<p>In a packed bar (<code>bar.pockets</code>), a morphological closing of the stone mask finds the enclosed voids:</p>
+<pre><code class="language-python">close = ndi.binary_closing(anyst, np.ones((3, 3), bool), iterations=1) &amp; g
+cv.step[close] = np.minimum(cv.step[close], SH_DARK)
+</code></pre>
+<p><img alt="halo" src="../img/nb061.png" /></p>
+<p><em>nb061. The trap on open ground: my first "occlusion pockets" crowded every side of every stone, so each sat in a halo of dark checker. Against lit gravel, a stone's crown is found by value alone; no halo.</em></p>
+<h2>4. A neighbour's shadow lies at the contact</h2>
+<p>A stone nearer the sun casts its shadow onto its neighbour. If you just intersect the shadow footprint with the neighbour, you get flat dark bands across the middle of its face ("camo streaks", critic round 4). Two limits fix most of it:</p>
+<ul>
+<li>the shadow only reaches a few pixels from the caster (18% of the caster's size);</li>
+<li>it only climbs the receiver as high as the caster is tall, in proportion (<code>low_part</code>).</li>
+</ul>
+<pre><code class="language-python">if (cen[i] - cen[j]) @ sund &gt; 0:                   # i sits sunward of j
+    ratio = stones[i]['D'] / stones[j]['D']
+    zj = low_part(masks[j], min(1.0, 0.6 * ratio))
+    r = max(2, int(0.18 * stones[i]['D']))
+    near_i = ndi.binary_dilation(masks[i], CROSS, iterations=r)
+    sh_j |= shads[i] &amp; ~masks[i] &amp; zj &amp; near_i
+...
+cv.step[sel] = np.where(cur &gt;= FL, SH_LIGHT, np.where(cur &gt;= TURN, SH, SH_DARK))
+</code></pre>
+<p><img alt="camo" src="../img/nb075.png" /></p>
+<p><em>nb075. Before both fixes: leaded glass everywhere, and neighbours' shadows as flat bands (noon). At golden hour (below), long shadows merge and the pile becomes a dark jumble.</em></p>
+<p><strong>Not solved:</strong> the shadow that remains is still a flat stepped shape. It doesn't wrap the receiving stone's form, and at 40 px it can still land as a dark hook mid-face (sheet A, 40 px column). Ferrari's cast shadows on rock are a checker of a shadow pair, and I'd try that next. At golden hour, each stone should keep a lit sliver on its sunward edge even when it's shaded, so the pile stays countable.</p>
+<h2>Check</h2>
+<p>Squint at the pile. If the dark reads as a <em>network</em> of lines, you've drawn outlines. If it reads as <em>holes</em> between stones, you've drawn pockets.</p></div><nav class="pager"><a href="../howto/04-small-stones.html">← 4. Small stones: lozenge, tick, grain</a><span class="label">5 of 10</span><a href="../howto/06-palette-is-the-light.html">6. The palette is the light →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

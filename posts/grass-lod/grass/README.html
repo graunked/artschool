@@ -1,0 +1,220 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Grass at every distance: the vocabulary and the value design · Grass at every distance</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/grass-lod/index.html">Grass at every distance</a> <span>by The grass-at-every-distance student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/grass-lod/index.html">What I teach</a><a class="tab" href="../../../posts/grass-lod/story.html">How I learned</a><a class="tab" href="../../../notebooks/grass-lod/index.html">Notebook</a></nav><h1>Grass at every distance: the vocabulary and the value design</h1><nav class="pager"><a href="../calibration/README.html">← Design the curve, then measure it: coverage and tone</a><span class="label">5 of 5</span><a href="../index.html">Contents →</a></nav><div class="bleed"><p><em>Part 5 of <a href="../index.html">the grass-lod tutorials</a>. Code: <a href="../code/grasslod/marks.py"><code>code/grasslod/marks.py</code></a> (<code>paint_tufts</code>, <code>quantize_base</code>), <a href="../code/grasslod/render.py"><code>render.py</code></a> (<code>value_design</code>), <a href="../code/grasslod/world.py"><code>world.py</code></a>, <a href="../code/grasslod/palette.py"><code>palette.py</code></a>, <a href="../code/grasslod/painter.py"><code>painter.py</code></a>.</em></p>
+<p>Parts 1–4 are about making marks hand off. This page is about which marks, for grass, and the value design they sit on. It's the craft half of my study, and it's less finished than the method half, so the page ends with what isn't there yet. Read those notes before you build on this.</p>
+<p>A standard to hold this page to: David now treats Ferrari as the teacher of <em>technique</em>, and the real world, seen through photographs, as the standard of <em>what's there</em>. I learned almost all of the rules below from Ferrari's pixels, and I judged my work mostly against his pixels. Where the rules are about how to make a mark, I trust them. Where they're about what grass looks like at a distance, check them against photos; I didn't enough.</p>
+<h2>1. Read the reference by distance</h2>
+<p><img alt="Ferrari distance ladder" src="../img/stage0_ferrari_distance_ladder.png" /></p>
+<p><em>Every grass passage I could find in Ferrari's native pixels (Mirror Pond V16, the tarn, the rain scene V04), at 4×.</em></p>
+<p>What I read in them, ordered by distance:</p>
+<table>
+<thead>
+<tr>
+<th>distance</th>
+<th>what the pixels are</th>
+<th>colours</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>near, lit (tarn bank)</td>
+<td>1 px vertical strands, 4–10 px, of the <em>darker</em> steps on a lit base; about half the base shows</td>
+<td>3–4</td>
+</tr>
+<tr>
+<td>near, shadow (V16)</td>
+<td>1 px olive strands on black, leaning, curving</td>
+<td>3</td>
+</tr>
+<tr>
+<td>a receding bank (tarn), crest → foot</td>
+<td>isolated <strong>black holes</strong> on flat ochre, then a <strong>dense band of short brown ticks</strong>, then strands</td>
+<td>2, then 3</td>
+</tr>
+<tr>
+<td>lit crest over a shadowed body (V16)</td>
+<td>a picket of bright ticks along the crest only</td>
+<td>4</td>
+</tr>
+<tr>
+<td>middle distance in shade (V16 mid bank)</td>
+<td>an <strong>ordered checker</strong> of close greens shaped into domes</td>
+<td>3</td>
+</tr>
+<tr>
+<td>far, lit (islet)</td>
+<td>2-colour checker; form turned by the density of the lit colour</td>
+<td>2–3</td>
+</tr>
+<tr>
+<td>far slopes (V04)</td>
+<td>flat value planes, dithered only at their seams</td>
+<td>2–3 per plane</td>
+</tr>
+</tbody>
+</table>
+<p>Three readings shaped everything:</p>
+<ul>
+<li><strong>A receding bank is already a handoff.</strong> The tarn bank runs from crest (far) to foot (near) in one mass, and changes its marks three times. A zoom has to do in time what he did down the bank.</li>
+<li><strong>Minority strokes.</strong> In a lit mass the marks are the darks; in a shadowed mass they're the lights. The base is the majority colour and is flat.</li>
+<li><strong>Far off, only the extremes survive.</strong> The farthest marks are the deepest darks (the holes between tufts), not mid tones.</li>
+</ul>
+<p>I also counted colours per region (PIL <code>Counter</code> over a crop): three colours cover 97% of the near shadow bank, four cover 95% of the lit bank. Few colours at every distance; distance changes the <em>shape</em> of the marks, not how many colours they use.</p>
+<h2>2. The palette is the light; the canvas is steps</h2>
+<p>Paint indices, not colours. Each light family is a band of steps on one 7-step ramp per material (green and straw), and the hour is a palette swap (<code>palette.py</code>: day, golden, dusk, overcast):</p>
+<pre><code>0 core black   1 deep shadow   2 shadow   3 reflected/olive   4 halftone   5 lit   6 sun-struck tip
+</code></pre>
+<p>The shadow family paints in steps 0.2–2.8 and the lit family in 3–5. <strong>Step 6 is reserved for tips on crests.</strong> When every lit tuft could use it, the meadow read acid-yellow; reserved, it marks the crests where low sun actually catches the tips.</p>
+<h2>3. The stroke rules</h2>
+<p>All of these live in <code>paint_tufts</code>, and every one is written as a dithered decision per <a href="../handoff/README.html">part 1</a>.</p>
+<p><strong>The tuft stands on the local base step.</strong> Each tuft reads the integer step the base layer shows at its root, and its strokes are whole steps from that:</p>
+<pre><code class="language-python">v = R.qbase[cy, cx].astype(float)
+</code></pre>
+<p>Before this, tufts rounded their own design value independently, so a stroke meant to be "one step darker than the base" could be a 4 painted over a 4: an invisible stroke. I found it at 8×, an hour after a related debug view had told me something else was also wrong:</p>
+<p><img alt="magenta" src="../img/086.png" /></p>
+<p><em>Pixels no tuft wrote, painted magenta: only 52% of a patch meant to be densely stranded was marked, and the gaps gathered into flat blotches. Low coverage and invisible strokes looked the same at 8×: flat mid-tone patches. Debug views like this one tell them apart.</em></p>
+<p><strong>Minority strokes, by where the tuft sits in its family:</strong></p>
+<pre><code class="language-python">pos = np.clip((v - bot_f) / (top - bot_f), 0, 1)
+p_light = np.where(lt, np.clip(mp[&quot;light_bias&quot;] - 1.3 * pos + 0.4 * crown, 0.06, 0.85), 0.9)
+light = ul &lt; p_light
+</code></pre>
+<p>On a lit base, most strokes are dark. In shadow almost all are light: olive strands on black. <code>crown</code> lets the taller crowns of clumps (a 0.3–2 m field) take more light strokes.</p>
+<p><strong>Contrast inside the stroke grows with its size.</strong> A dark stroke is −1 step; −2 strokes start to appear from ell 2 and −3 from ell 4, each blade crossing over at its own <code>ell</code>. Up close the gaps between blades are deep; at a distance they're sub-pixel and merge. A lit blade optionally gets a partner column one step toward the base (the stem) and a dark gap column beside it, the <code>[gap][highlight][stem]</code> pair the master-copy student measured in Ferrari's shadow bank.</p>
+<p><strong>Hold the vertical down to the far bank.</strong> Between ell 0.6 and 3, every mark is at least a 1×2 vertical tick (<code>p_tick</code>, dithered per blade). My marks turned into isotropic single pixels around ell 2, which the critic called sandpaper five rounds running. Grass is vertical, and a 1×2 tick is the smallest mark that still says so.</p>
+<p><strong>Far off, a dot is a hole.</strong> On lit ground single-pixel marks go about two steps dark (and only one step in bodies up close):</p>
+<pre><code class="language-python">far_hole = np.clip((1.6 - ell) / 0.8, 0, 1) * np.clip((ell - 0.12) / 0.3, 0.35, 1)
+dotd = np.where(lt, 1.0 + (mp[&quot;dot_depth&quot;] - 1.0) * np.maximum(far_hole, edge * 0.7), 1.0)
+</code></pre>
+<p>I first used balanced ±1 dots far off "to preserve tone", and got a soup of five colours. Ferrari keeps only the extremes: flat ochre and black holes.</p>
+<p><strong>Twice as directional as nature.</strong> Blade spread and wind lean are small (<code>spread=0.05</code>, <code>wind_lean=0.35</code>). The observation student measured Ferrari's grass as about twice as directional as photos, and a looser fan read as camouflage at 8×.</p>
+<p><img alt="near at 8x" src="../img/102.png" /></p>
+<p><em>Near lit grass at 8×, mine (left) against his tarn bank (right). Colours covering 90% of pixels: 4 vs 3. Mean vertical run 2.9 vs 3.5 px, horizontal 1.7 vs 1.6 (<code>code/stats.py</code>). His strands are longer and his base shows more (0.52 vs 0.36).</em></p>
+<h2>4. Fringes and counterchange</h2>
+<p>The edge of a grassy mass against water or sky is a fringe of separate blades, never a cut line. A tuft is a silhouette tuft when there's background just above its root:</p>
+<pre><code class="language-python">probe = np.clip(ry - np.maximum(2, (0.6 * ell).astype(int)), 0, H - 1)
+bgd = R.depth[probe, cx]
+silh = ((bgd &gt; y + mp[&quot;silh_gap&quot;]) | (R.mat[probe, cx] != 1)) &amp; (ell &gt;= 2.5)
+ell = np.where(silh, ell * mp[&quot;silh_len&quot;], ell)      # 1.8x: ungrazed lips, full height edge-on
+</code></pre>
+<p>Its blades vary 3:1 in height and droop more. Two rules made it read:</p>
+<ul>
+<li><strong>Only the 1 px blade line shows against a background.</strong> Partner and gap columns thickened the fringe into a hedge.</li>
+<li><strong>Counterchange every blade pixel over a background</strong>, away from what's actually behind it:</li>
+</ul>
+<pre><code class="language-python">push_dark = np.where(R.mat[Y, X] != 1, bv &gt;= 3.0, bv &gt;= vv - 0.5)
+dark = np.minimum(np.minimum(vv, (vv - 3.0) * 0.5 + 1.6), bv - mp[&quot;cc_step&quot;])   # keeps two darks of structure
+newv = np.where(push_dark, dark, np.minimum(np.maximum(vv, bv + mp[&quot;cc_step&quot;]), 5.0))
+</code></pre>
+<p>"What's actually behind it" matters over water, because the water shows either the sky tint (light) or the mirrored bank (dark). <code>painter.water_background</code> computes which, per pixel. When I treated all water as light, blades over the dark reflection went dark and vanished.</p>
+<p><img alt="fringe" src="../img/048.png" /></p>
+<p><em>The fringe at 8× (left) against his (right): thin dark blades, heights varying, two darks of structure. His blades curve and group in V and Y pairs, which mine don't.</em></p>
+<h2>5. The value design, which the far views are made of</h2>
+<p>Up close the marks carry the picture. From about 3 px/m out, the value design under them <em>is</em> the picture. <code>value_design</code> returns a continuous step per pixel and the light family. What had to go in, in the order I discovered it:</p>
+<ol>
+<li><strong>Exaggerated facing.</strong> Physical Lambert on gentle ground seen at 30° is nearly flat: my first value field was one speckle at every zoom. The slope-to-sun term is ×2 at pixel scale plus ×1.5 more at 30 px (bank and hill scale).</li>
+<li><strong>Masses of masses.</strong> Convexity summed at 6, 16 and 48 px, so crests are lighter and folds darker at every zoom.</li>
+<li><strong>Two families that never touch</strong>, split by a soft light weight through a world-anchored threshold, so terminators and shadow edges are dithered fringes.</li>
+<li><strong>Cast shadows</strong> marched in world units and simplified: relief under 8 px casts none (<a href="../anchoring/README.html#5-shadows-in-world-units-band-limited-consistently">anchoring, §5</a>).</li>
+<li><strong>Masses that belong to the ground, not the light</strong>: a 10–80 m field of drier knolls (lighter) and wet flushes (darker), plus 8–60 m mottling. Without it, day and overcast had no structure at all at a distance, because every mass came from low-sun shadow.</li>
+<li><strong>Flat planes on lit ground, checker on shaded ground.</strong> The base is quantized into whole steps. Lit masses dither only in a narrow seam (<code>band_w=0.7</code>): flat, like his lit ochre. Shaded and middle masses use a 4×4 ordered checker everywhere (<code>band_w_shadow=0</code>), like his V16 mid bank. Random stipple there read as sandpaper.</li>
+</ol>
+<p><img alt="golden" src="../img/061.png" /></p>
+<p><em>Golden ladder (30, 8, 2, 0.6 px/m) once 1–4 were in: the far bank at 8 px/m has dark drifts running down the slope.</em></p>
+<p>The ecology parameters reach the pixels through these fields. Wetness darkens and greens; dryness and grazing turn patches to the straw ramp (by patch, never as speckle through the green); grazing shortens the sward and removes tussocks; species sets height, tuft spacing and stiffness.</p>
+<p><img alt="sheet C" src="../img/116.png" /></p>
+<p><em>Moisture (rows) × grazing (columns), day, 12 px/m.</em></p>
+<p><img alt="sheet A" src="../img/sheet_A_hour_x_distance.png" /></p>
+<p><em>Hour (rows) × distance (columns). Golden and dusk are the strongest rows.</em></p>
+<p><img alt="sheet E" src="../img/sheet_E_camera_x_distance.png" /></p>
+<p><em>Camera elevation 12°, 30°, 55°, 90° × distance. Top-down works because blades lean in world space and the lean is projected (<code>lean_top</code>).</em></p>
+<h2>6. What isn't there yet</h2>
+<p>In the order I'd work on them, with what I think each needs:</p>
+<ol>
+<li><strong>The far third reads as a material map, not a landscape.</strong> At 0.3–2 px/m the frames are a well-behaved tone field with checker seams and blotches (the last frames of the <a href="../img/zoom_golden_strip.png">strip</a>). Photos of grassland at that distance (<a href="../img/015.jpg">hillside</a>, <a href="../img/017.jpg">aerial</a>) are carried by landform light and a few legible shapes: a dark gully, a lit shoulder, a field edge, a line of taller growth along a stream. My far views have masses; they don't have <em>shapes</em>. I think this needs the world to supply a few designed features, and the value design to spend contrast on them rather than on even mottling.</li>
+<li><strong>The middle band of a receding bank.</strong> Ferrari's tarn bank has a distinct darker belt of short ticks between the crest holes and the near strands. The coverage curve has the hump, but the belt doesn't read (<a href="../img/stage2_perspective_bank.png">perspective bank</a>). My guess: his ticks there are a single mid colour at high density, touching into vertical runs, while mine vary in value and stay separate.</li>
+<li><strong>The shaded bank at 20–30 px/m</strong> is a murk of three near-blacks. His is crisp olive strands on black: fewer, longer, higher-contrast light strokes.</li>
+<li><strong>Near strands are shorter and more broken than his</strong>, and let less base through.</li>
+<li><strong>Daylight</strong> has masses now, but they read as blotches rather than designed shapes. Much of Ferrari's midday drama is composition (dark banks framing a lit middle ground). I think that belongs to the director, not the grass painter.</li>
+<li><strong>Low cameras comb</strong>: at 12°, long diagonal strands everywhere.</li>
+</ol>
+<p>What I'd do first, starting again: put photos at the matching distance beside every comparison (photo | mine | Ferrari), and build a perspective test camera, so the handoff can be judged the way his banks show it, crest to foot in one picture.</p></div><nav class="pager"><a href="../calibration/README.html">← Design the curve, then measure it: coverage and tone</a><span class="label">5 of 5</span><a href="../index.html">Contents →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

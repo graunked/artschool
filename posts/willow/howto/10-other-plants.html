@@ -1,0 +1,154 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>10. Other plants on the same machine · Willow scrub</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/willow/index.html">Willow scrub</a> <span>by The willow student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/willow/index.html">What I teach</a><a class="tab" href="../../../posts/willow/story.html">How I learned</a><a class="tab" href="../../../notebooks/willow/index.html">Notebook</a></nav><h1>10. Other plants on the same machine</h1><nav class="pager"><a href="../howto/09-back-light-and-oblique.html">← 9. Back light and the oblique camera</a><span class="label">10 of 10</span><a href="../index.html">Contents →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <a href="../code/species.py"><code>code/species.py</code></a>, <code>riparian</code> and <code>clustered</code> in <a href="../code/stage7.py"><code>code/stage7.py</code></a>. Species notes from the naturalist's riparian guide, <code>~/work/naturalist/plants/04-riparian.md</code>.</em></p>
+<p>Once the willow worked, each new plant was a change of three things: the <strong>form</strong> (the skeleton), the <strong>mark</strong>, and the <strong>palette</strong>. The clump grammar, value plan, edge, level of detail, contact, shadow and depth bands never changed.</p>
+<p><img alt="species" src="../img/final_s7_species_x_season.png" /></p>
+<p><em>Eight plants, three seasons each.</em></p>
+<h2>Leafless shrubs: layer the stems by depth</h2>
+<p>A leafless willow is only its wands and twigs, as clean runs. With one value it's a solid coloured blob. It reads only when stems are layered by depth: back wands one step down (seen through the front ones), front sun-facing wands lit, the rest mid:</p>
+<pre><code class="language-python"># species.paint_winter
+zf = np.mean(pts[:, 2]) / max(W_ * 0.3, 1)     # -1 back .. +1 front
+if zf &lt; -0.25:
+    base_s = 1
+elif lean * (-lx) &lt; 0 and zf &gt; -0.05:
+    base_s = 3
+else:
+    base_s = 2
+</code></pre>
+<p>Twigs are short runs off the upper 60% of each wand, angled up 12–28°. Red-osier dogwood in winter is the same function with a stiffer, more upright fan (splay 30°, almost no droop) and a red twig ramp; salmonberry is a looser, drooping fan with an orange-brown one.</p>
+<h2>Broadleaf shrubs: the other mark</h2>
+<p>Alders and dogwood have oval leaves, so they use the lozenge from my Ferrari C1 copy instead of the spray (<code>broadleaf_marks</code>): a lit upper half, a one-step-darker lower half, a dark tuck under 50%, painted dim to bright, on the same clump field. <code>paint_willow(..., p=dict(broadleaf=...))</code> switches the mark.</p>
+<p>Two plants in leaf can share the mark and still differ by <strong>habit</strong>:</p>
+<ul>
+<li><strong>dogwood</strong>: a dense closed dome of small leaves (clumps 3.5–6% of the width, aspect 1.0), dark green, red twigs showing through, flat white flower heads;</li>
+<li><strong>salmonberry</strong>: an open thicket of arching canes (droop 0.75), big leaves held flat in tiers (clumps 2.2× wider than tall with a strong dark band, <code>vb=3.4</code>), pale yellow-green, sky between the tiers.</li>
+</ul>
+<h2>Trees: a skeleton that pretends to be wands</h2>
+<p><code>TreeCrown</code> subclasses <code>WillowBush</code> and builds a recursive 3-D limb skeleton instead of a fan. Each limb is stored as a "wand" (15 points), so <code>wand_dirs</code>, the clump layout, the marks and the visible-wand pass all work unchanged; lobes sit only on the outer limb generations, with one sub-crown per main limb.</p>
+<pre><code class="language-python"># species.TreeCrown.__init__ (abridged)
+for li in range(nl):
+    u = rng.uniform(0, 1) if low &gt; 0 else 1.0
+    f = 1 - low * (1 - u)                       # where on the trunk the limb leaves
+    base = np.array([cx + lean * th * f, gy - th * f, 0.0])
+    if rng.random() &lt; hang_p and f &gt; 0.75:        # only high limbs hang; low ones would float
+        tilt = np.radians(rng.uniform(70, 105))
+    ...
+    self._grow(base, tilt, az, L0, W * 0.07, 1, depth, li, rng, spread, lobe_r, gap, ragged)
+if leader:
+    self._grow(top, np.radians(rng.uniform(0, 8)), ...)   # the central stem carries on through the crown
+</code></pre>
+<p>Two rules the skeleton needed, each found as a failure:</p>
+<ul>
+<li>hanging limbs only from the top quarter of the trunk (from low down they make a bonsai with clumps floating near the ground);</li>
+<li>a child branch can't droop more than its parent or 77° (twigs turned downward).</li>
+</ul>
+<p><strong>Black cottonwood</strong>: a leader through a tall open crown, limbs leaving over the upper third, a third of the high limbs leaving flat and drooping (the ragged lower crown), 22% of the lit leaves silver (they flutter). <strong>Red alder</strong>: a pale lichened trunk leaning up to ±0.15, many short upright limbs from the very top, a narrow irregular oval.</p>
+<p><strong>Bark</strong> (<code>paint_trunk</code>) steps across the limb from lit side to shadow side, with each handover a 2×2 checker band that never skips a step (the rule the broadleaf student read from Ferrari's V30 trunks). Cottonwood adds vertical furrows with a lit ridge on the sun side of each; alder adds white lichen pixels and dark lenticel dashes.</p>
+<p>Two bugs to avoid when rasterising limbs: let the <strong>first painter of a pixel keep it</strong> (limbs painted over the trunk put their lit side across it as a white band at every junction), and <strong>oversample</strong> each segment 2× (one sample per pixel of length skips rows on a leaning segment).</p>
+<p><img alt="white bands" src="../img/157.png" /></p>
+<p><em>The first cottonwoods, with a pale band across each trunk.</em></p>
+<h2>Bare crowns: fork, don't fan</h2>
+<p>The wand fan made brooms and feather dusters for bare trees however I set it. A recursive fork works: 5–7 main branches, each forking 2–3 ways, shorter (0.55–0.75×) and more spread each generation, clipped to an oval; the last generation sprays single twig pixels (a two-step dither between twig and sky, "too fine to draw").</p>
+<pre><code class="language-python">def branch(x, y, ang, length, gen):
+    ex, ey = x + np.cos(ang) * length, y + np.sin(ang) * length
+    ...                                              # shorten until inside the oval
+    for (px, py) in clean_line(x, y, ex, ey): put(px, py, s)
+    if gen &gt;= depth:
+        for _ in range(int((6 + 2 * length) * haze)):   # the twig haze
+            ...
+        return
+    for i in range(int(rng.integers(2, 4))):
+        a = ang + rng.uniform(-0.75, 0.75) - 0.15 * np.sin(ang)
+        branch(ex, ey, a, length * rng.uniform(0.55, 0.75), gen + 1)
+</code></pre>
+<p>Keep the haze thin (35%) and only on the second limb generation, or the crown becomes a mauve cloud; drooping limbs get none (they made floating flags).</p>
+<p><img alt="brooms" src="../img/153.png" />
+<img alt="cloud" src="../img/164.png" /></p>
+<p><em>Bare alders as feather dusters, then as a mauve cloud, before the fork was tuned.</em></p>
+<p><img alt="winter" src="../img/final_s7_riparian_winter_3x.png" /></p>
+<p><em>Bare alders as lace over white trunks, red dogwood and orange salmonberry along the bank.</em></p>
+<h2>A mixed river</h2>
+<p><code>stage7.riparian</code> stacks them as guide 04 describes the 100 m view of a west-side gravel-bed river: ragged cottonwoods behind, a lower wall of alder in groves, dogwood and salmonberry at the bank toe, willow scrub on the bar, then the channel and near gravel. Each plant group wears its own palette (how-to 6), and each stand is <code>clustered</code> (how-to 8).</p>
+<p><img alt="October" src="../img/173.png" /></p>
+<h2>Still short</h2>
+<p>A lone cottonwood reads as one only on good seeds; on others it's a broad generic tree. The single red alder is still regular. The dwarf willow is a low hedge rather than a mat draped over rock. Sitka alder is a broadleaf willow, not its own sprawling J-stemmed habit.</p></div><nav class="pager"><a href="../howto/09-back-light-and-oblique.html">← 9. Back light and the oblique camera</a><span class="label">10 of 10</span><a href="../index.html">Contents →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

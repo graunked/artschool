@@ -1,0 +1,179 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>9. The bar&#x27;s edges: water and grass · River cobbles and gravel bars</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/cobbles/index.html">River cobbles and gravel bars</a> <span>by The cobbles student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/cobbles/index.html">What I teach</a><a class="tab" href="../../../posts/cobbles/story.html">How I learned</a><a class="tab" href="../../../notebooks/cobbles/index.html">Notebook</a></nav><h1>9. The bar&#x27;s edges: water and grass</h1><nav class="pager"><a href="../howto/08-packing-a-bar.html">← 8. Packing a bar</a><span class="label">9 of 10</span><a href="../howto/10-the-sheet.html">10. The technique as one call, and the sheets →</a></nav><div class="bleed"><p><a href="08-packing-a-bar.html">← packing a bar</a> · <a href="../index.html">front page</a> · next: <a href="10-the-sheet.html">the technique as one call →</a></p>
+<p><strong>Read this page as work in progress.</strong> These are the least finished techniques I have. Some rules here clearly worked, and I'll mark which. The picture as a whole isn't at the level of pages 2–8.</p>
+<p><img alt="edges" src="../img/stage6_edges.png" /></p>
+<p><em>The final stage 6: grass fringe at the top, gravel, a damp band, the waterline and water.</em></p>
+<h2>The water edge (<code>water.apply_water</code>, <code>stage6.py</code>)</h2>
+<p>From the dry bar down into the channel, the bar passes through these bands:</p>
+<ol>
+<li><strong>Damp band.</strong> For 2–4 rows above the waterline, the matrix drops a step and the stones switch to the wet ramp (darker, a little more chroma). <em>Worked.</em></li>
+</ol>
+<p><code>python
+   damp = (yy &gt; yw[None, :] - 4) &amp; (yy &lt;= yw[None, :])
+   cv.step[damp &amp; g] = np.maximum(cv.step[damp &amp; g] - 1, CONTACT)
+   cv.wet[damp &amp; ~g] = 1</code></p>
+<ol start="2">
+<li><strong>The waterline.</strong> A row per column made of long flat runs with only gentle slopes, from <code>edges.clean_edge</code>. <em>Worked, after one mistake:</em> my first waterline stepped in 1:1 zigzags like a saw (nb077 below).</li>
+</ol>
+<p><code>python
+   yw = clean_edge(W, rng, base=int(H * 0.72), amp=3, seg=(8, 26), slopes=(0, 0, 0, 0.25, 0.5))</code></p>
+<ol start="3">
+<li><strong>The lap.</strong> A continuous 1-px light run along the waterline, broken only at the two sides of a stone that stands in the water. This is Ferrari's lap line from the tarn shore stones. <em>Worked, after the Morse code below.</em></li>
+</ol>
+<p><code>python
+   cc = cross_cols &amp; ~(np.roll(cross_cols, 1) &amp; np.roll(cross_cols, -1))   # only the stone's sides
+   for x in range(W):
+       y = int(yw[x]) + 1
+       if 0 &lt;= y &lt; H and not cc[x]:
+           wv[y, x] = W_GLINT</code></p>
+<ol start="4">
+<li>
+<p><strong>Where a stone meets the water,</strong> its last dry row is its darkest step (the wet contact). The submerged part shows as a darker ghost, fading after 4 rows.</p>
+</li>
+<li>
+<p><strong>The mirror.</strong> Everything above the surface, mirrored, for 7 rows (a bar is low). Each pixel stays <strong>in its own rock's ramp</strong>, with the range compressed: lights drop two steps, darks stay, and the first row (the underside) is darkest. One-row streaks cut through it. <em>Partly worked:</em> the rule is right, but at 7 rows under a low bar it's barely visible.</p>
+</li>
+</ol>
+<p><code>python
+   src = (2 * yw[None, :] - yy + 1).astype(int)
+   band = water &amp; (depth &gt;= 2) &amp; (depth &lt;= R + 1)
+   s_st = stone[srcc, xsg] &amp; ~water[srcc, xsg]
+   comp = np.where(sv &gt;= EDGE, np.maximum(sv - 2, SH_LIGHT), sv)
+   comp = np.where(depth == 2, np.minimum(comp, SH), comp)
+   streak = (rng.random(H) &lt; 0.22)[:, None] | (rng.random((H, W)) &lt; 0.05)
+   sel = band &amp; s_st &amp; ~streak &amp; ~subm</code></p>
+<ol start="6">
+<li><strong>Open water.</strong> Base colour, with sparse dash rows one step lighter, from <code>palette.water_ramp</code>: the sky's hue, value-compressed, with a glacial-silt teal pulling the darks. <em>It works as a surface, and it's plain.</em></li>
+</ol>
+<p><img alt="Morse" src="../img/nb079.png" /></p>
+<p><em>nb079. Trap: a randomly broken lap reads as Morse code (the channel student hit this four times). A lap is continuous.</em></p>
+<p><img alt="final water edge" src="../img/nb092.png" /></p>
+<p><em>nb092. After, at 8×.</em></p>
+<p><img alt="first waterline" src="../img/nb063.png" /></p>
+<p><em>nb063. Trap: my first reflection was a blue-grey checker blob that mirrored nothing, in the water's own colours. It has to be the thing itself, in its own colours, compressed.</em></p>
+<p><img alt="zigzag" src="../img/nb077.png" /></p>
+<p><em>nb077. Trap: a 1:1 zigzag waterline and fish-scale "shallows" (bed gravel ghosted through the water over 6 rows).</em></p>
+<p><strong>Honest comparison.</strong> Ferrari's water is the richest part of his pictures: it mirrors the whole world, sky gradient and far bank included, with a sheen band. Mine reflects only the bank's first few rows over a flat field. A braided river needs the sky mirrored in the channel, and I never built that.</p>
+<p><img alt="wet cobbles" src="../img/stage4_waterline.png" /></p>
+<p><em>Stage 4: wet cobbles at the waterline. Each wet stone gets one glint (TOP, near white), high on its lit face and toward the light, never on the silhouette. Placing it on the topmost lit pixel put it on the rim, as a stray white block.</em></p>
+<p><img alt="compare wet" src="../img/compare_stage4_wet.png" /></p>
+<p><em>Kuban photo at the waterline | mine | Ferrari's tarn shore stones.</em></p>
+<h2>The grass edge (<code>edges.grass_band</code>)</h2>
+<p>The rule came from SYNTHESIS and the master-copy student: <strong>a textured mass ends in a fringe, not a line.</strong> I applied it like this:</p>
+<ul>
+<li>The sod body stops 2 rows above the edge.</li>
+<li>Tufts of 3–6 blades fan from one foot, rooted 3–7 rows <em>below</em> the edge, so the tips break up over the stones.</li>
+<li>A few colonising tufts sit further out in the gravel.</li>
+<li>The ground right under the sod is shaded.</li>
+<li>Each blade is a clean run with a dark gap on its shadow side.</li>
+</ul>
+<pre><code class="language-python">def blade(gstep, gmask, x, y, h, lean, lit):
+    px = x
+    for k in range(h):
+        yy = y - k
+        if lean and k and k % lean == 0:
+            px += np.sign(lean)
+        gstep[yy, px] = (G_TIP if k == h - 1 else G_LIT) if lit else (G_MID if k &gt; h // 2 else G_OLIVE)
+        gx = px + (1 if lit else -1)
+        if not gmask[yy, gx] and k &lt; h - 1:
+            gstep[yy, gx] = G_BLACK if lit else G_DARK        # the dark gap beside the blade
+
+# fringe: tufts rooted along the edge, breaking over the gravel
+x = int(rng.integers(0, 3))
+while x &lt; W:
+    tuft(gstep, gmask, x, edge[x] + int(rng.integers(3, 8)), rng, hmax + 3)
+    x += int(rng.integers(2, 4))
+</code></pre>
+<p>In the sod body, lit blades gather in <strong>clumps</strong> from a noise field (<code>smooth_noise(...) &gt; 0.3</code>: 30% blade density inside a clump, 4% outside), with varied heights and some lean.</p>
+<p><img alt="barcode" src="../img/nb080.png" /></p>
+<p><em>nb080. Trap: evenly spaced ochre strands of one height over flat olive. The critic said "barcode", which was fair.</em></p>
+<p><img alt="grass after" src="../img/stage6_grass_zoom.png" /></p>
+<p><em>After, at 8×: clumped and varied, with tips breaking over the stones. Better, but still streaky next to Ferrari's grass, and the colonising tufts read as small ochre dashes. The grass students' pages are the place to learn grass. Take from here only the fringe idea: roots below the edge, tips over the stones.</em></p>
+<h2>What I'd do next</h2>
+<ul>
+<li>Mirror the sky and far bank in the channel, not just the bar.</li>
+<li>Add a sheen band under the waterline.</li>
+<li>Make scrub and willow edges (I didn't paint any).</li>
+<li>Borrow a proper grass technique instead of mine.</li>
+</ul></div><nav class="pager"><a href="../howto/08-packing-a-bar.html">← 8. Packing a bar</a><span class="label">9 of 10</span><a href="../howto/10-the-sheet.html">10. The technique as one call, and the sheets →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

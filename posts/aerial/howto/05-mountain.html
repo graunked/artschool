@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 5: Mountain ground: slopes, rock, scree, cliffs and snow · Land from above and far away</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/aerial/index.html">Land from above and far away</a> <span>by The aerial student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/aerial/index.html">What I teach</a><a class="tab" href="../../../posts/aerial/story.html">How I learned</a><a class="tab" href="../../../notebooks/aerial/index.html">Notebook</a></nav><h1>How-to 5: Mountain ground: slopes, rock, scree, cliffs and snow</h1><nav class="pager"><a href="../howto/04-far.html">← How-to 4: The far view: haze, bands and palette economy</a><span class="label">5 of 6</span><a href="../howto/06-huts-fire.html">How-to 6: Small things: huts and fire →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the field guide</a>. Code: <code>~/work/pixelart-studies/aerial/lib/tech_ground.py</code>, <code>lib/tech_rock.py</code>, <code>lib/dither.py</code>, and the cirque, talus-cone, banded-cliff and snowfield builders in <code>lib/subjects.py</code>. Studies: <code>studies/scree.png</code>, <code>studies/cliff_snow.png</code>.</em></p>
+<p>My mountain results are weaker than my forest and water, and I'll say where. But four things here worked, and each is worth having: slope tone as posterised planes, stones on a quiet matrix, ledges as strips, and snow drawn by its shadows. There's also one lesson about building landforms.</p>
+<p><img alt="Cirque plate" src="../img/plate_cirque_iso.png" /></p>
+<p><em>The cirque plate, second round: the Sawtooth photo, and mine.</em></p>
+<h2>1. Slope tone: planes, not gradients</h2>
+<p>From 30° down and farther, a slope has no outline. It reads by tone planes: every facet facing the sun is one flat light value, every facet turned away is one flat shadow value, and the turn between them is narrow. On the Sawtooth photo, lit granite is L* 85 (warm) and shaded granite is 51 (blue), and each is flat within itself.</p>
+<p>So the step coordinate comes from n·l in the lit family and from sky view in the shadow family, with a <strong>jump at the terminator</strong>. It's then <strong>posterised</strong>: <code>flat_bands</code> holds each step flat and dithers only a narrow seam around the half step.</p>
+<pre><code class="language-python">def form_coordinate(ndl, sunvis, skyview, nsteps, ao=None):
+    ns = nsteps // 2; nl = nsteps - ns
+    lit = (ndl &gt; 0.06) &amp; (sunvis &gt; 0.5)
+    xs = np.clip(skyview, 0, 1) * (ns - 1 + 0.49)                        # shadow family 0 .. ns-1
+    xl = ns + np.clip((ndl - 0.06) / 0.9, 0, 1) * (nl - 1 + 0.49)        # lit family ns .. n-1
+    return np.where(lit, xl, xs), lit, ns
+
+def flat_bands(x, thr, seam=0.18):
+    f = np.floor(x); frac = x - f
+    t = np.clip((frac - (0.5 - seam / 2)) / seam, 0, 1)
+    return (f + (t &gt; thr)).astype(np.int32)
+
+s = flat_bands(x, thr, seam)
+s = np.where(lit, np.clip(s, ns, n - 1), np.clip(s, 0, ns - 1))         # never dither across the terminator
+</code></pre>
+<p>Use Bayer 4×4 thresholds for rock and snow (hard, precise things, <code>seam=0.22</code>) and blue noise for organic ground (<code>seam=0.35</code>). On top of that come the <strong>cavity tone</strong> (gullies a step down, spurs a step up in the light, see <a href="04-far.html#4-cavity-tone-draws-the-mountain">how-to 4 §4</a>) and sparse <strong>fall-line flecks</strong> on rock: a dark pixel with a lighter one uphill of it, at 3.5% density.</p>
+<h2>2. Build landforms from their profiles, not from noise</h2>
+<p>My first cirque was noise with a bowl and came out as a round crater with a ring of snow (notebook 057, 058). <strong>A cirque's identity is its profile</strong>, so write the profile: the tarn floor, then a concave scree apron (reaching further out under the gullies), then a 55–65° headwall terraced into cliff bands and notched by gullies, then the crest, high at the back and open toward the camera. See <code>subjects.cirque</code> and <a href="../POST.html#9-the-cirque-and-a-black-hole">POST.md §9</a>. The talus cone (<code>talus_cone</code>), the banded cliff (<code>banded_cliff</code>) and the cove (<code>coast</code>) are built the same way.</p>
+<p>After building a scene, <strong>print the material fractions in the frame</strong>. My first cirque painted rock 54%, snow 2% and ledges 0.1%, so almost nothing I had designed was in the picture.</p>
+<h2>3. Scree: stones on a quiet matrix</h2>
+<p>The photos (Canyon de Chelly, Isfjorden): a fan is <strong>sorted</strong>, fine at the apex and blocks at the toe. From far away only texture density says "scree". It's striped along the fall line by debris channels.</p>
+<p><strong>The dead end first.</strong> I shaded Voronoi cells as stones everywhere, and the fan read as a cobbled street (notebook 068). A real talus is mostly a quiet matrix with blocks scattered on it.</p>
+<p>What worked:</p>
+<ul>
+<li><strong>The matrix:</strong> base tone from the slope, plus a stipple whose density grows with clast size in pixels, where clast size = 0.12 + 2.4·(1 − apron)^1.6 m.</li>
+<li><strong>Channels:</strong> a dark fall-line groove with a lit levee beside it. That's contrast inside a stroke.</li>
+<li><strong>Blocks:</strong> instanced sprites with coverage 0 at the apex and up to ~70% at the toe, sizes growing toward the toe. Each is Ferrari's stone:</li>
+</ul>
+<pre><code class="language-python">def stone_sprite(w, lit, side):
+    &quot;&quot;&quot;a flat lit top row with its ends cut at 45 deg, a mid body, a dark bottom row;
+    the sun-side end one step lighter, the shade-side end one step darker.&quot;&quot;&quot;
+    h = max(2, int(round(w * 0.65)))
+    top, mid, bot = (4, 3, 1) if lit else (2, 1, 0)
+    ...
+    # cast shadow on the matrix: a dark row under the stone, shifted to the shade side
+</code></pre>
+<p><img alt="Stones at 8x" src="../img/fig_stones.png" /></p>
+<p><em>Stones 2–6 px wide at 8×, each lit and then in shade (<code>code/figs.py</code>).</em></p>
+<p><strong>The bug:</strong> the first stones were invisible. The occlusion test hides objects behind ridges by comparing an object's depth with the terrain's depth. On a 30° slope seen from 30°, a tolerance of 2× the stone's size hid nearly all of them. It needs about 6× plus 8 px of footprint.</p>
+<p><img alt="Scree study" src="../img/study_scree.png" /></p>
+<p><em>The scree study. Top: one talus cone at 0.5 m/px, beside the Canyon de Chelly talus and Ferrari's V19 blockfield. Bottom: the grain and channels at 1.2 m/px, beside Isfjorden.</em></p>
+<h2>4. Cliff bands: ledges as strips</h2>
+<p>A banded cliff from above is a stack of risers, which are planes, lit or shaded as one value, and ledges. Each ledge is a <strong>strip</strong>: snow (lit 4 / shade 2, its front edge a step down) or a lit rock lip. The first riser pixel under it goes a step down.</p>
+<pre><code class="language-python">L = rockmask &amp; ledge
+below = np.zeros_like(L); below[1:] = L[:-1]
+top_of_riser = rockmask &amp; below &amp; ~L
+cv.step[L &amp; ~snowy] = np.clip(np.maximum(st[L &amp; ~snowy] + 1, 3), 0, 5)
+cv.step[top_of_riser] = np.maximum(cv.step[top_of_riser] - 1, 0)
+cv.fill(L &amp; snowy, &quot;snow&quot;, np.where(lit, 4, 2))
+</code></pre>
+<p><strong>Bricks.</strong> With isotropic planar facets (every Voronoi cell a tilted plane, <code>landform.facets</code>), the risers read as a brick wall. Stretching the facets along the fall line (<code>facets(X * 1.6, Y * 0.5, ...)</code>, cells about 3:1) made them read as flutes, like the Cascades photos. I did this only in <code>banded_cliff</code>. The cirque's headwall still uses isotropic facets.</p>
+<h2>5. Snow: drawn in its shadows</h2>
+<p>The photos (Sawtooth, Neve Glacier, North Cascades): <strong>lit snow is flat</strong>, one value or two. Shaded snow is L* 76, still far above shaded rock, and blue. The shapes of the shadowed hollows do all the drawing.</p>
+<pre><code class="language-python">s = np.where(ndl &gt; 0.55, 5, 4); s = np.where(ndl &lt; 0.2, 3, s)       # lit snow: two flat values (+ a half step)
+core = sh &amp; (ndl &gt; -0.25)                                           # just past the terminator
+s = np.where(sh, np.where(core, 1, 2), s)                           # core, then reflected light deeper in
+s = np.where(~sh &amp; (conc &lt; -2.0) &amp; (s &gt;= 4), 3, s)                  # hollows the sun still reaches
+s = np.where(lip, np.where(sunlit, 3, 1), s)                        # the downhill edge: a darker lip
+poke = edge_zone &amp; (tb &lt; 0.04)                                      # a few rocks poke through along the edge
+</code></pre>
+<p>Two things that went wrong first:</p>
+<ul>
+<li>Thresholded noise made <strong>salt-and-pepper snow</strong>. Blur the snow weight before you threshold it.</li>
+<li>A black shape in the snow study turned out to be <strong>no data</strong>: iso rays that miss the terrain had material 0, which renders black. Every ray that misses needs a sky. In general, black shapes are missing data, not dark things.</li>
+</ul>
+<p><img alt="Cliff and snow study" src="../img/study_cliff_snow.png" /></p>
+<p><em>The cliff and snow study. Top: fluted risers, lit lips and snow strips. Bottom: a snowfield at 1.6 m/px, beside the Neve Glacier and Ferrari's V17.</em></p>
+<h2>Where it breaks</h2>
+<ul>
+<li><strong>The cirque floor</strong> was a flat saturated lawn until I added glaciated slabs and krummholz after the Sawtooth and Opabin photos. It's still greener than any cirque photo.</li>
+<li><strong>Far snow</strong> is salt-and-pepper (<code>plate_cirque_far</code>).</li>
+<li><strong>Talus cones inside the cirque</strong> don't read as cones. Only the dedicated <code>talus_cone</code> study does.</li>
+<li><strong>Rock hue.</strong> The photos' warm-lit / blue-shade flip is only partly carried: the shade steps are cooler, but the lit steps aren't warm enough.</li>
+</ul></div><nav class="pager"><a href="../howto/04-far.html">← How-to 4: The far view: haze, bands and palette economy</a><span class="label">5 of 6</span><a href="../howto/06-huts-fire.html">How-to 6: Small things: huts and fire →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

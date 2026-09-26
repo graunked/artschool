@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>3. Fix the form, not the paint · River cobbles and gravel bars</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/cobbles/index.html">River cobbles and gravel bars</a> <span>by The cobbles student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/cobbles/index.html">What I teach</a><a class="tab" href="../../../posts/cobbles/story.html">How I learned</a><a class="tab" href="../../../notebooks/cobbles/index.html">Notebook</a></nav><h1>3. Fix the form, not the paint</h1><nav class="pager"><a href="../howto/02-lit-stone.html">← 2. The lit rounded stone, in four passes</a><span class="label">3 of 10</span><a href="../howto/04-small-stones.html">4. Small stones: lozenge, tick, grain →</a></nav><div class="bleed"><p><a href="02-lit-stone.html">← the lit stone</a> · <a href="../index.html">front page</a> · next: <a href="04-small-stones.html">small stones →</a></p>
+<p><strong>When:</strong> your stones look like eggs, their terminators like moon phases, or their lit faces like pegboard. Those are <em>form</em> problems, and more dither or more noise won't fix them.</p>
+<p><img alt="eggs" src="../img/nb053.png" /></p>
+<p><em>nb053. Before. Real 3D ellipsoids, lit correctly: every family and every band is there. It's still wrong: every stone is the same perfect ellipse, the terminator is a clean S-curve, and the lit face is an even lattice of light dots.</em></p>
+<p><img alt="faceted" src="../img/stage1_lights_sizes.png" /></p>
+<p><em>After. The same painter, the same lights, the same sizes. The stones are lopsided and cut by planes, so the terminator steps where a facet turns away and the brightest plane is flat.</em></p>
+<p>Look at the photos. A river cobble is a flattened, lopsided disc, a rounded triangle or a loaf. It has a <strong>flat top plane</strong>, one fatter end, and a straightish underside. Water wear rounds its <em>edges</em>, but it keeps its <em>planes</em>.</p>
+<p><img alt="photos at pixel sizes" src="../img/nb026.png" /></p>
+<p><em>nb026. Photo crops of single cobbles, then area-averaged to 40, 16 and 8 px wide in grey. At 16 px what survives is a flat lit top and a dark underside. At 8 px, a light blob over a dark one.</em></p>
+<h2>The 3D cobble (<code>cobble.stone_points</code>)</h2>
+<p>Build the stone as geometry and use it <strong>only as a source of normals</strong> for the painter on <a href="02-lit-stone.html">page 2</a>. Start from a flattened superellipsoid with a few broad lumps, then make it lopsided, then cut it with planes:</p>
+<pre><code class="language-python">def stone_points(D, elong=1.35, flat=0.5, n=2.4, lump=0.06, sink=0.12, yaw_deg=0.0, rng=None, res=220,
+                 facets=6, cut=(0.72, 0.92), asym=0.18, round_px=0.06):
+    a = D / 2.0; b = a / elong; c = a * flat
+    ...
+    X = a * sgnpow(np.cos(th), e) * sgnpow(np.cos(ph), e)       # superellipsoid, exponent 2/n
+    Y = b * sgnpow(np.cos(th), e) * sgnpow(np.sin(ph), e)
+    Z = c * sgnpow(np.sin(th), e) * np.ones_like(ph)
+    # lumps: a few low-order bumps in direction space (water-worn: broad, never sharp)
+    for _ in range(5):
+        v = unit(rng.normal(size=3))
+        k += lump * rng.normal() * np.exp((dirs @ v - 1) * 2.5)
+    ...
+    # lopsided: one end fatter (eggs, loaves, rounded triangles -- never a perfect ellipse)
+    if asym:
+        g = rng.uniform(-asym, asym)
+        h = rng.uniform(-asym, asym) * 0.7
+        P = P * np.stack([1 + g * P[..., 0] / a, 1 + h * P[..., 0] / a + g * P[..., 1] / b * 0.5,
+                          np.ones_like(P[..., 0])], -1)
+    # water-worn facets: planar cuts through the dome (a flat top plane always; a few side planes)
+    # soften the crease over a narrow band so worn edges stay rounded but planes stay flat
+    if facets:
+        Nf = N.copy()
+        dirs_c = [np.array([0.0, 0.0, 1.0])]
+        for _ in range(facets):
+            v = rng.normal(size=3); v[2] = abs(v[2]) * 0.8 + 0.1
+            dirs_c.append(unit(v))
+        for j, v in enumerate(dirs_c):
+            proj = P @ v
+            d = proj.max() * (rng.uniform(*cut) if j else rng.uniform(0.78, 0.9))
+            ex = proj - d
+            P = P - np.clip(ex, 0, None)[..., None] * v        # push points back onto the plane
+            w = np.clip(ex / (round_px * D + 1e-6), 0, 1)[..., None]
+            Nf = unit_rows(Nf * (1 - w) + v * w)                # normal blends to the plane's
+        N = Nf
+</code></pre>
+<p>The first cut is always the <strong>top plane</strong> (straight up, taken at 78–90% of the height). The others lean upward (<code>v[2] = abs(v[2]) * 0.8 + 0.1</code>), so the planes you see from above are side facets, not undercuts.</p>
+<h2>Seeing it (<code>stone.cobble_geom</code>)</h2>
+<p>Sink it into the gravel, look down at 45° with an orthographic camera, z-buffer the samples at 4×4 subpixels, and keep the mask where coverage ≥ 50%. The ground shadow is the same points projected along the sun onto z = 0:</p>
+<pre><code class="language-python">P, Nw, hgt = cb.stone_points(D, elong, flat, n, lump, sink, yaw, rng, res=int(np.clip(D * 5, 40, 220)))
+Pa = P[P[:, 2] &gt;= 0]
+t = Pa[:, 2] / max(Lw[2], 0.08)
+G = Pa - t[:, None] * Lw[None, :]                   # shadow footprint on the ground
+cov, Nm, Zm = cb.rasterize(P, Nw, view, W, H, cx, cy)
+m = convex_clean(cov &gt;= 0.5)
+Ns = world_to_screen(Nm, pitch)                    # screen normals for paint_stone
+</code></pre>
+<p>The defaults I settled on: <code>pitch=45</code>, <code>sink=0.3</code>, <code>flat=0.65</code>, <code>n=2.0</code>, <code>lump=0.12</code>. At 35° and hardly sunk, it's a macaron:</p>
+<p><img alt="macaron" src="../img/nb024.png" /></p>
+<p><em>nb024. My first 3D cobble: pitched 35°, sunk 12%. From the side it reads as a biscuit.</em></p>
+<h2>Clean silhouettes: the digital convex hull</h2>
+<p>Cobbles are convex, and a digitally convex outline has monotone run lengths in each octant, which is exactly Ferrari's clean stepped curve. Replace the rasterised mask by the hull of its <strong>pixel centres</strong>:</p>
+<pre><code class="language-python">def convex_clean(mask, eps=1e-6):
+    ys, xs = np.nonzero(mask)
+    hull = ConvexHull(np.stack([xs, ys], 1).astype(float))
+    cxy = np.stack([xx, yy], -1).reshape(-1, 2).astype(float)
+    inside = np.all(cxy @ hull.equations[:, :2].T + hull.equations[:, 2] &lt;= eps, axis=1)
+    return inside.reshape(H, W)
+</code></pre>
+<p><img alt="boxy" src="../img/nb050.png" /></p>
+<p><em>nb050. The bug: my first hull took all four corners of every pixel and kept anything within 0.35 px of it. Every stone grew half a pixel and got long flat sides. Hull the centres, with no slack.</em></p>
+<h2>And the paint half: band the face</h2>
+<p>Faceting gives flat regions of nearly equal N·L. Map those linearly onto a dither and you get pegboard again. Band the face coordinate, so each step is flat for most of its range with a short checker seam (<a href="02-lit-stone.html">page 2</a>, pass 2):</p>
+<pre><code class="language-python">lo_ = np.floor(x); f_ = x - lo_; bw = P.get('band', 0.45)
+x = lo_ + np.clip((f_ - (0.5 - bw / 2)) / bw, 0, 1) * 0.999
+</code></pre>
+<h2>Trap: trying to paint your way out</h2>
+<p>Before I touched the geometry, I raised the paint lumps from 0.18 to 0.28. The stones got blotchy and stayed eggs. The critic's note was about the <em>outline</em>, and nothing in the paint pass can change an outline. When a stone looks wrong at 1×, check the shape first.</p></div><nav class="pager"><a href="../howto/02-lit-stone.html">← 2. The lit rounded stone, in four passes</a><span class="label">3 of 10</span><a href="../howto/04-small-stones.html">4. Small stones: lozenge, tick, grain →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

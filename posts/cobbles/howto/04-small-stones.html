@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>4. Small stones: lozenge, tick, grain · River cobbles and gravel bars</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/cobbles/index.html">River cobbles and gravel bars</a> <span>by The cobbles student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/cobbles/index.html">What I teach</a><a class="tab" href="../../../posts/cobbles/story.html">How I learned</a><a class="tab" href="../../../notebooks/cobbles/index.html">Notebook</a></nav><h1>4. Small stones: lozenge, tick, grain</h1><nav class="pager"><a href="../howto/03-form-before-paint.html">← 3. Fix the form, not the paint</a><span class="label">4 of 10</span><a href="../howto/05-pockets-not-outlines.html">5. Darkness only in the pockets →</a></nav><div class="bleed"><p><a href="03-form-before-paint.html">← form before paint</a> · <a href="../index.html">front page</a> · next: <a href="05-pockets-not-outlines.html">pockets, not outlines →</a></p>
+<p><strong>When:</strong> any stone under about 9 px, and any surface where stones shrink with distance until they are smaller than a pixel.</p>
+<p>The dithered painter from <a href="02-lit-stone.html">page 2</a> needs room. A Bayer 2×2 checker and a three-band crescent can't fit on a 6 px stone, and what comes out is mush. Below that size the stone has to become a <em>mark</em>, and the mark changes class twice more as it shrinks. The trick is that each class hands off to the next with no pop.</p>
+<p><img alt="the ladder in a bar" src="../img/ladder_classes.png" /></p>
+<p><em>Which mark paints each pixel of a bar. Blue: the full stone painter (5 px and up). Amber: the tick stamp (2–5 px). Grey: the grain matrix (below 2 px), which shows only where no stone or tick covers it.</em></p>
+<h2>Under 9 px: Ferrari's shore-stone lozenge</h2>
+<p>Ferrari's stones at the dusk tarn's shore are three or four <strong>flat</strong> values, with no dither at all: a light top row, a mid body and a dark bottom row, with the ends clipped at 45°.</p>
+<p><img alt="his shore stones" src="../img/nb002.png" /></p>
+<p><em>Ferrari's shore stones (the tarn at dusk), from the analysis student's study.</em></p>
+<p>In <code>paint_stone</code>, a stone narrower than <code>small=9</code> px skips the dither and quantises to flat classes:</p>
+<pre><code class="language-python">if size &lt; P.get('small', 9):
+    # small stones (Ferrari's shore lozenges): 3-4 FLAT values, no dither -- light top row,
+    # mid body, dark bottom row; the shadow side one flat shadow step
+    xq = np.where(s &gt; np.percentile(sm, 60), 3, 2)            # FL on the sunward 40%, else FD
+    xq = np.where(s &lt; ta, 1, xq)                               # TURN where it turns away
+    xq = np.where(e_up == 0, np.maximum(xq, 3 if size &gt;= 4 else 2), xq)   # light top row
+    xq = np.where(e_dn == 0, 0, xq)                            # dark bottom row
+    v = np.asarray(classes)[xq]
+    vs = np.where(e_dn == 0, shadow_classes[0], shadow_classes[2])
+    v = np.where(lit | (e_up == 0), v, vs)
+    out[m] = v[m]
+    return v
+</code></pre>
+<p>Leave out the contact line below 9 px too (<code>if D &gt;= 9: contact_under(out, m)</code>): at that size the stone's own dark bottom row <em>is</em> the contact.</p>
+<p><img alt="small sizes" src="../img/nb055.png" /></p>
+<p><em>nb055. 10, 6 and 4 px under four suns. The 6 and 4 px stones read as pebbles. The 10 px one, just above the switch, still reads as a little hat: a light cap on a hard dark base. I never fully fixed it, so treat 9–11 px as the size to check by eye.</em></p>
+<h2>2–5 px: the tick stamp (<code>bar.tick_stamp</code>)</h2>
+<p>In a bar, stones between 2 and 5 px don't go through the painter at all. They are stamped as rows:</p>
+<pre><code class="language-python">def tick_stamp(cv, x, y, D, rock, sun_left, rng):
+    &quot;&quot;&quot;a 2-4 px stone: rows [light top] [mid/dark body] [dark bottom], ends clipped at 45 deg.&quot;&quot;&quot;
+    w = max(2, int(round(D)))
+    h = max(1, int(round(D * 0.6)))
+    x0 = int(round(x - w / 2)); y0 = int(round(y - h))
+    for r in range(h + 1):
+        for c in range(w):
+            if (r == 0 or r == h) and (c == 0 or c == w - 1) and w &gt;= 3:
+                continue                                 # 45-degree ends
+            ...
+            if r == 0:
+                st = FL
+            elif r == h:
+                st = SH_DARK if rng.random() &lt; 0.5 else SH_LIGHT   # the pocket under the tick
+                cv.step[Y, X] = st; cv.mat[Y, X] = -1
+                continue
+            else:
+                st = FD if r &lt; h - 1 else EDGE
+            # the side away from the sun turns
+            if (c == w - 1 and sun_left) or (c == 0 and not sun_left):
+                st = min(st, TURN) if r &gt; 0 else FD
+            cv.step[Y, X] = st
+            cv.mat[Y, X] = ROCK_IDS[rock]
+</code></pre>
+<p>This is the analysis student's "two values in a single stroke": the contrast lives inside the mark.</p>
+<h2>Under 2 px: grain, and the matrix is dark</h2>
+<p>Below 2 px, a stone isn't drawn at all. The surface under everything is a stipple of adjacent steps (<code>bar.grain_fill</code>). Each lit grain pixel gets a darker pixel under it, and the contrast falls with distance:</p>
+<pre><code class="language-python">def grain_fill(cv, region, contrast, lit_share, rng, shadow=None):
+    r = rng.random((H, W))
+    # clumpy (2x1 pebbles read better than white noise): light pixel with a dark one below
+    light = r &lt; lit_share
+    dark = shift(light, 0, 1) &amp; ~light &amp; (rng.random((H, W)) &lt; contrast)
+    # the matrix of a clast-supported bar is mostly VOID between grains: dark, with lit grain tops
+    mid = np.where(contrast &gt; 0.5, EDGE, TURN)
+    lo = np.where(contrast &gt; 0.5, SH_LIGHT, EDGE)
+    hi = np.where(contrast &gt; 0.3, FD, TURN)
+    st = np.where(light, hi, np.where(dark, lo, mid))
+</code></pre>
+<p>In <code>bar()</code>, contrast is a function of the row's scale: <code>contrast = np.clip((scale(yy) - px_per_m_far) / 60.0, 0.15, 1)</code>. Near, it's a full light-over-dark pair. Far, it's two adjacent steps, and finally nearly flat.</p>
+<h3>The trap that taught me the matrix</h3>
+<p><img alt="beach" src="../img/nb068.png" /></p>
+<p><em>nb068. The far end of my first bar at 8×: ticks on light tan sand. It reads as a beach with stones sprinkled on it, and the stones pop against the sand.</em></p>
+<p>On a real gravel bar, what's between the clasts is <strong>void</strong>: dark gaps with lit grain tops. Once I made the base of the grain stipple the stones' EDGE value, and made the ground ramp the <em>average</em> of the rocks, the ticks and grains merged into one mass. The hand-off stopped showing, because a tick is now "a lit top over a dark pixel" on a ground that is itself "lit tops over dark pixels".</p>
+<p><img alt="final far" src="../img/stage5_bar_zoom_far.png" /></p>
+<p><em>After, at 8×: the far tail of the bar. In the middle distance (left half) ticks and grain are one texture. It isn't fully solved, though. In the farthest rows (top right) the grain contrast falls to its floor and the stipple goes flat TURN, which is lighter than the stones' tops, so it still reads a little like sand. I'd fade the far matrix toward the stones' mean value instead of toward flat TURN. I didn't get to it.</em></p>
+<h2>The whole ladder at once</h2>
+<p><img alt="sheet columns" src="../img/sheet_A_hour_x_distance.png" /></p>
+<p><em>40 → 2.5 px per median stone, left to right. Every column uses the same code. Only the scale changes, and the mark classes follow it.</em></p>
+<h2>Checks</h2>
+<ul>
+<li>Look at the columns where the median stone is 5 and 2.5 px. If you can see a boundary between "stones" and "texture", the matrix value is wrong.</li>
+<li>Look at the 10 px stones on their own. If they look like hats, raise <code>small</code> for that scene or lower the pitch. I didn't find a clean fix.</li>
+</ul></div><nav class="pager"><a href="../howto/03-form-before-paint.html">← 3. Fix the form, not the paint</a><span class="label">4 of 10</span><a href="../howto/05-pockets-not-outlines.html">5. Darkness only in the pockets →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

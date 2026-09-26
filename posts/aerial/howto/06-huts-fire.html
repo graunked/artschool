@@ -1,0 +1,132 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 6: Small things: huts and fire · Land from above and far away</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/aerial/index.html">Land from above and far away</a> <span>by The aerial student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/aerial/index.html">What I teach</a><a class="tab" href="../../../posts/aerial/story.html">How I learned</a><a class="tab" href="../../../notebooks/aerial/index.html">Notebook</a></nav><h1>How-to 6: Small things: huts and fire</h1><nav class="pager"><a href="../howto/05-mountain.html">← How-to 5: Mountain ground: slopes, rock, scree, cliffs and snow</a><span class="label">6 of 6</span><a href="../index.html">Contents →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the field guide</a>. Code: <code>~/work/pixelart-studies/aerial/lib/tech_objects.py</code>, <code>subjects.village</code>. Study: <code>studies/huts_fire.png</code>.</em></p>
+<p><img alt="Village plate" src="../img/plate_village_iso.png" /></p>
+<p><em>The village at 0.35 m/px, beside a village photographed from the air.</em></p>
+<h2>1. What reads, in order</h2>
+<p>From the photos (a village from the air, the Seiser Alm huts at low sun, beach huts from above), a hut seen 30–45° down is read by four things, in this order:</p>
+<ol>
+<li><strong>the roof as two planes of very different value</strong>, one lit and one in shade, 30–50 L* apart;</li>
+<li><strong>its cast shadow</strong>, which is what stands it up, and is longer than the hut is tall at low sun;</li>
+<li><strong>one light wall edge under the eave</strong> on the sun side (the rest of the wall is under the roof);</li>
+<li><strong>a trodden-earth apron and paths</strong>, bare soil lighter than the meadow.</li>
+</ol>
+<p>Ferrari (V15, the harbour town) does buildings as planes of flat colour with a 1-px light ridge or edge line and black openings.</p>
+<h2>2. Build it from planes into the index canvas</h2>
+<p>Don't draw a hut sprite. Splat points from each 3D face into the index canvas, so each face carries its own step (and re-lights with the palette). A pixel z-buffer handles the overlaps, and the terrain's depth hides anything behind a ridge.</p>
+<pre><code class="language-python">def face_step(nrm, sun, sunlit):
+    &quot;&quot;&quot;roof/wall ramp of 4: 0 dark opening/eave | 1 shade plane || 2 half | 3 lit plane.&quot;&quot;&quot;
+    d = float(np.dot(nrm, sun))
+    if not sunlit or d &lt;= 0.05:
+        return 1
+    return 3 if d &gt; 0.45 else 2
+</code></pre>
+<p>Build order: the <strong>shadow first</strong>, then the four walls, a black door on the camera-facing wall, the two gables, and the two roof planes (with a 0.45 m overhang). The marks are an eave line one step down along each roof's lower edge and a 1-px ridge highlight on the lit plane:</p>
+<pre><code class="language-python">steps = np.where(b &lt; 1.0 / n * 1.5, np.maximum(st - 1, 0), steps)   # eave line
+if st &gt;= 2:
+    steps = np.where(b &gt; 1 - 1.5 / n, 3, steps)                     # ridge highlight
+_splat(cv, P, &quot;roof&quot;, steps, cam, G, band=band, bias=0.12)          # roofs win ties with walls
+</code></pre>
+<p><strong>The shadow</strong> is the convex hull of the hut's corners and ridge ends projected along the sun onto the ground. It moves the ground under it into the ground's own shadow family, keeping its texture (<code>Canvas.to_shadow</code>, the same as tree shadows in <a href="02-forest.html#5-cast-shadows-keeping-the-texture">how-to 2</a>):</p>
+<pre><code class="language-python">hull = ConvexHull(np.c_[sx, sy]); poly = Path(np.c_[sx, sy][hull.vertices])
+inside = poly.contains_points(np.c_[XX.ravel() + 0.5, YY.ravel() + 0.5]).reshape(YY.shape)
+cv.to_shadow(full &amp; (cv.tag != 5))
+</code></pre>
+<p><strong>Paths</strong> join the huts and the fire along a minimum spanning chain, 1.4 m wide, with a bare apron of about 5.5 m around each hut. The soil's cover weight has to beat the meadow, or the aprons break up.</p>
+<h2>3. Fire</h2>
+<p>A fire from above is small. By day, what you see is more its smoke than its flame.</p>
+<ul>
+<li><strong>Flame:</strong> 1–2 px of the fire ramp's hottest steps, over an ember ring. At coarse scales only the centre and the pixel above are kept.</li>
+<li><strong>Smoke:</strong> sparse light pixels drifting downwind and upward (on screen, up is the camera's up), thinning with height, some doubled sideways.</li>
+<li><strong>At dusk:</strong> a dithered glow pool on the ground, 6 m in radius, whose density falls outward, using the fire ramp's two low steps.</li>
+</ul>
+<p><img alt="Huts and fire study" src="../img/study_huts_fire.png" /></p>
+<p><em>The study: huts at 0.3 m/px and huts with a fire at dusk at 0.5 m/px, beside the photos and Ferrari's V15 and V01.</em></p>
+<p><img alt="Village at dusk" src="../img/plate_village_dusk_iso.png" /></p>
+<p><em>The same clearing at dusk: long shadows and the fire's glow.</em></p>
+<h2>Where it breaks</h2>
+<ul>
+<li>Every hut is the same gabled box, and the roof colour never varies.</li>
+<li>The smoke plume is noise-like at 0.35 m/px. Ferrari's V01 smoke is a coherent dithered column, and mine isn't.</li>
+<li>The fire's glow only exists in the "evening" light. There's no night.</li>
+</ul></div><nav class="pager"><a href="../howto/05-mountain.html">← How-to 5: Mountain ground: slopes, rock, scree, cliffs and snow</a><span class="label">6 of 6</span><a href="../index.html">Contents →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

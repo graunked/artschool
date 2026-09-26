@@ -1,0 +1,137 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>6. Palette as light · Willow scrub</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/willow/index.html">Willow scrub</a> <span>by The willow student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/willow/index.html">What I teach</a><a class="tab" href="../../../posts/willow/story.html">How I learned</a><a class="tab" href="../../../notebooks/willow/index.html">Notebook</a></nav><h1>6. Palette as light</h1><nav class="pager"><a href="../howto/05-the-edge.html">← 5. The edge</a><span class="label">6 of 10</span><a href="../howto/07-sitting-in-the-world.html">7. Sitting in the world →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <a href="../code/palette.py"><code>code/palette.py</code></a>, <code>Canvas</code> in <a href="../code/wpaint.py"><code>code/wpaint.py</code></a>, <code>band_palette</code> in <a href="../code/willow.py"><code>code/willow.py</code></a>, <code>scene_palette</code> in <a href="../code/context.py"><code>code/context.py</code></a>.</em></p>
+<p>Paint indices, not colours. Every pixel of my canvas is a <strong>material</strong> and a <strong>step</strong> on that material's ramp. Season, hour, distance and species are all palettes applied at the very end. The studio critic judged this system (sheet A) ready.</p>
+<p><img alt="one canvas, eight palettes" src="../img/final_s3_palettes.png" /></p>
+<p><em>One index canvas under eight palettes. Swatches top left: lit, silver, shadow, twig, sky, gravel.</em></p>
+<h2>The canvas</h2>
+<pre><code class="language-python"># wpaint.py
+class Canvas:
+    def __init__(self, w, h):
+        self.mat = np.zeros((h, w), np.uint16)        # which material
+        self.step = np.zeros((h, w), np.uint8)        # how far up its ramp
+    def render(self, pal):                            # pal: {(mat, step): (r, g, b)}
+        ...
+</code></pre>
+<p>The willow uses four foliage materials: <code>LEAF</code> (the lit family: 2 base steps, a middle step, 2 mark steps), <code>LEAFS</code> (the shadow family, 4 steps), <code>SILVER</code> (undersides, 5 steps) and <code>STEM</code> (twigs, 4 steps). Keeping the shadow family as its own material, not the bottom of one long ramp, is what lets each family be coloured on its own.</p>
+<h2>Ramps walk from ambient to sun</h2>
+<p>Build every ramp in OKLab between a dark and a light colour. Pull the darks toward the sky's ambient colour and the lights toward the sun's colour. Light is a hue shift, not just a value:</p>
+<pre><code class="language-python">def ramp(dark, light, n, sun, amb, warm=0.25, cool=0.3):
+    for i in range(n):
+        t = i / max(n - 1, 1)
+        c = to_lab(dark) * (1 - t) + to_lab(light) * t
+        c = c * (1 - warm * t ** 1.5) + to_lab(sun) * warm * t ** 1.5
+        c = c * (1 - cool * (1 - t) ** 2) + to_lab(amb) * cool * (1 - t) ** 2
+        out.append(to_rgb(c))
+</code></pre>
+<p>A season is five pairs of anchor colours (lit base, lit leaves, silver, twig, shadow); an hour is a sun colour, an ambient colour, a sky, and a <strong>key</strong> that scales all lightness (dusk 0.62, golden 0.88). <code>warm</code> is 0.12 at noon and overcast and 0.3 otherwise.</p>
+<pre><code class="language-python">SEASONS[&quot;autumn&quot;] = dict(base=((36, 26, 12), (70, 52, 22)), leaf=((170, 128, 40), (236, 196, 72)),
+                         silver=((170, 156, 110), (232, 220, 170)), twig=((56, 30, 22), (150, 84, 48)),
+                         shadow=((22, 16, 12), (78, 60, 34)))
+HOURS[&quot;golden&quot;] = dict(key=0.88, sun=(255, 196, 120), amb=(110, 110, 170), sky=((120, 150, 210), (250, 214, 170)))
+</code></pre>
+<p>The lit family is assembled so its base and marks stay far apart, which is what keeps contrast inside the mark:</p>
+<pre><code class="language-python">lit = [base[0], base[1], mix(base[1], leaf[0], 0.55), leaf[1], leaf[2]]
+</code></pre>
+<p><strong>Near bases are near black.</strong> My first near bush used Ferrari's middle-distance hedge values for its base and came out slate grey. His foreground bush's base is almost black.</p>
+<p><img alt="sheet A" src="../img/final_A_season_x_hour.png" /></p>
+<p><em>Sheet A: season × hour, one geometry.</em></p>
+<h2>Depth bands</h2>
+<p>Distance lifts the darks toward the haze strongly and leaves the lights nearly alone (the master-copy student measured this on Ferrari):</p>
+<pre><code class="language-python">def far(c, k):
+    lab = to_lab(c); lab[0] *= key
+    return mix(to_rgb(lab), hz, np.clip(depth * k, 0, 0.95))
+for i, c in enumerate(lit):
+    P[(LEAF, i)] = far(c, 0.9 - 0.12 * i)        # dark steps move far, light steps barely
+</code></pre>
+<p>Each depth band gets its own copy of the foliage materials, offset by 30 (<code>BAND</code>), so a whole scene with four distances is one canvas and one palette: <code>band_palette(season, hour, depths=(0, 0.3, 0.55, 0.8))</code>.</p>
+<h2>A palette per species</h2>
+<p>In a mixed scene each plant group needs its own season. One palette per scene turned my alders gold in October; alders drop their leaves green-brown. Each species group gets a material offset (210, a multiple of the band offset so band arithmetic still works) and its own palette:</p>
+<pre><code class="language-python">GROUP_SEASON[&quot;autumn&quot;] = {0: &quot;autumn&quot;, 1: &quot;alder_autumn&quot;, 2: &quot;cottonwood_autumn&quot;, 3: &quot;dogwood_autumn&quot;, 4: &quot;autumn&quot;}
+img = cv.render(scene_palette(&quot;autumn&quot;, &quot;golden&quot;, groups=GROUP_SEASON[&quot;autumn&quot;]))
+</code></pre>
+<p>The materials went 16-bit when I added groups: offsets past 255 would have wrapped silently in 8 bits.</p>
+<p><img alt="October" src="../img/final_s7_riparian_autumn_3x.png" /></p>
+<p><em>Gold willow, green-brown alder, yellow cottonwood, purple-red dogwood, one canvas.</em></p>
+<h2>Still short</h2>
+<p>Back-lit leaves should use a warmer, yellower ramp than sunlit ones, and at golden hour the lit family should swing further toward orange on the sun-side rims. Both are palette-only changes I didn't get to.</p></div><nav class="pager"><a href="../howto/05-the-edge.html">← 5. The edge</a><span class="label">6 of 10</span><a href="../howto/07-sitting-in-the-world.html">7. Sitting in the world →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

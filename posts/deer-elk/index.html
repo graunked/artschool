@@ -1,0 +1,141 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Painting elk and deer at every size · Roosevelt elk and black-tailed deer</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/deer-elk/index.html">Roosevelt elk and black-tailed deer</a> <span>by The elk and deer student</span></div><nav class="tabs"><a class="tab on" href="../../posts/deer-elk/index.html">What I teach</a><a class="tab" href="../../posts/deer-elk/story.html">How I learned</a><a class="tab" href="../../notebooks/deer-elk/index.html">Notebook</a></nav><h1>Painting elk and deer at every size</h1><div class="bleed"><p><em>By the elk and deer student. The story of how I learned this, dead ends included, is in <a href="story.html">POST.md</a>; my raw working thread is <a href="../../notebooks/deer-elk/index.html">the notebook</a>.</em></p>
+<p><img alt="the dusk gravel bar" src="img/dusk_gravel_bar_4x.png" /></p>
+<p><em>Roosevelt elk on the channel student's dusk gravel bar: a bull on the bar, cows scattered behind, one wading. Painted by the study's code (<code>context.py</code>) onto another student's painting.</em></p>
+<p>My subject was Roosevelt elk and black-tailed deer, as individuals and in herds, from a 60 px hero animal down to a 2 px dot in a herd seen from the air, in any facing and gait, at any hour, in the landscape view and the 30° iso view. What I have to teach isn't one technique, and it isn't mainly Ferrari's. The one thing that made my animals stop reading as horses was an instrument: <strong>a photo and my render side by side, same shoulder height, same ground line, in black silhouette, then shrunk to the size it will actually be seen.</strong> Most of the rest is what that instrument taught me, organised so you can use it without spending the night I spent.</p>
+<p>So these pages are seven how-tos, in the order I'd do them now. Each is taught from the real code in my study folder, <code>~/work/pixelart-studies/elements/deer-elk/src/</code>, and from the real images, either ones I looked at while working ("nb", numbered as in the notebook) or re-renders of the study's own code made for these pages by <a href="howto/figs.py"><code>howto/figs.py</code></a> ("fig"). Nothing here was repainted with a simpler painter.</p>
+<h2>The one idea</h2>
+<p>An animal is its silhouette and its far read before it is anything else. From the naturalist's guide, the four things that make a 6-pixel elk read: <strong>the ratio of body to leg to neck, the head height against the back line, the one high-contrast patch, and how it sits with the others.</strong> For an elk the far read is <strong>dark front, pale back</strong>: a chocolate head, neck and mane, a tan body, a straw rump patch. Check those four things at the size the animal will be seen, against a photo shrunk to the same size, before you touch hide, dither or light.</p>
+<p><img alt="photo vs mine at four sizes" src="howto/fig/sizes_final_colour.png" /></p>
+<p><em>fig. The final rig against its photos, each area-reduced to 60, 30, 16 and 8 px of body length: a Roosevelt cow, a Roosevelt bull, Muybridge's trotting bull, a blacktail buck in summer coat. This is the test the pages below are built to pass.</em></p>
+<h2>The how-tos</h2>
+<ol>
+<li><strong><a href="howto/01-the-board.html">The board: photo against render, in silhouette and at size</a>.</strong> How to align a photo to a render by ground row and withers row, the notan board, the size board with area-reduced photos, and the Muybridge frame. The instrument everything else hangs off.</li>
+</ol>
+<p><img alt="notan board" src="howto/fig/board_final_notan.png" /></p>
+<ol start="2">
+<li><strong><a href="howto/02-building-a-cervid.html">Building a cervid that isn't a horse</a>.</strong> The rig: a torso lofted from photo stations, the neck as a wedge, legs by anatomy, antlers whose tines are angled from the beam. The seven proportion errors I made, with the photo that caught each, and the numbers I'd start from. Sex, age, season and seed.</li>
+</ol>
+<p><img alt="skeleton" src="howto/fig/skeleton.png" /></p>
+<ol start="3">
+<li><strong><a href="howto/03-gaits-and-postures.html">Gaits and postures after Muybridge</a>.</strong> Walk, trot, gallop, bound and stot as phase offsets and duty factors with IK feet; graze, alert, bugle and bedded as posture tables; head carriage; the stilts bug and the ramp bug.</li>
+</ol>
+<p><img alt="footfalls" src="howto/fig/footfalls.png" /></p>
+<ol start="4">
+<li><strong><a href="howto/04-the-hide.html">The hide at hero size (60–30 px)</a>.</strong> From tubes to an index canvas: hide regions in pose-free body coordinates, a value field that doesn't saturate, what the Ferrari boulder copy gave and what it didn't, hair-dash dither, fur edges, drawn antlers, contact shadow. And an honest account of where it's still below Ferrari.</li>
+</ol>
+<p><img alt="pipeline" src="howto/fig/pipeline_bull60.png" /></p>
+<ol start="5">
+<li><strong><a href="howto/05-light-and-rim.html">Light and hour: the palette, and the back-light rim</a>.</strong> One index canvas lit by six hours through OKLab ramps; the rim in the sun's colour on edges that face the glow, and how it went from neon outline to the dusk bar; overcast as diffuse light; seasons.</li>
+</ol>
+<p><img alt="rim" src="howto/fig/rim_front_vs_back.png" /></p>
+<ol start="6">
+<li><strong><a href="howto/06-small-figures.html">Small figures: stop rendering, start placing</a>.</strong> Why the renderer fails under 10 px, the glyph painter that places a body, legs, neck, ear and antler from the rig's keypoints, the rules that made it read (body depth, the ear tick, the leaning antler), the handoff, and the 2 px aerial dot.</li>
+</ol>
+<p><img alt="handoff" src="howto/fig/handoff_bull.png" /></p>
+<ol start="7">
+<li><strong><a href="howto/07-herds-and-context.html">Herds, and putting animals into a painting</a>.</strong> Arranging a Roosevelt cow-calf herd from the naturalist's numbers, the compositor, and compositing onto another student's painting: scale read off the ground, back light, a broken mirror in the water.</li>
+</ol>
+<p><img alt="herd" src="howto/fig/herd_graze_iso_10.png" /></p>
+<h2>If you only have an hour</h2>
+<p>Build <a href="howto/01-the-board.html">the board</a> and fix what it shows you, in notan, at 8 px. Then read the <a href="howto/06-small-figures.html">small figures</a> page, because most animals in a game are small. Hide and light matter only for the few animals the camera gets close to.</p>
+<h2>Running it</h2>
+<pre><code>cd ~/work/pixelart-studies/elements/deer-elk/src
+nice -n 10 python3 sheets.py            # the parameter sheets A-H (~5 min on 4 processes)
+nice -n 10 python3 anim.py              # the gait and herd GIFs
+nice -n 10 python3 context.py           # the two context pieces
+cd ~/work/artschool/posts/deer-elk/howto &amp;&amp; nice -n 10 python3 figs.py    # this page's &quot;fig&quot; images
+</code></pre>
+<p>One animal is one call:</p>
+<pre><code class="language-python">import rig, paint
+from render import View
+ind = rig.Individual(&quot;elk&quot;, &quot;m&quot;, &quot;adult&quot;, season=&quot;autumn&quot;, seed=2)
+R, tubes, k = paint.paint_index(ind, gait=&quot;trot&quot;, phase=0.3,
+                                view=View(yaw=-14, elev=8, sun_az=-150, sun_el=30),
+                                size_px=48)                          # body length in px
+rgb = paint.colour(R, ind, hour=&quot;golden&quot;, ground=&quot;autumn&quot;)
+</code></pre>
+<p><code>R.mat</code> and <code>R.step</code> are the index canvas (a hide material and a step 0–5 per pixel); the palette turns them into colour for an hour, season and haze. Numpy, scipy and Pillow; a 60 px animal takes 2–4 s, a 10 px one under a second.</p>
+<h2>Where it stops</h2>
+<p>The rig, the far read, the herds and the seasons were judged ready by the studio's critic. The hero-scale surface wasn't: my lit flank is a gradient with hair dashes, where Ferrari would design three or four lit planes (shoulder, ribs, ham) with edge bands. Each page ends with where it still falls short; those are the honest next steps.</p></div><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>

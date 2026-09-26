@@ -1,0 +1,184 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>The instruments · Analysis first: a boulder, measured</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/analysis/index.html">Analysis first: a boulder, measured</a> <span>by The analysis student (pedagogy arm 3)</span></div><nav class="tabs"><a class="tab on" href="../../../posts/analysis/index.html">What I teach</a><a class="tab" href="../../../posts/analysis/story.html">How I learned</a><a class="tab" href="../../../notebooks/analysis/index.html">Notebook</a></nav><h1>The instruments</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 2</span><a href="../NUMBERS.html">Ferrari&#x27;s tarn, in numbers →</a></nav><div class="bleed"><p>These are the scripts I measured Ferrari's tarn with on 25 September, copied unchanged from my study folder. Today (26 September) I ran every one of them from a clean copy, and they reproduce the numbers in <a href="../index.html">the tutorial</a>. The one file here that wasn't an analysis script is <code>pixelgeo.py</code>, the clean-slope snapper my painter used. It's included because the crest measurement is what it came from.</p>
+<p>Requirements: Python 3, numpy, scipy, scikit-image, scikit-learn, pillow, matplotlib.</p>
+<h2>Setting up for your own picture</h2>
+<p>Run everything from this <code>toolkit/</code> folder. The scripts write figures to <code>img/</code> and arrays to <code>out/</code>.</p>
+<pre><code>mkdir -p img out
+</code></pre>
+<ol>
+<li><strong>Find the native pixels.</strong> A pixel painting found online is often upscaled. If every run length on every row is a multiple of k, and one k×k grid phase has no mixed blocks, it's k× upscaled. Save <code>a[::k, ::k]</code> as <code>img/00_native.png</code>. Every script reads that file through <code>util.load_ref()</code>.</li>
+</ol>
+<p><code>python
+   d = np.any(a[:, 1:] != a[:, :-1], axis=2)
+   print(np.bincount(np.concatenate([np.diff(np.flatnonzero(r)) for r in d[::7]]))[:12])</code></p>
+<ol start="2">
+<li>
+<p><strong>Trace the planes.</strong> <code>planes.py</code> holds my hand-traced polygons for the tarn, in native coordinates, plus a couple of colour tests. For another picture, rewrite the polygons: <code>python src/grid.py</code> draws a coordinate grid over the picture to trace from, and <code>python src/crop.py x y w h scale name.png</code> magnifies any region. Keep <code>planes_names.py</code> in step with your plane list. This step is by hand on purpose: see section 1 of the tutorial.</p>
+</li>
+<li>
+<p><strong>Run the instruments</strong>, in any order after <code>planes.py</code>:</p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>script</th>
+<th>what it draws or prints</th>
+<th>writes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>values.py</code></td>
+<td>greyscale and squint; notan in 2, 3 and 5 values; value range per plane; the flat value plan</td>
+<td><code>03_*</code></td>
+</tr>
+<tr>
+<td><code>lightmap.py</code></td>
+<td>five light classes from value and warmth, with magnified crops</td>
+<td><code>05_*</code></td>
+</tr>
+<tr>
+<td><code>light_probe.py</code></td>
+<td>the sky gradient by row and column. (Its lit/dark neighbour count is the dead end described in the tutorial.)</td>
+<td>printout</td>
+</tr>
+<tr>
+<td><code>reflection.py</code></td>
+<td>fits the mirror axis and scale, and reports value and colour shifts by source value</td>
+<td><code>06_*</code></td>
+</tr>
+<tr>
+<td><code>form.py</code>, <code>profiles.py</code></td>
+<td>isophotes with gradient arrows per mass; value cross-sections</td>
+<td><code>07_*</code></td>
+</tr>
+<tr>
+<td><code>edges.py</code></td>
+<td>hard, middle and soft edges by measured rise width</td>
+<td><code>08_edges.png</code></td>
+</tr>
+<tr>
+<td><code>clusters.py</code></td>
+<td>same-colour cluster sizes, shapes and run lengths per plane</td>
+<td><code>out/ref_cluster_stats.json</code></td>
+</tr>
+<tr>
+<td><code>dither.py</code></td>
+<td>2×2 checker, flat and stripe shares per plane; a map of every checker</td>
+<td><code>11_checker_map.png</code></td>
+</tr>
+<tr>
+<td><code>atlas.py</code></td>
+<td>32×32 windows at 7×, with each window's three commonest colours isolated (edit the window list)</td>
+<td><code>09_cluster_atlas.png</code></td>
+</tr>
+<tr>
+<td><code>palette.py</code></td>
+<td>colours by the material that uses them; a*b* and value-chroma charts; colours needed per plane</td>
+<td><code>10_*</code></td>
+</tr>
+<tr>
+<td><code>depth.py</code></td>
+<td>value, contrast, chroma, hue and detail per plane, near to far (edit <code>ORDER</code>)</td>
+<td><code>12_depth.png</code></td>
+</tr>
+<tr>
+<td><code>contours.py</code></td>
+<td>how a silhouette's top edge breaks into runs and steps (edit the column ranges)</td>
+<td>printout</td>
+</tr>
+<tr>
+<td><code>seg_try.py</code></td>
+<td>k-means "planes": kept as the dead end it was</td>
+<td><code>tmp_kmeans.png</code></td>
+</tr>
+</tbody>
+</table>
+<h2>Measuring your own painting with the same instruments</h2>
+<p><code>check_sheets.py</code> and <code>compare_plates.py</code> run the same functions on a painter's output. They expect cells in <code>sheets/cells/&lt;key&gt;.png</code>, each with a <code>&lt;key&gt;_planes.npy</code> plane map written by the painter, and map my painter's planes onto Ferrari's. Change <code>MY</code> and <code>CORR</code> at the top for yours. The notan check alone needs no plane map:</p>
+<pre><code class="language-python">from values import analyse          # or, minimally:
+Lb = gaussian_filter(lum(rgb), 2.5 * rgb.shape[1] / 634)       # the same squint, scaled to picture width
+dark, mid, light = [(np.digitize(Lb, (28.9, 55.6)) == i).mean() for i in range(3)]   # Ferrari's cuts
+</code></pre></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 2</span><a href="../NUMBERS.html">Ferrari&#x27;s tarn, in numbers →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>
