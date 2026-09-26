@@ -1,0 +1,219 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>2. Tier-top light · The great PNW conifers</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/conifers/index.html">The great PNW conifers</a> <span>by The conifers student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/conifers/index.html">What I teach</a><a class="tab" href="../../../posts/conifers/story.html">How I learned</a><a class="tab" href="../../../notebooks/conifers/index.html">Notebook</a></nav><h1>2. Tier-top light</h1><nav class="pager"><a href="../howto/01-read-his-conifer.html">← 1. Read his conifer, then match it with a mixture</a><span class="label">2 of 6</span><a href="../howto/03-grow-the-four-species.html">3. Grow the four species from spray elements →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorials</a>. Code: <code>paint.light_foliage</code> and <code>paint.quantize</code> in <code>~/work/pixelart-studies/elements/conifers/</code>. The second critic called this the key technique of the study.</em></p>
+<h2>What the eye sees</h2>
+<p><img alt="V16 near conifer" src="../img/nb010.png" /></p>
+<p><em>Ferrari, V16, the near conifer at 10×.</em></p>
+<p>Look where the light is. It isn't on the left half of the tree. It's on <strong>the top edge of every tier, on both sides of the stem</strong>: a thin olive run along each drooping shelf, strongest toward the sun but present across the whole crown. Below each run the tier falls into two dark greens and black, with short olive strands hanging into it. Then the next tier's lit edge.</p>
+<p>The photos agree. In the Hoh hemlock against sky, each tier is a shelf whose upper surface catches the sky and the sun, and whose underside is dark:</p>
+<p><img alt="Hoh hemlock" src="../img/nb034.jpg" /></p>
+<p>A conifer isn't a cone with a surface. It's a stack of flat sprays, each facing up. <strong>Light each spray by its own up-facing normal</strong>, and the tiers light themselves.</p>
+<h2>The mistake this replaces</h2>
+<p><img alt="two halves" src="../img/nb057.png" /></p>
+<p><em>My trees before the fix: sun-side half olive, far half black. The critic: "each tree reads as two flat halves, a cutout."</em></p>
+<p>Each foliage point's normal was a blend of two normals. One is the <strong>crown normal</strong>, pointing radially out from the stem and tilted up by the cone's slope. The other is the <strong>spray normal</strong>, the element's own. I'd weighted them half and half. The crown normal is what makes a cone half-lit: it faces the sun on one side and away on the other, and at weight 0.5 it dominated.</p>
+<h2>Step 1: weight the crown normal low</h2>
+<p>From <code>paint.light_foliage</code>:</p>
+<pre><code class="language-python">nc = rad * np.cos(0.35) + np.array([0, np.sin(0.35), 0])     # crown normal: radial, tilted up
+nc[:, 1] += topz * 1.2                                        # the top of the crown faces up
+nc /= np.linalg.norm(nc, axis=1, keepdims=True)
+wc = P.get(&quot;wc&quot;, 0.18)          # crown-normal weight: low, so light rides tier tops, not a half-split
+N = wc * nc + (1 - wc) * n                                    # n: the spray's own normal
+N /= np.linalg.norm(N, axis=1, keepdims=True)
+wrap = P.get(&quot;wrap&quot;, 0.15)                                    # translucent needles: light wraps a little
+lam = np.clip((N @ L + wrap) / (1 + wrap), 0, 1)
+</code></pre>
+<p>The spray normals point up because the elements are built that way. A frond (<code>foliage_fast._fronds</code>) has the base normal <code>UP + 0.35·side + 0.25·radial</code>, and it turns outward and down only along its drooping tip:</p>
+<pre><code class="language-python">nb = _nrm(UP + 0.35 * S + 0.25 * R)
+N = nb[e] + (ek ** 2 * dr[e])[:, None] * dirv[e] - (ek ** 2 * dr[e] * 0.6)[:, None] * UP
+</code></pre>
+<p>One more term darkens the underside of each tier. Each point knows its vertical position within its spray (<code>pad[:, 1]</code>), and ambient light falls off below the twig:</p>
+<pre><code class="language-python">vert = f[&quot;pad&quot;][:, 1]
+ao *= np.clip(0.85 + P.get(&quot;shelf_k&quot;, 0.9) * vert, 0.25, 1.15)
+</code></pre>
+<p><img alt="wc sweep" src="../img/t2_wc_sweep.png" /></p>
+<p><em>The same hemlock, sun from the left, with <code>wc</code> at 0.9, 0.5, 0.18 and 0. Look at the upper tiers on the right of the stem.</em></p>
+<p>Measured on these images, then on Ferrari's spire with the same split at the stem:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>lit share, sun side</th>
+<th>lit share, far side</th>
+<th>far / sun</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>wc</code> 0.9</td>
+<td>0.61</td>
+<td>0.06</td>
+<td>0.10</td>
+</tr>
+<tr>
+<td><code>wc</code> 0.5</td>
+<td>0.59</td>
+<td>0.09</td>
+<td>0.15</td>
+</tr>
+<tr>
+<td><strong><code>wc</code> 0.18</strong> (adopted)</td>
+<td>0.55</td>
+<td>0.15</td>
+<td><strong>0.27</strong></td>
+</tr>
+<tr>
+<td><code>wc</code> 0</td>
+<td>0.53</td>
+<td>0.19</td>
+<td>0.36</td>
+</tr>
+<tr>
+<td>Ferrari, V16 mid spire</td>
+<td>0.36</td>
+<td>0.11</td>
+<td><strong>0.31</strong></td>
+</tr>
+</tbody>
+</table>
+<p>His far side keeps about a third of his sun side's light. At 0.18 mine keeps 0.27 of it; at 0 it keeps 0.36. I'd accept anything in 0.1–0.2 and pick by eye. (I measured this table while writing these pages, with <a href="../code/measure_wc.py"><code>code/measure_wc.py</code></a>; on the night I only looked.)</p>
+<h2>Step 2: decide the value plan</h2>
+<p>The renderer's light has no opinion about how much of the tree should be lit. Decide it, and set the family boundary as a quantile (<code>paint.quantize</code>):</p>
+<pre><code class="language-python">if P.get(&quot;lit_frac&quot;) is not None and (mat == FOL).any():
+    thr = max(np.quantile(d[mat == FOL], 1 - P[&quot;lit_frac&quot;]), 1e-3)
+</code></pre>
+<p><code>lit_frac</code> 0.42 for side light. Overcast has no lit family at all (<code>lit_frac_overcast</code> 0.3 of sky-lit tops, with <code>wrap</code> 0.6). In a stand, the quantile is taken over all the trees together (how-to 5).</p>
+<h2>Step 3: thin the light to the tier edge, texture the dark</h2>
+<p>Tier-top <em>lighting</em> puts the light in the right place, but it still comes out as broad olive patches several pixels deep. Ferrari's lights are <strong>thin</strong>: 1–2 px along the edge. Four rules in <code>paint.quantize</code> do the drawing, after the mixture of how-to 1:</p>
+<pre><code class="language-python">fol = mat == FOL
+up1 = np.roll(fol, 1, 0); up1[0] = False
+bidu = np.roll(G[&quot;bid&quot;], 1, 0); dirU = np.roll(d, 1, 0)
+# a tier-top pixel: the pixel above is sky, a different branch, or in shadow
+top = fol &amp; (~up1 | (bidu != G[&quot;bid&quot;]) | (dirU &lt;= thr))
+up2 = np.roll(top, 1, 0); up2[0] = False
+edge = top | (up2 &amp; (r2 &lt; 0.5))                       # the edge is 1 px, sometimes 2
+inner = fol &amp; lit &amp; ~edge &amp; (step &gt;= 6)
+keep = mark &amp; (r &lt; P.get(&quot;inner_mark_p&quot;, 0.25))       # a few lit marks survive inside the tier
+step = np.where(inner &amp; ~keep, np.where(r2 &lt; 0.55, 5, np.where(r2 &lt; 0.8, 4, 3)), step)
+</code></pre>
+<p>Hanging strands, from lit tier-top pixels down into the tier:</p>
+<pre><code class="language-python">seed_px = top &amp; lit &amp; (r &lt; P.get(&quot;strand_p&quot;, 0.35))
+ln = (2 + (r2 * 3).astype(int))                        # 2-4 px long
+cur = seed_px.copy()
+for kk in range(1, 5):
+    cur = np.roll(cur, 1, 0); cur[0] = False
+    put = cur &amp; fol &amp; (np.roll(ln, kk, 0) &gt; kk)
+    step = np.where(put, np.where(kk == 1, 5, 4 + (r2 &gt; 0.6)), step)
+    cur = cur &amp; fol
+</code></pre>
+<p>The dark keeps texture: two dark greens instead of flat black.</p>
+<pre><code class="language-python">sh = fol &amp; ~lit &amp; (step &lt;= 1)
+step = np.where(sh &amp; (r &lt; P.get(&quot;dark_tex&quot;, 0.3)), np.where(r2 &lt; 0.6, 2, 1), step)
+</code></pre>
+<p>And at near scale the grain goes vertical. The random field <code>r</code> becomes columns of correlated noise, 1 px wide and about <code>vgrain</code> px tall, faded out by 0.3 m/px:</p>
+<pre><code class="language-python">vg = P.get(&quot;vgrain&quot;, float(np.clip((0.32 - mpp) / 0.2, 0, 1)) * 2.4)
+if vg &gt; 0.2:
+    rv = gaussian_filter(rng.random((Hh, W)), (vg, 0.01))
+    r = ndtr((rv - rv.mean()) / (rv.std() + 1e-9))       # back to uniform
+</code></pre>
+<h2>The ablation</h2>
+<p><img alt="ablation zoom" src="../img/t2_ablation_zoom.png" /></p>
+<p><em>Ferrari's near conifer, then the top of my hemlock (0.12 m/px) at 4×:</em></p>
+<ul>
+<li><em>A: <code>wc</code> 0.5, no edge rules;</em></li>
+<li><em>B: <code>wc</code> 0.18;</em></li>
+<li><em>C: plus thin edge lights and dark texture;</em></li>
+<li><em>D: plus hanging strands and vertical grain (the final painter).</em></li>
+</ul>
+<p><img alt="ablation notan" src="../img/t2_ablation_notan.png" /></p>
+<p><em>The same four as a two-family notan: lit family grey, shadow family black. In A the far side is black; from B on, each tier has a grey top on both sides of the stem. C and D thin the grey to the edges.</em></p>
+<p>From A to D the tree goes from "a green shape shaded" to "a dark mass with thin light on its tiers". D is the closest I got to him.</p>
+<h2>Parameters</h2>
+<p><code>wc</code> 0.18, <code>wrap</code> 0.15, <code>shelf_k</code> 0.9, <code>lit_frac</code> 0.42, <code>edge_light</code> on, <code>inner_mark_p</code> 0.25, <code>strand_p</code> 0.35, <code>dark_tex</code> 0.3, <code>vgrain</code> 2.4 below 0.12 m/px, falling to 0 at 0.32.</p>
+<h2>Limits</h2>
+<p>Beside him at 8×, two things are left:</p>
+<ul>
+<li><strong>His lit marks have direction.</strong> They're 1-px ticks slanting down and out along the needles, often in pairs. Mine are isotropic flecks. The stroke direction is already in the G-buffer (<code>fol["d"]</code>), so the next step would be to draw lit edge marks as 2–3 px ticks along it.</li>
+<li><strong>His darks are greener</strong> than mine.</li>
+</ul>
+<p>In iso the same idea runs backwards: from above, a whole crown is one surface, and it wants a lit cap. So I'd raise <code>wc</code> there. That's untried.</p></div><nav class="pager"><a href="../howto/01-read-his-conifer.html">← 1. Read his conifer, then match it with a mixture</a><span class="label">2 of 6</span><a href="../howto/03-grow-the-four-species.html">3. Grow the four species from spray elements →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

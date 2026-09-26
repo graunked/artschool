@@ -1,0 +1,162 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>5. A stand, and its hours · The great PNW conifers</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/conifers/index.html">The great PNW conifers</a> <span>by The conifers student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/conifers/index.html">What I teach</a><a class="tab" href="../../../posts/conifers/story.html">How I learned</a><a class="tab" href="../../../notebooks/conifers/index.html">Notebook</a></nav><h1>5. A stand, and its hours</h1><nav class="pager"><a href="../howto/04-every-distance.html">← 4. One tree at every distance, without pops</a><span class="label">5 of 6</span><a href="../howto/06-cedar-buttress.html">6. The cedar&#x27;s fluted buttress →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorials</a>. Code: <code>conifer.stand</code>, <code>paint.shadow_T</code> and <code>palette.py</code>, in <code>~/work/pixelart-studies/elements/conifers/</code>.</em></p>
+<p><img alt="stand x hour" src="../img/E_stand_x_hour.png" /></p>
+<p><em>Sheet E: 34 mixed trees at 0.35 m/px, at morning, golden, overcast and dusk. It's the same index canvas each time; only the palette and the sun's elevation change.</em></p>
+<p>A stand is not 34 sprites pasted together. Three things make it one picture: the trees shade each other, they share one value plan, and distance lives in the palette.</p>
+<h2>1. One shadow map for every tree</h2>
+<p>Each foliage point needs to know how much foliage lies between it and the sun. I took the method from vox-trees' NOTES, an <strong>opacity shadow map</strong>:</p>
+<ul>
+<li>project every point onto a grid perpendicular to the sun;</li>
+<li>sort each cell sunward-first;</li>
+<li>a point's rank in its cell is the number of points shading it.</li>
+</ul>
+<p>From <code>paint.shadow_T</code>:</p>
+<pre><code class="language-python">e1 = np.cross(L, up); e1 /= np.linalg.norm(e1); e2 = np.cross(L, e1)
+u = p @ e1; v = p @ e2; w = p @ L
+iu = np.floor((u - u.min()) / cell).astype(np.int64)
+iv = np.floor((v - v.min()) / cell).astype(np.int64)
+key = iu * (iv.max() + 1) + iv
+order = np.lexsort((-w, key))                          # per cell, sunward first
+ks = key[order]
+start = np.r_[0, np.flatnonzero(np.diff(ks)) + 1]
+rank = np.arange(len(ks)) - np.repeat(start, np.diff(np.r_[start, len(ks)]))
+before = np.empty(len(p)); before[order] = rank
+# (then blended with the neighbouring cells' counts, to soften)
+return np.exp(-k * before)
+</code></pre>
+<p><strong>Scale <code>k</code> to point spacing,</strong> or the answer depends on sampling density. My first version gave zero direct light to 75% of the points. I found it by printing percentiles of each light term:</p>
+<pre><code class="language-python">k = P.get(&quot;shadow_k&quot;, 0.5) * step ** 2 / cell ** 2       # step: point spacing; cell: shadow-grid size
+</code></pre>
+<p>For a stand, build one map from <strong>all the trees' foliage together</strong> (<code>conifer.stand</code>), and give each tree its slice:</p>
+<pre><code class="language-python">allp = np.concatenate([t.fol[&quot;p&quot;] for _, t in objs])
+Tall = paint.shadow_T(allp, L, cell, P.get(&quot;shadow_k&quot;, 0.5) * step ** 2 / cell ** 2)
+# each tree: T = min(T_own, T_stand ** 0.7)
+</code></pre>
+<p><img alt="shared shadow" src="../img/t5_shared_shadow.png" /></p>
+<p><em>Golden hour, each tree shadowed alone (left) and with the shared map (right). The middle distance falls into the shadow family, and the lit trees stand out against it.</em></p>
+<h2>2. One value plan for the stand</h2>
+<p>How-to 2 sets the lit threshold as a quantile of the direct light, <code>lit_frac</code> 0.42. Per tree, that lights every tree equally, including the ones standing in their neighbours' shade. So take the quantile over the whole stand:</p>
+<pre><code class="language-python">dv = np.concatenate([G[&quot;dir&quot;][G[&quot;mat&quot;] == paint.FOL] for _, _, _, G in passes])
+thr = max(float(np.quantile(dv, 1 - lf)), 1e-3)
+for d, t, Pi, G in passes:
+    st = paint.quantize(G, dict(Pi, lit_frac=None, lit_thr=thr), t, mpp)
+</code></pre>
+<h2>3. The palette is the light</h2>
+<p>Every foliage ramp has 8 steps:</p>
+<ul>
+<li><strong>shadow family 0–3</strong>: sky light only, walking from black toward the sky colour;</li>
+<li><strong>lit family 4–7</strong>: sun on needles. The dark end leans warm brown-olive, after Ferrari's (95,71,0); the top takes the species' sunlit tip colour.</li>
+</ul>
+<p>The ramps are computed in linear light from a species albedo, the hour's sun and sky colours, and a sun strength (<code>palette.foliage_ramp</code>):</p>
+<pre><code class="language-python">for b, warm in ((0.26, 0.75), (0.4, 0.4), (0.85, 0.0), (1.05, 0.0)):
+    base = A * (S * b * ks * 1.9 + K * 0.25)           # albedo x (sun + sky)
+    lum = base @ np.array([0.2126, 0.7152, 0.0722])
+    ol = OL / (OL @ np.array([0.2126, 0.7152, 0.0722])) * lum * S / S.max()
+    base = base * (1 - s[&quot;olive&quot;]) + ol * s[&quot;olive&quot;]   # Ferrari paints sunlit conifer olive
+    if warm &gt; 0:
+        base = base * np.array([1 + 0.45 * warm, 1.0, 1 - 0.85 * warm])
+    ...
+</code></pre>
+<p><img alt="ramps" src="../img/t5_ramps.png" /></p>
+<p><em>The foliage ramps, rows Douglas-fir, hemlock, cedar, spruce; columns dawn, morning, noon, golden, dusk, overcast, fog, moon.</em></p>
+<p>Overcast and fog have <strong>no sun family</strong>: the "lit" steps are sky-lit tops at low contrast. That's the westside's usual light. The naturalist: "soft, overcast and blue-grey... the conifers read almost black-green".</p>
+<h2>4. Aerial depth, in the palette</h2>
+<p>Each tree's ramp is mixed toward the horizon colour by its distance. The darks lift most and the lights hold longer, as the master-copy student measured on Ferrari. The far darks get a slight violet bias, as the analysis student found (<code>palette._aerial</code>):</p>
+<pre><code class="language-python">lum = ramp @ np.array([0.2126, 0.7152, 0.0722])
+dark = 1 - np.clip(lum / (lum.max() + 1e-6), 0, 1)
+amt = np.clip(depth * (0.55 + 0.45 * dark) + fog, 0, 0.97)[:, None]
+return ramp * (1 - amt) + Hc * np.array([1.05, 0.95, 1.1]) * amt
+</code></pre>
+<p><code>depth</code> is the tree's distance divided by <code>far</code>. And here's a choice rather than a rule:</p>
+<p><img alt="depth" src="../img/t5_depth.png" /></p>
+<p><em><code>far</code> = 300 m (left) and 2000 m (right).</em></p>
+<p>At 300 m, 60 m of forest reads as kilometres: physically wrong, and I called it a bug that night. Looking again today, the left is the more painterly picture: a ghost ladder of hazed trunks, which the critic praised in my first stand. The sheets use 2000 m. If your scene wants mood more than scale, turn it down.</p>
+<h2>Parameters</h2>
+<p><code>lit_frac</code> 0.42 over the stand, <code>shadow_k</code> 0.5, shadow cell <code>max(2·mpp, 0.3 m)</code>, <code>far</code> 2000 m (4000 m for the ground), <code>bounce</code> 0.12 on wood, <code>fog</code> 0.3 for the fog hour.</p>
+<h2>Limits</h2>
+<ul>
+<li>The mid-distance trunks are ruled columns, and the stand stands on a ruled black line.</li>
+<li>In iso, the haze is keyed to ground depth, not to distance from the eye, so it turns blue too fast. Random species mixing makes confetti; real stands come in patches.</li>
+<li>A 34-tree stand takes about 80 s in numpy.</li>
+</ul></div><nav class="pager"><a href="../howto/04-every-distance.html">← 4. One tree at every distance, without pops</a><span class="label">5 of 6</span><a href="../howto/06-cedar-buttress.html">6. The cedar&#x27;s fluted buttress →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

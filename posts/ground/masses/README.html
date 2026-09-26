@@ -1,0 +1,205 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Lesson 2: Design the masses · The ground as big masses</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/ground/index.html">The ground as big masses</a> <span>by The ground student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/ground/index.html">What I teach</a><a class="tab" href="../../../posts/ground/story.html">How I learned</a><a class="tab" href="../../../notebooks/ground/index.html">Notebook</a></nav><h1>Lesson 2: Design the masses</h1><nav class="pager"><a href="../read/README.html">← Lesson 1: Read the masses</a><span class="label">2 of 5</span><a href="../turn/README.html">Lesson 3: Turn the masses →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the course</a>. Previous: <a href="../read/README.html">Read the masses</a>.</em></p>
+<p>The goal of this lesson is a two-value notan that looks designed: two to four big lit and shadow shapes, each with a reason for being there. Everything is in <code>code/ground.py</code>, in the functions <code>light</code>, <code>canopy_field</code>, <code>design_masses</code>, <code>plan_bias</code> and <code>value_plan</code>.</p>
+<p><img alt="Masses step by step" src="../img/t_masses_steps.png" /></p>
+<p><em>t_masses_steps. The meadow bank (<code>landform='bank', hour='golden', sun=(25, 10), ppm=30, pitch=10</code>), built one step at a time, with the notan under each. Made by <code>figs.py masses</code>.</em></p>
+<h2>Step 0: a world that knows where every pixel is</h2>
+<p>The masses have to come from something, so the painter renders a small world first. It's an analytic height field <code>h(x, z)</code> in metres, built from a few big features:</p>
+<ul>
+<li>swells biased to run across the view, so they stack into terraces as in V13;</li>
+<li>optionally hummocks, a bank falling to a shore, terraced ledges, or a winding path.</li>
+</ul>
+<p>A column ray-march gives every pixel its world <code>x</code>, <code>z</code>, height, normal and, most usefully, <strong>pixels per metre</strong>. Every mark size later is set from that.</p>
+<pre><code class="language-python">buf = render(land, W, H, ppm=30, pitch=10, cam_h=1.7)
+buf['x'], buf['z'], buf['h'], buf['n'], buf['ppm'], buf['sky']
+</code></pre>
+<p>One bug worth knowing about before you start: stand the camera on the ground <em>under it</em>, not at height zero. My seed-1 frame was half a wall of dark grass with a vertical edge, because the land rose in front of a camera 1.7 m above sea level. Printing one row of <code>buf['z']</code> gave a flat 2.0 m across the whole frame, which gave it away.</p>
+<pre><code class="language-python">base = max(land.h(0, q, micro=False) for q in np.linspace(0, 4, 9))   # highest ground in the first 4 m
+y = h - cam_h - base
+</code></pre>
+<h2>Step 1: land and sun</h2>
+<p>Ferrari's light has a direction, but his grass doesn't shade like a plaster model. Grass is a forest of vertical blades, and it catches a low sun on any slope. So the painter gives each material a <strong>normal response</strong>: how much its value follows N·L.</p>
+<pre><code class="language-python">NRESP = {'turf': 0.6, 'meadow': 0.5, 'earth': 1.0, 'gravel': 0.8, 'forest': 0.6, 'moss': 0.5}
+r = L['ndl'] * L['sunvis'] / sy          # 1 = a flat plane in full sun
+r = 1 + k * (np.minimum(r, 3) - 1)       # k = NRESP of this pixel's material
+</code></pre>
+<p>Without this, my lit bank measured a mean value <em>below the terminator</em> (2.3 on a 0–6 scale, with 70% of it technically lit), because the land faced slightly away from a low sun. Bare earth, sand and snow take the full N·L, which is what gives V25's dunes their big lit and dark faces.</p>
+<p>The land shades itself with a horizon march toward the sun:</p>
+<pre><code class="language-python">for t in [0.5, 1, 2, 3.5, 5.5, 8, 12, 18, 26, 38, 55, 80]:        # metres toward the sun
+    hs = land.h(X + s[0] / hor * t, Z + s[2] / hor * t, micro=False)
+    vis = np.minimum(vis, np.clip(0.5 - (hs - (Hh + tan_el * t)) / (0.08 + 0.02 * t), 0, 1))
+</code></pre>
+<p>Panel 1 of the strip shows what land and sun alone give on gentle ground: one lit field. That's physically right and pictorially empty. <a href="../img/sheet_B_landform_x_sun.png">Sheet B</a> shows where land and sun alone <em>are</em> enough: hummocks and banks under a low or back light.</p>
+<p><img alt="Sheet B" src="../img/sheet_B_landform_x_sun.png" /></p>
+<p><em>Sheet B: landform (rows) × sun direction (columns), with no off-frame shade. The hummocks and contre-jour cells are the first studio grounds with masses from land and light. The front-lit columns have none.</em></p>
+<h2>Step 2: the shadows of things you can't see</h2>
+<p>Ferrari's biggest ground masses are cast by things outside the frame. The whole right bank of V16 is in shadow from forest you never see. The painter models this as a soft union of crown shadows: blobs scattered in world space, each stretched along the sun's azimuth (longer when the sun is low). It then thresholds that at the quantile that puts a fraction <code>shade</code> of the ground in shadow.</p>
+<pre><code class="language-python">a = (dx * ux + dz * uz) / (rr * stretch)       # along the sun's horizontal direction
+b = (-dx * uz + dz * ux) / rr
+acc = acc + np.exp(-(a * a + b * b) * 1.5)
+# a ragged, world-anchored edge: octaves of sinusoids from crown to leaf scale
+for k, wl in enumerate([scale * 1.2, scale * 0.55, scale * 0.25, scale * 0.12]):
+    ...  acc += amp * 0.25 * 0.7 ** k * np.sin(...)
+thr = np.quantile(acc, 1 - cover)
+return 1 - 1 / (1 + np.exp(-(acc - thr) / (0.03 * amp)))
+</code></pre>
+<p><code>shade_scale</code> is the size of a caster in metres: 3–5 for trees near the subject, 10–16 for forest and cloud. The edge octaves matter. Without them every shadow is a smooth ellipse, which reads as a hole cut in the ground.</p>
+<p>Panel 2 is the raw result: the right idea, full of holes.</p>
+<p><img alt="Holes everywhere" src="../img/046.png" /></p>
+<p><em>046. From the study: every small shadow reads as a hole. This is speckle at a larger scale.</em></p>
+<h2>Step 3: delete the small shapes</h2>
+<p>This one function did more against "speckle" than anything else I wrote. Label the shadow regions and the lit regions, and absorb anything smaller than a fraction of the frame:</p>
+<pre><code class="language-python">def design_masses(f, min_frac=0.02):
+    f = f.copy(); a = f.size * min_frac
+    for val in (True, False):                    # shadow islands, then lit holes
+        m = f &lt; 0.5
+        lab, n = ndi.label(m == val)
+        sizes = ndi.sum(np.ones_like(f), lab, range(1, n + 1))
+        edge = np.unique(np.concatenate([lab[0], lab[-1], lab[:, 0], lab[:, -1]]))
+        floating = ~np.isin(np.arange(1, n + 1), edge)
+        lim = np.where(floating &amp; val, a * 3.5, a)    # a floating shadow must be much bigger
+        small = np.isin(lab, np.nonzero(sizes &lt; lim)[0] + 1)
+        grow = ndi.binary_dilation(small, iterations=4)
+        if val: f[grow &amp; (f &lt; 0.999)] = 1.0          # the island goes, and takes its penumbra
+        else:   f[grow &amp; (f &gt; 0.001)] = 0.0
+    return f
+</code></pre>
+<p><code>light()</code> calls it on the <em>product</em> of terrain shadow and off-frame shade, with <code>min_frac=0.03</code>. Small canopy dapple (<code>canopy</code>) is multiplied in afterwards, because dapple is supposed to be small.</p>
+<p>The three details all came from failures:</p>
+<ol>
+<li><strong>Dilate before absorbing.</strong> Without the dilation, each deleted island leaves its soft penumbra behind as a dithered ring.</li>
+</ol>
+<p><img alt="Rings" src="../img/081.png" /></p>
+<p><em>081. Debug view, value panel second from left: rings where islands used to be.</em></p>
+<ol start="2">
+<li><strong>Floating shadows need a higher bar.</strong> A shadow touching the frame edge reads as cast by something out of shot. One floating in the middle reads as a hole unless it's big.</li>
+<li><strong>Lit holes too.</strong> A small lit hole in a shadow is the same problem in reverse.</li>
+</ol>
+<h2>Step 4: compose with a plan</h2>
+<p>Physics decides whether shadows exist. The picture decides where they go. <code>plan</code> adds a screen-space bias to the off-frame shade field before thresholding, so you get shadow where the composition wants it:</p>
+<pre><code class="language-python">b = {'side-left': -u * 2, 'side-right': u * 2, 'foreground': (tg - 0.6) * 2.5,
+     'far': (0.35 - tg) * 2.5,
+     'pool': (np.hypot(u * 1.6, (tg - 0.5) * 2.2) - 0.45) * 2.5,
+     'V': np.abs(u) * 2 + (tg - 0.8) * 1.5 - 0.3}[plan]
+acc = acc + b * amp * 2.5
+</code></pre>
+<p><img alt="Plans" src="../img/t_plans.png" /></p>
+<p><em>t_plans. The same bank under each plan.</em></p>
+<ul>
+<li><code>side-right</code> or <code>side-left</code> is V16: one lit bank, one shaded bank.</li>
+<li><code>foreground</code> is a repoussoir: dark near ground framing a lit middle distance.</li>
+<li><code>far</code> puts a lit foreground under dark distance.</li>
+<li><code>pool</code> and <code>V</code> show their construction: they read as stamped ovals. Use them only with a big <code>shade_scale</code> and a low <code>shade</code>. They're the weakest of the plans.</li>
+</ul>
+<p>The bias moves the shadows but keeps their shapes from the world, so the edges still come from casters. A plan is a hint to the physics, not a stencil.</p>
+<h2>Step 5: two families that never touch</h2>
+<p>Once the lit mask is known, every value is placed in one of two families: shadow steps 0–2, light steps 3–5. They're clamped apart <strong>before</strong> the marks and again <strong>after</strong> quantization. Otherwise the ordered dither will happily mix a lit step into a shadow, and the notan goes grey:</p>
+<pre><code class="language-python">v = np.where(lit, np.maximum(v, 3.0), np.minimum(v, 2.9))           # before marks
+...
+step = np.where(lit, np.maximum(step, 3), np.minimum(step, 2))      # after quantizing
+</code></pre>
+<p>The terminator itself is broken by the material, so it's never a cut-paper curve. On turf, tall narrow noise lets blade tips cross the edge; on earth, small round grains do:</p>
+<pre><code class="language-python">nt = ndi.gaussian_filter(rng.normal(size=(H, W)), (4, 0.7))     # tall and thin: blade tips
+ne = ndi.gaussian_filter(rng.normal(size=(H, W)), (1.3, 1.3))   # round: grains
+en = np.where(grass, 0.12 * nt, 0.08 * ne) + 0.04 * rng.normal(size=(H, W))
+sv = L['sunvis'] + en * (L['sunvis'] * (1 - L['sunvis']) * 4 + 0.05)   # strongest in the penumbra
+lit = (sv &gt; 0.5) &amp; (L['ndl'] + en * sy * 1.5 &gt; lit_floor * sy)
+</code></pre>
+<p>Keep it gentle. My first version was three times stronger and dissolved every edge into leopard spots:</p>
+<p><img alt="Leopard" src="../img/062.png" /></p>
+<p><em>062. Too much terminator noise.</em></p>
+<p>The noise also leaves one- and two-pixel specks of the wrong family. They're invisible here, but they break the next lesson's distance transforms. See <a href="../turn/README.html#a-bug-stamped-rings">lesson 3</a>.</p>
+<h2>The check</h2>
+<p>Render the notan (<code>step &gt;= 3</code>) and look at it before anything else. It should have:</p>
+<ul>
+<li>two to four shapes, each touching the frame or clearly cast by something;</li>
+<li>long gentle edges on the caster side, with a fringe;</li>
+<li>no holes and no leopard skin.</li>
+</ul>
+<p>If it passes, the painting will hold. If it fails, no texture will rescue it.</p>
+<p>Two faults the critic found in my notans, both worth checking yours for:</p>
+<ul>
+<li><strong>Coastlines.</strong> An off-frame shadow edge should be one or two long, gently curving lines, not a jagged coastline. My driftwood sheet's shade had coastlines.</li>
+<li><strong>Masses with no reason.</strong> Every shadow should have a caster you could point to, even off-frame.</li>
+</ul></div><nav class="pager"><a href="../read/README.html">← Lesson 1: Read the masses</a><span class="label">2 of 5</span><a href="../turn/README.html">Lesson 3: Turn the masses →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

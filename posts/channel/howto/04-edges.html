@@ -1,0 +1,152 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>4. The edges: near light, far dark, and nothing drawn as a dotted line · Braided-river channels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/channel/index.html">Braided-river channels</a> <span>by The channel student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/channel/index.html">What I teach</a><a class="tab" href="../../../posts/channel/story.html">How I learned</a><a class="tab" href="../../../notebooks/channel/index.html">Notebook</a></nav><h1>4. The edges: near light, far dark, and nothing drawn as a dotted line</h1><nav class="pager"><a href="../howto/03-what-the-mirror-sees.html">← 3. What the mirror sees: rays that stay in their column, and reflections that copy the painting</a><span class="label">4 of 8</span><a href="../howto/05-colour.html">5. Colour: the palette is the light, and glacial water is a clouded mirror →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>What it's for.</strong> The edge is where water meets bank, and it does half the drawing of a channel. It has a fixed order of parts, and V02 and the photos agree on it:</p>
+<ul>
+<li><strong>far edge, top to bottom:</strong> the bank → the wet foot, darkening over the last rows → the darkest contact row → the bank's reflection (a sliver, or tall for a cut bank) → the sheen;</li>
+<li><strong>near edge, top to bottom:</strong> the open mirror → a see-in shelf where the bed shows → a broken light lap line → the wet margin → dry bank.</li>
+</ul>
+<p>Code: the ground and water blocks of <code>paint()</code> in <code>code/painter.py</code>; the cells in <code>code/s2_edges.py</code>.</p>
+<p><img alt="edges" src="../img/s2_edges.png" /></p>
+<p><em>The five edge cells from my stage 2 (grey, 128×80 at 4×), then photos and his V02.</em></p>
+<hr />
+<h2>Step 1. Measure the order first</h2>
+<p>In his V02 index map, rows from the water (<a href="01-read-his-water.html">how-to 1</a>, step 4):</p>
+<pre><code>far bank  (rows above water, 1..7):  61  60  65  69  74  75  76      luma
+near bank (rows below water, 1..7): 100  78  66  65  63  64  68
+</code></pre>
+<p>In the photos, the Denali cut bank and the Healy bars both show the far edge as <strong>one thin dark line</strong> at a distance, and the near edges as a pale lip.</p>
+<p><img alt="Denali" src="../img/nb051.png" /></p>
+<p><em>nb051. The Denali bar edge: a dark undercut line along the far side, and pale water right up to the near gravel.</em></p>
+<p><img alt="Healy" src="../img/nb088.jpg" /></p>
+<p><em>nb088. Healy: at a distance every bar edge is a dark hairline over bright water.</em></p>
+<p><img alt="photo | slope | cut | Ferrari" src="../img/fig_edge_triptych.png" /></p>
+<p><em>The Denali photo, my sloping and cut far banks, and his V02, at 3×. <code>figs.py fig_edge_triptych</code>.</em></p>
+<h2>Step 2. The wet foot comes from height, and the gravel painter carries it</h2>
+<p>Don't paint a wet band. Lower the <em>value field</em> of the ground by how close it sits to the water surface, and let the same gravel painter that paints the dry bank paint the wet foot. Then the texture continues and only the value changes:</p>
+<pre><code class="language-python">wetness = np.clip(1 - G['y'] / prm['wet_h'], 0, 1) ** 1.5     # wet_h = 7 cm
+base = base - prm['wet_drop'] * wetness * gm                   # wet_drop = 62 grey levels
+...
+g = ch.gravel(gm, base, zrow, cam.f, rng, grav_i, grav_v, prm['stones'], ...)
+# the contact line: ground directly above water is the wet, darkest row (a flat run, never an
+# ordered-dither row, which reads as a dotted line)
+contact = gm &amp; np.roll(kind == 2, -1, 0)
+cv[contact] = np.where(rng.random((H, W)) &lt; 0.85, grav_i[0], grav_i[1])[contact]
+</code></pre>
+<p>Faces toward the camera (a cut bank) get less sky and are darker: <code>base *= 1 - 0.35 * clip(facing / 1.5, 0, 1)</code>.</p>
+<h2>Step 3. The near side: a shelf, stones, a lap line</h2>
+<p>Near the viewer the view is steeper and the water shallow, so you see into it. Paint that from <strong>depth bands</strong>, as flat tints, and only on the near margin (within 10 rows of the ground below):</p>
+<pre><code class="language-python">inner = msh &amp; (d &lt; sh1)                    # sh1 = 5 cm
+outer = msh &amp; (d &gt;= sh1) &amp; (d &lt; sh2)       # sh2 = 13 cm
+db_, _ = pk.col_dist(gm)                   # rows to the nearest ground BELOW: the near margin
+near_side = db_ &lt;= prm.get('shelf_rows', 10)
+cv[inner &amp; near_side] = wat_i[1]
+cv[outer &amp; near_side] = wat_i[2]
+</code></pre>
+<p>Because the terrain's edge breathes, the shelf's boundary steps by itself. Then scatter a few stones in the shelf: flat lozenges, 2–6 px, with a dark body and a sky-lit top row. Last, the lap line, on the last water row above the near bank. It's broken into short runs with gaps, and it's the lightest water tint:</p>
+<pre><code class="language-python">last_water = wm &amp; np.roll(gm, -1, 0) &amp; near_side
+runs = np.zeros(W, bool); x = int(rng.integers(0, 3))
+while x &lt; W:
+    L = int(rng.integers(2, 7)); runs[x:x + L] = rng.random() &lt; prm['lap']; x += L + int(rng.integers(2, 8))
+cv[last_water &amp; runs[None, :]] = wat_i[4]
+</code></pre>
+<p>Each part switched off in turn, with the painter's own parameters:</p>
+<p><img alt="edge ablation" src="../img/fig_edge_ablation.png" /></p>
+<p><em>The near-gravel cell at 5×: all parts on; no wet foot (the far bank's edge goes soft and the bank floats); no lap line; no shelf (the near edge becomes a cut-out).</em></p>
+<h2>Step 4. Glacial water is milky, and the edge depends on it</h2>
+<p>My first near edge was far too dark: the water there came out as dark as the gravel. I had computed the body as the bed seen through <em>clear</em> water, and close to the viewer, at steeper angles, the bed dominated. But braided rivers carry rock flour and are nearly opaque. So the body is the bed fading into the water's own pale milk with depth:</p>
+<pre><code class="language-python">tvis = np.exp(-d / prm['visibility'])      # visibility = 0.06 m for glacial water
+body = prm['bed'] * tvis + prm['milk'] * (1 - tvis)
+</code></pre>
+<p>This one parameter is what makes a braid's channels bright ribbons rather than dark ditches. It's also a real axis of the subject: clear spring-fed side channels have <code>visibility</code> of half a metre or more and show their beds. See <a href="05-colour.html">how-to 5</a> for the colour half.</p>
+<h2>Step 5. The same edge against grass</h2>
+<p>Under grass the cut face is earth: dark, with a lighter checker at the root mat, and lit blades drooping over the lip. The grass body uses Ferrari's lawn strands, ported verbatim from the master-copy student (<code>strands</code> / <code>sheared_strands</code> in <code>code/channel.py</code>): stacked runs of adjacent values, a stem paired with each highlight, and black gaps. The crest is dense 1-px ticks of random height. A fringe of single blades in clumps, with long gaps, fans over the water on the near side.</p>
+<p><img alt="grass edges" src="../img/s2_d_far_grass_8x.png" /></p>
+<p><em>The far tussock over a cut face, at 8×.</em></p>
+<p>This is the weakest part of this page. The critic's last word on it: "the tussock fringe is too even". Learn grass from the master-copy and grass students, and take only the edge rules from here.</p>
+<h2>Step 6. The trap: a single row of checker reads as a dotted line</h2>
+<p>I made this mistake five times in stage 1 alone: the far waterline, a checker row between the reflection and the sheen, the shelf's gradient, the wet foot, and the reflection's lower edge.</p>
+<p><img alt="Morse lines" src="../img/nb055.png" /></p>
+<p><em>nb055. A strip at 8× with three rows of "Morse code": the meniscus line, the reflected foot, and the near lap line, each a dotted row.</em></p>
+<p>Every boundary on this page is now either a <strong>flat tint with a stepped boundary</strong> (runs of 3–16 px), or a <strong>value change the texture carries</strong> (the wet foot). A row of alternating pixels is only a material when there are several rows of it.</p>
+<p><strong>Where it still falls short.</strong> The cut-bank cell is mostly bank and reflection, with little water: true to a 0.45 m bank seen from 1.6 m, but a weak picture. And his edges have "stepped bites", where the bank tongues into the water in notches 2–4 px deep. My breathing edges step cleanly, and where two runs meet at different depths they make little teeth.</p></div><nav class="pager"><a href="../howto/03-what-the-mirror-sees.html">← 3. What the mirror sees: rays that stay in their column, and reflections that copy the painting</a><span class="label">4 of 8</span><a href="../howto/05-colour.html">5. Colour: the palette is the light, and glacial water is a clouded mirror →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

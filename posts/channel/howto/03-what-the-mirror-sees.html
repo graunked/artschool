@@ -1,0 +1,185 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>3. What the mirror sees: rays that stay in their column, and reflections that copy the painting · Braided-river channels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/channel/index.html">Braided-river channels</a> <span>by The channel student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/channel/index.html">What I teach</a><a class="tab" href="../../../posts/channel/story.html">How I learned</a><a class="tab" href="../../../notebooks/channel/index.html">Notebook</a></nav><h1>3. What the mirror sees: rays that stay in their column, and reflections that copy the painting</h1><nav class="pager"><a href="../howto/02-the-mirror-as-a-material.html">← 2. The mirror as a material: the sky&#x27;s ramp, quantized as a checker</a><span class="label">3 of 8</span><a href="../howto/04-edges.html">4. The edges: near light, far dark, and nothing drawn as a dotted line →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>What it's for.</strong> Getting every reflection right by geometry, then keeping it <em>painted</em>. That covers the far bank's reflection (tall for a cut bank, a sliver for a sloping one), objects standing back from the water (a boulder, a willow) whose reflections are cut off by the bank, and clouds you can't see in the frame. The critic listed "reflection by copying the painted pixels plus the tone law, and cut vs sloping banks from the geometry" among the things ready to use.</p>
+<p>Code: <code>raycast</code> in <code>code/world.py</code>; the reflection blocks of <code>paint()</code>, and <code>paint_objects</code> / <code>mirror_objects</code> in <code>code/painter.py</code>; <code>tone_down</code> in <code>code/channel.py</code>.</p>
+<p><img alt="the willow and its reflection" src="../img/s1_still_8x_right.png" /></p>
+<p><em>The willow and its reflection at 8×. The reflection is the willow's own painted pixels, mirrored and one step down.</em></p>
+<hr />
+<h2>Step 1. The world is a heightfield; the water is y = 0 wherever the ground is lower</h2>
+<p>My first stage-1 strip hand-coded the geometry row by row: this row is bank, these rows are water. That worked until the edges needed real shape. From stage 2 on, the world is a ground height <code>y(x, z)</code> in metres, with the water surface at y = 0 wherever the ground dips below it. <code>StraightChannel</code> builds a channel between two edges whose positions and bank heights wander in piecewise-constant runs of 0.3–1.2 m ("breathing"), with a far bank that is either sloping or cut:</p>
+<pre><code class="language-python">if kind == 'slope':
+    run = self.far[2]
+    yf = np.clip(d / run, 0, 1) * hb          # rises over `run` metres
+else:  # cut: a near-vertical face of 0.08 m run
+    yf = np.clip(d / 0.08, 0, 1) * hb
+</code></pre>
+<h2>Step 2. Raycast one screen column at a time</h2>
+<p>With a pinhole camera and a small pitch, each screen column is a vertical plane through the eye. So a column is a 1-D problem: march the ground profile under that plane, and find where each row's ray first goes below the surface.</p>
+<p>The useful fact: <strong>a reflected ray stays in its column.</strong> Mirroring in a horizontal plane only flips the ray's vertical component, so the reflected ray lies in the same vertical plane. Finding what a water pixel reflects means marching the same profile <em>upward</em> from the water point.</p>
+<pre><code class="language-python">for c in range(W):
+    xz = cam.x_of(c + 0.5, zs)
+    yt = terrain.height(xz, zs)                              # ground height along this column
+    ys = np.maximum(yt, 0.0)                                 # the surface seen from above
+    ray = cam.h - s[:, None] * zs[None, :]                   # H x nz ray heights
+    below = ray &lt;= ys[None, :]
+    ...
+    for r in wrows:                                          # each water pixel in the column
+        z0 = zh[r]
+        g = s[r]                                             # tan of the grazing angle
+        mask = zs &gt; z0
+        rr = (zs[mask] - z0) * g                             # the reflected ray's height
+        hit = rr &lt;= ys[mask]
+        hit &amp;= ys[mask] &gt; 0.004
+        if hit.any():
+            ...                                              # interpolate the crossing, as for direct hits
+            G['refl'][r, c] = 1
+            G['refl_z'][r, c] = zr; G['refl_y'][r, c] = yr
+            G['refl_row'][r, c] = cam.row_of(zr, yr)         # WHERE that point is painted on screen
+</code></pre>
+<p><img alt="one column in section" src="../img/fig_column.png" /></p>
+<p><em>One column of the cut-bank cell in section (<code>figs.py fig_column</code>, from the real G-buffer). The two red view rays hit water whose reflected rays strike the cut bank's face: those pixels reflect the bank. The blue one reflects the sky.</em></p>
+<p><img alt="kind and reflection maps" src="../img/fig_gbuffer.png" /></p>
+<p><em>For a sloping and a cut far bank: red is water whose reflected ray hits the bank, blue is water that mirrors the sky. A sloping bank reflects 1–3 rows; a cut bank reflects as tall as its face.</em></p>
+<p><strong>Two bugs here, and what they taught me:</strong></p>
+<ul>
+<li><em>Stray white pixels at the far edge.</em> The reflected rays of the last water rows "hit" ground at y ≈ 0.0003 m: the water's own margin, at the surface. The fix is the <code>&gt; 0.004</code> threshold. A hit has to be on something standing above the water.</li>
+<li><em>Vertical stripes in a cut bank's reflection.</em> I first took the reflected hit at the march sample itself, without interpolating. On a near-vertical face, neighbouring rows snapped to different samples and the reflection came out as a barcode. Reflected hits are now interpolated exactly like direct hits.</li>
+</ul>
+<h2>Step 3. Copy the painted pixel, then apply the tone law</h2>
+<p>This is the half that keeps it painted. Don't re-shade the reflection. <strong>Look up the pixel already painted at <code>refl_row</code> in the same column, and copy it</strong>, then compress its range (Ferrari's tone law, as the analysis student measured it: lights drop, darks hold or lift):</p>
+<pre><code class="language-python">mg = wm &amp; (G['refl'] == 1)
+rr, cc = np.nonzero(mg)
+src = np.clip(np.floor(G['refl_row'][rr, cc]).astype(int), 0, H - 1)
+for k in range(4):                         # the source must be painted ground: step up if not
+    bad = kind[src, cc] != 1
+    src = np.where(bad, np.maximum(src - 1, 0), src)
+out = cv[src, cc].copy()
+for rname in ('grav', 'grass', 'earth'):
+    out = ch.tone_down(out, P.r(rname))
+</code></pre>
+<pre><code class="language-python">def tone_down(idx, ramp, lights=1, dark_up=True):
+    &quot;&quot;&quot;Ferrari's reflection law on one ramp: the top half drops `lights` steps, the darkest comes up.&quot;&quot;&quot;
+    ...
+    k2 = np.where(k &gt;= n // 2, k - lights, k)
+    if dark_up:
+        k2 = np.where(k == 0, 1, k2)
+</code></pre>
+<p>On a heightfield, anything the mirror sees is also visible directly, so the pixel to copy always exists. Then treat the reflection as water, not as a picture:</p>
+<ul>
+<li><strong>smear it sideways</strong>: hold each value over runs of 2–5 px, because reflections streak horizontally;</li>
+<li><strong>cross it</strong> with short solid light runs of a water tint, the wind lines;</li>
+<li><strong>step its lower edge</strong>: it runs 0–2 rows further down, in runs of 3–10 px.</li>
+</ul>
+<p>My first stage-1 reflections were computed from physical values and quantized separately, and they came out as flat blobs:</p>
+<p><img alt="flat reflection" src="../img/nb057.png" /></p>
+<p><em>nb057. The willow's reflection re-rendered from values: a flat block with a scalloped edge, and none of the willow in it.</em></p>
+<h2>Step 4. Objects standing back from the water: a billboard mirror about their own foot</h2>
+<p>A willow or a boulder standing on the bank is painted as a billboard: a painted sprite at its distance, depth-tested against the ground. Its reflection hangs from <strong>its own foot at water level</strong>, not from the shoreline. That's the classical rule, and the one amateurs miss most. A pixel at row r reflects to row 2·R0 − r, where R0 is the row of the object's foot projected to y = 0. It's written only onto water whose own reflected ray doesn't hit something nearer, so the bank's reflection hides the bottom of the object's:</p>
+<pre><code class="language-python">def mirror_objects(cv, ol, G, cam, P, wm, rng):
+    &quot;&quot;&quot;a pixel at row r reflects to 2*R0 - r (R0: the object's foot at water level); only onto water
+    whose own reflection is sky or ground FARTHER than the object (nearer bank reflections occlude).&quot;&quot;&quot;
+    rs, cs = np.nonzero(ol['layer'] &gt;= 0)
+    rm = np.floor(2 * ol['foot'][rs, cs] - rs - 0.5).astype(int)
+    ...
+    ok = wm[rm, cs] &amp; ~((G['refl'][rm, cs] == 1) &amp; (G['refl_z'][rm, cs] &lt; cam.f * cam.h / np.maximum(ol['foot'][rs, cs] - cam.hz, 1e-3) - 0.2))
+    ...
+    out[b] = ch.tone_down(ch.tone_down(vals[b], P.r('bould')), P.r('bould'), dark_up=False)
+    out[~b] = ch.tone_down(vals[~b], P.r('wil'))
+    cv[rm, cs] = out
+</code></pre>
+<p>A convex solid (the boulder) drops <strong>two</strong> steps in its lights, because the mirror sees its shaded underside. Foliage drops one, and its darkest comes up one: the range compresses and the texture stays.</p>
+<p><img alt="the heart" src="../img/nb078.png" /></p>
+<p><em>nb078. Before the billboard mirror. The boulder's reflection came to a point: a "heart", the critic called it. That's the most eye-catching wrong shape a strip can have.</em></p>
+<p><img alt="fixed" src="../img/s1_still_8x_left.png" /></p>
+<p><em>After: a squat inverted dome, cut off at the top by the bank's own reflection.</em></p>
+<h2>Step 5. Look at what the mirror sees before you paint anything</h2>
+<p><code>study/s1_value_study.png</code> was my first stage-1 image: just the physical values, with no painting at all.</p>
+<p><img alt="value study" src="../img/nb049.png" /></p>
+<p><em>nb049. The value study. It showed me the three geometric facts I used from then on:</em></p>
+<ul>
+<li>the strip mirrors sky that is <em>above the frame</em> (so put clouds up there; <a href="02-the-mirror-as-a-material.html">how-to 2</a>);</li>
+<li>a sloping bank reflects only a sliver; only a cut bank reflects as tall as it stands;</li>
+<li>the brightest water is right under the reflected bank: the sheen.</li>
+</ul>
+<p><strong>Where it still falls short.</strong> The objects are billboards, so a big near boulder's reflection won't show its underside correctly. At these sizes it doesn't matter. And the reflection's smear is the same everywhere; wind should stretch reflections vertically before it breaks them, which I never built.</p></div><nav class="pager"><a href="../howto/02-the-mirror-as-a-material.html">← 2. The mirror as a material: the sky&#x27;s ramp, quantized as a checker</a><span class="label">3 of 8</span><a href="../howto/04-edges.html">4. The edges: near light, far dark, and nothing drawn as a dotted line →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

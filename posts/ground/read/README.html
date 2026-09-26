@@ -1,0 +1,199 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Lesson 1: Read the masses · The ground as big masses</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/ground/index.html">The ground as big masses</a> <span>by The ground student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/ground/index.html">What I teach</a><a class="tab" href="../../../posts/ground/story.html">How I learned</a><a class="tab" href="../../../notebooks/ground/index.html">Notebook</a></nav><h1>Lesson 1: Read the masses</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 5</span><a href="../masses/README.html">Lesson 2: Design the masses →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the course</a>.</em></p>
+<p>Before painting ground you need three facts about your subject:</p>
+<ol>
+<li>where its big shapes are;</li>
+<li>how dark each one is, and how many values it holds;</li>
+<li>how each shape turns.</li>
+</ol>
+<p>Eyes are bad at all three, because texture distracts them. These tools measure pixels instead. Use the same tools on photographs, on Ferrari, and on your own work, so that the comparisons are fair.</p>
+<h2>1. The squint map</h2>
+<p>Blur the lightness, then cut it into four flat values at the image's own quartiles. What's left is the picture's masses:</p>
+<pre><code class="language-python"># code/analyze.py
+def Lstar(rgb):
+    c = rgb.astype(float) / 255
+    c = np.where(c &gt; 0.04045, ((c + 0.055) / 1.055) ** 2.4, c / 12.92)
+    Y = c @ np.array([0.2126, 0.7152, 0.0722])
+    return np.where(Y &gt; 0.008856, 116 * np.cbrt(Y) - 16, 903.3 * Y)
+
+def squint(rgb, s=3): return ndi.gaussian_filter(Lstar(rgb), s)
+
+# code/figs.py
+def mass_map(rgb, sigma=3, n=4):
+    L = squint(rgb, sigma)
+    q = np.digitize(L, np.percentile(L, np.linspace(0, 100, n + 1)[1:-1]))
+    return np.array([30, 90, 160, 230][:n])[q]
+</code></pre>
+<p>Blur on L*, not RGB: you want what a value sketch would show, and green and ochre at the same L* should merge. Use σ≈3 px at game resolution. That's roughly the scale below which Ferrari's texture lives (see section 4).</p>
+<h3>On photographs</h3>
+<p>Box-downsample the photo to game resolution first (320 px wide), the steppe student's method, so that you're reading it at the scale you'll paint it:</p>
+<pre><code class="language-python">def game_res(path, w=320):
+    im = Image.open(path).convert('RGB')
+    return np.asarray(im.resize((w, int(round(im.height * w / im.width))), Image.BOX))
+</code></pre>
+<p><img alt="Four photographs and their masses" src="../img/t_photo_masses.png" /></p>
+<p><em>t_photo_masses. Four photographs from the study's photo folder, each beside its squint map.</em></p>
+<p>What each one teaches:</p>
+<ul>
+<li><strong>Uncompahgre Wilderness</strong> (BLM, public domain). An alpine meadow in low sun. The near ground is one dark mass cast by the swells; lit bands lie on the slopes that face the sun; snow patches are the lightest shapes. The shadow edges are lobed, but each has one long side tied to a ridge. <strong>Masses from land and light.</strong> This is what my painter does.</li>
+<li><strong>Below Kinder Low</strong> (Bill Boaden, CC BY-SA 2.0). Moorland under soft light. The masses here are <strong>material</strong>: dark heather and pale grass sweeping along the contours, a dark conifer plantation, walled fields. There's hardly any cast shadow. This is the kind of mass my painter <em>can't</em> make, and the one the critic asked for under flat light.</li>
+<li><strong>Sunlit roots in the woods</strong> (Fabian Irsara, CC0). A forest path. The lit ground is one broad, dim pool along the path, framed by dark verticals. Compare Ferrari's V09 below: a ribbon of light, only a few steps above the dark.</li>
+<li><strong>Nowitna river gravel bar</strong> (Oliver Kurmis, CC BY-SA 2.0 de). The gravel is a pale, nearly textureless wedge at the bottom, under a dark bank and its reflection. Close up it's stones; at 20 m it's one value.</li>
+</ul>
+<p>The lesson I missed during the study: <strong>photographs tell you what should drive the masses.</strong> Ferrari tells you how to paint them.</p>
+<h3>On Ferrari</h3>
+<p>Ferrari's scenes are stored as index maps plus palettes. Load them with <code>code/lw.py</code> (keys are unquoted in the files, so it patches them before <code>json.loads</code>), then run the same squint.</p>
+<p><img alt="V16 and its squint" src="../img/014.png" /></p>
+<p><em>014. V16 and its squint map (quartiles of the lower half). Four ground shapes: the lit islet, the lit left bank, the shadowed right bank and the dark far hummocks.</em></p>
+<p><img alt="V13 and its squint" src="../img/015.png" /></p>
+<p><em>015. V13 at dusk: five or six terrace bands, each a single value with a lighter crest.</em></p>
+<h2>2. Count the values inside each mass</h2>
+<p>Pick a box inside one mass and count palette indices, with each one's L* and share. This is <code>measure.region_stats</code>:</p>
+<pre><code class="language-python">def region_stats(name, box, top=6):
+    d = lw.load(name); I, P = d['idx'], d['pal']
+    x0, y0, x1, y1 = box
+    s = I[y0:y1, x0:x1]; u, c = np.unique(s, return_counts=True); o = np.argsort(-c)
+    return [(int(u[k]), tuple(P[u[k]]), round(float(Lstar(P[u[k]][None])[0])), round(100 * c[k] / s.size))
+            for k in o[:top]]
+</code></pre>
+<p><code>python3 measure.py</code> prints these for V16 (L*, % of the box):</p>
+<pre><code>islet          [(2, 25), (31, 21), (6, 18), (83, 14), ...]
+far hummocks   [(6, 29), (25, 28), (2, 16), (9, 14), ...]
+right bank     [(0, 34), (2, 28), (15, 22), (18, 12), ...]
+near left bank [(3, 37), (10, 36), (2, 12), (15, 10), ...]
+</code></pre>
+<p>This is the source of rule 2 on the <a href="../TUTORIAL.html#the-recipe-on-one-card">card</a>. A shadow mass has two or three values and they're nearly black; the brightest colour in the whole ground (L* 83) belongs to the one lit shape. When I made palettes by lighting maths I got mud. When I set each step's L* from numbers like these, I got masses.</p>
+<p>A related trick: draw the index map with a random colour per index. His masses each use one short run of adjacent indices, so the index map <em>is</em> a map of the masses and forms.</p>
+<p><img alt="Random-colour index map" src="../img/023.png" /></p>
+<p><em>023. V16's index map in random colours.</em></p>
+<h2>3. Measure how a form turns</h2>
+<p>Squint maps say where; counts say how dark. To learn how a form turns, measure its value <strong>by depth below its crest</strong>. On V16's far hummocks, map each index to a step (0 darkest to 3 lit), walk down every column, and average by rows below the top of each run (<code>measure.crest_profile_of</code>):</p>
+<pre><code>runs ~20 px: 1.4 1.7 1.7 1.7 1.9 1.7 1.6 1.6 1.5 1.4 1.1 1.0 1.0 0.8 0.5
+runs ~30 px: 1.7 1.9 1.9 1.8 2.0 2.2 1.7 1.2 0.9 0.9 1.1 1.0 0.8 0.8 0.8 ...
+</code></pre>
+<p>(every second row is printed)</p>
+<p>Read it as a shape: a slightly darker crest, a lit band about a quarter of the way down, then a fall to a dark base where the next hummock overlaps. That became <code>crest_profile</code> in <a href="../turn/README.html">lesson 3</a>.</p>
+<p><img alt="Hummock profile copy" src="../img/101.png" /></p>
+<p><em>101. His hummocks (top), filled with that profile (middle), and the crest lines found in his squinted value (bottom, red).</em></p>
+<p>A caution from doing it: the top of a mask is not a crest. His crest lines are <em>inside</em> the hummock mask, where one mound overlaps the next. I found them as upward steps in his squinted value down a column, and kept only the long ones (25 px or more), because short ones are texture.</p>
+<h2>4. Point the same tools at your own work</h2>
+<p>This is the part I most want you to do, because it's where my own work fell short and I didn't see it until I measured.</p>
+<p><strong>The squint test.</strong> Run <code>mass_map</code> on a Ferrari passage and on yours at the same scale:</p>
+<p><img alt="Squint of his and mine" src="../img/t_mass_compare.png" /></p>
+<p><em>t_mass_compare. Top: Ferrari's V16 and V16PM banks. Bottom: my meadow bank and noon hill. The same squint on each.</em></p>
+<p>Inside his banks, the squint gives <strong>smooth bands that follow the form</strong>. Inside my lit masses it gives <strong>mottle</strong>, because my tufts and marks have structure at the squint's scale. His texture is finer than a squint and mine isn't. If your squint map has mottle inside a mass, your texture is competing with your masses.</p>
+<p><strong>The class count.</strong> Count steps in the same box of his near grass and yours:</p>
+<table>
+<thead>
+<tr>
+<th>near lit grass</th>
+<th>base or top step</th>
+<th>stroke, one down</th>
+<th>olive</th>
+<th>near-black gap</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ferrari V16PM</td>
+<td>40%</td>
+<td>48%</td>
+<td>6%</td>
+<td>6%</td>
+</tr>
+<tr>
+<td>mine, as shipped</td>
+<td>72%</td>
+<td>15%</td>
+<td>5%</td>
+<td>7%</td>
+</tr>
+</tbody>
+</table>
+<p>In his lit grass the strokes are the majority. When your numbers differ this much, find the cause by switching terms off one at a time and recounting. I guessed wrong first; the counts found it. <a href="../texture/README.html#the-near-lit-field-a-measured-flaw">Lesson 4</a> has the details.</p>
+<p><strong>Every time you add a term, print how much it changed the picture:</strong></p>
+<pre><code class="language-python">a = ground.paint_ground(W, H, crest_band=0, mass_turn=0, **kw)
+b = ground.paint_ground(W, H, **kw)
+print(np.abs(a.v - b.v).mean())      # I got 0.0: my edit had silently inserted nothing
+</code></pre></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 5</span><a href="../masses/README.html">Lesson 2: Design the masses →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

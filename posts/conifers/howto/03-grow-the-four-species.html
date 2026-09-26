@@ -1,0 +1,201 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>3. Grow the four species from spray elements · The great PNW conifers</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/conifers/index.html">The great PNW conifers</a> <span>by The conifers student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/conifers/index.html">What I teach</a><a class="tab" href="../../../posts/conifers/story.html">How I learned</a><a class="tab" href="../../../notebooks/conifers/index.html">Notebook</a></nav><h1>3. Grow the four species from spray elements</h1><nav class="pager"><a href="../howto/02-tier-top-light.html">← 2. Tier-top light</a><span class="label">3 of 6</span><a href="../howto/04-every-distance.html">4. One tree at every distance, without pops →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorials</a>. Code: <code>grow.py</code> (<code>SP</code>, <code>AGE</code>, <code>grow</code>, <code>_limb</code>) and <code>foliage_fast.py</code>, in <code>~/work/pixelart-studies/elements/conifers/</code>.</em></p>
+<p>The critic's verdict on the forms was "naturalist-grade: a 70 m tree is a different silhouette, not a scaled sapling". Most of that came from reading, not code. So this page starts with what to read.</p>
+<h2>What each species is, in a sentence you can build from</h2>
+<p>I took these from the photos in <code>refs/</code> and from the naturalist desk's <code>~/work/naturalist/plants/02-trees.md</code> and <code>05-old-growth.md</code>. Read those guides before you draw a line.</p>
+<table>
+<thead>
+<tr>
+<th>species</th>
+<th>the silhouette</th>
+<th>the spray</th>
+<th>what gives it away at 100 m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>western hemlock</strong></td>
+<td>slender, drooping limbs; crown carried low (shade-tolerant)</td>
+<td>flat lacy fronds arcing down at their tips</td>
+<td>"every hemlock's tip nods over like a bent fishing rod"</td>
+</tr>
+<tr>
+<td><strong>western redcedar</strong></td>
+<td>limbs "droop then sweep up at the tips in a J"; old trees have multiple leaders and dead silver spikes</td>
+<td>hanging flat fans, curtains of scale-leaf sprays</td>
+<td>the flared, fluted red base; the candelabra top</td>
+</tr>
+<tr>
+<td><strong>Sitka spruce</strong></td>
+<td>open, long horizontal limbs upturned at the tips; broad cone</td>
+<td>stiff short needles on top, pendulous branchlets hanging under the limbs</td>
+<td>curtains under long limbs; blue-green</td>
+</tr>
+<tr>
+<td><strong>Douglas-fir</strong></td>
+<td>young: a full cone; mature: long clear bole, crown in the top third to half; old: "often only the top 10 to 20 m of a 60 to 70 m tree", flat, broken top</td>
+<td>needles all round the twig, "bottle-brush"</td>
+<td>the pillar; the ragged top</td>
+</tr>
+</tbody>
+</table>
+<p>And the heights: mature 40–60 m, old 60–75 m. My first trees were a third of that, and nothing else I did would have made them look like these forests.</p>
+<h2>Limbs: three terms and a fan</h2>
+<p>A limb is a curve <code>s ∈ [0, 1]</code> from the stem. Its height is the sum of an initial angle, gravity sag, and an upturn at the tip (from <code>grow._limb</code>):</p>
+<pre><code class="language-python">rise = np.sin(ang) * s * L
+sag  = sp.droop * L * s ** 2 * (1 - 0.3 * t) * (1.25 if age in (&quot;old&quot;, &quot;mature&quot;) else 1)
+up   = sp.tip_upturn * L * np.clip(s - 0.5, 0, 1) ** 2 * 3.2      # cedar's J-hook: 0.55; hemlock 0.04
+horiz = np.cos(ang) * s * L
+pts = p0 + horiz[:, None] * d + UP * (rise - sag + up)[:, None] + wob * s[:, None]
+</code></pre>
+<p>The angle depends on the limb's height <code>t</code> in the crown: upswept near the top, drooping near the base.</p>
+<pre><code class="language-python">ang = sp.base_angle + sp.top_upsweep * max(0, t - 0.55) * 2.2 - sp.low_droop * max(0, 0.5 - t) * 2
+</code></pre>
+<p>Mature and old limbs <strong>fan</strong>: <code>fans × AGE[age]["fan"]</code> secondary branches leave each limb at <code>fan_angle</code> to alternate sides. That's what turns a tier from a line into a flat shelf. A fanned limb then carries its own foliage mostly toward its tip (<code>s0 = max(s0, 0.3)</code>), so its children do the filling.</p>
+<h2>Spray elements</h2>
+<p>Every limb carries anchors every <code>spacing</code> metres along its foliated part. Each anchor hangs one element per side, chosen by the species weights:</p>
+<ul>
+<li><strong>frond</strong>: a rachis arcing down (<code>frond_droop</code>) with alternating pinnae (<code>pinna × length</code>);</li>
+<li><strong>strand</strong>: <code>strand_fan</code> pendant lines hanging from the anchor;</li>
+<li><strong>brush</strong>: 3–5 short needled twigs splayed all round the anchor;</li>
+<li><strong>spur</strong>: the needled outer 35% of the limb itself (how-to 1).</li>
+</ul>
+<p>Element length falls off toward the limb tip (<code>wedge</code>), so tiers end in points rather than blobs:</p>
+<pre><code class="language-python">xx = (us - s0) / max(1 - s0, 1e-3)
+taper = (np.clip(1 - xx, 0, 1) ** sp.wedge * 0.9 + 0.18) * elscale     # long sprays inboard, short at the tip
+</code></pre>
+<p><img alt="element kinds" src="../img/t3_kinds.png" /></p>
+<p><em>Young trees at 0.05 m/px, and each foliage pixel coloured by the element that drew it: fronds green, strands orange, brush purple, spurs yellow, leader white. Douglas-fir is brush over fronds; hemlock is almost all fronds; cedar is curtains of strands with fronds at the upturned tips; Sitka is fronds on top with strands hanging under, and spurs at the edge.</em></p>
+<p>The weights, from <code>grow.SP</code>:</p>
+<pre><code class="language-python">&quot;hemlock&quot;: Sp(..., frond_w=1.0, frond_len=0.45, frond_droop=0.7, pinna=0.3, strand_w=0.2, strand_len=0.15,
+              droop=0.32, low_droop=0.45, leader_nod=0.05, needle=0.016, ...),
+&quot;cedar&quot;:   Sp(..., frond_w=0.35, strand_w=1.0, strand_len=0.4, strand_fan=3, tip_upturn=0.55,
+              base_angle=-0.35, buttress=0.9, flutes=7, candelabra=0.8, spike=0.7, needle=0.03, ...),
+&quot;spruce&quot;:  Sp(..., frond_w=0.5, frond_len=0.3, frond_droop=0.15, strand_w=0.8, strand_len=0.25,
+              whorled=True, per_whorl=(5, 7), rmax_frac=0.27, tip_upturn=0.35, needle=0.022, ...),
+&quot;douglas&quot;: Sp(..., brush_w=0.6, brush_len=0.22, frond_w=0.6, strand_w=0.3, whorled=True, per_whorl=(3, 5),
+              crown_ratio=0.55, needle=0.028, ...),
+</code></pre>
+<h2>A spray is an area: the needle fill</h2>
+<p>At 2 cm/px my first limbs were stick drawings. A spray drawn as its skeleton is a wire model:</p>
+<p><img alt="stick drawings" src="../img/nb053.png" /></p>
+<p>Needles have width. Where a spray's leafy half-width (<code>needle</code>, 1.6–3 cm by species) is over a pixel, each element is filled with parallel copies of its points, offset across the spray and a little down (<code>foliage_fast._fill</code>):</p>
+<pre><code class="language-python">if sp.needle &gt;= step * 0.9:                   # step: point spacing, 0.45 px in metres
+    k = int(sp.needle / step)
+    perp = _nrm(np.cross(D, N if kind == 0 else (Rp + 0.3 * UP)))
+    for j in range(1, k + 1):
+        for sg in (-1, 1):
+            off = perp * (sg * j * step) - UP * (0.35 * j * step) + D * (0.4 * j * step)
+            # ... append P + off, with the stroke direction splayed outward
+</code></pre>
+<p><img alt="limbs" src="../img/t3_limbs.png" /></p>
+<p><em>One limb of each species at 2 cm/px, the final painter: Douglas-fir brush, hemlock lace, cedar's J with hanging fans, Sitka's long limb with pendant branchlets.</em></p>
+<h2>The top of each tree</h2>
+<p>The hemlock's nod is five lines on the stem (<code>grow.grow</code>):</p>
+<pre><code class="language-python">if sp.leader_nod &gt; 0:
+    tl = sp.leader_nod * H * (1.3 if age in (&quot;young&quot;, &quot;sapling&quot;) else 1.0)
+    k = ys &gt; H - tl
+    u = (ys[k] - (H - tl)) / tl
+    trunk[k, 0] += (u ** 2) * tl * 0.8          # bends over...
+    trunk[k, 1] -= (u ** 2.2) * tl * 0.45       # ...and down
+</code></pre>
+<p>Old cedars grow a <strong>candelabra</strong> of 2–4 reiterated leaders off their upper limbs, each a two-segment stem with its own small crown; 45% are dead. Old trees of every species may lose the top of the stem to a <strong>dead spike</strong> (<code>spike</code>: cedar 0.7, Douglas-fir 0.15). Dead wood is drawn silver, and never thinner than about 1.5 px, or it vanishes.</p>
+<p><img alt="tops" src="../img/t3_tops.png" /></p>
+<p><em>Mature tops at 0.08 m/px: Douglas-fir's upswept leader, hemlock's nod, cedar's upturned sprays, Sitka's stiff spire.</em></p>
+<h2>Ages</h2>
+<p>The age table carries height, crown ratio, irregularity, dead lower limbs, crown gaps, girth, fan count and element size (<code>grow.AGE</code>):</p>
+<pre><code class="language-python">&quot;sapling&quot;: dict(H=2.5, cr=0.95, irr=0.1,  dead=0.0,  gaps=0.0,  girth=1.8,  fan=0.7, el=0.9),
+&quot;young&quot;:   dict(H=13., cr=0.85, irr=0.2,  dead=0.1,  gaps=0.0,  girth=1.0,  fan=1.0, el=1.5),
+&quot;mature&quot;:  dict(H=46., cr=0.55, irr=0.45, dead=0.25, gaps=0.12, girth=1.0,  fan=1.0, el=1.8),
+&quot;old&quot;:     dict(H=68., cr=0.40, irr=0.85, dead=0.4,  gaps=0.3,  girth=1.45, fan=1.2, el=2.2),
+</code></pre>
+<p>Old crowns also round off at the top (<code>round_top</code> 0.55), lose limbs to gaps, and widen (<code>rmax</code> × 1.25). Mature and old boles flare at the base, <code>flare = buttress · dbh · exp(−y / (0.035·H + 0.5))</code>.</p>
+<p><img alt="species x age" src="../img/A_species_x_age.png" /></p>
+<p><strong>Fullness comes from element size, not branch count.</strong> My early crowns were sparse skeletons. Adding branches made them busier; scaling <code>el</code> by age filled them. When a crown looks thin, measure it before adding anything: print the envelope radius against the actual limb lengths. Mine had jitter applied twice, so the median limb was half the envelope.</p>
+<h2>Limits</h2>
+<ul>
+<li>Saplings are straggly at their scale.</li>
+<li>Young Douglas-fir leans toward a cypress cloud: all-round brush makes soft, round masses. Fronds helped; it isn't cured.</li>
+<li>The species read at every age, but seeds within a species vary less than real trees do. See sheet <a href="../img/D2_old_x_seed.png">D2</a>.</li>
+</ul></div><nav class="pager"><a href="../howto/02-tier-top-light.html">← 2. Tier-top light</a><span class="label">3 of 6</span><a href="../howto/04-every-distance.html">4. One tree at every distance, without pops →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

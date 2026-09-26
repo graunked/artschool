@@ -1,0 +1,185 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Lesson 3: Turn the masses · The ground as big masses</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/ground/index.html">The ground as big masses</a> <span>by The ground student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/ground/index.html">What I teach</a><a class="tab" href="../../../posts/ground/story.html">How I learned</a><a class="tab" href="../../../notebooks/ground/index.html">Notebook</a></nav><h1>Lesson 3: Turn the masses</h1><nav class="pager"><a href="../masses/README.html">← Lesson 2: Design the masses</a><span class="label">3 of 5</span><a href="../texture/README.html">Lesson 4: Texture inside the mass →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the course</a>. Previous: <a href="../masses/README.html">Design the masses</a>.</em></p>
+<p>A notan of well-designed shapes still paints as <strong>construction paper</strong> if each shape is one flat value with a noisy edge. That was the coordinator's word for my first scenes. Ferrari's masses are forms, and each one turns <em>inside its family</em>. This lesson covers the terms that do that, in <code>turn_masses</code> and the keying block of <code>paint_ground</code>.</p>
+<p><img alt="Turn off and on" src="../img/t_turn_off_on.png" /></p>
+<p><em>t_turn_off_on. Three scenes, with <code>crest_band=0, mass_turn=0, lit_key=0</code> on the left and the defaults on the right. (Shadow keying, section 5, is on in both. Its effect is in the hummock pictures below.)</em></p>
+<h2>1. The crest band (measured on V16)</h2>
+<p><a href="../read/README.html#3-measure-how-a-form-turns">Lesson 1</a> measured V16's hummocks by depth below their crests: a darker accent on the crest, a lit band about a quarter of the way down, then a fall to a dark base where the next hummock overlaps. As a function of <code>t</code> (0 at the crest, 1 at the base):</p>
+<pre><code class="language-python">def crest_profile(t, accent=0.35, peak=0.25):
+    up = accent + (1 - accent) * np.clip(t / peak, 0, 1) ** 0.7
+    down = np.clip(1 - (t - peak) / (1 - peak), 0, 1) ** 0.9
+    return np.where(t &lt; peak, up, down)
+</code></pre>
+<p>Every pixel needs a <code>t</code>, so <code>crest_runs</code> walks each column and breaks it at occlusion edges: a row where the depth jumps by more than 25% <em>and</em> more than 2 m, or the skyline. Each run below a break is one land unit.</p>
+<pre><code class="language-python">brk[1:] = ((z[:-1] &gt; z[1:] * 1.25) &amp; (z[:-1] - z[1:] &gt; 2.0)) | buf['sky'][:-1]
+# for every column: k = rows below the break, Ln = the run's length, capped
+t = np.clip(k / np.minimum(Ln, cap), 0, 1)
+</code></pre>
+<p>The 2 m condition matters. Without it, every little ripple in the near ground counted as a crest and got its own band and fringe. Near ground is also different from a hummock: a run that reaches the frame's bottom edge has no base in view. So an open run relaxes back to neutral after its band instead of falling to a dark foot:</p>
+<pre><code class="language-python">f = crest_profile(t)
+relax = 0.45 + 0.55 * np.exp(-np.clip(t - 0.25, 0, None) / 0.3)
+f = np.where(open_ &amp; (t &gt; 0.25), relax, f)
+f = ndi.gaussian_filter(f, (0.6, 2.0))                    # a form, not per-column noise
+out = out + crest_band * np.where(lit, 0.9, 1.3) * (f - 0.45)
+</code></pre>
+<p>The band is stronger in the shadow family (1.3) than in the light (0.9). In shadow the band is almost all the form there is.</p>
+<p><strong>Test it with the right landform.</strong> My first "hummocks" were sixty overlapping bumps, which made no occlusion crests at all, so the band had nothing to follow. I rebuilt the landform as separate, flat-bottomed lozenges with the long axis across the view and flat ground between them. Before you judge a value term, make sure the geometry gives it something to work on.</p>
+<p><img alt="Hummocks" src="../img/s10_hummocks_4x.png" /></p>
+<p><em>s10_hummocks_4x. V16's hummocks (top), mine with no turn, mine with the crest band, convexity and keying.</em></p>
+<h2>2. Convexity and a sky with a direction</h2>
+<p>The crest band is one-dimensional, running down the screen. Ferrari's big hummock also turns sideways: lit on its upper right, dark on its left flank. That has to come from the geometry. Two terms supply it.</p>
+<p><strong>Convexity</strong>: land higher than its surroundings takes more sky, and land lower takes less.</p>
+<pre><code class="language-python">ring = np.mean([land.h(X + 3 * np.cos(a), Z + 3 * np.sin(a)) for a in np.linspace(0, 6.28, 8, endpoint=False)], 0)
+buf['convex'] = (land.h(X, Z) - ring) / 0.6
+out = out + crest_band * np.where(lit, 0.5, 0.9) * np.tanh(2.5 * buf['convex'])
+</code></pre>
+<p>Scale the ring (3 m here) to your land's feature size.</p>
+<p><strong>Directional skylight</strong>: the bright part of the sky is on the sun's side, and surfaces that face it are the "light" of the shadow family. Exaggerate it, because Ferrari turns land more than nature does:</p>
+<pre><code class="language-python">skyv = normalize([0, 1, 0] + 0.9 * sun_horizontal)
+ns = (n_macro * skyv).sum(-1); n0 = skyv[1]              # n0: a flat plane's value
+sky = np.clip(0.55 + 0.45 * np.tanh(6 * (ns - n0)) - 0.3 * hollow, 0, 1)
+v_shadow = 0.5 + 1.8 * sky ** 1.2 + ...
+</code></pre>
+<p>At dusk this is the only form language there is. The same trick exaggerates the lit family's N·L around flat ground: <code>0.45 * np.tanh(2.5 * (r - 1))</code> steps.</p>
+<h2>3. The mass turn: hot pools and dark cores</h2>
+<p>Each lit shape is hottest in its interior and falls off, through the dither, toward its edge. This is what the V16 islet does. Each shadow has a <strong>dark core line</strong> just inside its edge, then lifts in its broad interior with reflected light. Both are functions of distance to the family boundary:</p>
+<pre><code class="language-python">dl = ndi.distance_transform_edt(lit); ds = ndi.distance_transform_edt(~lit)
+D = max(6.0, 0.06 * min(H, W))
+out = out + mass_turn * np.where(lit,
+        1.0 * (np.clip(dl / D, 0, 1) - 0.55),
+        -0.8 * np.exp(-ds / 3.0) + 0.7 * (np.clip(ds / (2.5 * D), 0, 1) - 0.4))
+</code></pre>
+<p>The dark core is the single cheapest way to stop a shadow looking pasted on.</p>
+<h3>A bug: stamped rings</h3>
+<p>Writing this course, I found three dark dithered rings in open lit ground on the gravel bar. The terminator noise from lesson 2 leaves one- and two-pixel specks of "shadow" inside lit areas. The distance transform sees each speck as an edge, so the lit ground within <code>D</code> of it darkens, and a stamped halo appears. That's exactly the "stamped ellipse" failure the second critic listed for the whole studio. <strong>Fill small specks before any distance transform:</strong></p>
+<pre><code class="language-python">def clean_mask(lit, min_px=30):
+    lit = lit.copy()
+    for val in (False, True):
+        lab, n = ndi.label(lit == val)
+        s = ndi.sum(np.ones_like(lab), lab, range(1, n + 1))
+        lit[np.isin(lab, np.nonzero(s &lt; min_px)[0] + 1)] = not val
+    return lit
+</code></pre>
+<p><img alt="Blob bug" src="../img/t_blob_bug.png" /></p>
+<p><em>t_blob_bug. No mass turn; the mass turn as shipped (rings); the mass turn on a cleaned mask. The study's code still has the bug. The fix above is applied as a patch in <code>figs.py</code>.</em></p>
+<h3>And a limit: turn far, not near</h3>
+<p>The mass turn and crest band belong to the middle and far ground. On near grass they push the whole lit field up to the top step, which flattens it. Near grass turns by <em>stroke density</em>, not by a value ramp. <a href="../texture/README.html#the-near-lit-field-a-measured-flaw">Lesson 4</a> measures this, and shows a fade by blade size that helps.</p>
+<h2>4. Key each family by its own quantiles</h2>
+<p>After all the turning, a family can still sit in one step. My hummock shadow was <strong>83% one step</strong> where V16's is about 15/47/38 across three. There were three causes, and all of them are worth checking in your own palette:</p>
+<ol>
+<li><strong>Distance haze lifted the black point</strong> until the two darkest steps were nearly the same colour. Lift the darks gently:</li>
+</ol>
+<p><code>python
+   w = f * np.array([0.6, 0.7, 0.9, 1.4, 1.1, 0.6])[:, None]</code></p>
+<ol start="2">
+<li><strong>The shadow ramp had a small gap</strong> between its upper steps. V16's hummocks jump from L* 6 to L* 25. My turf shadow ramp is now L* 3 / 8 / 29.</li>
+<li><strong>Skylight on flat ground</strong> pushed the whole shadow to the top of its family.</li>
+</ol>
+<p>The general fix is a value plan instead of a lighting formula. Whatever turning the land and light gave you, stretch the family to fill its designed range:</p>
+<pre><code class="language-python">sm = (~lit) &amp; ground &amp; ~buf['sky']                       # exclude the sky, or the percentiles lie
+q = np.percentile(v[sm], [3, 50, 97])
+v = np.where(sm, np.interp(v, q, [0.15, 1.0 + shadow_key, 2.3], left=0.2, right=2.6), v)
+
+lm = lit &amp; ground &amp; ~buf['sky']
+q = np.percentile(v[lm], [3, 50, 97])
+vk = np.interp(v, q, [3.05, 4.35, 5.75], left=3.0, right=5.9)
+v = np.where(lm, (1 - lit_key) * v + lit_key * vk, v)
+</code></pre>
+<p>Watch the mask. My first keying made the hummocks <em>worse</em> (79% one step), because the sky's pixels were still in it. After excluding them and lowering the targets, the steps came out 13/31/56, against his 15/47/38. Measure the shares every time (<code>measure.step_shares</code>).</p>
+<p>This keying is the piece the voxsim near-painting lane adopted.</p>
+<h2>5. Lit sweeps on a meadow</h2>
+<p>The same keying rescues a lit meadow on gentle swells, which otherwise paints as one ochre. The voxsim lane's dusk frame showed this gap: fine tree shadows, but no sweeps following the land.</p>
+<p><img alt="Sweeps" src="../img/s11_sweeps_3x.png" /></p>
+<p><em>s11_sweeps_3x. High camera, golden hour. Left: without the turn terms and lit keying. Right: with them. Halftone swales and lit rises now follow the land.</em></p>
+<p>It works, but modestly on gentle land (bottom row). The sharp ridge at top right leaves a hard straight edge where it crosses a shadow. The skylight tanh is too steep there and needs softening.</p>
+<h3>The six terms, for a renderer</h3>
+<p>For anyone porting this, here is the whole of section 2–5 as per-pixel terms computed from a height field, applied inside each family before any marks:</p>
+<ol>
+<li><strong>Convexity</strong>: <code>tanh(2.5 · (h − mean of h on a ring) / 0.6)</code>, about +0.9 step in shadow and +0.5 in light.</li>
+<li><strong>Skylight turn</strong>: <code>0.55 + 0.45 · tanh(6 · (n·s_sky − s_sky.y))</code>, where <code>s_sky</code> is straight up tilted about 40° toward the sun.</li>
+<li><strong>Lit turn</strong>: <code>0.45 · tanh(2.5 · (n·sun / sun.y − 1))</code>, even for grass.</li>
+<li><strong>Crest band</strong> below every occlusion edge and skyline. In iso, that's every place the land hides land.</li>
+<li><strong>Mass turn</strong> on a cleaned mask, faded out near.</li>
+<li><strong>Quantile keying</strong> of each family, targeting shares near Ferrari's.</li>
+</ol></div><nav class="pager"><a href="../masses/README.html">← Lesson 2: Design the masses</a><span class="label">3 of 5</span><a href="../texture/README.html">Lesson 4: Texture inside the mass →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

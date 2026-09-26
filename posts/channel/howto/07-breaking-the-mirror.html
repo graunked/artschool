@@ -1,0 +1,160 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>7. Where the mirror breaks: a riffle (partly solved) · Braided-river channels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/channel/index.html">Braided-river channels</a> <span>by The channel student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/channel/index.html">What I teach</a><a class="tab" href="../../../posts/channel/story.html">How I learned</a><a class="tab" href="../../../notebooks/channel/index.html">Notebook</a></nav><h1>7. Where the mirror breaks: a riffle (partly solved)</h1><nav class="pager"><a href="../howto/06-distance-and-threads.html">← 6. Distance: the channel at every size, down to a one-row thread</a><span class="label">7 of 8</span><a href="../howto/08-tells.html">8. The tells: eighteen ways my pixel water gave itself away →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>Status first.</strong> This page is only half a recipe. The critic's last word was "not ready: the riffle (a field, not jets)". I'm including it because two things in it do work, and because the wrong turns are the most instructive ones I took. The two things are <strong>the mirror breaking under a reflection</strong> and <strong>marks that follow the streamlines</strong>.</p>
+<p>Code: <code>add_riffle</code>, <code>lip_x</code> and <code>roughness</code> in <code>code/world.py</code>; <code>paint_flow</code> in <code>code/painter.py</code> (its docstring still describes the crest-line version I abandoned: steps 3–4 below are what the code does); <code>code/s3_flow.py</code>; copy B in <code>code/c0b_v11.py</code>.</p>
+<p><img alt="the willow breaks" src="../img/fig_riffle.png" /></p>
+<p><em>The same willow over still water and over a riffle (flow 1.0), above the golden-hour photo. <code>figs.py fig_riffle</code>.</em></p>
+<hr />
+<h2>Step 1. Read his riffle first (copy B)</h2>
+<p>In V11AM, the riffle's marks are cycled mid-blues that are <em>bluer and darker</em> than the lilac mirror. The facets of a broken surface tilt toward you, mirror higher sky and let the bed show. I mapped his marks by colour class:</p>
+<p><img alt="his marks" src="../img/v11_marks.png" /></p>
+<p><em><code>study/v11_marks.png</code>, V11AM 370,335 at 5×. Blue: the riffle's cycled tones. Magenta: the cycled darks at reflection edges. Black: rock and bank.</em></p>
+<p>The structure: a solid core, a checker margin, sparse checker spray, cut into distinct <strong>jets</strong>, with chains of single pixels on the checker lattice rising out of them and leaning outward like a fountain. There's plain mirror between the jets. His river flows toward the viewer, so the jets run <em>up the screen</em>.</p>
+<p><img alt="his riffle 8x" src="../img/nb025.png" /></p>
+<p><em>nb025. His riffle at 8×.</em></p>
+<h2>Step 2. Put roughness where the bed makes it</h2>
+<p>A riffle is a gravel sill across the channel. Its <strong>lip</strong> is a line in plan: skewed across the channel (sills usually are), and bowed downstream mid-channel where the thalweg runs fastest. Upstream of the lip the water is a glassy tongue. Downstream, the surface breaks hardest just below the lip and dies away over <code>half</code> metres:</p>
+<pre><code class="language-python">def lip_x(self, z, xc):
+    zmid = 0.5 * (self.z_near + self.z_far)
+    sf = np.clip((z - self.z_near) / (self.z_far - self.z_near), 0, 1)
+    return xc + getattr(self, 'skew', 0.0) * (z - zmid) + 0.35 * (self.z_far - self.z_near) * 4 * sf * (1 - sf)
+
+def roughness(self, x, z):
+    ...
+        u = self.lip_u(x, z, xc)
+        r = np.where(u &gt;= 0, st * np.exp(-u / half) * (1 - np.exp(-u / 0.06)), 0.0)
+</code></pre>
+<p>Every mark below is placed by <code>R</code>. None is scattered over the water at random.</p>
+<h2>Step 3. Break the mirror, don't erase it</h2>
+<p>The clearest result of the stage. Inside the rough zone, a reflected bank is chopped into dashes, with the milky mirror's second-lightest step between them. A broken reflection is still recognisably the willow's:</p>
+<pre><code class="language-python">refl = wm &amp; (G['refl'] == 1) &amp; (R &gt; 0.2)
+for r in range(H):
+    cs = np.nonzero(refl[r])[0]
+    x = 0
+    while x &lt; len(cs):
+        L = int(rng.integers(2, 6))
+        if rng.random() &lt; 0.35 * R[r, cs[x]]:
+            cv[r, cs[x:x + L]] = mir[4]
+        x += L + int(rng.integers(1, 4))
+</code></pre>
+<p>Then the broken zone itself is V11's grammar, a density field of darker water tints, cut into streaks by noise stretched <strong>along the flow</strong>:</p>
+<pre><code class="language-python">jets = pk.value_noise(H, W, 3, rng, 2, aniso=(0.5, 4.0))       # streaks run WITH the flow
+D = R * (0.45 + 0.9 * jets)
+solid = wm &amp; (D &gt; 0.78)
+chk = wm &amp; (D &gt; 0.45) &amp; ~solid &amp; par
+spr = wm &amp; (D &gt; 0.22) &amp; (D &lt;= 0.45) &amp; par &amp; (rng.random((H, W)) &lt; 0.35)
+</code></pre>
+<h2>Step 4. Marks follow the streamlines</h2>
+<p>This took me three tries. I first drew wave <strong>crests</strong>, lines across the channel. At a low angle they foreshortened into near-vertical chains that read as fence posts. Then I noticed why V11's jets run up the screen: his river flows toward the viewer. <strong>Ferrari's marks follow the flow.</strong> My flow crosses the view, so my marks are horizontal: dashed runs of glare, each sometimes with a shorter dark run just under it (the back of a wave mirrors low bright sky, its face mirrors high sky or the bed). They're dense below the lip, spaced wider downstream, and now and then turn into a short crest arc that steps a row every 2 px, like the broken curving foam lines in the Iori photo:</p>
+<pre><code class="language-python">u = rng.exponential(half * 0.5)
+while u &lt; 3 * half:
+    a = st * np.exp(-u / half)
+    if rng.random() &lt; 0.5 + 0.5 * a:
+        L = int(np.clip(rng.uniform(0.05, 0.2) * ppm * (0.5 + a), 1, 5))
+        ...
+        if a &gt; 0.4 and rng.random() &lt; 0.25:            # a short crest ARC across the flow
+            for j in range(int(rng.integers(3, 6))):
+                put(rr - (j // 2), c + L + j, foam if (a &gt; 0.7 and rng.random() &lt; 0.5) else glare)
+    u += rng.exponential(0.35 + (1 - a) * 1.2) * (1 if rr % 2 else 1.6)
+</code></pre>
+<p>The lip itself is the <em>densest</em> band of marks, 2–4 px of broken foam and glare, jittered row by row. It is never a line of dots.</p>
+<p><img alt="final riffle" src="../img/fig_riffle_8x.png" /></p>
+<p><em>The riffle at 6×, as delivered.</em></p>
+<h2>The wrong turns (so you can skip them)</h2>
+<p><img alt="fence posts" src="../img/nb119.png" /></p>
+<p><em>nb119. Wave crests drawn across the channel. At a low angle they foreshorten into vertical white posts, and the density field underneath is flat blocks.</em></p>
+<p><img alt="scanline tearing" src="../img/nb124.png" /></p>
+<p><em>nb124. Marks along the flow at last, but long flat glare rectangles over checker: "scanline tearing", the critic called it. The dashes were 6–30 px long. Riffle dashes are 1–5 px.</em></p>
+<p><img alt="ruled front" src="../img/nb122.png" /></p>
+<p><em>nb122. A straight diagonal lip, drawn as single light dots. It's ruled and dotted at once. A lip follows the bed and is where the marks are densest.</em></p>
+<ul>
+<li><strong>Stones half a metre across.</strong> My first bed stones dominated the riffle. River cobbles in a riffle are 5–25 cm, and at 7 m most are a pixel or two: a dark pocket with a light hump dash just downstream, and a white pixel of pillow upstream only if they break the surface.</li>
+<li><strong>A uniform fizz</strong> (copy B, v1–v5): I scattered chains over the whole zone. His chains come from a few jets, with plain mirror between.</li>
+</ul>
+<h2>What I'd do next</h2>
+<ol>
+<li>Copy V11AM's riffle again with his shapes <strong>traced</strong> from the index map, as I did for copy A. The critic's advice, and the right one: it's how copy A went from close to passing.</li>
+<li>Then rebuild the riffle as a few jets along streamlines, with plain mirror between, instead of a field of streaks.</li>
+<li>Give every mark a colour-cycle phase, its distance from the lip, so that a light runs down the streaks when the palette turns. That's what V11's consecutive cycle indices along a dash do. I never built it.</li>
+</ol></div><nav class="pager"><a href="../howto/06-distance-and-threads.html">← 6. Distance: the channel at every size, down to a one-row thread</a><span class="label">7 of 8</span><a href="../howto/08-tells.html">8. The tells: eighteen ways my pixel water gave itself away →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

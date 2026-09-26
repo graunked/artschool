@@ -1,0 +1,164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>6. Distance: the channel at every size, down to a one-row thread · Braided-river channels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/channel/index.html">Braided-river channels</a> <span>by The channel student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/channel/index.html">What I teach</a><a class="tab" href="../../../posts/channel/story.html">How I learned</a><a class="tab" href="../../../notebooks/channel/index.html">Notebook</a></nav><h1>6. Distance: the channel at every size, down to a one-row thread</h1><nav class="pager"><a href="../howto/05-colour.html">← 5. Colour: the palette is the light, and glacial water is a clouded mirror</a><span class="label">6 of 8</span><a href="../howto/07-breaking-the-mirror.html">7. Where the mirror breaks: a riffle (partly solved) →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>What it's for.</strong> A braided river seen at a low angle is mostly <em>far</em> water: ribbons that shrink to a few rows and then to one-pixel threads near the horizon, which is what makes a braid read as a braid. V02 draws those threads as one-row runs of sky, and the critic listed "far threads as one-row runs, with LOD by row footprint" as ready to use. The renderer has to be told to draw them, because a ray won't find them.</p>
+<p>Code: the sub-pixel thread block and the run filter at the end of <code>raycast</code> in <code>code/world.py</code>; the LOD block in <code>BraidPlain.__init__</code>; <code>render_designed</code> in <code>code/s5_braid.py</code>.</p>
+<p><img alt="distance ladder" src="../img/fig_ladder.png" /></p>
+<p><em>The same designed channel from a 4 m eye, starting at 8, 40 and 160 m (dusk). At 160 m it's a bright run a row or two tall. <code>figs.py fig_ladder</code>.</em></p>
+<hr />
+<h2>Step 1. See why the rays miss</h2>
+<p>At a low angle, one screen row far off spans tens of metres of ground: at 300 m from a 1.7 m eye with f = 320, a row covers about 165 m. A 3 m channel covers a few percent of that pixel's footprint, so the single ray through the pixel's centre almost never lands in it. My first braid plains had no far water at all, or water in short vertical slivers wherever a thread ran <em>toward</em> the viewer:</p>
+<p><img alt="slivers" src="../img/nb133.png" /></p>
+<p><em>nb133. Eight seeds. Near channels read, but the far third is dry gravel with a few vertical slivers. Ferrari's far threads are the opposite: horizontal.</em></p>
+<h2>Step 2. Mark a pixel as water when water covers enough of its footprint</h2>
+<p>For each row, find the ground interval the pixel spans, <code>[znear, zfar]</code>, and count what fraction of the column's samples in that interval are under water. Mark the pixel as water where the fraction passes a threshold, <strong>and only at a local maximum down the column</strong>, so a thread stays one row tall:</p>
+<pre><code class="language-python"># sub-pixel threads (V02): far away a row spans tens of metres of ground, so a channel a few
+# metres wide is missed by a single ray. Ferrari draws it anyway, one row tall. Mark a
+# ground pixel as water when water covers enough of its footprint.
+if thread_frac &gt; 0:
+    s_lo = (rows - 0.5 - cam.hz) / cam.f; s_hi = (rows + 0.5 - cam.hz) / cam.f
+    zfar = np.where(s_lo &gt; 0, cam.h / np.maximum(s_lo, 1e-6), 1e9); znear = cam.h / np.maximum(s_hi, 1e-6)
+    iw = np.searchsorted(zs, znear); iw2 = np.searchsorted(zs, zfar)
+    wetc = np.r_[0, np.cumsum(yt &lt; -0.005)]
+    frac = (wetc[np.minimum(iw2, len(zs))] - wetc[np.minimum(iw, len(zs))]) / np.maximum(iw2 - iw, 1)
+    fl = np.r_[frac[1:], 0]; fu = np.r_[0, frac[:-1]]
+    th = hitany &amp; ~wet &amp; (frac &gt; thread_frac) &amp; (zh &gt; thread_z) &amp; (frac &gt;= fl) &amp; (frac &gt; fu)
+</code></pre>
+<p><code>thread_frac</code> is 0.05 and <code>thread_z</code> is 25 m (nearer than that, the rays do the job).</p>
+<h2>Step 3. A thread is a run, never a ladder</h2>
+<p>Column-by-column marks come out as ladders: vertical stacks of one-pixel marks where a thread slants.</p>
+<p><img alt="ladders" src="../img/nb136.png" /></p>
+<p><em>nb136. Coverage marks without the run rule: little vertical ladders of light pixels in the far band.</em></p>
+<p>V02's rule is that a far thread is a <em>horizontal run</em> of 5–15 px. So after the whole frame is cast, keep only the marks that make runs of at least 3 px in their row, then bridge some short gaps (≤ 4 px, 60% of the time) so a thread never reads as evenly dotted:</p>
+<pre><code class="language-python"># a thread is a horizontal run (V02): drop marks that don't make a run of &gt;= 3 px in their row
+...
+        if e - x &gt;= 3:
+            keep[r, x:e] |= T[r, x:e]
+...
+# vary the run pattern: bridge some short gaps so a thread never reads as evenly dotted
+for r in range(H):
+    xs_ = np.nonzero(keep[r])[0]
+    for a_, b_ in zip(xs_[:-1], xs_[1:]):
+        if 1 &lt; b_ - a_ &lt;= 4 and rng_t.random() &lt; 0.6:
+            keep[r, a_:b_] = True
+</code></pre>
+<p>The gap bridging came after the critic's round 11: "the far water line is a row of short white dashes with even gaps".</p>
+<p>The run rule removed isolated marks, but it didn't remove the ladders. Each rung of a ladder was a run of its own, one per row, stacked where a far thread meandered. Their cause was upstream, in the geometry (step 5).</p>
+<h2>Step 4. Far threads always mirror the sky</h2>
+<p>Physically, the reflected ray from a far channel at 1° grazing hits the next bar a few metres on, so a far thread ought to be <em>dark</em>. Rendered honestly, my 160 m thread was a grey run that disappeared into the plain:</p>
+<p><img alt="grey threads" src="../img/nb147.png" /></p>
+<p><em>nb147. Physically correct: the far threads reflect the next bar and go grey.</em></p>
+<p>Ferrari paints them as the sky ramp, and the photos agree: they're taken from terraces, and every far thread is bright. So I force it:</p>
+<pre><code class="language-python">if thr_c[r]:                    # Ferrari's far threads are always the sky ramp
+    G['graze'][r, c] = np.arctan(s[r]); G['refl'][r, c] = 0
+    continue
+</code></pre>
+<p><img alt="bright threads" src="../img/nb148.png" /></p>
+<p><em>nb148. Forced to the sky: the thread at 160 m is a bright one-row run.</em></p>
+<p>This is one of the places where the medium overrules the physics, and it should.</p>
+<h2>Step 5. Average the meanders a row can't resolve</h2>
+<p>A thread that meanders on a 20 m wavelength, seen where one row spans 100 m, aliases into vertical zigzags. So each thread's centreline is averaged, in plan, over a window that grows with distance, and its width grows by the spread it swings through, making it a straight "belt" as wide as the meander:</p>
+<pre><code class="language-python"># level of detail: far away one screen row spans tens of metres, so meanders shorter than
+# that are averaged into a straight 'belt' as wide as they swing (no aliasing ladders)
+cs = np.r_[0, np.cumsum(x)]; cs2 = np.r_[0, np.cumsum(x * x)]
+kk = np.clip((lod * zs).astype(int), 0, 200)
+...
+mu = (cs[i1] - cs[i0]) / n_; var = np.maximum((cs2[i1] - cs2[i0]) / n_ - mu ** 2, 0)
+x = mu; w = w + 0.9 * np.sqrt(var) * (kk &gt; 0)
+</code></pre>
+<p><img alt="ladders survive" src="../img/nb137.png" /></p>
+<p><em>nb137. With the run rule and no meander LOD: the ladders are still there.</em></p>
+<p><img alt="LOD" src="../img/nb138.png" /></p>
+<p><em>nb138. With the meander LOD: the far band becomes horizontal belts and threads. It's also already too full of water (step 7).</em></p>
+<p>The window must scale with the camera, because a row's footprint goes as z²/(f·h). My first 30° oblique used the low-angle <code>lod</code> and every curve became a straight belt ("cut paper", <a href="08-tells.html">how-to 8</a>). <code>s5_braid.render</code> now sets <code>lod = 0.06 · (1.7·320) / (h·f)</code>.</p>
+<h2>Step 6. Give the eye a little height</h2>
+<p>From 1.7 m, bars 0.25 m high hide every channel beyond about 100 m. That's true, and dull. The photos with far threads were taken from terraces, and V02's vantage is well above its marsh. The distance ladder at the top uses a 4 m eye.</p>
+<h2>Step 7. What a busy plain still does wrong (found while writing this page)</h2>
+<p><img alt="threads on and off" src="../img/fig_threads.png" /></p>
+<p><em>The far band of a 16-thread braid plain at midday, 4×: no sub-pixel threads, no meander LOD, and both on as delivered. <code>figs.py fig_threads</code>.</em></p>
+<p>With both on, the far band is striped: light run, dark line, light run, every other row. Rendering this figure, I measured why, and there are two reasons:</p>
+<ol>
+<li><strong>Too much far water.</strong> The rows between 52 and 62 are 25–97% water (<code>G['kind'] == 2</code>). V02's far marsh is a few threads with plain marsh between. The plain generator should thin its threads with distance, as his does. I didn't.</li>
+<li><strong>Every thread gets a dark contact row above it.</strong> 95% of thread pixels sit directly under the darkest gravel step, because the painter applies the far-edge contact line (<a href="04-edges.html">how-to 4</a>) to every water pixel. In V02, the far threads (above his row 300) have no edge marks at all: his marsh's lightest colour sits right against them. Copy A got this right, because its edge rules only apply from row 300 down. My painter forgot it. The fix would be to skip the contact row where <code>G['thread']</code> is set.</li>
+</ol>
+<p>The designed single channel (the ladder above) has few threads, so it doesn't show either problem. That's the version to learn from.</p></div><nav class="pager"><a href="../howto/05-colour.html">← 5. Colour: the palette is the light, and glacial water is a clouded mirror</a><span class="label">6 of 8</span><a href="../howto/07-breaking-the-mirror.html">7. Where the mirror breaks: a riffle (partly solved) →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

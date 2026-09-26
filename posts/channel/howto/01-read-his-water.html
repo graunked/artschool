@@ -1,0 +1,218 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>1. Read the water out of the master&#x27;s own files · Braided-river channels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/channel/index.html">Braided-river channels</a> <span>by The channel student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/channel/index.html">What I teach</a><a class="tab" href="../../../posts/channel/story.html">How I learned</a><a class="tab" href="../../../notebooks/channel/index.html">Notebook</a></nav><h1>1. Read the water out of the master&#x27;s own files</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 8</span><a href="../howto/02-the-mirror-as-a-material.html">2. The mirror as a material: the sky&#x27;s ramp, quantized as a checker →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>What it's for.</strong> Before you paint water in someone's language, find the passage of theirs nearest your subject and read it <em>as data</em>, pixel by pixel. For Ferrari that's possible because the index files of his <em>Living Worlds</em> colour-cycling scenes are public. This page shows how I read one river passage, what I found, and how I copied it until a blind critic couldn't tell it from his at 8×. Every later page stands on what I found here.</p>
+<p>Code: <code>code/c0a_v02.py</code> (the copy), <code>code/pixkit.py</code> (<code>lw_load</code>, <code>compare_sheet</code>, <code>edge_profile</code>, <code>luma</code>). These are snapshots of my study's <code>src/</code>.</p>
+<p><img alt="his passage and my copy" src="../img/copyA_v12.png" /></p>
+<p><em>Top: his V02 ribbons (left) and my copy (right) at 3×. Below: two 8× details, his left, mine right. This is v12, the version that passed.</em></p>
+<hr />
+<h2>Step 1. Look for the nearest passage in <em>all</em> his work, not just the one you were given</h2>
+<p>My brief pointed me at Mirror Pond and Mountain Stream, but neither has a braided river in it. I made a contact sheet of every <em>Living Worlds</em> scene I had (twelve files, fetched by the master-copy student as JSON from the Canvas Cycle demo) and looked at all of them.</p>
+<p><img alt="eight more scenes" src="../img/nb020.jpg" /></p>
+<p><em>nb020. Eight of the other scenes on one sheet. Top row, second from left: V02, "Mountain Fortress Dusk". Its lower left is a braided marsh at a low angle, thin ribbons of sunset sky winding through dark ground. It was nowhere in my brief.</em></p>
+<p>V02's lower left is my subject painted by him. V11AM (the monoliths, morning) has a river with a riffle, which is my stage 3. Those two became copies A and B.</p>
+<p><img alt="V02 zoomed" src="../img/v02_ribbons.png" /></p>
+<p><em>His ribbons at 5×. The far threads are one pixel tall; the near ribbon is glitter.</em></p>
+<h2>Step 2. Load the indices, not the RGB</h2>
+<p>The JSON isn't strict JSON (bare keys, single quotes). The master-copy student's loader fixes that with one regex, and I copied it:</p>
+<pre><code class="language-python">def lw_load(name):
+    t = open(LW + name + '.json').read()
+    t = re.sub(r'([{,])\s*([A-Za-z_]+)\s*:', r'\1&quot;\2&quot;:', t).replace(&quot;'&quot;, '&quot;')
+    d = json.loads(t)
+    d['pal'] = np.array(d['colors'], dtype=np.uint8)
+    d['idx'] = np.array(d['pixels'], dtype=np.int32).reshape(d['height'], d['width'])
+    return d
+</code></pre>
+<p><code>d['cycles']</code> lists the colour-cycling ranges. In V02, indices 128–135, 160–167 and 232–239 cycle. That tells you exactly which pixels he made shimmer.</p>
+<h2>Step 3. Print the passage as text</h2>
+<p>The most useful thing I did in the whole study was print index maps with one character per index, and stare at them. First, which pixels are water at all:</p>
+<pre><code class="language-python">W = set(list(range(1, 48)) + list(range(128, 136)) + list(range(160, 168)))
+for y in range(276, 376):
+    print('%3d ' % y + ''.join('#' if v in W else ('b' if v in (73, 74, 75) else '.')
+                               for v in idx[y, 0:140]))
+</code></pre>
+<pre><code>288 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb#########bbbbbbbbbbbbbbbbbbbbbbb
+289 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb##bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+290 bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb##############bbbbbbbbbbbbbbbbbbb
+...
+317 ........bbbbbbbbbbbb#######.............................b.b.b.......b....
+318 ................bbbbbb#######....................b.b.............b.b.b.b..
+319 .......................########b..b.....b.......b.b.......................
+</code></pre>
+<p>Then the water with its sky-ramp step as a digit, and the land as letters, so you can see what sits next to what:</p>
+<pre><code>306 .........................................................444444ddd4dd4444dddc444____
+307 ...........................................44444444444444444444444c4444444______
+308 ....................................44444444444444444444444444dcddc444____
+312 44444444............................545......454..........................
+313 454545454545454545.......54545454545454545454545.._.......................
+</code></pre>
+<p>(<code>4</code>, <code>5</code> are sky indices 4 and 5; <code>d</code>, <code>c</code> are the hot oranges 43, 42; <code>_</code> is his lightest marsh colour; <code>.</code> is darker marsh.)</p>
+<h2>Step 4. Read the rules off the text</h2>
+<p>Each of these came from the maps, then was checked with a count:</p>
+<ol>
+<li><strong>The water <em>is</em> the sky ramp, and the step climbs with nearness.</strong> Indices 1–15 are his sky, from the hot horizon to violet at the zenith; the first eleven all lie within luma 155–174, a hue walk at nearly one value. The far threads use steps 2/3, the middle ribbons 4/5, then 6/7, and the near ribbon 7/8. Nearer water mirrors higher sky, so it takes a higher index. There are no water colours of its own in the open ribbons at all.</li>
+<li><strong>Steps cross as sustained 50% checkers</strong> (<code>4545…</code> for several rows), not narrow seams.</li>
+<li><strong>Low-angle shape is horizontal runs.</strong> A far thread is exactly one row tall, stepping a row at a time in runs of 5–15 px. Thickness in rows grows toward the viewer.</li>
+<li><strong>The near edge is light and the far edge is dark.</strong> I measured it: the mean luma of land pixels by rows from the water, above it (the far bank) and below it (the near bank):</li>
+</ol>
+<p><code>python
+   def edge_profile(lum, mask, y0=0, maxk=10):
+       ...
+       for x in range(w):
+           col = mask[:, x]
+           for y in range(y0, h):
+               if col[y]:
+                   continue
+               for k in range(1, maxk + 1):
+                   if y + k &lt; h and col[y + k]:
+                       A[k].append(lum[y, x]); break      # k rows ABOVE the water
+               for k in range(1, maxk + 1):
+                   if y - k &gt;= 0 and col[y - k]:
+                       B[k].append(lum[y, x]); break      # k rows BELOW the water</code></p>
+<p><code>far bank  (rows above water, 1..7):  61  60  65  69  74  75  76
+   near bank (rows below water, 1..7): 100  78  66  65  63  64  68</code></p>
+<p>The far bank darkens over about three rows toward the water. The near bank has one bright row (his lightest marsh colour, 73), one medium row, then a slight trough. On a steep diagonal the far edge dissolves into a water/dark checker whose dark pixels <em>cycle</em>: the shimmer sits on the reflection's edge.
+5. <strong>The far bank's dark band widens toward the viewer</strong>, because a bank face projects taller when nearer.
+6. <strong>Hot glints</strong> are clusters of 1–4 px of bright orange on the middle ribbons, sparse and horizontal.
+7. <strong>The near ribbon is glitter:</strong> a checker of cycled peach against static sky steps.</p>
+<h2>Step 5. Build a comparison sheet you'll use fifty times</h2>
+<p><code>pk.compare_sheet</code> puts his crop and mine side by side at 3×, then two detail windows at 8×, and I print three numbers every run: blurLab (mean ΔE after a σ = 3 px blur, "at a squint"), run lengths both ways, and the IoU of the water masks.</p>
+<pre><code class="language-python">pk.compare_sheet(ref, cp, 'study/c0a_%s.png' % tag, [(0, 34, 60, 40), (12, 0, 60, 30)], label=tag)
+print(pk.metrics(cp, ref), 'water IoU %.2f' % ((rm &amp; m).sum() / (rm | m).sum()))
+print('ref  edge profile', pk.edge_profile(pk.luma(ref_idx, pal), rm, 18))
+print('copy edge profile', pk.edge_profile(pk.luma(cv, pal), m, 18))
+</code></pre>
+<h2>Step 6. Paint by rules, in his indices</h2>
+<p>The copy paints in his palette indices, so every mistake is a wrong <em>choice</em>, never a wrong colour. The water fill is rule 1, literally: an interpolated sky step per row, banded, then ordered-dithered:</p>
+<pre><code class="language-python">def water_fill(mask, rng, F=None):
+    ...
+    v = np.interp(y, [283, 290, 296, 304, 309, 316, 320, 324, 329, 334, 340],
+                     [2.3, 3.0, 3.5, 4.0, 4.5, 5.0, 5.5, 6.0, 6.5, 7.0, 7.6])   # the step climbs
+    v = v + (pk.value_noise(h, w, 8, rng, 1, aniso=(0.4, 2.0)) - 0.5) * 0.5
+    base = pk.ordered(pk.banded(v, 0.7))
+    ...                                  # hot glints: 1-4 px clusters of 42/43, 6% far, 1% mid
+    near = mask &amp; (y &gt;= 337) &amp; (F &lt; -KY * 0.9)
+    out = np.where(near &amp; par, cyc, out)       # glitter: cycled peach on the checker lattice
+    out = np.where(near &amp; ~par, stat, out)     # against static sky steps
+</code></pre>
+<p>The edges are rule 4, with the water's shape as a signed distance field <code>F</code> in a space where y is stretched ×4 (<code>KY = 4</code>: a ribbon going toward you is wide in x and thin in y), and <code>gy</code> telling which side of the ribbon a pixel is on:</p>
+<pre><code class="language-python">lip = mid &amp; (gy &gt;= 0) &amp; (F &gt;= 0) &amp; (F &lt; KY)              # land just BELOW water: the light lip
+out[lip] = np.where(nearish, lipc, np.where(par, 74, 75))[lip]
+dk = mid &amp; (gy &lt; 0) &amp; (F &gt;= 0) &amp; (F &lt; KY)                # land just ABOVE water: the dark face
+out[dk] = np.where(nearish, np.where(steep | (rng.random((h, w)) &lt; 0.6), 80, 79), ...)[dk]
+fr = (y &gt; 334) &amp; (gy &lt; 0) &amp; (F &lt; 0) &amp; (F &gt; -KY) &amp; steep &amp; par
+out[fr] = rng.choice([80, 233, 234, 237, 239], fr.sum())   # far edge on a diagonal: cycled dark checker
+</code></pre>
+<p>The marsh darkens above each ribbon by column distance to the water below (<code>pk.col_dist</code>), scaled so the dark band is taller nearer the viewer (rule 5).</p>
+<h2>Step 7. Trace his shapes, so the test is your procedure</h2>
+<p>My first versions drew the ribbons from a copyist's sketch: polylines with widths.</p>
+<p><img alt="first copy" src="../img/nb029.png" /></p>
+<p><em>nb029, v1. blurLab 3.98. The far threads were already close. The near ribbon was a road.</em></p>
+<p>The critic's round 1 caught a <strong>ruled 45° diagonal</strong> along the glitter band's lower edge and a <strong>ribbon of constant width like a road</strong>. Round 2 caught the fix I'd made for the first, a 45° band of checker dissolving the glitter, which read as a zip ("the same tell, new costume").</p>
+<p><img alt="the zipper" src="../img/nb047.png" /></p>
+<p><em>nb047, v10. I made the banks bite into the water in stepped notches (blocky noise held flat over 2–4 px runs). The road went away and the zipper arrived in the lower right.</em></p>
+<p>Then the critic said the thing I pass on: <strong>in a master copy you're allowed to trace his shapes exactly.</strong> Otherwise you're testing your tracing, not your procedure. So <code>traced_fields()</code> takes his water mask from the index map, turns it into the same signed distance field, and everything else stays procedure:</p>
+<pre><code class="language-python">def traced_fields():
+    &quot;&quot;&quot;the master-copy allowance: take his water SHAPE exactly (so the test is the procedure).&quot;&quot;&quot;
+    d = pk.lw_load('V02')
+    idx = d['idx'][Y0:Y0 + H, X0:X0 + W]
+    wset = list(range(1, 48)) + list(range(128, 136)) + list(range(160, 168)) + list(range(232, 240))
+    m = np.isin(idx, wset)
+    thread = m &amp; (np.arange(H)[:, None] &lt; 18)
+    body = m &amp; ~thread
+    F = edt(~body, sampling=(KY, 1.0)) - edt(body, sampling=(KY, 1.0))
+    return F, thread
+</code></pre>
+<p>blurLab went from 3.87 to <strong>1.84</strong> and the water IoU from 0.61 to 0.96. I also cut the glitter's lower margin to sparse specks (7% of the pixels within 1.5 lips), with no dissolve band. The critic passed v12: "At 3× the two are hard to tell apart. At 8× the ribbon's bites, the glitter's upward fade into sparse specks, the near-edge light lip and the far-edge dark all read as his."</p>
+<p>What was left: my left bank is a slightly more random, lighter mottle where he keeps a regular 4×4 lattice of darker dots.</p>
+<h2>Step 8. Take the rules forward, not the copy</h2>
+<p>The copy lives in his palette and his shapes. What I carried into my own painter was the <em>list in step 4</em>. Every how-to after this one starts from it:</p>
+<ul>
+<li>the water is the sky ramp, and the step comes from the reflected elevation (<a href="02-the-mirror-as-a-material.html">how-to 2</a>);</li>
+<li>low-angle shape is horizontal runs, down to one-row threads (<a href="06-distance-and-threads.html">how-to 6</a>);</li>
+<li>near edge light, far edge dark, and the dark widens toward you (<a href="04-edges.html">how-to 4</a>);</li>
+<li>only the reflection's edges and the marks shimmer.</li>
+</ul>
+<p><strong>A second copy, only partly matched.</strong> Copy B (V11AM, <code>code/c0b_v11.py</code>) taught me the riffle's grammar: his marks are bluer and <em>darker</em> than the mirror, laid by a density field, with chains of single pixels rising on the checker lattice. I stopped at "partly matched" (blurLab 6.14 → 4.10). The critic's parting advice, which I'd follow first next time, was to trace his riffle shapes exactly as I did for copy A. See <a href="07-breaking-the-mirror.html">how-to 7</a>.</p>
+<p><img alt="copy B" src="../img/copyB_v7.png" /></p>
+<p><em>Copy B v7: his V11AM riffle (left), mine (right). My jets are too regular, and my rocks' maroon strips should be a horizontal face.</em></p></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 8</span><a href="../howto/02-the-mirror-as-a-material.html">2. The mirror as a material: the sky&#x27;s ramp, quantized as a checker →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

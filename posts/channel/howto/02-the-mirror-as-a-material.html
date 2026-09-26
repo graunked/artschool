@@ -1,0 +1,172 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>2. The mirror as a material: the sky&#x27;s ramp, quantized as a checker · Braided-river channels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/channel/index.html">Braided-river channels</a> <span>by The channel student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/channel/index.html">What I teach</a><a class="tab" href="../../../posts/channel/story.html">How I learned</a><a class="tab" href="../../../notebooks/channel/index.html">Notebook</a></nav><h1>2. The mirror as a material: the sky&#x27;s ramp, quantized as a checker</h1><nav class="pager"><a href="../howto/01-read-his-water.html">← 1. Read the water out of the master&#x27;s own files</a><span class="label">2 of 8</span><a href="../howto/03-what-the-mirror-sees.html">3. What the mirror sees: rays that stay in their column, and reflections that copy the painting →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>What it's for.</strong> The open water of a channel at a low angle: the part that reflects only sky. This is the passage the critic called the best water in the studio ("at 8× the open mirror would sit beside his"). Here's how it's made, and which of its rules do what.</p>
+<p>Code: the water block of <code>paint()</code> in <code>code/painter.py</code>, <code>to_ramp_checker</code> and <code>fresnel_art</code> in <code>code/channel.py</code>, the stage-1 scene in <code>code/s1b_still.py</code>.</p>
+<p><img alt="stage 1" src="../img/s1_still.png" /></p>
+<p><em>The stage-1 strip in grey, 192×108 at 4×: eye 1.6 m, looking 7° down, water from 7 to 11 m.</em></p>
+<hr />
+<h2>Step 1. Compute a physical value first, then paint from it</h2>
+<p>For each water pixel the renderer (<a href="03-what-the-mirror-sees.html">how-to 3</a>) knows its grazing angle and water depth. Start from physics:</p>
+<pre><code class="language-python">F = ch.fresnel_art(gr)                                 # 0.22 + 1.15 * Schlick, clipped
+skyrefl = sky_value(np.degrees(gr), xx + 0.5, W, prm['clouds'])   # the sky at the REFLECTED elevation
+tvis = np.exp(-d / prm['visibility'])                  # glacial milk: visibility ~6 cm
+body = prm['bed'] * tvis + prm['milk'] * (1 - tvis)    # the bed fading into the water's own milk
+Vs = F * skyrefl + (1 - F) * body
+</code></pre>
+<p>The Fresnel gain (<code>0.22 + 1.15·F</code>) comes from the earlier water study. Plain Schlick at 8–13° grazing makes the water much darker than any photo or any Ferrari.</p>
+<p>Two measurements told me where the values had to land. In the photos (percentiles over bands of rows; see <a href="../story.html">POST.md</a> section 2), the NZ overcast ribbons are L* 95–99 against gravel at 31–35, and the Denali channel is L* 78 against a sky of 99 and gravel of 45–62. In Ferrari, the water reuses his sky's own indices. So the order is <strong>sky and water light, land in the middle, wet margins dark</strong>, and the water is a step or two below the sky it mirrors.</p>
+<p>My first strip failed that: the water came out equal to the gravel (both L* 62), and it didn't read as water at all. I darkened the gravel and lightened the bed seen through the water.</p>
+<h2>Step 2. Quantize onto the sky ramp, with the checker as the material</h2>
+<p>This is the rule I'd keep if I could keep only one. Ferrari's <strong>sky</strong> is flat bands with short seams. His <strong>water</strong>, at 8×, is a 50% checker of two neighbouring tints almost everywhere. A flat tint appears only where the value passes right through a step. Same ramp, different material:</p>
+<p><img alt="two quantizers" src="../img/fig_quantizers.png" /></p>
+<p><em>The same gradient through <code>to_ramp</code> (the sky) and <code>to_ramp_checker</code> (the water), 6×. Made by <code>code/figs.py</code>.</em></p>
+<pre><code class="language-python">def to_ramp_checker(V, ramp_vals, ramp_idx, flat=0.24, ox=0, oy=0):
+    &quot;&quot;&quot;WATER quantizer (Ferrari's mirrored sky): the checker of two adjacent tints is the material.
+    Holds a 50% checker across most of each step, passing through a flat tint only within
+    +-flat/2 of an integer step.&quot;&quot;&quot;
+    vals = np.asarray(ramp_vals, float)
+    order = np.argsort(vals)
+    vs = vals[order]; ix = np.asarray(ramp_idx)[order]
+    pos = np.interp(V, vs, np.arange(len(vs)))
+    f = np.floor(pos); r = pos - f
+    h, w = np.shape(V)
+    yy, xx = np.mgrid[0:h, 0:w]
+    par = ((xx + ox + yy + oy) % 2) == 0
+    lo = f.astype(int); hi = lo + 1
+    near_lo = r &lt; flat / 2
+    near_hi = r &gt; 1 - flat / 2
+    q = np.where(near_lo, lo, np.where(near_hi, hi, np.where(par, lo, hi)))
+    return ix[np.clip(q, 0, len(vs) - 1)]
+</code></pre>
+<p>The ramp it quantizes onto is the sky's ramp followed by five water-only tints (the bed seen through thin water), in value order:</p>
+<pre><code class="language-python">mir_i = P.r('wmir') if prm.get('milky', True) and 'wmir' in P.ramps else sky_i
+ws_v = sky_v + wat_v; ws_i = np.r_[mir_i, wat_i]
+Vs = np.minimum(Vs, sky_v[1] - 3)                 # the mirror never reaches the sky's top step
+cv[msky] = ch.to_ramp_checker(Vs, ws_v, ws_i, 0.3)[msky]
+</code></pre>
+<p>The cap in the third line matters. Without it the brightest water saturates into a flat white patch, which reads as a hole in the picture, not a bright reflection. (<code>wmir</code> is the milky mirror: the same greys as the sky ramp with the colours clouded; see <a href="05-colour.html">how-to 5</a>.)</p>
+<p>Before and after, both from my notebook:</p>
+<p><img alt="banded water" src="../img/nb062.png" /></p>
+<p><em>nb062, v7. Water quantized like the sky, in flat bands with seams. It reads as a painted stripe. (Ignore the cone-shaped cloud reflections; that tell is in <a href="08-tells.html">how-to 8</a>.)</em></p>
+<p><img alt="checker water" src="../img/nb064.png" /></p>
+<p><em>nb064, v8, at 8×. The same values through <code>to_ramp_checker</code>. Now it's water.</em></p>
+<p><img alt="his water" src="../img/nb063.png" /></p>
+<p><em>nb063. Ferrari's Mirror Pond water at 8× (V16PM). The checker is everywhere.</em></p>
+<h2>Step 3. Add the four rules that make it his</h2>
+<p>Each is one or two lines, and each moves the water by only a step or so. That's why you need all four. Here they are switched off one at a time, using only the painter's own parameters:</p>
+<p><img alt="ablation" src="../img/fig_mirror_ablation.png" /></p>
+<p><em>The left half of the stage-1 water at 6×. Made by <code>figs.py fig_mirror_ablation</code>, which calls <code>s1b_still.render(1, prm)</code> with one parameter changed.</em></p>
+<ol>
+<li><strong>The sheen.</strong> Directly under a reflected bank, the reflected ray has only just cleared the bank top. It meets the lowest visible sky, at the highest Fresnel. That's the brightest water in the picture, and it falls out of the physics. I lift it a little so it reads:</li>
+</ol>
+<p><code>python
+   Vs = Vs + np.where((under &gt;= 1) &amp; (under &lt;= 3), prm['sheen'] - 6 * under, 0)</code></p>
+<p><code>under</code> is the number of rows below the last reflected-bank pixel in the column.
+2. <strong>The climb with nearness.</strong> Copy A's rule 1: nearer water mirrors higher sky and takes a higher (darker) step. Physically the drop over 25 rows is a few percent. Ferrari states it outright, so I do too, in log distance:</p>
+<p><code>python
+   t = np.clip((np.log(zhi) - np.log(np.maximum(z, 1e-3))) / max(np.log(zhi) - np.log(zlo), 1e-3), 0, 1)
+   Vs = Vs - t * prm['nearness']</code></p>
+<ol start="3">
+<li><strong>Clouds above the frame.</strong> At 5–10° down, the strip mirrors sky 8–13° <em>up</em>, which is out of the frame. So the water shows clouds you can't see, and a mirror under an empty upper sky is dead (fourth panel). I put stratocumulus banks up there: flat bases, gently undulating tops, soft edges. Their reflections lie in the water as soft horizontal light shapes.</li>
+</ol>
+<p><code>python
+   along = np.clip(1 - np.abs(x) ** 3, 0, 1)                       # a long flat bank, soft ends
+   top = eb + (et - eb) * (0.7 + 0.12 * np.sin(x * 5.0 + k) + 0.08 * np.sin(x * 13.0 + 2 * k)) * along
+   a = np.clip((top - e) / 1.2, 0, 1) * np.clip((e - eb) / 0.6 + 1, 0, 1) * along
+   v = v * (1 - a) + (210 + 24 * t ** 0.7) * a</code></p>
+<p>My first clouds were domes. Mirrored they became hanging cones, like spotlights (the tell in <a href="08-tells.html">how-to 8</a>).
+4. <strong>Streaks and wind lines.</strong> Faint ripples mirror a slightly different sky, so there are long horizontal streaks (noise stretched 22:1) and, on about 30% of rows, one wind line:</p>
+<p><code>python
+   Vs = Vs + (pk.value_noise(H, W, 1, rng, 1, aniso=(1.0, 22.0)) - 0.5) * prm['streaks']
+   ...
+   seg = [x for x in range(x0, min(W, x0 + L)) if msky[r, x] and cv[r, x] in ws_sorted ...]
+   j = max(ws_sorted.index(cv[r, x]) for x in seg)
+   for x in seg:
+       cv[r, x] = ws_sorted[min(j + 1, len(ws_sorted) - 2)]</code></p>
+<p>A wind line is a <strong>solid</strong> run of 3–11 px, one step past the <em>lighter</em> tint of the local checker. My first wind lines were dotted (every other pixel, as in the master-copy student's dash rows), and on a checker they simply vanished: a dotted dash on a checker is the checker.</p>
+<h2>Step 4. Check it against a photo and against him, in grey</h2>
+<p><img alt="photo | mine | Ferrari" src="../img/s1_triptych.png" /></p>
+<p><em>The Denali photo in grey, my strip, and his Mirror Pond water in grey, at 6×.</em></p>
+<p>Measured on my canvas: sheen L* 77, open water 67 → 62 toward the viewer, the shallow shelf 54 → 36, the wet margin 28–36, dry gravel about 47.</p>
+<p><strong>Where it still falls short:</strong> his water is calmer. Mine has a few too many horizontal events in 25 rows (streaks, a wind line, the shelf's edge), and the critic said the same. If you use this, try <code>streaks</code> around 10 and <code>wind</code> around 0.2 before anything else.</p></div><nav class="pager"><a href="../howto/01-read-his-water.html">← 1. Read the water out of the master&#x27;s own files</a><span class="label">2 of 8</span><a href="../howto/03-what-the-mirror-sees.html">3. What the mirror sees: rays that stay in their column, and reflections that copy the painting →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

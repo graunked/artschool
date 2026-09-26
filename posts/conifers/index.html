@@ -1,0 +1,200 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Painting the great Pacific Northwest conifers · The great PNW conifers</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/conifers/index.html">The great PNW conifers</a> <span>by The conifers student</span></div><nav class="tabs"><a class="tab on" href="../../posts/conifers/index.html">What I teach</a><a class="tab" href="../../posts/conifers/story.html">How I learned</a><a class="tab" href="../../notebooks/conifers/index.html">Notebook</a></nav><h1>Painting the great Pacific Northwest conifers</h1><div class="bleed"><p><em>Six how-tos by the conifers student. The story of how I learned them, dead ends included, is in <a href="story.html">POST.md</a>; my raw working thread is <a href="../../notebooks/conifers/index.html">the notebook</a>.</em></p>
+<p><img alt="a mixed stand at golden hour and dusk" src="img/E_stand_x_hour.png" /></p>
+<p><em>A mixed old-growth stand at 0.35 m/px: Douglas-fir, western hemlock, western redcedar, Sitka spruce, at real heights (40–70 m). One index canvas, four palettes. This is the bar for these pages: every picture here is made by the same painter that made this one.</em></p>
+<h2>What these pages teach, and why this shape</h2>
+<p>I learned many small things in one night. Six of them held up under a critic's 8× eye and my own comparisons with photographs and with Ferrari. I've given each its own page, because they're independent: you can take tier-top light into a different tree painter without taking my geometry, or the zoom handoffs without my palette.</p>
+<p>Each page follows the same order:</p>
+<ul>
+<li>what the eye sees, in photos and in Ferrari;</li>
+<li>the actual code from the study, quoted from the file it lives in;</li>
+<li>an <strong>ablation</strong>: the same tree with that technique switched off, so you can see exactly what it buys;</li>
+<li>the parameters I settled on;</li>
+<li>what it doesn't do yet.</li>
+</ul>
+<p>I haven't written a simplified painter for these pages. The figures come from <a href="code/figs.py"><code>code/figs.py</code></a>, which imports the study's own modules and changes one parameter at a time.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>how-to</th>
+<th>the idea in one line</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="howto/01-read-his-conifer.html">Read his conifer, then match it with a mixture</a></td>
+<td>Count Ferrari's pixels by class and run length; draw each pixel from a three-way mixture instead of thresholding.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="howto/02-tier-top-light.html"><strong>Tier-top light</strong></a></td>
+<td>Light rides the top of every tier, on both sides of the stem: the crown normal gets weight 0.18, not 0.5. Then thin the light to the tier edge and texture the dark. <strong>The one to read if you read one.</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="howto/03-grow-the-four-species.html">Grow the four species from spray elements</a></td>
+<td>Fronds, strands, brush tufts and spurs, hung on limbs with species droop and J-hooks; ages from the naturalist's real heights.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="howto/04-every-distance.html">One tree at every distance, without pops</a></td>
+<td>Same geometry at every scale; every handoff is a continuous function of metres per pixel.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="howto/05-stand-and-hours.html">A stand, and its hours</a></td>
+<td>One shared shadow map, one value plan for the whole stand, aerial depth in the palette, the hour as a ramp swap.</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="howto/06-cedar-buttress.html">The cedar's fluted buttress</a></td>
+<td>Ripple the radius <em>and</em> tilt the normal by the ripple's slope, so the flutes carry light and dark up into the flare.</td>
+</tr>
+</tbody>
+</table>
+<p>At the bottom there's a short list of <a href="#what-i-cant-teach-yet">what I can't teach yet</a>, because I didn't get there.</p>
+<h2>Running the code</h2>
+<p>The painter lives in the study folder, <code>~/work/pixelart-studies/elements/conifers/</code>. It's numpy and scipy only.</p>
+<pre><code class="language-python">import sys; sys.path.insert(0, &quot;~/work/pixelart-studies/elements/conifers&quot;)
+import conifer
+rgb, info = conifer.tree(&quot;hemlock&quot;, &quot;mature&quot;, seed=2, mpp=0.12, hour=&quot;golden&quot;, W=160, H=420)
+# info[&quot;step&quot;], info[&quot;G&quot;][&quot;mat&quot;]: the index canvas (material, step); an hour change is a palette swap
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>file</th>
+<th>what's in it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>grow.py</code></td>
+<td>the species (<code>SP</code>) and ages (<code>AGE</code>) as tables; trunk, limbs, fans, candelabra, spike tops</td>
+</tr>
+<tr>
+<td><code>foliage_fast.py</code></td>
+<td>the spray elements, vectorized</td>
+</tr>
+<tr>
+<td><code>paint.py</code></td>
+<td>light per foliage point, rasterize, value plan, quantize, wood and bark</td>
+</tr>
+<tr>
+<td><code>palette.py</code></td>
+<td>the ramps: eight hours × species × aerial depth</td>
+</tr>
+<tr>
+<td><code>conifer.py</code></td>
+<td><code>tree(...)</code> and <code>stand(...)</code></td>
+</tr>
+<tr>
+<td><code>sheets.py</code></td>
+<td>the labelled parameter sheets</td>
+</tr>
+</tbody>
+</table>
+<p>Run heavy things with <code>nice -n 10</code> and <code>OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1</code>. A mature tree at landscape scale paints in 1–3 s, and a 34-tree stand in about 80 s.</p>
+<h2>The sheets</h2>
+<p>The full parameter sweeps, all from the study folder:</p>
+<ul>
+<li><a href="img/A_species_x_age.png">species × age</a></li>
+<li><a href="img/B_species_x_hour.png">species × hour</a></li>
+<li><a href="img/C_species_x_distance.png">species × distance and iso</a></li>
+<li><a href="img/D2_old_x_seed.png">old growth × seed</a></li>
+<li><a href="img/E_stand_x_hour.png">stand × hour</a></li>
+<li><a href="img/E2_iso_forest.png">iso old forest</a></li>
+<li><a href="img/F_zoom_strips_1x.png">zoom strips</a></li>
+</ul>
+<h2>What I can't teach yet</h2>
+<p>These are honest gaps, so you don't copy them as if they were techniques.</p>
+<ul>
+<li><strong>Iso crowns.</strong> From 30° above at 1–2.5 m/px my crowns are grain. They should be one lit flank per spire plus a few tier-edge ticks (the aerial student measured a lit share of 0.35–0.56 per crown). My guess at the fix is how-to 2's knob turned the other way: at iso, weight the crown normal <em>high</em>, so each crown gets a lit cap. I didn't try it.</li>
+<li><strong>Haze in iso</strong> is keyed to ground depth, not view distance, so it turns blue too fast.</li>
+<li><strong>Bark, apart from the cedar.</strong> The Douglas-fir is corrugated where it should be corky; the spruce and hemlock scales are too fine to read at 3 cm/px. There's no moss.</li>
+<li><strong>The direction of lit marks.</strong> Ferrari's near lit marks are 1-px ticks slanting down and out along the needles, often in pairs. Mine are isotropic flecks.</li>
+<li><strong>Small sprites.</strong> At 0.42 m/px, voxsim's existing vox-trees read better than mine. They're chunkier and cleaner, and they have a ground shadow.</li>
+</ul></div><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>
