@@ -1,0 +1,181 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>9. Piles · Driftwood</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/driftwood/index.html">Driftwood</a> <span>by The driftwood student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/driftwood/index.html">What I teach</a><a class="tab" href="../../../posts/driftwood/story.html">How I learned</a><a class="tab" href="../../../notebooks/driftwood/index.html">Notebook</a></nav><h1>9. Piles</h1><nav class="pager"><a href="../light/README.html">← 8. The palette is the light</a><span class="label">9 of 9</span><a href="../index.html">Contents →</a></nav><div class="bleed"><p><strong>Trigger:</strong> more than one log. On a river bar, driftwood is almost never alone.</p>
+<p>A pile is two problems. <strong>Placement:</strong> logs have to rest on each other the way stranded logs do. <strong>Separation:</strong> where they cross, each log has to stay readable against the one behind it, by value, not by outline.</p>
+<h2>Placement: settle on the upper hull</h2>
+<p>Physics only as far as the painting needs. Logs are placed largest first, so the big trunks form the base. Each new log's axis height is the <strong>upper convex hull of its support profile</strong>: at every point along it, the higher of the gravel and the tops of the logs already placed beneath. The hull makes the log rest on its highest supports and span the gaps between them in a straight line, like a real log bridging two others.</p>
+<pre><code class="language-python"># code/pile.py
+def top_of(lg, x, y):
+    &quot;&quot;&quot;height of log lg's upper surface above ground point (x, y), or -inf if not over it.&quot;&quot;&quot;
+    ...
+
+def upper_hull(t, h):
+    pts = sorted(zip(t, h))
+    hull = []
+    for p in pts:
+        while len(hull) &gt;= 2:
+            (x1, y1), (x2, y2) = hull[-2], hull[-1]
+            if (x2 - x1) * (p[1] - y1) - (y2 - y1) * (p[0] - x1) &gt;= 0:
+                hull.pop()
+            else:
+                break
+        hull.append(p)
+    hx, hy = zip(*hull)
+    return np.interp(t, hx, hy)
+
+def settle(lg, placed, sink=0.015):
+    &quot;&quot;&quot;lower/raise lg so it rests on the ground and on the logs already placed.&quot;&quot;&quot;
+    tt = np.linspace(0, 1, 4 * n)
+    ...
+    h = R - sink                                        # on the gravel
+    for q in placed:
+        for j in range(len(tt)):
+            tp = top_of(q, P[j, 0], P[j, 1])
+            if tp &gt; -np.inf:
+                h[j] = max(h[j], tp + R[j] * 0.97)      # or on a log beneath
+    z = upper_hull(tt, h)
+</code></pre>
+<p><img alt="without settle, and with" src="../img/t_settle.png" /></p>
+<p><em><code>figs.py settlefig</code> replaces <code>pile.settle</code> with the identity for the left panel.</em></p>
+<h2>Variety is what makes it a pile</h2>
+<p>My first piles all pointed within 15° of one direction, at similar lengths. The critic, round 10: "stacked lumber, or at 9 px/m ... a spaceship glyph".</p>
+<p><img alt="the spaceship glyph (middle), under the photo it was meant to match" src="../img/nb_104.png" /></p>
+<p>The photo above it shows logs at every angle, crossing each other, short broken pieces among long trunks, and several <strong>round ends facing the camera</strong>: big pale discs with dark rims, the most readable shapes in the photograph. The placement now draws from that mix:</p>
+<pre><code class="language-python"># code/pile.py, make_pile
+L = r * (rng.uniform(10, 22) if rng.random() &gt; 0.33 else rng.uniform(3.5, 8))   # a third short pieces
+u = rng.random()
+if u &lt; crossing:                       # 35%: crossing at any angle
+    yaw = flow_yaw + rng.uniform(30, 150)
+elif u &lt; crossing + 0.15:              # 15%: pointing at the camera, ends toward the viewer
+    yaw = 90 + rng.normal(0, 18)
+else:                                  # the rest: along the old flow
+    yaw = flow_yaw + rng.normal(0, 14)
+...
+kind='grey' if rng.random() &lt; grey_frac else 'drift'   # a quarter less bleached, on a darker ramp
+</code></pre>
+<p>The less-bleached grey logs matter more than they sound. In the photo not every log is silver, and a mix of values separates a pile better than any line could.</p>
+<h2>Separation by value</h2>
+<p>Ferrari's rock pile in V19 never outlines a boulder: each is a value step lighter or darker than its neighbour. For logs, three mechanisms do it:</p>
+<ol>
+<li><strong>Cast shadows from the logs above</strong>, as a family jump (<a href="../lying/README.html">lesson 2</a>, rule 5). This does most of the work.</li>
+<li><strong>A contact crack</strong> where one log rests on another.</li>
+<li><strong>An occlusion step</strong>, where a log passes in front of another in nearly the same tone.</li>
+</ol>
+<pre><code class="language-python"># code/render.py
+def separate_logs(cv, buf, logs, cam):
+    obj = buf['obj']; t = buf['t']; P = buf['P']
+    wood = obj &gt;= 0
+    for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        o2 = np.roll(np.roll(obj, -dy, 0), -dx, 1)       # neighbour value at (y+dy, x+dx)
+        t2 = np.roll(np.roll(t, -dy, 0), -dx, 1)
+        s2 = np.roll(np.roll(cv.step, -dy, 0), -dx, 1)
+        # pixel p is a REAR log pixel next to a FRONT log pixel
+        rear = wood &amp; (o2 &gt;= 0) &amp; (o2 != obj) &amp; (t2 &lt; t - 0.02)
+        for y, x in zip(*np.nonzero(rear)):
+            front = logs[o2[y, x]]
+            close = front.sdf(P[y, x][None])[0] &lt; 2.2 / cam.scale
+            if close and dy == 1:
+                cv.step[y, x] = min(cv.step[y, x], 1)          # resting contact, below
+            elif abs(int(s2[y, x]) - int(cv.step[y, x])) &lt;= 1:
+                cv.step[y, x] = max(cv.step[y, x] - 2, 0)      # occluded edge, only if too alike
+</code></pre>
+<p>The condition on the occlusion step matters. It fires only where the two tones would otherwise sit within a step of each other. Everywhere else the classes already separate the logs, and an unconditional dark edge would turn into an outline.</p>
+<p><img alt="separate_logs off and on" src="../img/t_separate.png" /></p>
+<h2>The result, in greyscale on plain ground</h2>
+<p><img alt="greyscale piles" src="../img/s5_grey_3x.png" /></p>
+<p>These are, to my eye and the critic's, the best images in the study. They read at once as a tangle of silvered logs, with cast shadows onto the logs below, root fans, stubs, and grey logs mixed in.</p>
+<h2>With distance</h2>
+<p><img alt="one pile at four distances" src="../img/s5_distance_3x.png" /></p>
+<ul>
+<li><strong>32 px/m:</strong> every log carries classes and grain.</li>
+<li><strong>14 px/m:</strong> the grain thins.</li>
+<li><strong>6 px/m:</strong> the logs are <a href="../small/README.html">glyphs</a>, a light top over a dark underside.</li>
+<li><strong>3 px/m:</strong> the pile is a short cluster of light dashes over dark ones.</li>
+</ul>
+<p><strong>What's still wrong.</strong></p>
+<ul>
+<li><strong>The ground.</strong> In colour on gravel, separation weakens, because my gravel's speckle has the same value range as the logs' grain. On the ground student's masses it holds.</li>
+<li><strong>Intersections.</strong> Where logs cross, you can sometimes find a stray end-face pixel or a grain line running through a contact crack.</li>
+<li><strong>Too alike in value.</strong> Next to the photo, whose mix runs from near-white sawn lumber to dark wet trunks, my logs are still too alike in value.</li>
+</ul>
+<p><img alt="photo, strewn bar, and Ferrari's V19" src="../img/s5_compare_4x.png" /></p></div><nav class="pager"><a href="../light/README.html">← 8. The palette is the light</a><span class="label">9 of 9</span><a href="../index.html">Contents →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

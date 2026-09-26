@@ -1,0 +1,176 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>2. Lay the cylinder down · Driftwood</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/driftwood/index.html">Driftwood</a> <span>by The driftwood student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/driftwood/index.html">What I teach</a><a class="tab" href="../../../posts/driftwood/story.html">How I learned</a><a class="tab" href="../../../notebooks/driftwood/index.html">Notebook</a></nav><h1>2. Lay the cylinder down</h1><nav class="pager"><a href="../read/README.html">← 1. Read the trunk as numbers</a><span class="label">2 of 9</span><a href="../contact/README.html">3. Sit it on the gravel →</a></nav><div class="bleed"><p><strong>Trigger:</strong> any log, limb, stub or root at least about 4.5 px across, lying at any angle.</p>
+<p><a href="../read/README.html">Lesson 1</a> fitted the five classes on an upright trunk. A log lies at any yaw on the ground, it bends, and its limbs point every which way, so the rule has to be measured round <strong>each pixel's own axis</strong>. After that, five small rules turn it from a CG tube into a Ferrari trunk.</p>
+<p><img alt="the rules added one at a time" src="../img/t_ablation.png" /></p>
+<p><em>One log at 55 px/m, left-front sun. (a) A lighting formula. (b–d) The classes, then sharpened seams, then a clean outline, computed by the same <code>tech.*</code> calls the renderer makes, stopped early. (e) The renderer with marks off. (f) The full renderer. Made by <code>figs.py ablation</code>.</em></p>
+<h2>Each pixel knows its axis</h2>
+<p>The tracer (<code>geo.trace</code>) returns, for every wood pixel, the tangent <code>T</code> of the nearest primitive: a trunk segment, a stub, or a root. <code>Log.local</code> finds it:</p>
+<pre><code class="language-python"># code/geo.py, Log.local (trimmed)
+segs = [(self.pts[i], self.pts[i + 1], self.rad[i], self.rad[i + 1], self.cum[i], True)
+        for i in range(len(self.seglen))]
+segs += [(a, b, r1, r2, -1.0, False) for (a, b, r1, r2, kind) in self.limbs]
+for (a, b, r1, r2, s0, main) in segs:
+    ...
+    dsurf = dax - rloc
+    if not main:
+        dsurf = dsurf + 1e-4        # ties go to the trunk
+    m = dsurf &lt; best
+    ...
+    TT = np.where(m[..., None], ax, TT)
+    RL = np.where(m, rloc, RL)
+</code></pre>
+<p>Then the renderer does exactly what the copy did, round <code>T</code>:</p>
+<pre><code class="language-python"># code/render.py, render()
+d, phL = tech.normal_plane_angles(buf['N'], V, light.L, buf['T'])
+v = tech.cylinder_classes(d, phL, sh=sh)
+</code></pre>
+<p>Before limbs had their own tangents, stubs shaded as if they lay along the trunk: lit on the wrong side.</p>
+<p><img alt="the classes on a lying log" src="../img/t_classes.png" /></p>
+<h2>Rule 1: hold the values close</h2>
+<p>Ferrari's trunk spans about 55 grey levels. My first grey wood ramp was a textbook spread, and the same index canvas read as a dark pipe with a white stripe, because on a lying log seen from above, most of the visible side falls in the core class.</p>
+<p><img alt="the same canvas through two ramps" src="../img/t_ramp.png" /></p>
+<pre><code class="language-python"># code/render.py
+GREY = {WOOD: [24, 60, 112, 128, 152, 178, 204, 232], ...}
+#              0   1   2   3  |  4   5   6   7
+#          contact deep core rim | half edge light face
+</code></pre>
+<p>Steps 2–6 (the five classes) sit within 92 levels, and the light family starts only 24 above the rim. <strong>This is a palette change, not a form change.</strong> The index canvas is identical in both panels.</p>
+<h2>Rule 2: seams are 1–2 px at any width</h2>
+<p><code>cylinder_classes</code> is linear through every class, so on a 40-px log the checker bands come out 8 px wide (panel b). Ferrari's 6-px limbs have pure 1-px bands, and his 13-px trunk mixes over whole classes; wider forms don't scale the checker up. So the class fraction is steepened around each boundary, by a gain that grows away from 13 px in either direction:</p>
+<pre><code class="language-python"># code/tech.py
+def sharpen(v, diam_px, ref_px=13.0, max_gain=4.0):
+    dd = np.maximum(diam_px, 1e-3)
+    g = np.clip(np.maximum(ref_px / dd, dd / ref_px), 1.0, max_gain)
+    k = np.floor(v); f = v - k
+    return k + np.clip((f - 0.5) * g + 0.5, 0, 1)
+</code></pre>
+<p><code>diam_px</code> comes from the tracer (<code>2 * buf['rad'] * cam.scale</code>), so a tapering log and its thin roots each get the right gain.</p>
+<h2>Rule 3: no dither near the outline</h2>
+<p>On a diagonal log, a checker seam that reaches the silhouette makes the lit top edge a regular two-tone sawtooth. The critic called it "the fastest mechanical tell in the image". Ferrari's outlines are clean runs of one tone; his seams sit inside the form.</p>
+<pre><code class="language-python"># code/render.py, render()
+sil = wood &amp; nbr_out                                   # pixels touching another object
+near = wood &amp; ndi.binary_dilation(sil, iterations=1)
+kk = np.clip(np.round(v), 0, 4).astype(int)
+st = np.where(near, tech.CLASS_STEPS[kk], st)          # rounded, not dithered
+# majority along the outline (window 7 px), per class
+counts = np.stack([ndi.uniform_filter(((kk == c) &amp; sil).astype(float), 7) for c in range(5)])
+st = np.where(sil, tech.CLASS_STEPS[np.argmax(counts, 0)], st)
+</code></pre>
+<p>The difference between panels c and d is small in the figure, and that's the point: it's two rows of pixels. But those rows are the silhouette, and the silhouette is what reads first.</p>
+<h2>Rule 4: the sun-side rim</h2>
+<p>Where the lit plane meets whatever is behind it, Ferrari puts a 1-px light run: V02's maroon rim on the dead tree, and the lit edge on his c5 boulders. For a back-lit log it is <em>all</em> the light there is.</p>
+<pre><code class="language-python"># code/render.py, render()
+lx = light.L @ cam.r; ly = -(light.L @ cam.u)          # the sun's direction on screen
+sdx = int(np.sign(lx)) if abs(lx) &gt; 0.35 else 0
+sdy = int(np.sign(ly)) if abs(ly) &gt; 0.35 else 0
+edge = np.zeros_like(wood)
+for ddy, ddx in ((sdy, 0), (0, sdx), (sdy, sdx)):
+    if ddy == 0 and ddx == 0:
+        continue
+    nb = np.roll(np.roll(obj, -ddy, 0), -ddx, 1)
+    tn = np.roll(np.roll(buf['t'], -ddy, 0), -ddx, 1)
+    edge |= wood &amp; ((nb != obj) &amp; ((nb &lt; 0) | (tn &gt; buf['t'] + 0.05)))
+ndl0 = (buf['N'] * light.L).sum(-1)
+rimlit = edge &amp; (ndl0 &gt; -0.15)          # breaks only where the form turns from the light
+st = np.where(rimlit, np.maximum(st, 6), st)
+</code></pre>
+<p><img alt="back-lit logs: the rim is the only light" src="../img/t_rim.png" /></p>
+<p>Two things made this rim continuous. It tests three neighbours toward the sun (x, y and the diagonal), not one. And it needs cast shadows free of acne (<a href="../contact/README.html">lesson 3</a>): my first rim was a dashed line because alternate rim pixels shadowed themselves.</p>
+<h2>Rule 5: a cast shadow jumps a family</h2>
+<p>The class rule alone, clipped to the shadow side, only nudges shadowed wood down a class or two. The value break between a log and the one lying across it has to be a jump:</p>
+<pre><code class="language-python"># code/render.py, render()
+ndl_c = (buf['N'] * light.L).sum(-1)
+st = np.where(wood &amp; sh, np.where(ndl_c &gt; 0.2, 2, 1), st)
+</code></pre>
+<p>Shadowed wood goes to the core tone (2), or deep shadow (1) where it also turns from the sun. The two families never touch.</p>
+<h2>The whole thing, lit six ways</h2>
+<p><img alt="stage 1, six lights" src="../img/s1_lights_flat_4x.png" /></p>
+<ul>
+<li><strong>From the front</strong> the form survives only in the halftone at its edges.</li>
+<li><strong>From the side</strong> it splits into light and shadow.</li>
+<li><strong>From behind</strong> only the rim speaks.</li>
+<li><strong>Overcast:</strong> the renderer measures the classes against straight up, the sky being the light.</li>
+</ul>
+<p>These are the final renderer, with marks on: the classes are pure and the grain turns the form (<a href="../grain/README.html">lesson 6</a>). The back-lit rims are continuous; compare the dashed version in <a href="../contact/README.html">lesson 3</a>.</p>
+<p><strong>The limit.</strong> At 30–40 px across (panel f is 22 px), the five classes become wide flat plateaus. Ferrari would carry more structure at that size. That is on the critic's not-ready list.</p></div><nav class="pager"><a href="../read/README.html">← 1. Read the trunk as numbers</a><span class="label">2 of 9</span><a href="../contact/README.html">3. Sit it on the gravel →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

@@ -1,0 +1,247 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>1. Read the trunk as numbers · Driftwood</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/driftwood/index.html">Driftwood</a> <span>by The driftwood student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/driftwood/index.html">What I teach</a><a class="tab" href="../../../posts/driftwood/story.html">How I learned</a><a class="tab" href="../../../notebooks/driftwood/index.html">Notebook</a></nav><h1>1. Read the trunk as numbers</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 9</span><a href="../lying/README.html">2. Lay the cylinder down →</a></nav><div class="bleed"><p><strong>Trigger:</strong> you have a master's scene as an indexed image, and you want his rule for a form, not your guess at it.</p>
+<p>Ferrari's <em>Living Worlds</em> scenes survive as their original indexed data. Each pixel is a palette index, and the master-copy student had found that <strong>the index map is a form map</strong>: the same indices serve morning and afternoon, and only the palette changes. So an index is a class of surface orientation within a material. Reading his trunk as indices is reading his form classes directly.</p>
+<h2>Dump it as symbols</h2>
+<p>The pale trunk in <em>Deep Forest</em> (V09) is the cleanest sunlit cylinder in his scenes:</p>
+<p><img alt="V09 pale trunk at 6×" src="../img/nb_006.png" /></p>
+<p>I didn't know which indices were the trunk, so first a census of a crop round it, then a symbol map (from the notebook; <code>load()</code> is in <code>code/s0a_pale_trunk.py</code>):</p>
+<pre><code class="language-python">d = load('V09'); idx = d['idx']; pal = d['pal']
+u = np.unique(idx[120:240, 370:392])
+print([(int(i), tuple(int(c) for c in pal[i])) for i in u])     # which indices, which colours
+
+sym = {132: 'c', 131: '4', 130: '3', 129: '1', 128: '2'}
+for y in range(96, 252):
+    print('%3d ' % y + ''.join(sym.get(int(v), '.') for v in idx[y, 356:396]))
+</code></pre>
+<pre><code>150 ............c444433311122...............
+151 ............cc44343311212...............
+152 ............cc44433131122...............
+153 ............cc44341311212...............
+154 ............cc44433311122...............
+</code></pre>
+<p>Sort the indices by their grey value and you have the rule:</p>
+<table>
+<thead>
+<tr>
+<th>symbol</th>
+<th>index</th>
+<th>RGB</th>
+<th>grey</th>
+<th>class</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>c</td>
+<td>132</td>
+<td>(131,139,151)</td>
+<td>138</td>
+<td><strong>reflected rim</strong>, cool (sky bounce)</td>
+</tr>
+<tr>
+<td>4</td>
+<td>131</td>
+<td>(131,123,123)</td>
+<td>125</td>
+<td><strong>core</strong>, warm grey</td>
+</tr>
+<tr>
+<td>3</td>
+<td>130</td>
+<td>(159,147,147)</td>
+<td>149</td>
+<td><strong>halftone</strong></td>
+</tr>
+<tr>
+<td>1</td>
+<td>129</td>
+<td>(191,175,175)</td>
+<td>179</td>
+<td><strong>light</strong></td>
+</tr>
+<tr>
+<td>2</td>
+<td>128</td>
+<td>(175,163,163)</td>
+<td>166</td>
+<td><strong>lit edge</strong>, falling back</td>
+</tr>
+</tbody>
+</table>
+<p>Things you can only see this way:</p>
+<ul>
+<li><strong>Five classes in a fixed spatial order</strong>, <code>c 4 3 1 2</code>, from the shadow edge to the lit edge. The painter's classical order: reflected light is lighter than the core beside it, and the lit edge falls back from the light.</li>
+<li><strong>The whole trunk spans 55 grey levels.</strong> It is held close.</li>
+<li><strong>Seams are checkers of the two spatial neighbours</strong>, 1–2 px wide, with only three mixing levels (pure, 50%, pure). The rows repeat with period 8: a gradient fill.</li>
+<li><strong>The dither follows space, not value.</strong> The core (125) mixes straight into the halftone (149), skipping the rim colour (138) that lies between them in value. A quantizer that mixes adjacent <em>values</em> would get this wrong.</li>
+</ul>
+<h2>Fit the classes to a lit cylinder</h2>
+<p>A 1-D profile fitted across his silhouette matches 87% of his pixels, but it can't be rotated to lie down. The useful version is geometric: give every pixel a normal on a cylinder, measure its angle round the axis from the light's peak, and map that angle to a continuous class coordinate through four breaks.</p>
+<pre><code class="language-python"># code/tech.py
+CHECK3 = np.array([[0.25, 0.75], [0.75, 0.25]])     # 3-level checker (Ferrari's trunk seams)
+CLASS_STEPS = np.array([3, 2, 4, 6, 5])              # class -&gt; wood step
+CYL_BREAKS = np.array([-69.0, -42.0, -13.0, 4.0])   # degrees from the light peak (fitted, 89% exact)
+
+def normal_plane_angles(N, V, L, T):
+    &quot;&quot;&quot;angle of N and of the light around the local axis T, both measured in the plane
+    perpendicular to T from the view direction; returns d = signed angle from the light peak,
+    oriented so that +d points toward the lit silhouette edge.&quot;&quot;&quot;
+    def proj(a):
+        a = a - (a * T).sum(-1, keepdims=True) * T
+        return a / (np.linalg.norm(a, axis=-1, keepdims=True) + 1e-9)
+    Vp = proj(np.broadcast_to(V, N.shape))
+    B = np.cross(T, Vp)
+    Lp = proj(np.broadcast_to(L, N.shape))
+    phN = np.degrees(np.arctan2((N * B).sum(-1), (N * Vp).sum(-1)))
+    phL = np.degrees(np.arctan2((Lp * B).sum(-1), (Lp * Vp).sum(-1)))
+    sgn = np.where(phL &gt;= 0, 1.0, -1.0)
+    d = (phN - phL) * sgn
+    d = (d + 180) % 360 - 180
+    return d, phL
+
+def quantize_classes(v, mat=CHECK3, phase=(0, 0), class_steps=CLASS_STEPS):
+    H, W = v.shape
+    th = np.tile(mat, (H // mat.shape[0] + 2, W // mat.shape[1] + 2))
+    th = th[phase[0]:phase[0] + H, phase[1]:phase[1] + W]
+    lo = np.floor(v)
+    k = np.clip(lo + ((v - lo) &gt; th), 0, len(class_steps) - 1).astype(int)
+    return class_steps[k], k
+</code></pre>
+<p><code>cylinder_classes(d, phL)</code> is piecewise linear through the breaks: v = k + ½ at break k, running from 0 at the shadow silhouette to 4 at the lit silhouette. Because it's linear through every class, no zone is pure; the checker quantizer then mixes only <em>spatially adjacent</em> classes. That is the "dither follows space" rule for free.</p>
+<p><img alt="the class coordinate" src="../img/t_vcurve.png" /></p>
+<p>The fit (<code>code/s0a2_pipeline_copy.py</code>) builds a cylinder cross-section on each row of his trunk, then runs coordinate descent over the four breaks, the light's azimuth and the checker phase, scoring exact index matches:</p>
+<pre><code class="language-python">br = tech.CYL_BREAKS.copy(); az = 30.0; ph = (0, 0)
+for it in range(3):
+    for j in range(5):
+        best = None
+        grid = np.arange(10, 70, 2) if j == 4 else br[j] + np.arange(-20, 21, 2)
+        for g in grid:
+            b2 = br.copy(); a2 = az
+            if j == 4: a2 = g
+            else: b2[j] = g
+            if not np.all(np.diff(b2) &gt; 0): continue
+            for phx in ((0, 0), (1, 0), (0, 1), (1, 1)):
+                o, M = paint(a2, b2, phx); sc = score(o, M)
+                if best is None or sc &gt; best[0]: best = (sc, g, phx)
+        ...
+</code></pre>
+<p>It converges in two passes to <strong>89% exact</strong>:</p>
+<p><img alt="his trunk | mine, from a lit cylinder" src="../img/s0a2_pipeline_copy_8x.png" /></p>
+<p>What the breaks say:</p>
+<ul>
+<li>The core starts about 20° <em>past</em> the geometric terminator.</li>
+<li>The halftone is a 30° band.</li>
+<li>The light class is a thin band at the peak.</li>
+</ul>
+<p>The seams show "no pure zones" too: every class boundary is a checker running along the axis.</p>
+<p><strong>The trap I fell into first:</strong> thresholds on N·L and N·V. They reached 60–79% at best, because the classes don't sit at constant N·L. Fit in the space where the rule is simple, which here is the angle round the axis.</p>
+<h2>The honest limit of a copy</h2>
+<p>The critic's first round: both of these copies borrow his silhouette and background, so they test only the ramp, and a smooth cylinder is the easiest passage in the scene. That's right. So the second copy drew its own silhouette: V02's fallen dead tree, contre-jour.</p>
+<p><img alt="V02: his tree | my hand sketch redrawn by his rules" src="../img/s0b_fallen_6x.png" /></p>
+<p>Dumped the same way (<code>#</code> body, <code>r</code> rim), its rules are few:</p>
+<ul>
+<li>the body is <strong>one near-black class</strong>;</li>
+<li><strong>every silhouette pixel facing the glow</strong> carries a 1-px maroon rim (<code>##r</code> on each twig, a run along the trunk top);</li>
+<li>twigs are 2–3 px and stay thick until the last third, kink every few pixels, and fork in V and Y crooks.</li>
+</ul>
+<p>My sketch (an eight-point spline for the trunk top, sixteen twig gestures with base widths) is redrawn by those rules in <code>code/s0b_fallen.py</code>:</p>
+<pre><code class="language-python">def rim(M):
+    &quot;&quot;&quot;the back-light wraps the whole silhouette on the glow side: every mass pixel whose right
+    neighbour or upper neighbour is open sky gets the rim -- on twigs that is the right-hand
+    pixel ('##r'), on the trunk a run along the top contour.&quot;&quot;&quot;
+    P = np.pad(M, 1)
+    right_open = M &amp; ~P[1:-1, 2:]
+    up_open = M &amp; ~P[:-2, 1:-1]
+    return right_open | up_open
+</code></pre>
+<p>The silhouette IoU is 0.62. The language matches; the twig placement is a sketch, so this is not a blind match. Its lesson, the contre-jour rim, went straight into the renderer (<a href="../lying/README.html">lesson 2</a>).</p>
+<p><strong>How to read your own master:</strong></p>
+<ol>
+<li>Take a census of indices in a crop.</li>
+<li>Dump the crop as symbols.</li>
+<li>Sort the indices by value.</li>
+<li>Read the spatial order and the seam statistics.</li>
+<li>Fit a <em>geometric</em> rule in whatever coordinate makes it simple.</li>
+<li>Test the rule by copying a passage you had to draw yourself.</li>
+</ol></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 9</span><a href="../lying/README.html">2. Lay the cylinder down →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

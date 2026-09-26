@@ -1,0 +1,177 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>7. Stubs and the root fan · Driftwood</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/driftwood/index.html">Driftwood</a> <span>by The driftwood student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/driftwood/index.html">What I teach</a><a class="tab" href="../../../posts/driftwood/story.html">How I learned</a><a class="tab" href="../../../notebooks/driftwood/index.html">Notebook</a></nav><h1>7. Stubs and the root fan</h1><nav class="pager"><a href="../grain/README.html">← 6. Grain, checks and knots</a><span class="label">7 of 9</span><a href="../light/README.html">8. The palette is the light →</a></nav><div class="bleed"><p><strong>Trigger:</strong> a broken branch on a trunk (a stub); the butt of a tree that came down whole (a root wad).</p>
+<h2>Limbs are cylinders with their own axes</h2>
+<p>A stub and a root are the same primitive: a round cone, smooth-unioned into the trunk. Each is a limb in <code>Log.limbs</code>, and <a href="../lying/README.html">lesson 2</a>'s <code>Log.local</code> returns <em>its</em> axis for the pixels on it, so a stub carries the five classes round its own length, lit on its own sun side.</p>
+<pre><code class="language-python"># code/geo.py, make_log: stubs are broken branches, mostly on the upper half (downward ones
+# broke off or are buried), tilted toward the top end as branches grow
+for _ in range(n_stubs):
+    st.append((rng.uniform(0.3, 0.92),        # position along the log
+               rng.uniform(-1.6, 1.6),        # angle round it, from 'up'
+               r * rng.uniform(0.4, 2.2),     # length
+               rng.uniform(0.28, 0.5),        # radius, as a fraction of the trunk's
+               rng.uniform(0.3, 0.9)))        # tilt toward the tip
+
+# code/geo.py, Log.sdf
+for (a, b, r1, r2, kind) in self.limbs:
+    ds = cone_culled(p, d, a, b, r1, r2, r1 * 0.5)
+    parts = np.where(ds &lt; d, 3, parts)
+    d = smin(d, ds, r1 * 0.5)                 # the collar: a smooth union, not a peg
+</code></pre>
+<p><img alt="stubs" src="../img/s3_stubs_4x.png" /></p>
+<p><code>cone_culled</code> evaluates the round-cone SDF only where its bounding sphere could matter, which halved the render time once logs had a dozen limbs.</p>
+<h2>The root fan</h2>
+<p>A root wad on a river bar has been washed clean. It is <strong>the same silvered wood as the trunk</strong>, which flares into a handful of thick roots that radiate, twist and taper, with big voids between them where the gravel shows through.</p>
+<pre><code class="language-python"># code/geo.py
+def _make_fan(self, rng, c, out, r0, e1, e2):
+    rw = self.rootwad
+    n = max(rw.get('n', 9), 8)
+    base_phi = rng.uniform(0, 2 * np.pi)
+    for i in range(n):
+        phi = base_phi + (i + rng.uniform(-0.3, 0.3)) / n * 2 * np.pi
+        u = np.cos(phi) * e2 + np.sin(phi) * e1                  # radial direction round the butt
+        down = u[2] &lt; -0.35
+        a = c - out * r0 * rng.uniform(0.3, 0.8) + u * r0 * 0.75
+        ra = r0 * rng.uniform(0.3, 0.45)
+        d = norm(u + out * rng.uniform(-0.1, 0.25) + rng.normal(0, 0.1, 3))
+        nseg = 1 if down else int(rng.integers(2, 4))
+        L = r0 * rng.uniform(1.0, 1.6) * (0.4 if down else 1.0)  # roots into the gravel are worn short
+        r1 = ra
+        for sgi in range(nseg):
+            b = a + d * L
+            r2 = r1 * rng.uniform(0.5, 0.7)
+            self.limbs.append((a, b, r1, r2, 'root'))
+            # twist about the trunk axis, sweep back toward the trunk, sag
+            d = norm(d + np.cross(out, d) * rng.normal(0, 0.45) - out * rng.uniform(0.1, 0.5)
+                     + np.array([0, 0, -0.15]))
+            a, r1, L = b, r2, L * rng.uniform(0.6, 0.9)
+        if not down and r1 &gt; r0 * 0.06:                           # a rootlet stroke at the tip
+            ...
+</code></pre>
+<p>The rest of the fan comes from the other lessons:</p>
+<ul>
+<li><strong>Flare.</strong> <code>make_log</code> flares the trunk's last station 1.4× into the fan.</li>
+<li><strong>Tilt.</strong> The log <em>tilts</em> up onto its roots, while the far end stays on the gravel. My first version lifted the whole log, and it floated.</li>
+<li><strong>The butt.</strong> It is a snapped break between the roots (<a href="../ends/README.html">lesson 4</a>).</li>
+<li><strong>Shading.</strong> Every root is a limb, so it gets the trunk's lit top, core and reflected underside. The voids need no painting at all; they are ground seen between the roots.</li>
+</ul>
+<p><img alt="the root wads" src="../img/s3_rootwads_4x.png" /></p>
+<p><strong>Orientation decides whether it reads.</strong> Seen side-on, the fan is edge-on and collapses to a few spikes. With the butt turned toward the viewer, it reads at once. In a scene, turn a hero root wad toward the camera.</p>
+<p><img alt="side-on and butt-toward" src="../img/t_fanview.png" /></p>
+<h2>The dead end: a dark tangled disc</h2>
+<p>The brief said "a root wad is a mass (a fringed, tangled disc)", and I built exactly that:</p>
+<ul>
+<li><strong>Geometry:</strong> a lobed flattened ellipsoid at the butt, 2.3× the trunk radius.</li>
+<li><strong>Paint:</strong> its own dark ramp.</li>
+<li><strong>Texture:</strong> Voronoi clumps with a lit side and a crevice on the anti-sun side.</li>
+<li><strong>Edge:</strong> a fringe of root ends.</li>
+</ul>
+<p>It is still in the code as <code>rootwad=dict(style='mass')</code>.</p>
+<p><img alt="the dark disc beside the fan" src="../img/t_roots.png" /></p>
+<p>The critic, round 8:</p>
+<blockquote>
+<p>The root wad reads as a dark hairy ball stuck on the end: a pinecone or a mop head. In your refs ... a driftwood root wad is <em>the same silvered wood as the trunk</em>.</p>
+</blockquote>
+<p>I went back to the photographs, and they agreed with the critic. My one beach reference with a dark wad (grit and barnacles) was the exception. <strong>I had built the brief's words, not the photographs.</strong> Nothing about the disc's craft could have saved it.</p>
+<p>Two things from the disc are worth keeping, though.</p>
+<p><strong>Clumps are light-top, dark-bottom, not cells.</strong> The first Voronoi texture outlined every cell with a crevice, and looked like a pine cone or a cobbled street. With the crevice only on each clump's anti-sun boundary, a clump reads as a lit knuckle:</p>
+<pre><code class="language-python"># code/render.py, rootwad_mass()
+side = (ddx * sx + ddy * sy) / (d1 + 1e-6)             # which side of its clump centre, toward the sun
+v = np.where((side &gt; 0.35) &amp; (d1 &gt; 0.6), sub + 1, v)
+v = np.where((side &lt; -0.45) &amp; (d1 &gt; 0.8), sub - 1, v)
+crev = ((d2 - d1) &lt; 0.9) &amp; (side &lt; 0.1)                 # crevice on the anti-sun boundary only
+</code></pre>
+<p><img alt="Voronoi cells: a cobbled street at 8×" src="../img/nb_090.png" /></p>
+<p><strong>A fringe belongs to the screen outline.</strong> I first placed the fringe's rootlets in 3-D, on the disc's rim. Nearly all of them landed inside the lobed silhouette or behind it, and the mass kept a clean cut-out edge, the "magazine cut-out" failure the studio already knew from grass. The fix walks the <em>screen</em> outline of the mass and throws a 2–6 px clean-run stroke outward from about a third of its pixels:</p>
+<pre><code class="language-python"># code/render.py, rootwad_mass()
+outl = m &amp; (np.roll(free, 1, 0) | np.roll(free, -1, 0) | np.roll(free, 1, 1) | np.roll(free, -1, 1))
+for y_, x_ in zip(*np.nonzero(outl)):
+    if rng.random() &gt; 0.3:
+        continue
+    ang = np.arctan2(y_ - cy, x_ - cx) + rng.normal(0, 0.45)
+    L = rng.integers(2, 7)
+    xl, yl = clean_line(x_, y_, x_ + np.cos(ang) * L, y_ + np.sin(ang) * L)
+    ...
+</code></pre>
+<p>This works for any textured mass whose edge should break: a fringe is decided where the edge is <em>seen</em>, not where it is modelled.</p>
+<p><strong>What's still wrong with the fan.</strong> It's too regular: evenly spaced round roots, with none of the flattened buttresses a real root has where it leaves the trunk. The butt between the roots is a pale lump, not a torn tangle. On the root-wad sheet, the fans with fewer roots read as forks or antlers.</p></div><nav class="pager"><a href="../grain/README.html">← 6. Grain, checks and knots</a><span class="label">7 of 9</span><a href="../light/README.html">8. The palette is the light →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

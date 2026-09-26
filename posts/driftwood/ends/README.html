@@ -1,0 +1,164 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>4. Ends · Driftwood</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/driftwood/index.html">Driftwood</a> <span>by The driftwood student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/driftwood/index.html">What I teach</a><a class="tab" href="../../../posts/driftwood/story.html">How I learned</a><a class="tab" href="../../../notebooks/driftwood/index.html">Notebook</a></nav><h1>4. Ends</h1><nav class="pager"><a href="../contact/README.html">← 3. Sit it on the gravel</a><span class="label">4 of 9</span><a href="../small/README.html">5. Small logs are glyphs →</a></nav><div class="bleed"><p><strong>Trigger:</strong> the two ends of every log, and the butt of every root fan.</p>
+<p>Driftwood's ends say what happened to it: sawn by someone, snapped in a flood, splintered, or rolled round by the river. Four kinds cover what I saw in the photographs, and each one is a different drawing problem.</p>
+<p><img alt="the four ends at two sizes" src="../img/s1_ends_5x.png" /></p>
+<h2>Worn: no cut at all</h2>
+<p>The commonest driftwood end, and the one I forgot at first. The round cone's own cap turns the five classes round the end: <code>cut()</code> simply skips a worn end.</p>
+<pre><code class="language-python"># code/geo.py, Log.cut
+if self.ends[e] == 'worn':
+    continue
+</code></pre>
+<h2>Sawn: a flat plane, not a target</h2>
+<p>A sawn face is one plane. Paint it one tone by how it faces the sun: 6 lit, 5 turned, 3 in shadow. Then add a 1-px darker arris ring and one to three radial checks from near the pith.</p>
+<pre><code class="language-python"># code/render.py, end_faces()
+base = np.where(lit, np.where(ndl &gt; 0.6, 6, 5), 3)
+rho = buf['rho']                                           # radius fraction on the face
+v = base.copy()
+if r_px &gt;= 3:
+    arris = rho &gt; 1 - 1.0 / max(r_px, 1)                   # the softened rim: 1 px, 2 steps down
+    v = np.where(arris, base - 2, v)
+if r_px &gt;= 20:
+    ...                                                    # growth rings, as broken arcs
+if r_px &gt;= 5:
+    nchk = 1 + int(hash_angle(lg.seed * 3 + e) / (2 * np.pi) * 3)
+    for q in range(nchk):
+        ca = hash_angle(lg.seed + e + 17 * q)
+        rmin = 0.1 + 0.3 * (q &gt; 0)
+        chk = (np.abs(np.angle(np.exp(1j * (th - ca)))) * rho * r_px &lt; 0.55) &amp; (rho &gt; rmin)
+        v = np.where(chk, np.maximum(base - 3, 1), v)
+</code></pre>
+<p>The check test <code>|Δθ| · ρ · r_px &lt; 0.55</code> is the pixel distance from a radial line: a 1-px-wide ray, whatever the face's size.</p>
+<p><strong>Two traps.</strong> My first sawn face was pure white, the brightest thing in the frame: the critic said "a stick of chalk". It's now the body's own light value. My second drew growth rings at every size, and they came out as a <strong>spiral target, the cartoon-log icon</strong>. Weathered end grain at this scale shows no rings: a flat lighter face, a soft dark rim, a few radial cracks. Rings appear only at radii of 20 px or more, and even then as broken arcs.</p>
+<p><img alt="the spiral (top left) that had to go" src="../img/nb_058.png" /></p>
+<h2>Snapped and splintered: a profile, and a Lipschitz bound</h2>
+<p>A broken end is the trunk's shell standing out further in a few angular sectors (the teeth), with the break face falling toward the axis between them. As geometry, that's an angular profile <code>prof(θ)</code> of tooth heights, scaled by radial fraction so the face is a rough cone:</p>
+<pre><code class="language-python"># code/geo.py, Log.__init__
+nt = rng.integers(3, 6) if kind_e == 'snapped' else rng.integers(6, 10)
+for _ in range(nt):
+    cang = rng.uniform(0, 2 * np.pi)
+    w = rng.uniform(0.5, 1.1) if kind_e == 'snapped' else rng.uniform(0.35, 0.7)
+    h = r_end * (rng.uniform(0.35, 1.0) if kind_e == 'snapped' else rng.uniform(0.6, 2.0))
+    dd = np.abs(np.angle(np.exp(1j * (ang - cang))))
+    prof = np.maximum(prof, h * np.clip(1 - dd / w, 0, 1))
+...
+lip = 1.0 + np.abs(np.diff(np.concatenate([prof, prof[:1]]))).max() / (2 * np.pi / 256) / max(r_end, 1e-6)
+</code></pre>
+<pre><code class="language-python"># code/geo.py, Log.cut
+lim = prof[idx] * np.clip(rho, 0, 1) ** 1.5
+dc = (v @ out - lim) / (lip * 1.6 if prof.max() &gt; 0 else 1.0)
+d = np.maximum(d, dc)
+</code></pre>
+<p><strong>The bug that taught me this.</strong> Without the division by <code>lip</code>, the break rendered as speckle: pixels missing in the middle of solid wood.</p>
+<p><img alt="a non-Lipschitz SDF: speckle" src="../img/nb_040.png" /></p>
+<p>A sphere tracer steps forward by the distance the SDF reports. A steep angular profile makes the "distance" to the cut surface far larger than the true distance, so the tracer steps through the surface and misses. <code>lip</code> is the profile's steepest slope per unit arc, expressed as a gradient bound. Dividing by it makes the function a true lower bound again, so tracing is conservative. The factor 1.6 is margin. The cost is more tracing steps (I raised the limit to 200).</p>
+<p>Before that I'd tried teeth as separate thin cones, which came out as wires, and a cut plane modulated by angle alone, which came out as blobs. The profile-plus-bound is what worked.</p>
+<h3>Value by relief, not by facet</h3>
+<p>Shading the torn face by N·L gave litter: every tiny facet a different tone. What reads is <strong>how far a point stands out along the axis</strong>. Tooth tips catch the light and the torn floor between them is recessed:</p>
+<pre><code class="language-python"># code/render.py, end_faces()
+s_rel = (buf['P'] - c) @ outv
+f = np.clip(s_rel / max(prof.max(), 1e-6), 0, 1)           # 0 at the break floor, 1 at the tallest tip
+lit_v = np.where(f &gt; 0.55, 7, np.where(f &gt; 0.2, 6, 4))
+sh_v = np.where(f &gt; 0.55, 4, np.where(f &gt; 0.2, 3, 2))
+v = np.where(lit &amp; (ndl &gt; 0.35), lit_v, np.where(ndl &gt; 0.0, np.minimum(lit_v, 5) - 1, sh_v))
+...
+out = despeckle(out, m)       # a pixel unlike all four neighbours takes their majority
+</code></pre>
+<p>Raw wood at the break hasn't silvered, so its tips (7) are the palest thing on the log.</p>
+<h3>Slivers are strokes</h3>
+<p>The splinters of a splintered end are thinner than a pixel, so they are drawn as <strong>clean-run lines</strong>: the slope snapped to a constant run of 1, 2, 3 or 4, never a jittery DDA.</p>
+<pre><code class="language-python"># code/render.py
+def clean_line(x0, y0, x1, y1):
+    dx, dy = x1 - x0, y1 - y0
+    n = int(max(abs(dx), abs(dy)))
+    ...
+    if abs(dx) &gt;= abs(dy):
+        ratio = abs(dx) / max(abs(dy), 1e-6)
+        run = min([1, 2, 3, 4, 99], key=lambda q: abs(q - ratio)) if ratio &lt; 6 else 99
+        xs = np.arange(n + 1) * np.sign(dx) + round(x0)
+        ys = round(y0) + (np.arange(n + 1) // run) * np.sign(dy) * (run &lt; 99)
+    ...
+</code></pre>
+<p>Each sliver is lit (7) on the sun side of the log or turned (4) away, with a dark partner pixel under it wherever it crosses the ground: the smallest light-over-dark pair. <code>clean_line</code> is used everywhere a narrow form is drawn: slivers, rootlets, fringes and grain.</p>
+<p><img alt="a splintered end: slivers as clean runs" src="../img/nb_082.png" /></p>
+<p><strong>What's still wrong.</strong> At 30 px/m (the right column of the first figure), snapped and splintered ends shrink to a few pixels that barely differ from a worn end. A splinter at that size probably wants one long sliver drawn as a glyph, not a traced shape.</p></div><nav class="pager"><a href="../contact/README.html">← 3. Sit it on the gravel</a><span class="label">4 of 9</span><a href="../small/README.html">5. Small logs are glyphs →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

@@ -1,0 +1,154 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>8. The palette is the light · Driftwood</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/driftwood/index.html">Driftwood</a> <span>by The driftwood student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/driftwood/index.html">What I teach</a><a class="tab" href="../../../posts/driftwood/story.html">How I learned</a><a class="tab" href="../../../notebooks/driftwood/index.html">Notebook</a></nav><h1>8. The palette is the light</h1><nav class="pager"><a href="../roots/README.html">← 7. Stubs and the root fan</a><span class="label">8 of 9</span><a href="../piles/README.html">9. Piles →</a></nav><div class="bleed"><p><strong>Trigger:</strong> any hour, any weather, dry or wet. The form is decided once; this lesson only changes colours.</p>
+<p>Everything before this lesson paints an <strong>index canvas</strong>: a material id and a step 0–7 per pixel. Colour happens at the very end:</p>
+<pre><code class="language-python"># code/render.py
+def to_rgb(cv, ramps):
+    out = np.zeros(cv.mat.shape + (3,), np.uint8)
+    for m, r in ramps.items():
+        sel = cv.mat == m
+        out[sel] = np.asarray(r, np.uint8)[np.clip(cv.step[sel], 0, len(r) - 1)]
+    return out
+</code></pre>
+<p>That's Ferrari's own structure: in <em>Living Worlds</em> the morning and afternoon versions of a scene are the same index map with different palettes. It paid off at once. The light sweep, the hour sweep and the wet sweep are the same canvas through different ramps.</p>
+<p><img alt="one canvas, five palettes" src="../img/t_onecanvas.png" /></p>
+<h2>The ramps</h2>
+<p>Each material has one 8-step ramp in the value plan proved in greyscale: <code>0 contact | 1 deep | 2 core | 3 reflected rim || 4 halftone | 5 lit edge | 6 light | 7 face or glint</code>. Each hour multiplies the <strong>lit steps by the sun's colour</strong> and the <strong>shadow steps by the sky's</strong>. It is a hue walk along one ramp, never white or black added.</p>
+<pre><code class="language-python"># code/palette.py
+HOURS = {   # (critic r9: my first shadow shift was ~3x too strong; these are a third of it)
+    'noon':     dict(sun=(1.00, 0.99, 0.96), sky=(0.98, 0.99, 1.01), lift=0.0),
+    'morning':  dict(sun=(1.02, 0.98, 0.92), sky=(0.97, 0.98, 1.02), lift=0.02),
+    'golden':   dict(sun=(1.10, 0.93, 0.74), sky=(0.93, 0.91, 1.00), lift=0.02),
+    'overcast': dict(sun=(0.98, 0.99, 1.00), sky=(0.98, 0.99, 1.00), lift=0.03),
+}
+# base (neutral) ramps, value-first.  Restraint: the core is a WARM grey (Ferrari's trunk core
+# 131,123,123), only the reflected rim leans cool, and not far.
+BASE = {
+    WOOD: [(38, 36, 40), (74, 72, 76), (122, 118, 116), (132, 133, 136), (154, 152, 148),
+           (178, 175, 168), (204, 201, 193), (228, 226, 217)],
+    ...
+}
+LIT = np.array([0, 0, 0, 0, 1, 1, 1, 1], float)
+
+def ramps(hour='noon', wet=0.0):
+    ...
+    mul = LIT[:, None] * sun + (1 - LIT[:, None]) * sky
+    if hour == 'overcast':
+        r[4:7] = r[4:7] * 0.92 + r[4] * 0.08      # no sun: the lit steps compress toward the halftone
+        mul = np.tile(sky, (8, 1))
+    r = r * mul
+    r = r + h['lift'] * 255 * (1 - r / 255)       # haze lifts the black point
+</code></pre>
+<h2>Restraint: the shadow hue</h2>
+<p>Cooling the shadow side is right; <em>how much</em> is where I went wrong, twice.</p>
+<ul>
+<li><strong>Too cool a rim.</strong> First I gave the reflected-rim step an extra blue push on top of the sky tint. The lower half of every log went periwinkle, and the gravel's shadow steps sprinkled the ground with blue.</li>
+<li><strong>Too strong a sky tint.</strong> After I removed that push, the critic's round 9 compared my log with the braided-bar photo, where silvered logs are pale on <em>both</em> sides, and found the shadow shift still <strong>about three times too strong</strong>.</li>
+</ul>
+<p>The final sky multipliers are a third of the first ones.</p>
+<p><img alt="the first noon sky tint and the final one, same canvas" src="../img/t_shadowhue.png" /></p>
+<p><em><code>figs.py shadowhue</code> swaps in the first noon entry, <code>sky=(0.86, 0.92, 1.06)</code>, for one render.</em></p>
+<p>The rule behind it is in Ferrari's own trunk (<a href="../read/README.html">lesson 1</a>). His core is a warm grey, and only the outermost rim column leans blue, by about 20 levels of blue over red. Cool shadows stay close in value <em>and</em> chroma to their neighbours.</p>
+<p>Golden hour is the one place the violet is allowed to show, as in his dusks: warm rims on a violet shadow side.</p>
+<p><img alt="hour by wetness" src="../img/s4_hours_wet_4x.png" /></p>
+<h2>Wet wood</h2>
+<p>A log lying in or just out of the water is <strong>darker by about a third, warm brown (tannin), with its lit steps compressed, and a sharp near-white glint</strong>. Wet things are dark with sharp highlights. Without the glint, a wet log just looked like a brown log.</p>
+<p>The ramp is a palette change (<code>WETW</code>); the glint is the only index change:</p>
+<pre><code class="language-python"># code/render.py
+def wet_logs(cv, buf, logs, cam, light, sh):
+    V = -cam.f
+    Hv = light.L + V
+    Hv = Hv / np.linalg.norm(Hv)                  # the half vector between sun and eye
+    if light.overcast:
+        Hv = np.array([0, 0, 1.0]) + V; Hv = Hv / np.linalg.norm(Hv)
+    for k, lg in enumerate(logs):
+        if lg.wet &lt; 0.5:
+            continue
+        m = (buf['obj'] == k) &amp; (cv.mat == WOOD)
+        cv.mat[m] = WETW
+        spec = m &amp; ((buf['N'] @ Hv) &gt; (0.992 if not light.overcast else 0.97)) &amp; ~sh
+        cv.step[spec] = 7 if not light.overcast else 6
+</code></pre>
+<p>N·H &gt; 0.992 is within about 7° of the mirror direction. On a cylinder that is a thin broken run along the top, which is exactly what you see on a wet log in a photo. Under overcast the glint follows the bright sky overhead: broader (0.97) and dimmer (step 6).</p>
+<p><img alt="dry and wet" src="../img/t_wet.png" /></p>
+<p><strong>Honest comparison.</strong> Beside the braided-bar photo, my dry noon log has the right family: silver with cool shadows and pale tops. The photo's wood is colder and bluer overall than mine; that's Svalbard light, and I stayed a little warm. The critic judged the wet version convincing, and the photographs agree: wet driftwood does go that dark.</p></div><nav class="pager"><a href="../roots/README.html">← 7. Stubs and the root fan</a><span class="label">8 of 9</span><a href="../piles/README.html">9. Piles →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

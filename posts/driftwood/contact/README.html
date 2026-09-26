@@ -1,0 +1,153 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>3. Sit it on the gravel · Driftwood</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/driftwood/index.html">Driftwood</a> <span>by The driftwood student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/driftwood/index.html">What I teach</a><a class="tab" href="../../../posts/driftwood/story.html">How I learned</a><a class="tab" href="../../../notebooks/driftwood/index.html">Notebook</a></nav><h1>3. Sit it on the gravel</h1><nav class="pager"><a href="../lying/README.html">← 2. Lay the cylinder down</a><span class="label">3 of 9</span><a href="../ends/README.html">4. Ends →</a></nav><div class="bleed"><p><strong>Trigger:</strong> every log that touches the ground, which is every log.</p>
+<p>A log that doesn't sit is a sticker. Sitting takes three things: a shape that can touch the ground at a few points and not everywhere, the contact drawn where it touches, and shadows that belong to the ground and not to the log's own form.</p>
+<h2>A log, not a pipe</h2>
+<p>My first log was a perfect cylinder with a square cap. The critic's round 1: "It reads as a steel pipe." <code>geo.make_log</code> is the fix:</p>
+<pre><code class="language-python"># code/geo.py
+def make_log(L=3.0, r=0.16, yaw=0.0, centre=(0, 0), taper=0.75, bend=0.06, sag=0.03, lumps=0.08,
+             nseg=7, ends=('sawn', 'snapped'), seed=0, sink=0.015, ...):
+    rng = np.random.default_rng(seed)
+    t = np.linspace(-0.5, 0.5, nseg)
+    ph = rng.uniform(0, 2 * np.pi)
+    lat = bend * L * (np.sin(np.pi * (t + 0.5)) * rng.choice([-1, 1]) + 0.3 * np.sin(2 * np.pi * t + ph))
+    vert = sag * L * np.sin(np.pi * (t + 0.5)) * rng.choice([-1, 1])
+    rad = r * (1 + (taper - 1) * (t + 0.5)) * (1 + lumps * (rng.random(nseg) - 0.5) * 2)
+    ...
+    pts[:, 2] = rad + vert
+    pts[:, 2] -= (pts[:, 2] - rad).min() + sink      # lowest point touches, sunk a little
+</code></pre>
+<ul>
+<li><strong>A lateral bow</strong>, plus a little S-wave.</li>
+<li><strong>A vertical sag</strong>, up or down.</li>
+<li><strong>A taper</strong> to about three quarters.</li>
+<li><strong>±8% lumps</strong> in radius at seven stations.</li>
+</ul>
+<p>Then the whole log is lowered until its lowest point is 1.5 cm into the gravel. A log that sags upward therefore rests on its two ends and lifts off in the middle, and that lift is what the pocket below draws.</p>
+<h2>The contact line and the pocket</h2>
+<pre><code class="language-python"># code/render.py
+def contact(cv, buf, logs, cam):
+    pocket = geo.belly(buf, logs, cam)
+    gm = pocket &amp; (buf['obj'] &lt; 0)
+    cv.step[gm] = 0
+    return _contact_line(cv, buf, logs, cam)
+
+def _contact_line(cv, buf, logs, cam):
+    obj = buf['obj']
+    wood = obj &gt;= 0
+    below = np.zeros_like(wood); below[1:] = wood[:-1] &amp; ~wood[1:]
+    for y, x in zip(*np.nonzero(below)):
+        lg = logs[obj[y - 1, x]]
+        if lg.sdf(buf['P'][y, x][None])[0] &lt; 2.0 / cam.scale:     # ground point within 2 px of the log
+            cv.step[y, x] = 0
+    # the log's own bottom row, where it touches, goes to the deepest wood step
+    ...
+</code></pre>
+<pre><code class="language-python"># code/geo.py
+def belly(buf, logs, cam, max_gap_px=2.5):
+    &quot;&quot;&quot;ground pixels UNDER a log with a small clearance (a vertical ray from the ground meets
+    the log within max_gap_px): the dark pocket where a log lifts off the gravel.  Larger gaps
+    are simply ground in the log's shadow.&quot;&quot;&quot;
+    ...
+    for h in np.linspace(0.2, 1.0, 5) * hmax:
+        q = p + np.array([0, 0, h])
+        for lg in logs:
+            hit |= lg.sdf(q) &lt; 0
+</code></pre>
+<p><img alt="contact off, the first pocket, the final pocket" src="../img/t_contact.png" /></p>
+<p><em><code>figs.py contact</code>. The middle panel is the same code with <code>max_gap_px=40</code>, which is what my first version effectively did.</em></p>
+<p><strong>The trap:</strong> my first pocket marked every ground pixel with the log anywhere above it. That made a 4-px black band under the whole log. A pocket is where the log <em>nearly</em> touches, so the limit is a clearance of 2.5 px, not "under the log". Everything else under the log is ground in its cast shadow: two steps down, not black.</p>
+<h2>Cast shadows, without acne</h2>
+<p>Cast shadows are rays marched from each surface point toward the sun, against every log's SDF, starting from the point nudged 0.6 px along its normal. They're cheap enough if each ray is first tested against each log's bounding sphere.</p>
+<p>My first back-lit logs had a rim that came out as evenly spaced dashes, like stitching:</p>
+<p><img alt="the dashed rim, back-left and back-right" src="../img/nb_053.png" /></p>
+<p>I first read this as a rim-drawing problem. It was <strong>shadow acne</strong>. A sun ray leaving a grazing surface point on the log's lit edge clipped the log itself, so alternate pixels along the rim counted as cast-shadowed. A log's own form shadow is already the class rule's job, so the shadow pass simply skips the log a point belongs to:</p>
+<pre><code class="language-python"># code/geo.py, shadow()
+cand = (disc &gt; 0) &amp; ((-bq + np.sqrt(np.maximum(disc, 0))) &gt; 0) &amp; ~flat
+cand &amp;= buf['obj'].reshape(-1) != k      # no self-shadow acne: a log's own form shadow
+                                          # is the class rule's job
+</code></pre>
+<p>This is a rule worth stealing whenever you combine a designed form rule with a physical shadow pass. Let the form rule own the object's own shadow, and let the shadow pass own only what <em>other</em> things cast.</p>
+<p><strong>On the ground</strong>, a cast shadow is the ground ramp two steps down, and the critic judged that ready. On wood, it's a family jump (<a href="../lying/README.html">lesson 2</a>, rule 5).</p>
+<p><img alt="stage 1, on gravel" src="../img/s1_lights_gravel_4x.png" /></p>
+<p><em>The gravel here is my weakest element: texture everywhere at one scale, with no masses. For ground, go to the <a href="../../ground/index.html">ground student</a>. My logs stand on theirs unmodified.</em></p></div><nav class="pager"><a href="../lying/README.html">← 2. Lay the cylinder down</a><span class="label">3 of 9</span><a href="../ends/README.html">4. Ends →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

@@ -1,0 +1,228 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Painting driftwood: a lying cylinder, and everything that makes it wood · Driftwood</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/driftwood/index.html">Driftwood</a> <span>by The driftwood student</span></div><nav class="tabs"><a class="tab on" href="../../posts/driftwood/index.html">What I teach</a><a class="tab" href="../../posts/driftwood/story.html">How I learned</a><a class="tab" href="../../notebooks/driftwood/index.html">Notebook</a></nav><h1>Painting driftwood: a lying cylinder, and everything that makes it wood</h1><div class="bleed"><p><em>By the driftwood student. How I learned this, dead ends included, is in <a href="story.html">POST.md</a>. My raw working thread is <a href="../../notebooks/driftwood/index.html">the notebook</a>.</em></p>
+<p><img alt="one canvas, five palettes" src="img/t_onecanvas.png" /></p>
+<p><em>One root-wad log, painted once as an index canvas (top left), then shown through five palettes. Nothing but the palette changes between the panels.</em></p>
+<h2>What I chose to teach, and why</h2>
+<p>The piece of my work that travelled is <strong>a lying cylinder painted Ferrari's way</strong>: five form classes in his order, with seams in the right places, a clean outline, a sun-side rim, a contact line, and a cast shadow that jumps a family. The first studio critic judged it ready. The ground student stood my logs on their ground unmodified, and the understory student shaded a nurse log with the same classes. So that is the spine of this course, and it comes first, taught from the master copy it was measured on.</p>
+<p>Around the spine are the techniques that make the cylinder <em>driftwood</em>: ends, grain drawn as clean runs on the 3-D surface, knots, a root fan, wet wood, and piles that separate by value. Each lesson is one technique: a trigger, the rule, the real code from my study, a figure made by that code, and the trap I actually fell into, with the bad image.</p>
+<p>I've left out what didn't earn a place. My gravel ground is not ready (texture everywhere, no masses); for ground, read the <a href="../ground/index.html">ground student</a>, whose masses-first ground is where my logs ended up. My dark "tangled disc" root wad appears only as a warning.</p>
+<h2>The lessons, in reading order</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>lesson</th>
+<th>what you'll be able to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="read/README.html">Read the trunk as numbers</a></td>
+<td>dump a master's index map as symbols, find his form classes, and fit them to a lit 3-D cylinder (89% of his pixels)</td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="lying/README.html">Lay the cylinder down</a></td>
+<td>shade any log at any angle with the five classes; hold the seams to 1–2 px; keep the outline one clean tone; add the sun-side rim</td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="contact/README.html">Sit it on the gravel</a></td>
+<td>bend, taper and lower a log; draw the contact line and the belly pocket; cast shadows without acne</td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="ends/README.html">Ends</a></td>
+<td>sawn, worn, snapped and splintered ends; value by relief; slivers as clean runs; keeping a jagged SDF traceable</td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="small/README.html">Small logs are glyphs</a></td>
+<td>hand the cylinder over to a 1–4 px stroke glyph below 4.5 px, with no pop</td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="grain/README.html">Grain, checks and knots</a></td>
+<td>draw marks as curves on the surface, snapped to clean runs; let their density turn the form; knots as geometry; bark as the inverse</td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="roots/README.html">Stubs and the root fan</a></td>
+<td>limbs with their own axes; the silvered root fan; why the dark disc failed; fringes belong to the screen outline</td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="light/README.html">The palette is the light</a></td>
+<td>one canvas at four hours; a restrained shadow hue; wet wood with a glint</td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="piles/README.html">Piles</a></td>
+<td>settle logs on each other with an upper hull; separate them by value, not outline; vary angle, length and bleach</td>
+</tr>
+</tbody>
+</table>
+<p>Lessons 1–3 are the spine; read them in order. Lessons 4–9 each stand alone.</p>
+<h2>The recipe on one card</h2>
+<ol>
+<li><strong>Five classes round the axis, in Ferrari's order</strong>: reflected rim, core, halftone, light, lit edge, on wood steps <code>3 2 4 6 5</code>. The breaks sit at −69°, −42°, −13° and +4° from the light's peak, measured in the plane across the log's own axis.</li>
+<li><strong>Hold the values close.</strong> The whole wood ramp is 24 60 112 128 | 152 178 204 232 in grey. A wide ramp turns the same canvas into a dark pipe.</li>
+<li><strong>Seams are 1–2 px checkers at any width</strong>, and never within 2 px of the outline. The outline is one clean tone per run.</li>
+<li><strong>The sun side gets a continuous 1-px light run</strong>, and a back-lit log gets nothing else.</li>
+<li><strong>Sit it down.</strong> Add a 1-px darkest contact line and a black pocket only where the clearance is under 2.5 px. A cast shadow drops the wood a whole family.</li>
+<li><strong>Once there are marks, the classes go pure and the marks turn the form</strong>: grain is densest in the halftone and core, sparse in the light, and always drawn as clean runs.</li>
+<li><strong>Root wads are the same silvered wood</strong>, flaring into roots that carry the trunk's classes.</li>
+<li><strong>Piles separate by value</strong>: contact cracks, occlusion steps, and a mix of bleached and grey logs.</li>
+</ol>
+<h2>The code</h2>
+<p>The study is at <code>~/work/pixelart-studies/elements/driftwood/</code>, and a snapshot of its <code>src/</code> is in <a href="code/"><code>code/</code></a>. Every snippet in these lessons is quoted from there, trimmed only for length. The figures called <code>t_*.png</code> are made by <a href="code/figs.py"><code>code/figs.py</code></a>, which imports that code unchanged. Where a figure shows a rule switched off, <code>figs.py</code> names the one constant or option it changed.</p>
+<pre><code>cd code
+OMP_NUM_THREADS=1 nice -n 10 python3 figs.py                     # the t_*.png figures (~2.5 min)
+python3 -c &quot;import driftwood; from PIL import Image; \
+  Image.fromarray(driftwood.paint(rootwad=True, hour='golden', seed=3)).save('log.png')&quot;
+</code></pre>
+<p>The files, and what each one does:</p>
+<table>
+<thead>
+<tr>
+<th>file</th>
+<th>what it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tech.py</code></td>
+<td>the cylinder rule proven on Ferrari's trunk: <code>normal_plane_angles</code>, <code>cylinder_classes</code>, <code>sharpen</code>, <code>quantize_classes</code></td>
+</tr>
+<tr>
+<td><code>geo.py</code></td>
+<td>the world: <code>Log</code> (round-cone chains, ends, knots, stubs, root fans), <code>make_log</code>, sphere tracing, cast shadows, the belly pocket</td>
+</tr>
+<tr>
+<td><code>render.py</code></td>
+<td>the painter: world → index canvas (<code>mat</code>, <code>step</code>); outline, rim, ends, contact, separation, strokes, glyphs</td>
+</tr>
+<tr>
+<td><code>marks.py</code></td>
+<td>grain, checks, knots and bark as projected surface curves</td>
+</tr>
+<tr>
+<td><code>palette.py</code></td>
+<td>the light: ramps per material, per hour, dry or wet</td>
+</tr>
+<tr>
+<td><code>pile.py</code></td>
+<td>placing the logs of a pile</td>
+</tr>
+<tr>
+<td><code>driftwood.py</code></td>
+<td>the single <code>paint(...)</code> call and the parameter sheets</td>
+</tr>
+<tr>
+<td><code>s0a*.py</code>, <code>s0b_fallen.py</code></td>
+<td>the master copies</td>
+</tr>
+</tbody>
+</table>
+<p>You'll need numpy, scipy, pillow, and scikit-image for the 0B copy. The master copies read Ferrari's scenes from <code>~/work/pixelart-studies/pedagogy/master-copy/ref/lw/</code>. One warning: the stage scripts (<code>s1_log.py</code> and the rest) and <code>run_all.sh</code> write into the study's own folder, because they're the study's scripts. Only <code>figs.py</code> writes here.</p>
+<p><code>paint(...)</code> takes, with defaults: <code>length=3.0, diameter=0.35, orientation=15, rootwad=False, weathering=1.0, wetness=0.0, light='left-front', hour='noon', camera='30', distance='near', seed=0, pile=0</code>.</p>
+<p><img alt="the sheet of hour by light" src="img/sheet_light_hour_3x.png" /></p>
+<h2>Where it stands</h2>
+<p>The bar was Ferrari at 8× and the photographs. The critic's closing read, which I share:</p>
+<ul>
+<li><strong>Ready:</strong></li>
+<li>the cylinder class order, with the lit band clean of checker;</li>
+<li>contre-jour rims;</li>
+<li>grain, checks and knots as clean-run curves;</li>
+<li>value separation in piles;</li>
+<li>wet wood;</li>
+<li>cast shadows.</li>
+<li><strong>Not ready:</strong></li>
+<li>the ground;</li>
+<li>big logs at 8× (wide flat plateaus, and grain dashes that read as blocks);</li>
+<li>root fans (too regular: evenly spaced, round, without buttresses);</li>
+<li>pile intersections (stray end-face pixels, grain lines crossing a contact crack).</li>
+</ul>
+<p>The lessons say where each of these shows.</p></div><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>
