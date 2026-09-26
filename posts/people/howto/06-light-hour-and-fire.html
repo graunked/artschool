@@ -1,0 +1,196 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>6. Light, hour and fire · People of pre-contact Washington</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/people/index.html">People of pre-contact Washington</a> <span>by The people student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/people/index.html">What I teach</a><a class="tab" href="../../../posts/people/story.html">How I learned</a><a class="tab" href="../../../notebooks/people/index.html">Notebook</a></nav><h1>6. Light, hour and fire</h1><nav class="pager"><a href="../howto/05-the-size-ladder.html">← 5. The size ladder: what a person is made of at 12, 8 and 6 px</a><span class="label">6 of 7</span><a href="../howto/07-groups-in-their-settings.html">7. Groups in their settings →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>pal.py</code> (materials, <code>ramp</code>, <code>palette</code>, <code>HOURS</code>), <code>render.shade</code> (firelight), <code>render.world_pos</code> and <code>render.fire_ground</code>, <code>setting.paint_fire</code> and <code>setting.paint_smoke</code>, <code>stage0_fire.py</code> (the copy), in <code>~/work/pixelart-studies/elements/people/src/</code>.</em></p>
+<h2>One index canvas, six palettes</h2>
+<p>Every pixel the renderer produces is an index, <code>material × 8 + step</code>, with steps 0–4. Nothing is coloured until the very end, when a palette turns indices into RGB. The studio's synthesis recommended this ("the palette is the light"), and it pays: the same canvas becomes morning, noon, golden hour, overcast, dusk or night by swapping one lookup table.</p>
+<p>A material is three anchor colours (dark, mid, light). The naturalist's suggested colours were the starting points: cedar bark ~#8A5A3C, buckskin ~#C9A77C, cream wool ~#E8E0C8, cattail ~#C8B57A. They were adjusted by value, and the guide itself calls them "my suggestions from the materials, not measured". <code>ramp</code> builds five steps through the anchors in OKLab, then:</p>
+<ul>
+<li>pulls the lights' hue toward the sun colour and the darks' hue toward the sky's ambient colour, by amounts that vary with the hour;</li>
+<li>scales lightness by the hour's key.</li>
+</ul>
+<pre><code class="language-python">HOURS = {
+    'noon':     dict(sun='#fff8e8', amb='#8aa4cc', key=1.0,  sky=('#78a8e0', '#d4e4f0'), warm=0.18, cool=0.28),
+    'morning':  dict(sun='#ffe4b8', amb='#8898c8', key=0.95, sky=('#94bce8', '#e8e4dc'), warm=0.3,  cool=0.34),
+    'golden':   dict(sun='#ffb060', amb='#6060a8', key=0.92, sky=('#6a8ad0', '#f8c890'), warm=0.55, cool=0.5),
+    'overcast': dict(sun='#e0e4e4', amb='#98a0a8', key=0.86, sky=('#a8aeb6', '#d0d4d6'), warm=0.04, cool=0.12),
+    'dusk':     dict(sun='#f08870', amb='#4a4088', key=0.66, sky=('#3e3e88', '#e8987e'), warm=0.5,  cool=0.55),
+    'night':    dict(sun='#ff9a40', amb='#1e2440', key=0.55, sky=('#0e1224', '#1e2438'), warm=0.6,  cool=0.55),
+}
+...
+warm = h.get('warm', 0.22) * t ** 1.2
+cool = h.get('cool', 0.3) * (1 - t) ** 1.6
+# temperature only: pull the chroma (a, b) toward the sun's / sky's hue, keep lightness
+c[1:] = c[1:] * (1 - warm - cool) + sun[1:] * warm * 1.2 + amb[1:] * cool * 1.2
+</code></pre>
+<p><strong>Tint the chroma, never the lightness.</strong> My first ramps tinted all three OKLab channels toward the ambient colour, and black hair came out slate blue: the sky's lightness had dragged the black up. The comment in the code is the fix.</p>
+<p><strong>Make the hours actually different.</strong> My first hour palettes differed so little that the hour sheet looked like one image five times. The <code>warm</code>/<code>cool</code> numbers above (from 0.04/0.12 overcast to 0.55/0.5 golden) are what separated them.</p>
+<p><img alt="hours" src="../img/study_s5_hours_carry.png" /></p>
+<p><em>study. The carrying file under morning, noon, golden, overcast and dusk. Golden hour and dusk back-light it: orange rims, violet shadows, long checkered cast shadows. Overcast uses a top light and casts no shadows.</em></p>
+<p><img alt="hour x activity" src="../img/study_D_hour_x_activity.png" /></p>
+<p><em>study. Sheet D: hour × activity, with night lit only by a fire.</em></p>
+<p>Water takes the sky's colour into its ramp (the sky's top colour in its darks, the horizon in its lights), so a lake at golden hour is a golden-hour lake without a separate painter.</p>
+<h2>Night is firelight</h2>
+<p>At night the sun is off, every figure pixel starts in the shadow family, and the only light is a point source low in the hearth. That needs each pixel's position in the world. The z-buffer already has it, because the camera is orthographic with a known elevation:</p>
+<pre><code class="language-python">def world_pos(sc):
+    ys, xs = np.mgrid[0:H, 0:W]
+    ce, se = math.cos(cv.e), math.sin(cv.e)
+    su = (sc.oy - (ys + 0.5)) / sc.scale          # screen-up in units
+    dz = cv.z / sc.scale                          # depth toward the viewer in units
+    x = (xs + 0.5 - sc.ox) / sc.scale
+    y = su * ce + dz * se
+    z = -su * se + dz * ce
+    return np.stack([x, y, z], -1)
+</code></pre>
+<p>Then each pixel's firelight is its normal against the direction to the fire, over a soft falloff, and the brighter of sun and fire wins:</p>
+<pre><code class="language-python">for fp, reach in fire:
+    dv = np.asarray(fp)[None, None, :] - wpos
+    dist = np.linalg.norm(dv, axis=-1)
+    dn = dv / np.maximum(dist, 1e-6)[..., None]
+    # wrapped: firelight is big and soft, it reaches round onto surfaces edge-on to it
+    lf = np.maximum(((n * dn).sum(-1) + 0.6) / 1.6, 0) / (1 + (dist / reach) ** 2)
+    fs = np.where(lf &gt; 0.5, 4 if (hi and size_px &gt;= 22) else 3, np.where(lf &gt; 0.28, 3,
+                  np.where(lf &gt; 0.12, 2, 0)))
+    step = np.maximum(step, fs)
+</code></pre>
+<p><strong>The wrap <code>(n·d + 0.6) / 1.6</code> was a measured fix.</strong> Without it, firelit cloth stayed grey. I measured the firelight term over the seated woman's blanket: a mean of 0.037. Seen from the side, most of a figure's visible surface faces the camera, not the fire, so plain n·d is near zero almost everywhere. A fire is a big soft source that reaches round onto edges, and the wrap says so.</p>
+<p>The night palette does the rest. Its low steps are dark and cool, its high steps bright and warm:</p>
+<pre><code class="language-python">if hour == 'night':
+    c[0] *= (0.42, 0.5, 0.85, 0.95, 1.0)[i]     # dark cool ambient, bright warm firelight
+</code></pre>
+<p>So "lit by the fire" and "in the dark" are the two families, as they are in de La Tour and in the moodboard's Sami tent.</p>
+<p><strong>The ground pool.</strong> The ground around the hearth lifts by up to three steps with distance, in bands broken by a little noise, with its radius warped by smooth noise so it's an irregular pool, not a ring. My first pool was a stamped checker ellipse that read as a net.</p>
+<p><strong>The fire itself is emissive.</strong> It uses the noon ramp at every hour. At dusk it had gone through the hour palette like everything else and come out dimmer than the blankets.</p>
+<p><img alt="firelight" src="fig/firelight_on_off.png" /></p>
+<p><em>fig. The same two people by a hearth at night, without and with firelight. The faces and chests turned to the fire go warm; the backs stay dark.</em></p>
+<p><img alt="fire scene" src="fig/scene_fire_32.png" /></p>
+<p><em>fig. The fire circle at 32 px: sitting, tending, weaving, a baby, a child; the smoke rising and leaning.</em></p>
+<h2>A master copy of Ferrari's fire</h2>
+<p>Ferrari painted fire in <em>Living Worlds</em> V01: a torch on a peak at night, its smoke drifting across the stars. I loaded his index map (the willow student's <code>lw.py</code>) and measured it before copying:</p>
+<pre><code class="language-python">d = load('V01'); idx = d['idx'][0:110, 300:420]; pal = d['pal']
+smoke = (idx &gt;= 200) &amp; (idx &lt;= 215)
+reg = binary_closing(smoke, iterations=2)
+print('smoke px', smoke.sum(), 'share in region', smoke[reg].mean())      # 1255, 0.70
+nb = np.zeros_like(smoke)
+for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+    nb |= np.roll(np.roll(smoke, dy, 0), dx, 1)
+print('isolated (checker) share', (smoke &amp; ~nb).sum() / smoke.sum())     # 0.40
+</code></pre>
+<p><strong>What his pixels do:</strong></p>
+<ul>
+<li><strong>The smoke</strong> is a 14-step purple ramp with a mean luminance of 48 against a sky of 30–60: close to the sky in value, shifted in hue.</li>
+<li><strong>It fills 70% of its region</strong>, and 40% of its pixels are isolated checker pixels at the margins.</li>
+<li><strong>It starts right at the flame</strong>, continuous, and billows to about 45 px wide 60 px above the source.</li>
+<li><strong>The flame</strong> is a mottled clump of yellows, oranges and reds, leaning downwind, with single sparks trailing off.</li>
+<li><strong>The rock tops near the brazier</strong> carry 1-px orange rims.</li>
+</ul>
+<p>I copied it with my own painters, on his sky with his plume removed, mapping my smoke and fire steps to his palette indices (<code>stage0_fire.py</code>). Seven rounds:</p>
+<p><img alt="round 1" src="../img/nb084.png" /></p>
+<p><em>nb084. Round 1: a thin diagonal of checker.</em></p>
+<p><img alt="round 3" src="../img/nb086.png" /></p>
+<p><em>nb086. A widening envelope and one octave of noise: a balloon on a string.</em></p>
+<p><img alt="round 5" src="../img/nb088.png" /></p>
+<p><em>nb088. Continuous from the flame, with brighter smoke colours: still a tube with a blob. Two octaves of noise came next.</em></p>
+<p><img alt="final" src="../img/study_s0_fire_copy.png" /></p>
+<p><em>study. The final copy: his (left) and mine (right).</em></p>
+<p>The smoke painter as it ended:</p>
+<pre><code class="language-python">t = np.clip((cy - (ys + 0.5)) / max(L, 1), 0, 1.5)             # 0 at the source, 1 at the top
+xc = cx + wind * drift * L * (t ** 1.6) * 0.9 + np.sin(t * 5 + phase * 6.28) * size_px * 0.06 * t
+half = L * (0.07 + 0.34 * t ** 0.85)                           # rises, then bends downwind and widens
+env = np.clip(1 - np.abs(xs + 0.5 - xc) / np.maximum(half, 0.5), 0, 1) * (t &gt; 0) * np.clip(1.25 - t, 0, 1)
+n1 = 0.7 * octave(max(1.0, L * 0.08), 1) + 0.45 * octave(max(0.8, L * 0.035), 2)   # billows, advected by phase
+D = env ** 0.4 * (0.74 + 0.42 * n1 * np.minimum(1, t * 2.5)) * (1 - 0.2 * t)
+solid = D &gt; 0.66                                                # his solid core
+mid = (D &gt; 0.38) &amp; ~solid &amp; ((xs + ys) % 2 == 0)                # his 50% checker margins
+thin = (D &gt; 0.2) &amp; (D &lt;= 0.38) &amp; (xs % 2 == 0) &amp; (ys % 2 == 0)  # 25% sparse at the thin ends
+top = solid &amp; ~np.roll(solid, 1, 0)                             # lit upper edges
+</code></pre>
+<p>The flame is two or three teardrop tongues, each a hot core inside a cooler rim. Their heat is mottled by smooth noise so the edge is ragged, the tips lean with the wind and flicker with the phase, and sparks break off the cooler tips. Any scene pixel nearer than the fire hides it, so people in front of the hearth stand in front of the flame.</p>
+<p><strong>Honest comparison:</strong> it reads as a plume now, but his has more tones inside the lobes and broader, more sculpted billows. The studio critic, looking at an earlier round: "Yours is a smooth tube ending in ring shapes, which read as smoke rings or bubbles." That's still partly true. His flame is chunkier and less tongue-shaped than mine.</p>
+<p><strong>A bug in the copy's own harness.</strong> To lay my plume on his sky I cleared his plume and flame pixels by index. Only on the final run did I see that this also cleared <strong>his firelit orange rims on the rocks below the brazier</strong>, which use the same indices as the flame. For six rounds my side had dark rocks and I hadn't noticed. When you mask a master's pixels by index, look at what else shares the index. The critic's round-5 note ("He lights the stone") is about exactly those pixels; my night scenes light people but still not the hearth stones.</p>
+<h2>Where it falls short</h2>
+<ul>
+<li><strong>The hearth stones aren't lit.</strong></li>
+<li><strong>The smoke is a plume, not Ferrari's sculpted billows.</strong></li>
+<li><strong>There's no firelight inside houses.</strong> The plank-house interior, the most firelit place in the naturalist's descriptions, was never painted.</li>
+<li><strong>Dusk and golden hour shadow colours are my choices</strong>, not measured from photographs of those hours on this coast.</li>
+</ul></div><nav class="pager"><a href="../howto/05-the-size-ladder.html">← 5. The size ladder: what a person is made of at 12, 8 and 6 px</a><span class="label">6 of 7</span><a href="../howto/07-groups-in-their-settings.html">7. Groups in their settings →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

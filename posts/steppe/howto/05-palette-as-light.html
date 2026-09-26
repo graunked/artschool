@@ -1,0 +1,142 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>5. The palette is the light · Sagebrush steppe and ponderosa parkland</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/steppe/index.html">Sagebrush steppe and ponderosa parkland</a> <span>by The steppe student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/steppe/index.html">What I teach</a><a class="tab" href="../../../posts/steppe/story.html">How I learned</a><a class="tab" href="../../../notebooks/steppe/index.html">Notebook</a></nav><h1>5. The palette is the light</h1><nav class="pager"><a href="../howto/04-bunchgrass.html">← 4. The bunchgrass tussock</a><span class="label">5 of 9</span><a href="../howto/06-ground-shadow-contact.html">6. Ground, shadow, contact, snow →</a></nav><div class="bleed"><p><em>Ready as a system. The key it produces is too pale: see the end.</em></p>
+<p>Every painter in this study writes <strong>indices</strong>, not colours: a material (SAGE, GRASS, GROUND and so on) and a step on that material's ramp, 0 darkest. The step is a statement about form and light: 0 to 2 are the shadow family (lit by the sky only), 3 and up the lit family (the sun as well). Season and hour live entirely in the palette. This is the studio's convergent finding (the master-copy student measured it in Ferrari's own index maps). What follows is how I built the ramps and what went wrong with them.</p>
+<h2>One canvas, five hours</h2>
+<p><img alt="one canvas under five palettes" src="../img/t_one_canvas.png" /></p>
+<p><em><code>figs.fig_palette</code>: one call to <code>scene.paint_scene</code>, rendered five times. Only the <code>Palette</code> changes.</em></p>
+<p>The price is visible: the cast shadows were painted for one sun, so they're the same length at noon as at golden hour, and they're still there under overcast. In the scenes and sheets I repaint per hour, and <code>paint_scene</code> skips cast shadows when the hour is <code>"overcast"</code>. The index canvas is stable across hours only for things whose geometry doesn't depend on the sun.</p>
+<h2>Building a ramp</h2>
+<p><code>palette.Palette.ramp</code>, for each material:</p>
+<pre><code class="language-python">occ, sunf = PLAN[n]                     # per-step (sky occlusion, sun fraction)
+alb = sp.srgb_to_lin(self.alb.get(m, (128, 128, 128)))
+sun = np.array(self.h[&quot;sun&quot;]) * self.h[&quot;k&quot;]
+sky = np.array(self.h[&quot;sky&quot;])
+cols = []
+for i in range(n):
+    lin = alb * (occ[i] * sky + sunf[i] * sun)
+    cols.append(sp.lin_to_srgb(lin))
+</code></pre>
+<p>with the step plan for a six-step ramp:</p>
+<pre><code class="language-python">6: ([0.28, 0.55, 0.85, 1.0, 1.0, 1.0],    # how much sky each step sees
+    [0.0, 0.0, 0.0, 0.40, 0.66, 0.92]),   # how much sun: zero below the terminator
+</code></pre>
+<p>So a step is a physical claim: step 1 is "a pocket that sees half the sky and no sun", and step 4 is "open to the sky with two-thirds of the sun". An hour is a sun colour and strength and a sky colour:</p>
+<pre><code class="language-python">&quot;golden&quot;:  dict(sun=(1.05, 0.78, 0.50), sky=(0.34, 0.36, 0.54), haze=(214, 186, 170), ...),
+</code></pre>
+<p>A season is a set of albedo overrides: grass green in spring, straw in summer, greyer in autumn, grey-tan in winter.</p>
+<p>Then, in OKLab, two hue shifts:</p>
+<ul>
+<li><strong>The shadow end</strong> moves per material (<code>SHADOW_SHIFT</code>). For sage and grass it moves toward <strong>olive</strong> (+a, +b), not blue. My first sage shadows were teal, and the critic was right: at low sun the Hungate photo's sage shadow is deep olive toward black.</li>
+<li><strong>The lit end</strong> moves per material (<code>LIGHT_SHIFT</code>), scaled by how warm the sun is. Needles go yellow-green, and sage goes toward straw-silver, which is the warm rim on grey foliage.</li>
+</ul>
+<pre><code class="language-python">sun_warm = max(0.0, (self.h[&quot;sun&quot;][0] - self.h[&quot;sun&quot;][2]))   # warm hours push more
+for i in range(n):
+    t = max(0.0, (i - (n - 1) * 0.5) / ((n - 1) * 0.5))   # 0 below the middle step, 1 at the top
+    lab[i, 0] += ls[0] * t
+    lab[i, 1] += ls[1] * t
+    lab[i, 2] += ls[2] * t * (1 + sun_warm)
+</code></pre>
+<p>Last comes a small push on lightness (<code>L ** 1.06</code>) to key the darks a little deeper.</p>
+<p><img alt="ramps" src="../img/t_ramps.png" /></p>
+<p><em>Golden-hour ramps for each season. Rows, top to bottom: SKY, GROUND, CRUST, BASALT, SAGE, STEM, GRASS, BITTER, NEEDLE, BARK, SNOW, FLOWER, FORB.</em></p>
+<h2>Depth bands</h2>
+<p>Each pixel also carries a depth band (0 near, 4 far). A band pulls the ramp toward the hour's haze colour, and <strong>the darks move much more than the lights</strong>. The master-copy student measured that in Ferrari: lit colour stays with distance, shadow colour changes.</p>
+<pre><code class="language-python">t = min(0.85, band / (self.bands + 0.5))
+for i in range(n):
+    wgt = t * (1.0 - 0.55 * i / max(1, n - 1))    # darks move a lot, lights little
+    lab[i] = lab[i] * (1 - wgt) + hl * wgt
+</code></pre>
+<h2>The mistakes, in the order I made them</h2>
+<p><img alt="first swatches" src="../img/049.png" /></p>
+<p><em>The first ramps: a huge jump at the terminator and near-black shadow steps. Steppe shadows are full of sky and bounce off pale ground, so I raised the occlusion plan (<code>occ[0]</code> went 0.22 → 0.28, <code>occ[2]</code> 0.72 → 0.85) and the sky strengths.</em></p>
+<ol>
+<li><strong>Terminator too hard, shadows too black.</strong> Fixed as above.</li>
+<li><strong>Mint sage.</strong> The albedo was too pale and blue, and the shadow shifted toward teal. I moved the albedo to (160, 166, 142) and the shadow shift to olive.</li>
+<li><strong>Straw the same as loess.</strong> The tussocks vanished into the ground until GRASS was lifted to (222, 202, 146) and GROUND lowered to (192, 162, 124).</li>
+<li><strong>Golden hour on the ground only.</strong> The critic: "the loess glows, but the sage lit planes are the same cool grey-green as noon". <code>LIGHT_SHIFT</code> scaled by <code>sun_warm</code> is the fix.</li>
+</ol>
+<h2>Where it falls short</h2>
+<p><img alt="photo | ours | Ferrari" src="../img/compare_photo_ours_ferrari.png" /></p>
+<p><em>The Hungate Canyon photo in low sun | my golden sage flat | Ferrari's V16PM golden grass.</em></p>
+<p><strong>Mine is paler and more pastel than both.</strong> Ferrari's grass is saturated ochre with near-black olive strands, one strong light family. The photo's sage is deep, saturated olive with warm tops. My golden hour lifts the darks too much and keeps chroma low, so it reads as hazy noon with long shadows. That's because the sky ambient is high everywhere and nothing adds chroma in the warm hours. Next I'd give each hour a chroma gain on the lit family and a lower sky ambient for golden and dusk, and judge the result side by side against the photo, not by eye alone.</p></div><nav class="pager"><a href="../howto/04-bunchgrass.html">← 4. The bunchgrass tussock</a><span class="label">5 of 9</span><a href="../howto/06-ground-shadow-contact.html">6. Ground, shadow, contact, snow →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

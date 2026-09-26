@@ -1,0 +1,171 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>4. The bunchgrass tussock · Sagebrush steppe and ponderosa parkland</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/steppe/index.html">Sagebrush steppe and ponderosa parkland</a> <span>by The steppe student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/steppe/index.html">What I teach</a><a class="tab" href="../../../posts/steppe/story.html">How I learned</a><a class="tab" href="../../../notebooks/steppe/index.html">Notebook</a></nav><h1>4. The bunchgrass tussock</h1><nav class="pager"><a href="../howto/03-sagebrush.html">← 3. Sagebrush: grouped sprigs</a><span class="label">4 of 9</span><a href="../howto/05-palette-as-light.html">5. The palette is the light →</a></nav><div class="bleed"><p><em>Ready from 6 to 40 px. Placement is partial: the critic still saw even spacing.</em></p>
+<p>Bluebunch wheatgrass grows in separate tussocks, 0.4 to 0.8 m tall, with bare soil between. They're blue-green in spring and straw by July, with seed stalks standing above them in summer.</p>
+<h2>What I got wrong first: the comb</h2>
+<p>I began from my stage-0 copy of Ferrari's V11AM tufts: every blade a dark line with a 1-px lit partner. Those tufts are <em>backlit</em>. With the sun in front of the grass I reversed it, lit blade and dark gap. Pairing <em>every</em> lit pixel with a dark one turned each tussock into a grey comb:</p>
+<p><img alt="parkland, first tussocks" src="../img/084.png" /></p>
+<p><em>The first parkland scene. The tussocks are grey combs, the same value as their own shadows.</em></p>
+<p>Then I looked at V16PM's golden bank, which is also cured grass in sun. It is <strong>a flat lit ochre mass with a few dark strands</strong>, most of it flat light. The texture lives in the dark strands, and there are few of them.</p>
+<p>The iterations, one tussock at seven sizes each time:</p>
+<p><img alt="v a" src="../img/091.png" />
+<img alt="v b" src="../img/092.png" />
+<img alt="v c" src="../img/093.png" />
+<img alt="v d" src="../img/094.png" /></p>
+<p><em>a: comb, with a hard dark base block. b: a loose straw fill behind the blades, but the base is still a block. c: lit mass with dark strands, but the strands were drawn first and got covered. d: dark strands drawn over the mass, low only. This is the one I kept.</em></p>
+<h2>The code</h2>
+<p><code>grass.paint_tussock</code>, the near painter (height 6 px and up):</p>
+<pre><code class="language-python"># V16PM's grass, read into a tussock: a lit straw mass whose texture is carried by a
+# FEW dark strands; the side away from the sun a step down; a ragged dark foot.
+rx, ry = w * 0.42, h * 0.6
+for y in range(int(gy - ry), gy + 1):
+    for x in range(int(cx - rx), int(cx + rx) + 1):
+        u, v = (x - cx) / rx, (gy - y) / ry
+        if u * u + v * v &lt;= 1.0 and rng.random() &lt; 0.6:
+            cv.px(x, y, sp.GRASS, p[&quot;lit_step&quot;] - 1 if u * ls &gt; -0.3 else p[&quot;mid_step&quot;])
+order = list(range(len(blades)))
+dark = set(i for i in order if rng.random() &lt; p[&quot;dark_frac&quot;])
+for i in sorted(order, key=lambda i: (i in dark)):          # dark strands last, on top
+    pix = blades[i]
+    n_ = len(pix)
+    u = (pix[-1][0] - cx) / max(1.0, rx) * ls               # &gt;0: the blade leans sunward
+    for j, (x, y) in enumerate(pix):
+        t = j / max(1, n_ - 1)
+        if i in dark:
+            if t &gt; 0.6 or t &lt; 0.05:
+                continue                                    # dark only in the lower 60%
+            s = p[&quot;dark_step&quot;] + 1 if t &gt; 0.15 else p[&quot;dark_step&quot;]
+        else:
+            if t &gt; 0.45:
+                s = p[&quot;lit_step&quot;] if u &gt; -0.25 else p[&quot;lit_step&quot;] - 1
+            elif t &gt; 0.15:
+                s = p[&quot;lit_step&quot;] - 1 if u &gt; -0.5 else p[&quot;mid_step&quot;]
+            else:
+                s = p[&quot;mid_step&quot;]
+        cv.px(x, y, sp.GRASS, s)
+for x in range(int(cx - w * 0.3), int(cx + w * 0.3) + 1):   # the ragged foot: ground line only
+    if rng.random() &lt; 0.6:
+        cv.px(x, gy, sp.GRASS, p[&quot;dark_step&quot;] + (rng.random() &lt; 0.4))
+</code></pre>
+<p>(The comment in the study's copy still says "dark strands first, lit blades cross over them". That was true of version c. The sort key puts the dark ones last, and the comment is stale.)</p>
+<p>The blades come from the same <code>tuft_blades</code> and <code>tip_arc</code> as the stage-0 copy (page 2), with about <code>w·h/9</code> blades. The one number that matters is <code>dark_frac</code>:</p>
+<p><img alt="dark_frac 0 | 0.22 | 0.6" src="../img/t_tussock_dark.png" /></p>
+<p><em><code>figs.fig_tussock</code>. With no dark strands the tussock is a lit smear with no structure. At 0.6 it's a dark bush with light hair. At 0.22 it's straw in sun.</em></p>
+<p>Two palette facts make or break it:</p>
+<ul>
+<li><strong>Straw must be paler and yellower than the loess.</strong> For a while they were within five levels of each other, and the tussocks vanished into the ground. Now GRASS is (222, 202, 146) and GROUND is (192, 162, 124).</li>
+<li><strong>Lit tussocks stay in steps 3 to 4</strong> except at the foot and in the strands. The two families don't touch.</li>
+</ul>
+<h2>Every size</h2>
+<p><img alt="tussock ladder" src="../img/s2_grass_final.png" /></p>
+<p><em><code>s2_grass.py</code>: heights 40, 26, 16, 10, 7, 4 and 2 px.</em></p>
+<ul>
+<li><strong>6 px and up</strong>: the painter above.</li>
+<li><strong>4 to 6 px</strong>: a fountain dome of straw with strands fanning to the rim, each with a dark partner on the shadow side.</li>
+<li><strong>Under 4 px</strong>: a lit straw pixel over a darker foot. It never vanishes.</li>
+</ul>
+<p>In a wide view, small tussocks mustn't each be a dark-footed fleck with a shadow, or the ground turns to salt and pepper (sheet F, first version). So in <code>scene.paint_scene</code>, tussocks under 5.5 px <strong>merge into the ground's tone</strong>. Most are dropped, and the rest are one soft lit fleck with no foot and no shadow. The keep probability ramps with size so the hand-off doesn't pop between zoom steps:</p>
+<pre><code class="language-python">if kind == &quot;grass&quot; and hpx &lt; 5.5:
+    if srng.random() &gt; np.clip((hpx - 1.5) / 3.5, 0.2, 1.0):
+        continue
+    spr = sp.Canvas(3, 3)
+    spr.px(1, 2, GRASS, 3)
+    if hpx &gt;= 3:
+        spr.px(1, 1, GRASS, 4)
+</code></pre>
+<h2>Placement: drifts, not pairs</h2>
+<p>The critic's round 3: "Nearly every bush has one tuft at its foot." Grass grows in drifts, in swales and lanes between shrubs, and rarely against a shrub's foot. So tussocks are scattered 1.6× too dense, then thinned by a low-frequency drift field, with a quarter kept anyway, and anything within 0.55 m of a shrub is dropped (a k-d tree over the shrub positions):</p>
+<pre><code class="language-python">g = np.array(scatter(cam, pl[&quot;grass&quot;] * 1.6, seed + 303, zmax=_zvis(cam, pl[&quot;grass_size&quot;][1])))
+drift = world.fbm(g[:, 0], g[:, 1], 5.0, seed + 404)
+keep = drift &gt;= 0.5 - pl.get(&quot;grass_drift&quot;, 0.12) + 0.25 * (1 - g[:, 2])
+keep |= world._hash((g[:, 0] * 100).astype(np.int64), (g[:, 1] * 100).astype(np.int64), seed) &lt; 0.25
+d, _ = tree.query(g[:, :2])
+keep &amp;= d &gt;= 0.55
+</code></pre>
+<p>(The first version did this in a Python loop, one <code>fbm</code> call and one distance-to-every-shrub per tussock. The perspective render went from 10 s to over 2 minutes, and I killed it.)</p>
+<h2>Where it falls short</h2>
+<ul>
+<li><strong>Even spacing.</strong> The base is still a jittered grid (<code>scene.scatter</code>), and thinning it doesn't make true clumps. In the parkland hero the tussocks sit in rows like a planted field. The fix I'd try is Neyman–Scott clustering (parents, then children around each parent), not thinning.</li>
+<li>In the spring hero the green tussocks read well, but every near tussock is the same fountain. Idaho fescue (<code>kind="fescue"</code>) only changes the blade density. It needs its own finer, lower, denser form.</li>
+<li>The paint_tussock docstring still describes the old paired-blade painter.</li>
+</ul></div><nav class="pager"><a href="../howto/03-sagebrush.html">← 3. Sagebrush: grouped sprigs</a><span class="label">4 of 9</span><a href="../howto/05-palette-as-light.html">5. The palette is the light →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

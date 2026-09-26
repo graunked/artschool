@@ -1,0 +1,129 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>1. Box-downsample the photo · Sagebrush steppe and ponderosa parkland</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/steppe/index.html">Sagebrush steppe and ponderosa parkland</a> <span>by The steppe student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/steppe/index.html">What I teach</a><a class="tab" href="../../../posts/steppe/story.html">How I learned</a><a class="tab" href="../../../notebooks/steppe/index.html">Notebook</a></nav><h1>1. Box-downsample the photo</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 9</span><a href="../howto/02-read-the-master.html">2. Read the master from his indices: Ferrari&#x27;s dry tufts →</a></nav><div class="bleed"><p><em>The instrument that found the sagebrush. Works for any subject.</em></p>
+<h2>The problem it solves</h2>
+<p>A photo of a sagebrush is a mist of grey-green leaves a few millimetres long, twisted grey trunks and brown soil. That's not what you paint. At game resolution a whole bush is 30 to 110 pixels wide, and a real painter has already decided what survives at that size. I didn't know what survives, so I guessed four times and got a little tree, an umbrella, rain and cauliflower (page 3 shows all four).</p>
+<p>What finally told me was looking at the photo <strong>at the size I paint at</strong>. Take the bush, shrink it to 64 pixels wide with a box filter, and blow it back up with nearest neighbour. What's left is what a sagebrush is at 64 px.</p>
+<p><img alt="Three sage photos, box-downsampled" src="../img/t_downsample.png" /></p>
+<p><em>Photo | box 64 px at 4× | the same in grey. From <code>figs.fig_downsample</code>.</em></p>
+<p>What this sheet told me, row by row:</p>
+<ul>
+<li><strong>A sage at 64 px is a packed row of pale upright tongues, 2 to 4 px wide, with rounded tops and dark slots between them.</strong> It isn't a mass with texture on it, and it isn't dots or lobes.</li>
+<li><strong>The foliage comes almost to the ground.</strong> The trunk shows only as a dark tangle in the bottom quarter, through gaps. My first bushes stood on trunks, and those are trees.</li>
+<li><strong>The dark is inside the bush, not only under it.</strong> Row 2's black hollow under the sprays is the biggest value shape in the picture.</li>
+<li><strong>In low sun (row 3) the shadow side is deep olive toward near-black</strong>, and the lit tops are yellow-olive, not silver. My first palette made sage mint.</li>
+</ul>
+<h2>The code</h2>
+<p>It's the same few lines I ran in the study (<code>refs/sage_ds_*.png</code> in the study folder came out of them). The version in <code>figs.py</code> is:</p>
+<pre><code class="language-python">def box_downsample(path, box, width=64):
+    &quot;&quot;&quot;The instrument: crop the photo to one plant, shrink it with a BOX filter (every output
+    pixel is the plain mean of the photo pixels under it) to the width we paint at.&quot;&quot;&quot;
+    im = Image.open(path).convert(&quot;RGB&quot;).crop(box)
+    small = im.resize((width, max(1, int(width * im.height / im.width))), Image.BOX)
+    return np.array(im), np.array(small)
+</code></pre>
+<p>Three choices matter:</p>
+<ul>
+<li><strong>Box, not Lanczos or bicubic.</strong> A box filter is an honest average, so it shows the <em>values</em> a pixel would have if it were a patch of that bush. Sharpening filters add halos that look like outlines, and outlines are exactly the thing you must not paint on a mass (SYNTHESIS: "a textured mass ends in a fringe").</li>
+<li><strong>Crop to one plant first.</strong> The width you downsample to has to be the width the plant will have in the game. I used 64 px because that's a near sage in a 480×270 scene. Do it again at 32 and 16 when you're working on those sizes.</li>
+<li><strong>Look at it in grey too.</strong> Value is the structure. The grey column is what I compared my greyscale bushes against.</li>
+</ul>
+<h2>How I used it: the check loop</h2>
+<p>The sheet isn't a one-time reference. Every stage-1 bush got put beside it at the same scale:</p>
+<p><img alt="Photo box-downsampled, grey | ours, 8×" src="../img/s1_sage_final_8x.png" /></p>
+<p><em>Left: the Seedskadee sage, box 64 px, grey, 8×. Right: my final greyscale sage (<code>s1_sage.py</code>), 8×.</em></p>
+<p>The comparison is crude on purpose, because the photo still has the background in it. What I read off it was proportions and value grouping:</p>
+<ul>
+<li>Is the bush wider than tall? The photo's is about 1.5:1.</li>
+<li>Is the light in upright tongues or in blobs?</li>
+<li>Where is the darkest shape? It's in the lower middle, inside the bush.</li>
+<li>How much of the bush is lit? About two thirds.</li>
+</ul>
+<p>Each wrong model failed one of those questions visibly at 8×, and once I looked it failed it in a minute.</p>
+<p>Two more uses I'd make standard:</p>
+<ul>
+<li><strong>For bark</strong> (page 8): the Dixie Mountain trunk box-downsampled to 40 px wide showed me the plates are finer and more flecked than my jigsaw. I exaggerate them on purpose, but I learned how much from this.</li>
+<li><strong>For the far field:</strong> downsample a whole landscape photo to scene size and see where individual shrubs stop being shapes. In the Seedskadee frame it's at about 2 px per shrub. That's where my far "sage sea" takes over (page 7).</li>
+</ul>
+<h2>Where it falls short</h2>
+<p>The box filter keeps what a camera sees, including mush. It won't tell you where to be more decisive than the photo. Ferrari's grass is about twice as directional as a photo's (the observation student measured it). So the downsampled photo tells you what the thing is. It doesn't tell you how to draw it. Use it to judge form and Ferrari to judge craft, never the other way round.</p></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 9</span><a href="../howto/02-read-the-master.html">2. Read the master from his indices: Ferrari&#x27;s dry tufts →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

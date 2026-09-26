@@ -1,0 +1,181 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>4. Shading a figure: two families, and the darks that tie it · People of pre-contact Washington</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/people/index.html">People of pre-contact Washington</a> <span>by The people student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/people/index.html">What I teach</a><a class="tab" href="../../../posts/people/story.html">How I learned</a><a class="tab" href="../../../notebooks/people/index.html">Notebook</a></nav><h1>4. Shading a figure: two families, and the darks that tie it</h1><nav class="pager"><a href="../howto/02-a-body-that-carries-weight.html">← 2. A body that carries weight</a><span class="label">4 of 7</span><a href="../howto/05-the-size-ladder.html">5. The size ladder: what a person is made of at 12, 8 and 6 px →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>render.smooth_normals</code>, <code>render.shade</code>, <code>render.edge_rule</code>, <code>grounds.shadows</code>, in <code>~/work/pixelart-studies/elements/people/src/</code>.</em></p>
+<p>Everything the rasterizer writes (material, normal, depth, part, figure) is resolved into steps in one pass over the whole canvas. Each material has a five-step ramp: 0 core, 1 shadow, 2 halftone, 3 light, 4 highlight. This page is the order that pass runs in, and why each step is there.</p>
+<p><img alt="build-up" src="../img/study_s1_buildup.png" /></p>
+<p><em>study. One figure built up at 32 px, 8×: skeleton; capsule masses; dress; two light families in grey; colour; on the ground with contact line, cast shadow and the edge rule.</em></p>
+<h2>Blur the normals within each surface first</h2>
+<p>A torso is five capsules (chest bar, two waist halves, pelvis bar, buttocks). Lit separately, each has its own terminator, and the torso shades as a patchwork of lit and dark pieces: the mottled chests in nb015 below. So before lighting, normals are averaged over each pixel's 3×3 neighbours <em>that belong to the same surface group</em>:</p>
+<pre><code class="language-python">GROUPS = {'torso': 'body', 'neck': 'body', 'head': 'head', 'hair': 'head', 'hairknot': 'head'}
+
+def smooth_normals(cv, it=1):
+    n = cv.n.copy(); g = cv.group; m = cv.idx &gt; 0
+    acc = n * m[..., None]; cnt = m.astype(float)
+    for dy in (-1, 0, 1):
+        for dx in (-1, 0, 1):
+            if dy == 0 and dx == 0:
+                continue
+            same = m &amp; (np.roll(np.roll(g, dy, 0), dx, 1) == g) &amp; np.roll(np.roll(m, dy, 0), dx, 1)
+            acc = acc + np.roll(np.roll(n, dy, 0), dx, 1) * same[..., None]
+            cnt = cnt + same
+    n = acc / np.maximum(cnt, 1)[..., None]
+    return n / np.maximum(np.linalg.norm(n, axis=-1, keepdims=True), 1e-6)
+</code></pre>
+<p>Arms, legs and garments are their own groups, so their edges against the torso stay sharp. That's where the seams below go.</p>
+<p><img alt="patchwork" src="../img/nb015.png" /></p>
+<p><em>nb015. Before the blur: every torso is mottled with lit and shadow capsules.</em></p>
+<p><img alt="smoothed" src="../img/nb016.png" /></p>
+<p><em>nb016. After it, in the same step as the face capsule: each torso turns as one form, lit on the sun side, one clean shadow plane on the other.</em></p>
+<h2>Two families that never mix</h2>
+<p>The atelier student's rule. Every pixel is lit or in shadow:</p>
+<pre><code class="language-python">lam = (n * L).sum(-1)
+step = np.where(lam &gt; 0.38, 3, np.where(lam &gt; 0.04, 2, 1))    # light / halftone | shadow
+if size_px &gt;= 22:
+    step = np.where(lam &gt; 0.88, 4, step)                         # a highlight only when there's room
+under = n[..., 1] &lt; -0.55
+if size_px &gt;= 12:
+    step = np.where((lam &lt;= 0.05) &amp; under, 0, step)              # the core on undersides
+</code></pre>
+<p>Both gates matter. Below 12 px the dark core pixel under a chin or a skirt read as a hole, and below 22 px a highlight is a random bright pixel, not a form.</p>
+<p><img alt="facings" src="../img/study_s1_facings.png" /></p>
+<p><em>study. Notan, grey and colour from five sides. The notans (two values only) hold in every view. Check notan first; if it doesn't read in two values it won't read in five.</em></p>
+<h2>The far limb one step down</h2>
+<p>Each part knows whether it's on the far side of the body from the camera (from the facing angle), and far parts sit one step darker. At a few pixels this is the only thing that separates two legs, so below 10 px it's the one offset kept for figures:</p>
+<pre><code class="language-python">lz = -math.cos(facing * D2R)                  # z of the body's left side in world
+sideL = -1 if lz &lt; -0.35 else (1 if lz &gt; 0.35 else 0)
+# in the rasterizer: stepmod = prim.stepmod + (-1 if prim.side &lt; 0 else 0)
+</code></pre>
+<h2>Seams, tucks and hem shadows: the darks that tie a figure</h2>
+<p>Bruegel's figures are tied together by a dark internal shadow: under the arm, between the legs, under the hem. Three rules put those darks back.</p>
+<p><strong>Occlusion seam (≥ 10 px).</strong> Where a nearer part of the same figure borders a farther part of a different group, the farther pixel goes one step down. An arm across the torso, or a leg in front of a leg, gets a one-pixel dark edge on the part behind. That's the "contrast inside the mark" rule at figure scale.</p>
+<pre><code class="language-python">for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+    zn = np.roll(np.roll(z, dy, 0), dx, 1)
+    gn = np.roll(np.roll(cv.group, dy, 0), dx, 1)
+    fn = np.roll(np.roll(fig, dy, 0), dx, 1)
+    dark |= m &amp; mn &amp; (fn == fig) &amp; (gn != cv.group) &amp; (zn &gt; z + thr)
+step = np.where(dark, step - 1, step)
+</code></pre>
+<p><strong>Hem shadow (≥ 12 px).</strong> Legs directly under a skirt, cape or blanket take one step down for one pixel (two at ≥ 20 px). The garment casts a short shadow on the legs.</p>
+<p><strong>Tuck (≥ 16 px).</strong> A shadow-family pixel with a much nearer part of the same figure within two pixels goes to the core step: the armpit, between the thighs, under the chin.</p>
+<pre><code class="language-python">tuck |= (fn == cv.fig) &amp; (gn != cv.group) &amp; (zn &gt; cv.z + 1.2)
+step = np.where(tuck &amp; (step &lt;= 1) &amp; m, 0, step)
+</code></pre>
+<p>These three are what make a figure look like a body rather than a paper doll. They're also subtle, and at 12 px and below the hem shadow is the only one that survives.</p>
+<h2>The edge rule</h2>
+<p>This is the technique I'd keep if I could keep only one. A small figure on a mid-value ground is lost wherever its edge pixel has nearly the ground's value, which is exactly what happens with bare skin and bark on sand. Outlines everywhere would be ugly and un-Ferrari-like (the cobbles student's critic called them "leaded glass"). So the rule outlines <em>only where the figure would be lost</em>:</p>
+<pre><code class="language-python">def edge_rule(idx, fig_mask, lut, thresh=0.075):
+    &quot;&quot;&quot;A figure pixel on its silhouette whose value is too close to the ground beside it moves one
+    step away from the ground's value (darker on light ground, lighter on dark).&quot;&quot;&quot;
+    Ltab = lab_img(lut[None].astype(np.uint8))[0][:, 0]           # OKLab L of every palette entry
+    L = Ltab[idx]
+    st, mt = idx % 8, idx // 8
+    dstep = np.zeros(idx.shape, int)
+    for dy, dx in ((1, 0), (-1, 0), (0, 1), (0, -1)):
+        nm = np.roll(np.roll(fig_mask, dy, 0), dx, 1)
+        nL = np.roll(np.roll(L, dy, 0), dx, 1)
+        edge = fig_mask &amp; ~nm &amp; (np.abs(L - nL) &lt; thresh)
+        dstep = np.where(edge &amp; (dstep == 0), np.where(nL &gt; L, -1, 1), dstep)
+    st = np.clip(st + dstep, 0, NSTEP - 1)
+    return np.where(fig_mask, mt * 8 + st, idx).astype(np.int16)
+</code></pre>
+<p>It works in index space, so it holds at every hour: it's evaluated on the palette actually being used. It runs after the ground is composited and applies to people only; props keep their own values.</p>
+<p><img alt="edge rule" src="fig/edge_rule.png" /></p>
+<p><em>fig. Bare summer figures on sand at 12 and 8 px, rule off and on. It's most visible on the walking woman's back, the man's arms, and the child at 8 px, whose legs vanish into the sand without it.</em></p>
+<p>The threshold (0.075 OKLab L) is about half the gap between adjacent steps of a mid-value ramp. Larger, and it starts outlining figures that already read.</p>
+<h2>Contact and cast shadow</h2>
+<p>Two darks on the ground, both made by stepping the ground's own index down, so the gravel keeps its stones inside the shadow:</p>
+<ul>
+<li><strong>Contact:</strong> the darkest step for one row under the lowest pixels of each figure, and one step down beside them. It's Bruegel's "dark under the figure", and the studio's flat-contact-plus-dark-line rule.</li>
+<li><strong>Cast:</strong> the figure's mask projected onto the ground plane along the light. It's solid within 0.6 of stature of the feet and checker-dithered beyond, which is how Ferrari draws a soft shadow. People on platforms or in canoes cast none.</li>
+</ul>
+<pre><code class="language-python">hpx = np.maximum(foot - (ys + 0.5), 0) / max(math.cos(e), 0.2)      # height above the ground, px
+dx = -L[0] / L[1] * hpx * cast_len
+dy = (-L[2] / L[1]) * hpx * math.sin(e) * cast_len
+far = hpx[ok] &gt; 0.6 * scene.scale
+keep = ~far | ((sx[ok] + sy[ok]) % 2 == 0)
+</code></pre>
+<p><img alt="first scene" src="../img/nb026.png" /></p>
+<p><em>nb026. The first scene, before the fixes: ruler-straight solid shadows, loud gravel, a figure-sized white slab.</em></p>
+<p>The first noon shadows were long checker strips that a critic read as "skid marks". Noon's sun went up to 68°, so noon shadows are short; long shadows belong to morning and golden hour, as they do outdoors.</p>
+<h2>Where it falls short</h2>
+<p>This is where the figures are furthest from Ferrari. Within each family a mass is one or two flat steps. He'd design three or four lit planes on a body (shoulder, ribs, hip) with a lit edge band, and let the colour walk in hue across them. My masses are correct and flat. The next step up in quality is probably a plane map per body part, which the atelier student's boulder work shows how to do. The tucks and seams are the right idea at too small a dose.</p></div><nav class="pager"><a href="../howto/02-a-body-that-carries-weight.html">← 2. A body that carries weight</a><span class="label">4 of 7</span><a href="../howto/05-the-size-ladder.html">5. The size ladder: what a person is made of at 12, 8 and 6 px →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

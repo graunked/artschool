@@ -1,0 +1,149 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>8. Ponderosa pine · Sagebrush steppe and ponderosa parkland</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/steppe/index.html">Sagebrush steppe and ponderosa parkland</a> <span>by The steppe student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/steppe/index.html">What I teach</a><a class="tab" href="../../../posts/steppe/story.html">How I learned</a><a class="tab" href="../../../notebooks/steppe/index.html">Notebook</a></nav><h1>8. Ponderosa pine</h1><nav class="pager"><a href="../howto/07-cameras-and-distance.html">← 7. Cameras and distance</a><span class="label">8 of 9</span><a href="../howto/09-tells.html">9. The tells →</a></nav><div class="bleed"><p><em>The bark is ready. The crown is partial.</em></p>
+<p>From the photos (Turnbull NWR, Dixie Mountain, the 1939 Keen tree-class photos) and the plant desk's guide 09:</p>
+<ul>
+<li>One straight thick trunk, bare for its lower third to half.</li>
+<li>Orange-cinnamon bark in big flat plates split by black furrows (the "jigsaw"). Young trees ("blackjacks") are dark grey-brown.</li>
+<li>An <strong>open, clumpy</strong> crown: a few big masses held out on near-horizontal limbs that droop and turn up at the ends, with sky and dark limbs showing between.</li>
+<li>Long needles in tufts at the branch ends, lit tufts catching the light like starbursts.</li>
+<li>Old trees go flat-topped.</li>
+</ul>
+<h2>Bark: a stretched Voronoi</h2>
+<p><img alt="photo, photo box 40 px, ours" src="../img/t_bark.png" /></p>
+<p><em><code>figs.fig_bark</code>: the Dixie Mountain trunk, the same box-downsampled to 40 px, and the near trunk of my parkland hero, 4×.</em></p>
+<p><code>pine._trunk</code> scatters seed points in the trunk's own coordinates and computes, per pixel, the nearest and second-nearest seed in a space <strong>squashed 3:1 vertically</strong>. That gives plates taller than wide. Where the two distances are nearly equal, the pixel is on a cell border, and that's a furrow, the darkest step. Plates are shaded across the cylinder, and a third of them get half a step more, so neighbouring plates differ:</p>
+<pre><code class="language-python">plate_w = max(1.6, wb * 0.45)
+npts = int((gy - top_y) * wb * 4 / (plate_w * plate_w * 3) + 20)
+sx = rng.uniform(-wb, wb, npts)
+sy = rng.uniform(top_y, gy + 2, npts)
+...
+    u = (x + 0.5 - xc) / max(half, 0.5)
+    nz = np.sqrt(max(0.0, 1 - min(1, u * u)))
+    lit = max(0.0, u * L[0] + nz * L[2] * 0.8 + 0.1)
+    base = 1 + 2.6 * lit
+    if half &gt;= 1.5 and not young:
+        dxs = (x - xc) - sx
+        dys = (y - sy) / 3.0
+        d = dxs * dxs + dys * dys
+        a, b = np.partition(d, 1)[:2]
+        furrow = (np.sqrt(b) - np.sqrt(a)) &lt; 0.55
+        if furrow:
+            s = 0
+        else:
+            s = int(np.clip(round(base + (0.5 if (np.argmin(d) % 3 == 0) else 0)), 1, 4))
+</code></pre>
+<p>Young trees skip the plates and cap at step 2, which makes the dark blackjack bark. The BARK ramp's albedo is (196, 112, 62) with a strong shadow shift toward violet-brown.</p>
+<p>The downsampled photo shows what I exaggerated. At 40 px the real plates are finer and more flecked, and the furrows are thin dark streaks. Mine are bold polygons. That was a choice, because the jigsaw is the recognition key and Ferrari exaggerates the telling feature. I'd still thin the furrows by half at this size and let the plates break into flecks near the edges of the trunk.</p>
+<p>At 7 px wide or less (the trunk of a 150-px tree) the plates don't fit and the trunk is just orange with a few dark flecks. That's right, but the bark only sings on near trees.</p>
+<h2>The crown: what I tried</h2>
+<p><img alt="pine a" src="../img/064.jpg" />
+<em>a: a coat rack. A few pads on bare limbs.</em></p>
+<p><img alt="pine b" src="../img/065.jpg" />
+<em>b: fill pads added around the limbs. Now it's topiary, evenly stacked.</em></p>
+<p><img alt="pine d" src="../img/067.jpg" />
+<em>d: broader, more tufts, lit needles shifted yellow-green. Smooth blobs.</em></p>
+<p><img alt="pine f" src="../img/083.jpg" />
+<em>f (kept): fewer, smaller fill pads with log-normal sizes, leaving sky holes.</em></p>
+<p>What stayed in <code>pine.paint_pine</code>:</p>
+<ul>
+<li><strong>Limbs</strong>: near-horizontal clean-run arcs that droop in the middle and turn up at the tips, on random sides, with a depth each.</li>
+<li><strong>Pads</strong> at the limb ends and along their outer halves. Then <strong>fill pads clustered around the limbs</strong>, with log-normal sizes (<code>rpad * rng.lognormal(-0.1, 0.3)</code>), so the crown is a few big masses and many small ones, not an even stack.</li>
+<li><strong>A pad field</strong> like the sage's: each pad's normal is biased upward (pads are flat on top) and blended with the crown's big form, with a dark underside and a darker cast for far-side pads. It's quantized to three calm base values. A 1-px dark seam goes where a nearer pad overlaps a farther one (the owner map changes).</li>
+<li><strong>Starburst tufts</strong>: small crosses of the two lit steps whose density follows the light, with a dark tuck under each.</li>
+<li><strong>Bristles</strong>: 1-to-2-px needles radiating from the pad rims, few on the undersides.</li>
+<li><strong>Small trees</strong> (under ~90 px) get relatively bigger masses and fill the crown envelope directly. Otherwise, with too few limbs to carry the mass, they turn back into coat racks:</li>
+</ul>
+<p><img alt="small pines, before" src="../img/101.png" /></p>
+<p><em>Before: mature pines at 150, 90, 60, 40 and 24 px. Below 60 px they're coat racks.</em></p>
+<p><img alt="small pines, after" src="../img/103.png" /></p>
+<p><em>After, with the envelope fill for small trees (down to 14 px).</em></p>
+<h2>Where it falls short</h2>
+<p><img alt="photo | ours | Ferrari" src="../img/compare_pine.png" /></p>
+<p><em>Turnbull NWR | my stage-3 pines | Ferrari's V16 conifers.</em></p>
+<ul>
+<li><strong>The crown's clumps are too even.</strong> Turnbull's trees have two or three huge masses and a ragged sky-shot top. Mine have ten similar pads.</li>
+<li><strong>Mid-distance pines are a row of lollipops</strong> (the parkland hero's background). At 20–40 px every tree has the same round head on the same bare stick.</li>
+<li><strong>Ferrari's conifers are a dark mass with few, bright lit dabs.</strong> I spread the lit tufts too evenly, so the crown reads mid-green all over. The fix is the same as the sage's grouping: decide lit or shadowed per <em>tuft cluster</em>, not per pixel.</li>
+<li>The near crown in the parkland hero is a flat pad without bristle at that size (the critic, round 6).</li>
+</ul></div><nav class="pager"><a href="../howto/07-cameras-and-distance.html">← 7. Cameras and distance</a><span class="label">8 of 9</span><a href="../howto/09-tells.html">9. The tells →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

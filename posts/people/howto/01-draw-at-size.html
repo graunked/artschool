@@ -1,0 +1,185 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>1. Draw at size: capsules, clean lines, and why not to shrink · People of pre-contact Washington</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/people/index.html">People of pre-contact Washington</a> <span>by The people student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/people/index.html">What I teach</a><a class="tab" href="../../../posts/people/story.html">How I learned</a><a class="tab" href="../../../notebooks/people/index.html">Notebook</a></nav><h1>1. Draw at size: capsules, clean lines, and why not to shrink</h1><nav class="pager"><a href="../howto/03-dress-from-written-sources.html">← 3. Dressing people from written sources, with care</a><span class="label">2 of 7</span><a href="../howto/02-a-body-that-carries-weight.html">2. A body that carries weight →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>stage0.py</code> (the reduction), <code>fig.py</code> (the rasterizer), <code>render.reduce_idx</code> and <code>render.sprite_ss</code> (the experiment that lost), in <code>~/work/pixelart-studies/elements/people/src/</code>.</em></p>
+<h2>Start by shrinking a master</h2>
+<p>Before I drew a single figure I wanted to know what survives when a great small figure gets smaller. Bruegel's <em>Harvesters</em> is full of figures 50–75 px tall in a 1280 px reproduction, each reading instantly by its task. I cropped three (the mower, the kneeling binder, the woman bent double over a sheaf), quantized each to 10 colours with a tiny k-means, and area-reduced them:</p>
+<pre><code class="language-python">def kmeans(px, k, it=20, seed=0):
+    rng = np.random.default_rng(seed)
+    c = px[rng.choice(len(px), k, replace=False)].astype(float)
+    for _ in range(it):
+        d = ((px[:, None] - c[None]) ** 2).sum(-1)
+        a = d.argmin(1)
+        for j in range(k):
+            if (a == j).any():
+                c[j] = px[a == j].mean(0)
+    return c, a
+
+def reduce(img, h):
+    im = Image.fromarray(img)
+    w = max(1, round(img.shape[1] * h / img.shape[0]))
+    return np.asarray(im.resize((w, h), Image.BOX))      # BOX = true area averaging
+
+for f in (0.5, 0.25, 0.125):
+    r = quant(reduce(b, max(4, int(b.shape[0] * f))), 8)
+</code></pre>
+<p><img alt="Bruegel reduced" src="../img/study_s0_bruegel_reduction.png" /></p>
+<p><em>study. Native, quantized, ×0.5, ×0.25, ×0.125. By ×0.25 (about 12 px) only the white shirt survives. By ×0.125 the figures have dissolved into the stubble.</em></p>
+<p>Do this for your own subject before anything else. It takes ten minutes and tells you what your small figures must be made of:</p>
+<ol>
+<li><strong>One value extreme carries a small figure</strong>: the lightest or darkest mass near it (Bruegel's white shirt). For our people that's black hair, a cream blanket, a pale hat. Bare skin and bark are mid-values, so a summer figure on sand is the hard case, and the rules on later pages exist mostly for it.</li>
+<li><strong>Narrow forms don't survive averaging.</strong> The scythe is a crisp line at native size and noise after. They have to be <em>drawn</em>.</li>
+<li><strong>The ground near a small figure has to be calm.</strong> Bruegel's stubble is two close golds and a few strokes.</li>
+<li><strong>There is always a dark under the figure.</strong></li>
+</ol>
+<p>A camera averages. That's why a photo of a person at 6 px is a smudge, and why the engine must not work like a camera.</p>
+<h2>The rasterizer: capsules at the target resolution</h2>
+<p>Everything in a figure (limb segments, torso pieces, the head, hair, garments, props) is a <strong>capsule</strong>: two end points in world units, a radius at each end, a profile, a material. <code>fig.Canvas.draw</code> projects the axis with an orthographic camera at elevation <code>e</code>, then for every pixel in the bounding box finds the nearest point on the axis, the radius there, whether the pixel is inside, its depth on the capsule's surface, and its normal:</p>
+<pre><code class="language-python">t = ((px - A[0]) * d[0] + (py - A[1]) * d[1]) / L2          # position along the axis
+tc = np.clip(t, 0, 1)
+if prim.prof == 'spindle':                                     # fat in the middle (fish, blades)
+    r = r0 + (r1 - r0) * np.sin(np.pi * tc) ** 0.7
+elif prim.prof == 'bell':                                      # flares toward the far end (capes)
+    r = r0 + (r1 - r0) * tc ** 0.7
+else:
+    r = r0 + (r1 - r0) * tc
+cx, cy = A[0] + d[0] * tc, A[1] + d[1] * tc
+dist2 = (px - cx) ** 2 + (py - cy) ** 2
+inside = dist2 &lt;= (r + prim.bias) ** 2
+zs = np.sqrt(np.maximum(np.maximum(r, 0.5) ** 2 - dist2, 0))
+depth = A[2] + (B[2] - A[2]) * tc + zs + prim.zb              # z-buffer; zb is a per-part bias
+</code></pre>
+<p>The pixel's radius is floored per part (<code>max(prim.r0 * scale, prim.minw)</code>). That floor is how the small-size rules in <a href="05-the-size-ladder.html">how-to 5</a> reach the rasterizer. Every pixel that wins the z-test writes five buffers:</p>
+<ul>
+<li>the material and a default step;</li>
+<li>depth;</li>
+<li>world normal;</li>
+<li>which part it is;</li>
+<li>which figure it belongs to.</li>
+</ul>
+<p>Shading happens later, on the whole canvas at once.</p>
+<p>The camera is two lines, and the whole study hangs off them: screen-up is <code>y·cos e − z·sin e</code>, depth is <code>z·cos e + y·sin e</code>. Because depth is kept per pixel, every pixel's world position can be recovered later. That's what makes firelight (<a href="06-light-hour-and-fire.html">how-to 6</a>) and the water mirror (<a href="07-groups-in-their-settings.html">how-to 7</a>) cheap.</p>
+<h2>Narrow forms are clean lines</h2>
+<p>When a capsule's radius is under ~0.75 px, coverage alone gives a broken dotted line: some pixels' centres fall inside and some don't. So thin capsules also draw their axis as a Bresenham run:</p>
+<pre><code class="language-python">if prim.thin and rm &lt; 0.75:
+    for (lx, ly) in bresenham(A[0], A[1], B[0], B[1]):
+        thin_mask[ly - y0, lx - x0] = True
+    inside |= thin_mask
+</code></pre>
+<p>This is the studio's clean-runs rule (1:1, 2:1, 4-4-4 steps for anything narrow) applied to a 15 ft salmon spear, a digging stick, a paddle shaft, a 12 px person's arm, a weir stake.</p>
+<p><img alt="prop lines" src="fig/prop_lines.png" /></p>
+<p><em>fig. Dig, spear, dipnet, pound and split, four phases each, at 32 px. Every pole is a single clean run.</em></p>
+<h2>A debug that earns its keep: who won each pixel</h2>
+<p>The most useful debug of the study was printing the part tag that won each pixel of a 6 px woman:</p>
+<pre><code class="language-python">sc = sprite(dict(activity='stand', facing=0), 6, pad=4)
+ys, xs = np.nonzero(sc.cv.idx &gt; 0)
+sub = sc.cv.part[ys.min():ys.max()+1, xs.min():xs.max()+1]
+for row in sub:
+    print(' '.join(f'{sc.cv.tags.get(p, &quot;.&quot;)[:6]:&gt;6}' for p in row))
+</code></pre>
+<pre><code>     .   hair
+hairlo  uarmR
+hairlo  uarmR
+     .  farmR
+     . thighR
+     .  shinR
+     .  footR
+</code></pre>
+<p>She was made entirely of hair and one arm. Her torso and skirt lost the z-test to the arm in front of them in every pixel. The skirt needed a depth bias (<code>zb=0.8</code> on garments) and a pixel floor. At 6 px you can't guess which part wins each of the 12 pixels; print them.</p>
+<h2>The experiment that lost: render big, reduce clever</h2>
+<p>The obvious alternative is to render at 4× and reduce, choosing each small pixel's material as a salience-weighted mode, with hair, wood and stone counting more than skin so heads and tools survive:</p>
+<pre><code class="language-python">SALIENCE = {'HAIR': 2.3, 'WOOD': 2.2, 'STONE': 1.8, 'NET': 2.0, 'STRAW': 1.3, 'BARKT': 1.2, 'WOOL': 1.3, ...}
+score[..., mi] = sel.sum(-1) * wgt                     # per block, per material
+best = score.argmax(-1)
+keep = (cov &gt;= thresh) | thin                          # enough coverage, or a thin prop in the block
+</code></pre>
+<p><img alt="supersample vs direct" src="fig/supersample_vs_direct.png" /></p>
+<p><em>fig. Stand, walk, stand (front), carry, dig at 8 and 6 px: drawn at size with the study's rules (upper row of each pair), rendered 4× and reduced (lower row).</em></p>
+<p>The reduced figures are tidier and emptier:</p>
+<ul>
+<li>the front-view head shrinks to one pixel;</li>
+<li>the skirt loses its value break at the waist;</li>
+<li>the 6 px walker turns into a stick.</li>
+</ul>
+<p>The drawn ones carry the rules: a dark head block, a body mass two pixels wide, legs. I kept <code>reduce_idx</code> and <code>sprite_ss</code> in the code for comparison and never used them again. The lesson generalises: <strong>at a few pixels, a rule that says what the figure is made of beats any averaging of what it looks like.</strong></p>
+<h2>Where it falls short</h2>
+<p>Drawing at size means the figure's shape at 6 px is decided by rules, not by the body, and rules can be wrong in ways averaging never is. For example, a pixel floor inflates a part and the part wins where it shouldn't. Print the part map whenever a small figure looks wrong.</p></div><nav class="pager"><a href="../howto/03-dress-from-written-sources.html">← 3. Dressing people from written sources, with care</a><span class="label">2 of 7</span><a href="../howto/02-a-body-that-carries-weight.html">2. A body that carries weight →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

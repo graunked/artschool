@@ -1,0 +1,193 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>3. Sagebrush: grouped sprigs · Sagebrush steppe and ponderosa parkland</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/steppe/index.html">Sagebrush steppe and ponderosa parkland</a> <span>by The steppe student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/steppe/index.html">What I teach</a><a class="tab" href="../../../posts/steppe/story.html">How I learned</a><a class="tab" href="../../../notebooks/steppe/index.html">Notebook</a></nav><h1>3. Sagebrush: grouped sprigs</h1><nav class="pager"><a href="../howto/02-read-the-master.html">← 2. Read the master from his indices: Ferrari&#x27;s dry tufts</a><span class="label">3 of 9</span><a href="../howto/04-bunchgrass.html">4. The bunchgrass tussock →</a></nav><div class="bleed"><p><em>Ready from about 16 to 110 px. At the largest size it drifts toward cauliflower (see the end).</em></p>
+<h2>What the bush is</h2>
+<p>From the photos, and from the downsampled sheet on page 1:</p>
+<ul>
+<li>A few thick, twisted, shreddy grey trunks splay from one root crown.</li>
+<li>The tiny leaves mass at the twig ends into <strong>upright sprays</strong>. At 64 px these are pale tongues 2 to 4 px wide with rounded tops and dark slots between.</li>
+<li>The sprays gather into 3 to 7 clumps, so the silhouette is lumpy.</li>
+<li>Near the ground the sprays thin and a dark tangle of stems shows.</li>
+<li>The bush is wider than tall, and the foliage comes nearly to the ground.</li>
+</ul>
+<h2>The wrong models first</h2>
+<p>I built four models before one was right. Three of them are still in <code>sage.py</code>, behind <code>mode=</code>:</p>
+<p><img alt="photo | spray | field | sprig" src="../img/t_sage_models.png" /></p>
+<p><em>Same seed, same size, greyscale, 5×. From <code>figs.fig_sage_models</code>.</em></p>
+<ul>
+<li><strong>Spheres on a trunk</strong> (the first, since overwritten): a little broccoli tree. Sage isn't a tree.</li>
+</ul>
+<p><img alt="the first model" src="../img/033.png" /></p>
+<ul>
+<li><strong><code>mode="spray"</code></strong>: upright capsules hanging from each clump's top, lit at the cap and darkening down. This was a weeping umbrella until I let caps start lower down the clump. It's close, but the sprays are all one size and the mass reads as knitted.</li>
+<li><strong><code>mode="field"</code></strong>: Ferrari's way for a hedge. A continuous light field, quantized to three calm base values, with marks carrying the light (upright lit dabs whose density follows the field, dark slots in the light, pale flecks in the shadow). It gives a legible mound, but the critic called the texture <strong>rain</strong>: even 1-px ticks at one spacing everywhere, with a scalloped bottom.</li>
+</ul>
+<p><img alt="field mode, the stage-1 bush the critic judged" src="../img/046.png" /></p>
+<ul>
+<li><strong><code>mode="sprig"</code></strong>, the one that stayed. It came from the critic's round-3 note ("group the ticks into clumps and open gaps between them") and from the downsampled sheet, which had shown that since the start.</li>
+</ul>
+<h2>The sprig bush, layer by layer</h2>
+<p><img alt="light field | interior | + sprigs | + open crest | + twig tips" src="../img/t_sage_layers.png" /></p>
+<p><em><code>figs.fig_sage_layers</code>: the real <code>sage.paint_bush</code>, with <code>sprig=0</code>, <code>tips=0</code> and <code>_open_crest</code> switched off in turn. The light field is drawn in the sprite's own canvas, so it sits a little off the others.</em></p>
+<h3>0. Clumps and the light field</h3>
+<p><code>paint_bush</code> lays out 2 to 10 clumps across a dome (one per <code>clump_px</code> = 9 px of width), plus a centre crown clump. Their bottoms rise toward the middle, so the skirt stays low at the sides and the stems show in the centre. Trunks are clean-run polylines from the root crown to each clump, drawn first so everything covers them.</p>
+<p><code>_light_field</code> gives every pixel a continuous step value. It uses the clump's own normal blended with the whole bush's dome normal (<code>big_form=0.55</code>: the big form wins a little). The two light families are kept apart at the terminator. Then there's a dark band along each clump's bottom, where it tucks under the clump in front, and a darker foot:</p>
+<pre><code class="language-python">lit = np.clip(nn @ L, 0, 1)
+s = np.where(lit &lt; p[&quot;term&quot;], 0.9 + 1.6 * lit / p[&quot;term&quot;] + p[&quot;ambient&quot;],      # shadow family: steps ~1-2.5
+             3.1 + 2.4 * (lit - p[&quot;term&quot;]) / (1 - p[&quot;term&quot;]))                   # light family: 3.1-5.5
+s = s - np.clip((dy - 0.25) / 0.75, 0, 1) * p[&quot;fall&quot;] * 0.6                      # dark band under the clump
+s = s - np.clip((0.3 - bv) / 0.3, 0, 1) * 1.2                                    # the dark foot of the bush
+</code></pre>
+<p>The field is never painted directly. When I painted fields directly I got soap.</p>
+<h3>1. The interior</h3>
+<p>What shows in the gaps is two dark values, darker in the low 22%. Then the foot is made <strong>ragged</strong>: each column's lowest 0 to 2 pixels are cut away, and a few columns send a stem to the root crown. This replaced the row of scallops the critic flagged twice.</p>
+<pre><code class="language-python">q = np.where(f &lt; 2.6, 0, 1).astype(np.int16)
+q = np.where((gy - Y) &lt; h * 0.22, 0, q)
+for x in range(W):
+    col = np.nonzero(m[:, x])[0]
+    if len(col) == 0:
+        continue
+    yb = col.max()
+    cut = int(rng.integers(0, 3))
+    for k in range(cut):
+        m[yb - k, x] = False
+    if rng.random() &lt; 0.12 and yb &lt; gy - 1 and abs(x - cx) &lt; w * 0.35:
+        for (sx, sy) in sp.clean_line(x, yb - cut + 1, cx + (x - cx) * 0.3, gy):
+            cv.px(sx, sy, SAGESTEM, 0 if rng.random() &lt; 0.6 else 1)
+</code></pre>
+<h3>2. Sprigs</h3>
+<p>This is the core. Sprig positions are sampled from the interior mask, weighted toward the top (<code>((gy - y) / h) ** 0.7</code>: sprigs crowd the crown and the base stays tangle). They're painted from farthest to nearest, which here means top to bottom. Each one is a small wedge whose value it reads <strong>once</strong>, from the field at its own centre:</p>
+<pre><code class="language-python">spw = p[&quot;sprig_px&quot;] or float(np.clip(w / 14.0, 2.0, 5.5))       # width: 2 px at 28 px, 4 at 56
+sph = spw * (2.2 + 0.8 * np.clip((w - 50) / 60, 0, 1))          # taller on near bushes
+...
+for j in range(int(hh)):
+    t = j / max(1.0, hh - 1)
+    half = ww / 2 * (0.55 + 0.45 * np.sin(np.pi * min(1.0, 0.25 + t * 0.9))) * (1 - 0.45 * t)
+    if j == 0:
+        half *= 0.6                                    # rounded top
+    ...
+        if not m[y, x] and j &gt; 1:                       # only the top may break out
+            continue
+        side = (x - xc) * sunside
+        s = v0 + (0.9 if j == 0 else 0.4 if j == 1 else 0) - 1.8 * t     # lit cap, darker down
+        s += 0.6 if side &gt; 0.4 else (-0.6 if side &lt; -0.4 else 0)       # sun side a step up
+        if (x + (j // 2)) % 2 == 0 and t &gt; 0.3:        # inner streaks
+            s -= 0.7
+        s += rng.normal(0, 0.25)
+        if shadow:
+            s = min(s - 0.6, 2.6)                      # a shadow sprig never enters the light family
+</code></pre>
+<p>Reading the value once per sprig, not once per pixel, is what groups the marks. A sprig is one decision, lit or shadowed, and not a speckle sampled from a gradient. Letting only the top two rows break the interior mask is what makes the silhouette out of sprig tops.</p>
+<h3>3. Open the crest</h3>
+<p>Interior pixels left showing at the top of the silhouette read as a dark outline, the "magazine cut-out" SYNTHESIS warns about. <code>_open_crest</code> removes any dark interior pixel with nothing above it, twice:</p>
+<pre><code class="language-python">def _open_crest(cv, rounds=2):
+    for _ in range(rounds):
+        m = cv.mat == SAGE
+        above = np.vstack([np.zeros((1, cv.w), bool), cv.mat[:-1] &gt; 0])
+        kill = m &amp; ~above &amp; (cv.step &lt;= 1)
+        cv.mat[kill] = 0
+</code></pre>
+<p>It only runs above 16 px wide. Below that it eats the bush.</p>
+<h3>4. Twig tips, stalks, snow</h3>
+<p>One-pixel tips sit on 35% of the cap pixels. In autumn (<code>stalks</code>), pale upright flower stalks rise above the crown. In winter (<code>snow</code>), cap pixels turn to snow, lit or shaded.</p>
+<p>The final bush in colour:</p>
+<p><img alt="the sprig sage, summer morning, 8×" src="../img/t_sage_final_8x.png" /></p>
+<p><em>The ground in this plate is <code>s1_sage.bush_on_ground</code>'s quick 12% speckle, which is louder than the scene ground on page 6. The critic flagged it, and I never brought the plates up to the scenes.</em></p>
+<h2>Colour, and the mint mistake</h2>
+<p><img alt="stage 2, mint" src="../img/062.png" /></p>
+<p><em>My first coloured sage: mint cotton with teal shadows. The critic: "the shadow side is teal". The Hungate photo in low sun goes deep olive toward black.</em></p>
+<p>The fix is on page 5: an olive shadow shift, and a lit end warmed toward straw that grows with the sun's warmth.</p>
+<h2>Every size</h2>
+<p><img alt="110 px down to 2 px" src="../img/t_sage_sizes.png" /></p>
+<p><em><code>scene.sage_sprite</code> at seven widths, summer morning, 3×.</em></p>
+<ul>
+<li><strong>16 px and up</strong>: the full painter. Sprig width scales with the bush, about 2 px at 28 px wide and up to 5.5.</li>
+<li><strong>5 to 14 px</strong>: the same painter with fewer, bigger clumps (<code>clump_px = max(6, w/2.2)</code>) and one trunk.</li>
+<li><strong>2 to 5 px</strong>: a dab with a dark foot row, a lit top on the sun side and a step down on the shadow side.</li>
+<li><strong>Under 2.2 px</strong>: a dark foot pixel under a lit one. It never vanishes, because a vanishing shrub is a pop when the camera pulls back. The willow student's critic had to ask for that twice, so I built it in from the start.</li>
+</ul>
+<h2>Where it falls short</h2>
+<p><img alt="the 110-px sage" src="../img/116.png" /></p>
+<p><em>110 px (left) and 80 px (right), the last thing I tuned. The sprigs are there, but at this size they read as a heap of rounded bumps: cauliflower. The trunks under the 110-px bush also splay as straight ruled spokes.</em></p>
+<p>At hero size the photo's sage is streakier and more see-through: longer, thinner upright sprays with more gaps and more stems. My sprig count and height scale up with size, but the gaps don't. I'd next add a gap fraction that rises with width, so the interior shows through in slots between sprig columns, and taller, narrower sprigs above about 80 px. The critic saw the same drift in the hero images: "the big shrubs right of centre".</p>
+<p><strong>Bitterbrush</strong> uses this same painter with holes and twiggier tips (<code>kind="bitter"</code>), and it reads only as a darker sage. It needs its own form: more open, irregular, stems showing, small leaf clusters. I didn't get to it.</p></div><nav class="pager"><a href="../howto/02-read-the-master.html">← 2. Read the master from his indices: Ferrari&#x27;s dry tufts</a><span class="label">3 of 9</span><a href="../howto/04-bunchgrass.html">4. The bunchgrass tussock →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

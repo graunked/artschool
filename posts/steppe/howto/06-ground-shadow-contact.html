@@ -1,0 +1,155 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>6. Ground, shadow, contact, snow · Sagebrush steppe and ponderosa parkland</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/steppe/index.html">Sagebrush steppe and ponderosa parkland</a> <span>by The steppe student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/steppe/index.html">What I teach</a><a class="tab" href="../../../posts/steppe/story.html">How I learned</a><a class="tab" href="../../../notebooks/steppe/index.html">Notebook</a></nav><h1>6. Ground, shadow, contact, snow</h1><nav class="pager"><a href="../howto/05-palette-as-light.html">← 5. The palette is the light</a><span class="label">6 of 9</span><a href="../howto/07-cameras-and-distance.html">7. Cameras and distance →</a></nav><div class="bleed"><p><em>The ground and its shadows are ready. The snow is partial: it wraps the shrubs in the standing view, but its patches are still ruled in iso.</em></p>
+<h2>Calm ground, in world space</h2>
+<p>The steppe floor is most of the picture, so it has to be quiet. My first ground had every pixel dithered between two steps plus salt and pepper, and it was louder than the plants:</p>
+<p><img alt="the noisy first ground, iso, 6×" src="../img/058.png" /></p>
+<p><em>The first iso scene, cropped. The ground has the same contrast as the sage, and the bushes dissolve into it.</em></p>
+<p>Ferrari's ground (V16PM's bank, V11AM's apron) is mostly flat, with value masses that meet on a broken edge and a few deliberate specks. <code>world.paint_ground</code> does that, and does it <strong>in world space</strong>: every noise is a function of the ground point (X, Z) in metres, sized in pixels through the local pixels-per-metre <code>ppm</code>, so the texture doesn't swim when the camera moves or zooms:</p>
+<pre><code class="language-python">X, Z = cam.ground_xz(xs + 0.5, ys + 0.5)
+ppm = cam.ppm_at(Z)
+und = (fbm(X, Z, 6.0, seed + 1) - 0.5) * 2 * gp[&quot;undulation&quot;]           # 6-m value masses
+base = 3.0 + und
+brk = vnoise(X, Z, np.maximum(0.03, 2.0 / ppm), seed + 13) - 0.5       # ~2-px break on their edges
+step = np.clip(np.floor(base + brk * 0.5 + 0.5).astype(np.int16), 2, 4)
+r1 = vnoise(X, Z, np.maximum(0.02, 0.7 / ppm), seed + 2)
+r2 = vnoise(X, Z, np.maximum(0.02, 0.7 / ppm), seed + 12)
+step = np.where((r1 &gt; 0.86) &amp; (ppm &gt; 3), step - 1, step)                # sparse dark specks
+step = np.where((r2 &gt; 0.9) &amp; (ppm &gt; 3), np.minimum(4, step + 1), step)  # sparser light ones
+</code></pre>
+<p>The noise primitives (<code>world._hash</code>, <code>vnoise</code>, <code>fbm</code>) are hashed integer lattices, so a point always gets the same value whatever the canvas. On top of the base go four layers:</p>
+<p><img alt="ground layers" src="../img/t_ground_layers.png" /></p>
+<p><em><code>figs.fig_ground</code>: undulation → + soil crust → + basalt pebbles → + small grasses → + plants, shadows and contact.</em></p>
+<ul>
+<li><strong>Soil crust</strong> (the dark living skin of cyanobacteria and moss between plants, from the plant desk's guide 09): patches of a 0.9-m fbm, three lumpy dark values. The patch edge is broken by a pixel-scale noise and a little white noise, so it <strong>fades out through density</strong>. My first crust patches were clean ellipses and dithered discs, and the critic called them "stickers" and "decals":</li>
+</ul>
+<p><img alt="stamped ovals" src="../img/050.png" /></p>
+<p><em><code>persp_b</code>: the two dark ovals in the near field.</em></p>
+<ul>
+<li><strong>Pebbles</strong>: sites on a 0.35-m world grid, drawn only where their radius is at least half a pixel. Each has a light top row, a darker bottom, a darker shadow side, and one pixel of ground two steps darker on the side away from the sun.</li>
+<li><strong>Small grasses</strong> (Sandberg bluegrass, cheatgrass): sites on a 0.12-m grid, drawn as 1-to-4-px upright ticks only when they're at least a pixel tall.</li>
+</ul>
+<p>At the default crust setting the crust is too subtle to read at 3× in this figure. It shows in the scenes as darker ground between shrubs. The pebbles are the one layer that's a bit loud.</p>
+<h2>The shadow is the ground two steps down</h2>
+<p>This one I took from the willow student's critic, whose flat grey ellipses read as holes. A cast shadow isn't a shape laid on the ground. It is <strong>the same ground, the same pebbles and crust, two steps darker</strong>. <code>scene._cast_shadow</code> projects every pixel of a sprite's silhouette along the sun onto the ground plane, through the real camera:</p>
+<pre><code class="language-python">dxw, dzw = -Lw[0], Lw[2]            # horizontal shadow direction (away from the sun)
+k = 1.0 / max(0.12, Lw[1])          # shadow length per metre of height
+hgt = (by - ys) / (ppm * cz)        # each silhouette pixel's height above the foot, in metres
+lat = (xs + ox - cam.project(X, Z)[0]) / ppm
+SX = X + lat + hgt * k * dxw
+SZ = Z + hgt * k * dzw
+px, py = cam.project(SX, SZ)
+...
+sel = mark &amp; ~_shadow_done          # each ground pixel darkens once, however many shadows overlap
+cv.step[sel] = np.maximum(0, cv.step[sel] - 2)
+</code></pre>
+<p>Because it goes through the camera, the same code gives long raking shadows at golden hour in the standing view and short foreshortened slabs in iso. The <code>_shadow_done</code> mask stops two overlapping shadows from making a black patch. Shadows are painted before any sprite, so plants stand on their own shadows.</p>
+<h2>Contact</h2>
+<p>After each shrub or tree is blitted, the ground pixel directly under every foliage column in its bottom two rows goes to step 0: the darkest line at the foot (SYNTHESIS: "a flat run with a 1-px darker contact line"). Grass sprites don't get one. A dark line under every tussock was part of the grey-comb look on page 4.</p>
+<pre><code class="language-python">if m.any() and spr.w &gt; 6 and (spr.mat[m] != GRASS).mean() &gt; 0.5:   # shrubs and trees only
+    ys, xs = np.nonzero(m)
+    by = ys.max()
+    for xx in np.unique(xs[ys &gt;= by - 1]):
+        gx, gy = xx + ox, by + oy + 1
+        if 0 &lt;= gx &lt; W and 0 &lt;= gy &lt; H and cv.mat[gy, gx] in (GROUND, CRUST, STONE):
+            cv.step[gy, gx] = 0
+</code></pre>
+<h2>Snow that wraps the plants</h2>
+<p><img alt="snow, first" src="../img/098.png" /></p>
+<p><em>Seasons, first version: the winter panel's snow patches have ruled horizontal edges (critic, round 5).</em></p>
+<p>Snow on the steppe drifts against the lee side of each shrub and melts back first on its sunny side. So the patch edges follow the plants. The ground's snow field got two more noises (a pixel-scale break and 0.35-m lobes), and <code>scene._snow_drifts</code> adds, per shrub, an irregular lens of snow hugging the foot on the side away from the sun and a bare melt-back on the sunny side:</p>
+<pre><code class="language-python">lee = 1 if Lw[0] &lt; 0 else -1            # the side away from the sun
+cxd = (x0 + x1) / 2 + lee * wid * 0.35
+rx, ry = wid * (0.45 + 0.3 * amount), max(1.0, wid * 0.10)
+...   if u * u + v * v &lt; 1 + rng.normal(0, 0.15): -&gt; SNOW (shaded step above the foot line, lit below)
+cxs = (x0 + x1) / 2 - lee * wid * 0.45
+...   SNOW -&gt; GROUND with probability 0.8 in a box on the sunny side
+</code></pre>
+<p><img alt="winter at noon" src="../img/winter_sage_3x.png" /></p>
+<p><em>The winter hero: blue shadows on snow, drifts against the shrubs, bare patches with broken edges.</em></p>
+<h2>Where it falls short</h2>
+<ul>
+<li><strong>Iso snow is still ruled.</strong> In sheet G's winter column the patches are long horizontal slabs. My reading of why (not yet tested): the ground noises are isotropic in metres, but iso squashes Z by sin 30°, so a round patch becomes a flat lens, and at 12 px/m the break noise is too fine to matter. The fix is to stretch the snow field's Z scale by 1/sin(el) in iso, so its patches come out round on screen.</li>
+<li>The melt-back box on the sunny side is a box, and at hero size you can see it.</li>
+<li>Pebbles: at 24 px/m the basalt pebbles are the loudest thing on the ground, the same contrast as the plants.</li>
+</ul></div><nav class="pager"><a href="../howto/05-palette-as-light.html">← 5. The palette is the light</a><span class="label">6 of 9</span><a href="../howto/07-cameras-and-distance.html">7. Cameras and distance →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

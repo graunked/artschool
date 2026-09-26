@@ -1,0 +1,184 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>7. Groups in their settings · People of pre-contact Washington</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/people/index.html">People of pre-contact Washington</a> <span>by The people student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/people/index.html">What I teach</a><a class="tab" href="../../../posts/people/story.html">How I learned</a><a class="tab" href="../../../notebooks/people/index.html">Notebook</a></nav><h1>7. Groups in their settings</h1><nav class="pager"><a href="../howto/06-light-hour-and-fire.html">← 6. Light, hour and fire</a><span class="label">7 of 7</span><a href="../index.html">Contents →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>scenes.py</code> (seven scenes, backdrops, the plank house), <code>setting.py</code> (hearth, canoe, weir, platform, rack, baskets, mats), <code>water.py</code> (the mirror), <code>grounds.py</code> (calm grounds), <code>sheets.py</code> (sheets E–H), in <code>~/work/pixelart-studies/elements/people/src/</code>.</em></p>
+<p>The brief asked for "group compositions (around a fire, at a fish weir, carrying) at several distances". Groups are where the small-size rules earn their keep, and where settings start competing with people for attention.</p>
+<h2>A scene is a function of size</h2>
+<p>Each scene is laid out in world units, one unit being an adult's height (1.65 m, from Eells' measurements). It's rendered by a single call at any number of pixels per person, at the landscape view (10–14°) or the iso view (30°):</p>
+<pre><code class="language-python">def scene_carry(size_px=24, elev=12, hour='morning', phase=0.0, seed=0, sun=None):
+    &quot;&quot;&quot;A file of people going along the beach: women with loaded baskets on tumplines, a man with
+    salmon, a woman in a rain cape, a child running ahead, an elder with a staff.&quot;&quot;&quot;
+    sc = _scene(size_px, 6.5, 2.2, elev, 1.75)          # canvas 6.5 x 2.2 units, ground line at 1.75
+    file_ = [(-2.6, 0.2, dict(activity='staff', sex='m', age='elder', dress='coast_m_fur')),
+             (-1.8, 0.1, dict(activity='carry', sex='f', load='ROOT')),
+             (-1.0, 0.25, dict(activity='carry', sex='f', dress='coast_f_rain', load='LEAF')),
+             (-0.2, 0.05, dict(activity='carry_load', sex='m')),
+             (0.6, 0.2, dict(activity='walk', sex='f', dress='coast_f_wool')),
+             (1.3, 0.1, dict(activity='carry', sex='f', load='FISH')),
+             (2.3, 0.3, dict(activity='run', age='child', sex='m')),
+             (2.8, 0.0, dict(activity='run', age='child', sex='f'))]
+    for i, (x, z, sp) in enumerate(file_):
+        sc.add_person(dict(sp, x=x, z=z, facing=0, phase=(phase + i * 0.29) % 1, seed=seed + i))
+    ...
+</code></pre>
+<p>Everyone's phase is offset (<code>i × 0.29</code>), so the file doesn't march in step. The seed varies stature, build, skin tone and hair per person, and in the carry scene also varies which of the guide's women's outfits each woman wears.</p>
+<p>A steeper camera sees more ground, so <code>_scene</code> grows the canvas and lowers the ground line by how much the elevation's sine exceeds 12°'s. Without that, the 30° view cropped off the people.</p>
+<p><img alt="carry distances" src="../img/study_F_carry_distances.png" /></p>
+<p><em>study. The carrying file at 32, 16, 8 and 5 px per person. The critic's favourite: "a household on the move at 32, 16 and 8 px, and still as people at 5 px".</em></p>
+<p><img alt="seeds" src="../img/study_E_seed_x_group.png" /></p>
+<p><em>study. Sheet E: the same file under four seeds.</em></p>
+<h2>Calm grounds</h2>
+<p>The Bruegel reduction's third rule (<a href="01-draw-at-size.html">how-to 1</a>) applies to every ground: the figure must be the loudest thing near it. My grounds are deliberately quieter than the ground students' full painters. In a real scene their painters would supply the ground and mine would only supply the contact and cast shadows.</p>
+<ul>
+<li><strong>Low-contrast ramps by construction.</strong> Sand runs only <code>#6e5e48 → #a89274 → #ccb894</code>.</li>
+<li><strong>Marks in 2–5% of pixels.</strong></li>
+<li><strong>Gravel stones:</strong> mostly the middle step, lit on top and dark underneath only when they're big enough to have a top.</li>
+<li><strong>Fewer marks far away.</strong> Below 12 px per person the ground's marks thin out, so a 5 px person isn't competing with a pebble.</li>
+</ul>
+<pre><code class="language-python">far = float(np.clip((12 - scale) / 7, 0, 1))
+n = int(h * w / max(2.0, (0.06 * scale) ** 2) * 0.3 * (1 - 0.8 * far))     # gravel stones
+</code></pre>
+<h2>Water is an exact mirror</h2>
+<p>Every pixel of every figure and prop has a world position (from the z-buffer; <a href="06-light-hour-and-fire.html">how-to 6</a>). So a reflection is exact: reflect each point about the water plane and project it again. Following the studio's measured rules:</p>
+<ul>
+<li><strong>Lights drop two steps and darks one</strong>: a compressed range.</li>
+<li><strong>Some rows break</strong>: dash rows.</li>
+<li><strong>Anything below the plane is hidden.</strong> A spear fisher standing in the river loses his shins to the water, and the paddlers sit inside the hull.</li>
+</ul>
+<pre><code class="language-python">yr = 2 * wl - P[:, 1]                                      # the mirrored height
+su = yr * ce - P[:, 2] * se
+ry = np.rint(sc.oy - su * sc.scale - 0.5).astype(int)      # its screen row
+st = np.clip(src % 8 - drop, 0, 4)
+st = np.where(src % 8 &gt;= 3, st - 1, st)                    # lights drop more than darks
+rowbreak = rng.random(H) &lt; dash                            # dash rows
+keep = ~rowbreak[ry] | (rng.random(len(ry)) &lt; 0.35)
+</code></pre>
+<p><img alt="canoe" src="fig/scene_canoe_32.png" /></p>
+<p><em>fig. Four paddlers bringing a canoe in at golden hour, 32 px; people waiting on the gravel.</em></p>
+<p>The canoe is a dugout: a spindle kept only below the gunwale plane, a darker interior lying flat at the gunwale, and a raised prow. Paddlers are placed at the hull's floor (<code>y=0.1</code>), and people on platforms or in canoes cast no shadow on the ground.</p>
+<h2>Props need their own level of detail</h2>
+<p>The first weir had 30 stakes and three lattice rails. At 8 px per person it was a fence as loud as the fishermen, then a basket-weave:</p>
+<p><img alt="weir first" src="../img/nb037.png" /></p>
+<p><em>nb037. The first weir at 32, 16 and 8 px.</em></p>
+<p>The rule that fixed it:</p>
+<ul>
+<li><strong>Stakes</strong> are never closer than ~3 px on screen, and are dark and wet (two steps down).</li>
+<li><strong>Rails</strong> drop out: the lower one below 20 px, the top one below 10.</li>
+</ul>
+<pre><code class="language-python">n = int(min(n, (x1 - x0) * size_px / 3.2 + 1))
+...
+rails = (water + 0.12, h - 0.1) if size_px &gt;= 20 else ((h - 0.1,) if size_px &gt;= 10 else ())
+</code></pre>
+<p><img alt="weir" src="fig/scene_weir_24.png" /></p>
+<p><em>fig. The weir at 24 px, overcast: dip-netters on platforms, a spear fisher in the shallows, a paddler, women carrying salmon up to the rack, a woman in a blanket.</em></p>
+<p>The same thinking went into the rest of the scenery:</p>
+<ul>
+<li><strong>Rack salmon</strong> are muted toward the red-brown of curing fish, not bright flesh.</li>
+<li><strong>The plank house</strong> has planks of varied width (split from living trees, 0.2–0.45 units) in silver-grey, water streaks from the eaves, a sun-bleached band at the top, and smoke seeping from a propped roof plank rather than a chimney. Its door is dark plank, not black. From a steeper camera it gets a roof band. All of this is from the naturalist's guide 03 ("at 10 m").</li>
+</ul>
+<p><img alt="work" src="fig/scene_work_24.png" /></p>
+<p><em>fig. Village work at 24 px: a man splitting cedar, a woman weaving on a mat, another pounding, salmon on the rack, a woman passing with a basket, the house behind.</em></p>
+<h2>Spacing a crowd at distance</h2>
+<p>At real spacing, about a metre apart, six bent camas diggers overlap on screen at 5 px per person and merge into a brown band, seams or no seams:</p>
+<p><img alt="camas before" src="../img/nb105.png" /></p>
+<p><em>nb105. Camas diggers at 32, 16, 8 and 5 px, at their real spacing.</em></p>
+<p>I spread them out below 10 px, by up to 60%:</p>
+<pre><code class="language-python">spread = 1 + 0.6 * max(0.0, (10 - size_px) / 5)     # far away, people need a pixel of ground between
+</code></pre>
+<p><img alt="camas after" src="../img/study_F_camas_distances.png" /></p>
+<p><em>study. The same after spreading. Better, not solved.</em></p>
+<p>That's the painter cheating for the sim. The honest version is a sim decision: how many people are drawn at 5 px per person, and how they're spaced. The naturalist's distance ladder says that at 1 km "people are invisible; their smoke, canoes and cleared ground are what you paint", so a crowd's far read might not be people at all.</p>
+<h2>The iso view</h2>
+<p><img alt="iso" src="../img/study_G_iso_30.png" /></p>
+<p><em>study. Five groups at the 30° iso view, at 20 and 10 px per person.</em></p>
+<p>Standing and walking figures hold up from above. Bent figures, which were designed side-on, foreshorten into blobs more often than they should. The fire circle reads best from above, because the ring of people around the pool is the composition.</p>
+<h2>At true size</h2>
+<p><img alt="true scale" src="../img/study_H_true_scale.png" /></p>
+<p><em>study. Sheet H: the carrying file, the weir, the camas and the canoe at 12, 8, 6 and 5 px, at 1× and 2×.</em></p>
+<p>This is the test for everything above. At 5–6 px the carrying file is a row of clean dots, a dark head and one body colour each, and the canoe is a dark sliver with paddlers as nicks along the gunwale. Both are the naturalist's 100 m sentence.</p>
+<h2>Where it falls short</h2>
+<ul>
+<li><strong>The backdrops are placeholders.</strong> The forest wall is a row of spires, the far shore is a ruled line, and the sky is five flat bands. They belong to the conifers, water and sky students; use theirs.</li>
+<li><strong>The settings are sketches.</strong> The weir, rack, hearth, canoe and plank house are enough to say what the people are doing, and no more.</li>
+<li><strong>Iso foreshortening</strong> of bent figures.</li>
+<li><strong>Crowd density at distance</strong> needs a sim decision.</li>
+</ul></div><nav class="pager"><a href="../howto/06-light-hour-and-fire.html">← 6. Light, hour and fire</a><span class="label">7 of 7</span><a href="../index.html">Contents →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

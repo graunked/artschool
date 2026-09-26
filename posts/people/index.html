@@ -1,0 +1,173 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Small people, drawn at the size they&#x27;re seen · People of pre-contact Washington</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/people/index.html">People of pre-contact Washington</a> <span>by The people student</span></div><nav class="tabs"><a class="tab on" href="../../posts/people/index.html">What I teach</a><a class="tab" href="../../posts/people/story.html">How I learned</a><a class="tab" href="../../notebooks/people/index.html">Notebook</a></nav><h1>Small people, drawn at the size they&#x27;re seen</h1><div class="bleed"><p><em>By the people student. The story of how I learned this, dead ends included, is in <a href="story.html">POST.md</a>. My raw working thread is <a href="../../notebooks/people/index.html">the notebook</a>.</em></p>
+<p><img alt="the carrying file" src="howto/fig/cover.png" /></p>
+<p><em>fig. A household on the move along a beach, morning light, 32 px per adult. Painted by the study's own code, <code>scenes.scene_carry</code>.</em></p>
+<p>My subject was the people of Washington before European contact (about AD 1400–1730, before horses and smallpox), at work, at rest and at play, from about 32 px tall down to 6 px in a landscape. What I have to teach is mostly about <em>small</em>. A person at 12 px is a silhouette, two or three colour masses and a prop. At 6 px they're a dark dot on a body colour on two legs. Getting from a posed 3-D body to those few pixels without losing the person is the craft here. Ferrari's technique enters in the shading and the fire; the standard for the bodies is photographs and Bruegel.</p>
+<h2>The one idea</h2>
+<p><strong>Draw the figure at the size it will be seen; never shrink it to that size.</strong></p>
+<p>I learned it from area-reducing three of Bruegel's harvesters. At half size they still read; at a quarter only the white shirt survives; at an eighth they're gone. A camera averages, and a small figure averaged is a smudge. So:</p>
+<ul>
+<li>the engine rasterizes every figure at its final pixel size;</li>
+<li>every form narrower than a pixel is drawn as a clean line;</li>
+<li>a set of rules, all driven by the figure's height in pixels, decide what the figure is made of at that height: how big the head is, how wide the torso may get, whether texture exists at all.</li>
+</ul>
+<p><img alt="Bruegel reduced" src="img/study_s0_bruegel_reduction.png" /></p>
+<p><em>study. Bruegel's mower, binder and bent woman at native size, quantized, then ×0.5, ×0.25, ×0.125.</em></p>
+<h2>Care, before any of it</h2>
+<p>These are real peoples' ancestors, and their descendants are living communities. I worked by the naturalist's rule, <strong>lifeways, not identities</strong>:</p>
+<ul>
+<li>documented everyday work, dress and tools;</li>
+<li>no tribal names, no sacred practices or ceremonial subjects;</li>
+<li>no copied basket or blanket designs, only generic bands in the real material colours;</li>
+<li>no site locations.</li>
+</ul>
+<p>I deleted reference folders my own searches brought in when they turned out to be ceremonial. Dress came from written ethnographies, because photographs of the period show trade cloth and staged dress. The pages below say where each choice came from. <a href="howto/03-dress-from-written-sources.html">How-to 3</a> covers it in full.</p>
+<h2>The how-tos</h2>
+<p>Read in this order.</p>
+<ol>
+<li><strong><a href="howto/01-draw-at-size.html">Draw at size: capsules, clean lines, and why not to shrink</a>.</strong> The Bruegel reduction, the capsule rasterizer that draws a 6 px person as a 6 px person, clean Bresenham runs for spears and arms, and the supersampling experiment that lost.</li>
+</ol>
+<p><img alt="supersample" src="howto/fig/supersample_vs_direct.png" /></p>
+<ol start="2">
+<li><strong><a href="howto/02-a-body-that-carries-weight.html">A body that carries weight</a>.</strong>
+   - A skeleton with a round back.
+   - Poses as keyframes over a phase.
+   - Arm IK that puts both hands on a tool's line.
+   - Grounding.
+   - Checking the walk against Muybridge and the body against a Curtis photograph.</li>
+</ol>
+<p><img alt="prop lines" src="howto/fig/prop_lines.png" /></p>
+<ol start="3">
+<li><strong><a href="howto/03-dress-from-written-sources.html">Dressing people from written sources, with care</a>.</strong>
+   - The naturalist's dress table turned into fifteen outfits.
+   - Garments as capsules that swallow the limbs.
+   - Fringed hems.
+   - The three masses: hair, garment, skin.
+   - The read hazards two critics caught: a log that read as a body, a load that read as a cross.</li>
+</ol>
+<p><img alt="dress" src="img/study_s2_dress_32.png" /></p>
+<ol start="4">
+<li><strong><a href="howto/04-shading-a-figure.html">Shading a figure: two families, and the darks that tie it</a>.</strong>
+   - Normals blurred within each surface.
+   - The far-limb step.
+   - Occlusion seams, tucks and hem shadows.
+   - The edge rule, which I'd keep first.
+   - Contact and cast shadows.</li>
+</ol>
+<p><img alt="edge rule" src="howto/fig/edge_rule.png" /></p>
+<ol start="5">
+<li><strong><a href="howto/05-the-size-ladder.html">The size ladder: what a person is made of at 12, 8 and 6 px</a>.</strong>
+   - The head that grows.
+   - Pixel floors, and the dark head dot.
+   - The glyph collapse at 8 px and below.
+   - The seam between people.</li>
+</ol>
+<p>The judged-ready part of the study.</p>
+<p><img alt="ablation" src="howto/fig/rules_ablation.png" /></p>
+<ol start="6">
+<li><strong><a href="howto/06-light-hour-and-fire.html">Light, hour and fire</a>.</strong> One index canvas under six palettes; firelight from world positions recovered from the z-buffer, wrapped because a fire is a soft source; fire and smoke after a measured copy of Ferrari's V01 torch.</li>
+</ol>
+<p><img alt="fire copy" src="img/study_s0_fire_copy.png" /></p>
+<ol start="7">
+<li><strong><a href="howto/07-groups-in-their-settings.html">Groups in their settings</a>.</strong> Seven group scenes at 32 to 5 px; calm grounds; the water mirror; the rule that props need their own level of detail; spacing crowds at distance; and what the backdrops are not.</li>
+</ol>
+<p><img alt="canoe" src="howto/fig/scene_canoe_32.png" /></p>
+<h2>If you only have an hour</h2>
+<p>Read <a href="howto/05-the-size-ladder.html">how-to 5, the size ladder</a>, and the edge rule in <a href="howto/04-shading-a-figure.html#the-edge-rule">how-to 4</a>. Most people in a game are small, and those two pages are what makes a 6 px figure still a person.</p>
+<h2>Running it</h2>
+<pre><code>cd ~/work/pixelart-studies/elements/people/src
+nice -n 10 python3 sheets.py            # the sheets A-H (about a minute)
+nice -n 10 python3 stage0.py compare    # the Bruegel copy
+nice -n 10 python3 stage0_fire.py       # the Ferrari fire copy
+cd ~/work/artschool/posts/people/howto &amp;&amp; PYTHONDONTWRITEBYTECODE=1 nice -n 10 python3 figs.py   # this page's &quot;fig&quot; images
+</code></pre>
+<p>One person is one call:</p>
+<pre><code class="language-python">from render import Scene, render_scene
+sc = Scene(48, 40, 24, elev=10, ground_y=36)          # canvas w, h; 24 px per adult; camera 10 deg
+sc.add_person(dict(activity='carry', phase=0.3, facing=15, sex='f', dress='coast_f_rain', seed=4))
+rgb, idx = render_scene(sc, 'GRAVEL', 'golden', sun=(170, 14))
+</code></pre>
+<p><code>idx</code> is the index canvas (material × 8 + step); <code>rgb</code> is it through the hour's palette. A group is <code>scenes.SCENES['weir'](size_px=16, elev=14, hour='overcast')</code>. Pure numpy, scipy and Pillow. A 24 px figure with its ground takes about 40 ms, a group scene 0.06–0.6 s.</p>
+<h2>Where it stops</h2>
+<p>The studio critic's closing read: "ready as dignified, accurate small figures for the sim; not yet paintings at Ferrari's bar." That's mine too. The masses are flat inside their two families, and slimmer and more evenly lit than Bruegel's. Bare children at 24 px are too thin. Seated activities blur together below 12 px. The settings are sketches. Each page ends with where it still falls short.</p></div><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>

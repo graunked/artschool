@@ -1,0 +1,274 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>3. Dressing people from written sources, with care · People of pre-contact Washington</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/people/index.html">People of pre-contact Washington</a> <span>by The people student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/people/index.html">What I teach</a><a class="tab" href="../../../posts/people/story.html">How I learned</a><a class="tab" href="../../../notebooks/people/index.html">Notebook</a></nav><h1>3. Dressing people from written sources, with care</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 7</span><a href="../howto/01-draw-at-size.html">1. Draw at size: capsules, clean lines, and why not to shrink →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>person.build</code> (garments, hats, props, <code>DRESS</code>), <code>render.shade</code> (the pattern codes), <code>pal.py</code> (material colours), in <code>~/work/pixelart-studies/elements/people/src/</code>. Source: the naturalist's guide <code>~/work/naturalist/people/06-dress-tools-crafts-canoes.md</code>.</em></p>
+<h2>Where the dress comes from</h2>
+<p>The honest problem with painting pre-contact dress is that nobody photographed it. The naturalist's caution was the first thing I followed:</p>
+<blockquote>
+<p>Nineteenth-century photographs (Curtis above all) show people after 50–100 years of trade cloth, glass beads, iron and horses, and Curtis sometimes staged dress. Use them for faces, bodies, baskets, hats, houses and landscape; for pre-contact dress, lean on the written descriptions below.</p>
+</blockquote>
+<p>So the garments are built from words: the dress table in guide 06, drawn from Haeberlin &amp; Gunther 1930, Eells 1877 and Spier &amp; Sapir 1930. It's organised by region, season and means, and my fifteen outfits follow it one to one:</p>
+<table>
+<thead>
+<tr>
+<th>outfit</th>
+<th>from the guide</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>coast_f_summer</code></td>
+<td>"a knee-length skirt of shredded cedar bark from the waist; nothing above" (poorer women)</td>
+</tr>
+<tr>
+<td><code>coast_f_rain</code></td>
+<td>the same "plus a twined cedar-bark cape to the hips", and a wide-brimmed twined rain hat</td>
+</tr>
+<tr>
+<td><code>coast_f_wool</code></td>
+<td>the skirt with a cream blanket of mountain-goat or wool-dog wool over the shoulders</td>
+</tr>
+<tr>
+<td><code>coast_f_hide</code></td>
+<td>"buckskin shirt from shoulders to below the knee" (the well-to-do)</td>
+</tr>
+<tr>
+<td><code>coast_m_summer</code></td>
+<td>"naked or a breechclout"</td>
+</tr>
+<tr>
+<td><code>coast_m_blanket</code>, <code>coast_m_fur</code></td>
+<td>the breechclout with a wool blanket or a fur robe</td>
+</tr>
+<tr>
+<td><code>coast_m_hide</code></td>
+<td>a buckskin shirt to the hips and separate leggings (the well-to-do, winter)</td>
+</tr>
+<tr>
+<td><code>coast_m_rain</code></td>
+<td>the cape and hat</td>
+</tr>
+<tr>
+<td><code>plateau_f</code>, <code>plateau_f_robe</code></td>
+<td>"a fringed kilt or apron of fibres or skin from a belt, with a robe above", and the twined basket hat</td>
+</tr>
+<tr>
+<td><code>plateau_m</code>, <code>plateau_m_robe</code></td>
+<td>a breechclout and fur robe, hair "in two queues in front of the body"</td>
+</tr>
+<tr>
+<td><code>child_bare</code>, <code>child_robe</code></td>
+<td>"naked in summer on both sides of the mountains; a little shirt or robe otherwise"</td>
+</tr>
+</tbody>
+</table>
+<p>All of it is pre-horse. After about 1730 the Plateau took up Plains dress (the long two-hide buckskin dress, quilled shirts, leggings, moccasins), and none of that appears here. Most people went barefoot, which suits pixels: feet are one skin pixel.</p>
+<h2>Care: what I left out, and why</h2>
+<p>These are the ancestors of living communities. The naturalist's start page gave the rule I followed everywhere: <strong>"Lifeways, not identities."</strong></p>
+<ul>
+<li><strong>No ceremonial or sacred subjects.</strong> My search "Curtis Kwakiutl woman bark" returned masks, dance regalia and a ceremony; I deleted the folder on sight. I also removed Curtis's whaler, whose subject carries ceremony with it. Every activity in the code is everyday work, rest or play from the guides: digging camas, carrying, fishing at the weir, splitting cedar, weaving, tending a fire, eating, children playing.</li>
+<li><strong>No designs.</strong> The guide is explicit that basket dog-bands, Salish blanket patterns and Plateau sally-bag figures "belong to living communities". Blankets get one alder-red band and one black band near the hem. Baskets get horizontal rows in the straw ramp. Nothing is copied.</li>
+<li><strong>No tribal names, no site locations.</strong> Outfits are named by region and season, not by people.</li>
+<li><strong>Nothing caricatured.</strong> The guide mentions infant head shaping, well documented among free-born coastal families, and adds: "At pixel scale it's invisible, and I would not caricature it." I didn't draw it. Faces are a skin capsule framed by long black hair, the same for everyone, varied only in skin tone.</li>
+</ul>
+<p>The studio critic's closing words were "'lifeways, not identities' was followed throughout, and it's the reason this set can be used." If you take one thing from this page, take that a small-figure set is only usable if it's careful.</p>
+<h2>The three masses</h2>
+<p>The guide's figure note is the spec for how dress must <em>read</em>: at 10 m, "silhouette and three masses (hair, garment, skin)". My first figures failed it. Skin and skirt were the same tan, and the studio critic's first note was that the figure "reads as one unclothed column".</p>
+<p>The fix was a value step, not a hue change:</p>
+<ul>
+<li><strong>Bark:</strong> the skirt ramp is darker and redder than the guide's suggested raw-bark colour (<code>('#2a160e', '#64381e', '#946034')</code>).</li>
+<li><strong>Skin:</strong> a warm brown with a deeper midtone, in three tones chosen by seed: 50% <code>SKIN</code>, 30% the darker <code>SKIN2</code>, 20% the lighter <code>SKIN3</code>.</li>
+<li><strong>Hair:</strong> black with a faint blue-grey sheen, never grey (the first hair was a "slate-grey helmet").</li>
+</ul>
+<p>What reads at 16 px:</p>
+<ul>
+<li>cream wool (a white rectangle);</li>
+<li>the rain hat (a pale disk);</li>
+<li>the grey fur robe;</li>
+<li>black hair.</li>
+</ul>
+<p>Bark and skin separate only by that value step.</p>
+<p><img alt="dress 32" src="../img/study_s2_dress_32.png" /></p>
+<p><em>study. The fifteen outfits at 32 px from two sides.</em></p>
+<p><img alt="dress 16" src="../img/study_s2_dress_16.png" /></p>
+<p><em>study. The same at 16 px. The blanket, the rain gear and the fur robe carry the figure; the summer figures depend on the value step at the waist.</em></p>
+<h2>Garments are capsules that swallow the limbs</h2>
+<p>A garment is a bigger capsule in the same z-buffer as the body, so it hides whatever is inside it:</p>
+<ul>
+<li><strong>The skirt</strong> is a cone from the waist to the knees, spreading with the stance.</li>
+<li><strong>The cape</strong> is a bell-profile cone from the neck to the hips.</li>
+<li><strong>The blanket</strong> is a wider bell from the shoulders past the pelvis.</li>
+</ul>
+<pre><code class="language-python">def skirt(mat, length=1.0, rtop=0.088, rbot=0.105, fringe=True):
+    # the hem hangs from the knees (or over the thighs when sitting)
+    hem = waist + (knee_mid - waist) * length + v3(0, -0.04 * length, 0)
+    spread = np.linalg.norm((J['knL'] - J['knR'])[[0, 2]]) * 0.5
+    add(waist, hem, rtop * st, max(rbot * st, spread + 0.05 * st), mat, prof='lin', caps=False,
+        tag='skirt', zb=0.8, minw=MW(0.7, 0.35),
+        pattern=(lambda tc, xs, ys: np.where(tc &lt; 0.07, 2.0, 1.0)) if fringe else None,
+        hem=0.12 if fringe else 0.0)
+
+def cape(mat, length=1.0, r1=0.19, tag='cape', pattern=None, hem=0.1):
+    top = J['neck'] - up * 0.005
+    bot = J['pelvis'] + up * (0.02 + (1 - length) * 0.25) - up * max(0, length - 1) * 0.45
+    add(top, bot, 0.07 * st, r1 * st, mat, prof='bell', caps=False, tag=tag, pattern=pattern or twine,
+        zb=0.8, minw=MW(0.9, 0.2), hem=hem)
+</code></pre>
+<p>Three details matter:</p>
+<ul>
+<li><strong><code>zb=0.8</code></strong>, a depth bias. Without it, a leg or arm inside the skirt sometimes won the z-test, and at 6 px the whole woman was hair and one arm (<a href="01-draw-at-size.html#a-debug-that-earns-its-keep-who-won-each-pixel">how-to 1</a>).</li>
+<li><strong><code>caps=False</code>.</strong> The garment ends flat at the waist and hem instead of rounding into a sausage.</li>
+<li><strong><code>hem</code>, the fringe.</strong> Shredded bark and twined capes don't end in a straight line, so the rasterizer cuts each screen column at its own length near the far end of the capsule:</li>
+</ul>
+<p><code>python
+  if prim.hem &gt; 0:
+      # a fringed / ragged hem: each screen column ends at its own length near the far end
+      u = ((xs * 2654435761) % 1000) / 1000.0
+      u2 = (((xs + 17) * 40503) % 997) / 997.0
+      cut = 1.0 - prim.hem * (0.5 * u + 0.5 * u2)
+      inside &amp;= t &lt;= cut + 0.02</code></p>
+<p>The cut is a hash of the column, so the fringe stays put as the figure moves; a random fringe boiled.</p>
+<h2>Texture inside the mass, as pattern codes</h2>
+<p>Each garment can write a small integer per pixel (<code>cv.pat</code>) that the shader reads as a step offset or a material swap:</p>
+<table>
+<thead>
+<tr>
+<th>code</th>
+<th>meaning</th>
+<th>where</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>fringe strands: every third column one step down</td>
+<td>skirt, cape, shirt hems</td>
+</tr>
+<tr>
+<td>2</td>
+<td>waistband one step down, or the black band on wool</td>
+<td>skirt top; blanket hem</td>
+</tr>
+<tr>
+<td>3</td>
+<td>vertical folds one step down</td>
+<td>wool blanket</td>
+</tr>
+<tr>
+<td>4</td>
+<td>twining rows one step down</td>
+<td>cape, ≥ 40 px only</td>
+</tr>
+<tr>
+<td>5</td>
+<td>fur: scattered lit hair tips and dark tufts</td>
+<td>fur robes, child's robe, ≥ 18 px</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">wool = mat == M['WOOL']
+mat = np.where(wool &amp; (pat &gt; 0.5) &amp; (pat &lt; 1.5), M['BAND'], mat)     # alder-red band
+mat = np.where(wool &amp; (pat &gt; 1.5) &amp; (pat &lt; 2.5), M['DARKB'], mat)    # black band
+step = np.where(wool &amp; (pat &gt; 2.5), step - 1, step)                  # vertical folds
+furh = ((xs * 73856093) ^ (ys * 19349663) ^ (seed * 83492791)) % 9
+step = np.where((np.abs(pat - 5) &lt; 0.5) &amp; (furh == 0), step + 1, step)      # lit hair tips
+</code></pre>
+<p>Every one of them is gated by size. The twining rows first switched on at 20 px, and they turned the rain cape into a striped poncho. They now appear only at 40 px and above.</p>
+<p><img alt="garment textures" src="../img/nb098.png" /></p>
+<p><em>nb098. Rain gear, wool, fur, buckskin, a Plateau robe, a bark skirt at 32 px, 8×, after fringed hems and fur. (The twining rows in the cape here were later restricted to 40 px.)</em></p>
+<h2>Hats and props that the guide calls distinctive</h2>
+<ul>
+<li><strong>The rain hat</strong> is a flat disk (a primitive that draws a horizontal ellipse, half-height r · sin e plus a pixel) with a low cone crown and a dark knob. The guide calls the cape and hat "a cone on a cone", and it's the one figure that reads at every size, down to 6 px as a pale bar over a pale block.</li>
+<li><strong>The Plateau basket hat</strong> is a short open cylinder, "brimless, fez- or flower-pot-shaped", with one band.</li>
+<li><strong>The tumpline</strong> runs from the basket's rim over the top of the head, drawn <em>on</em> the hair (a depth bias of 3), in pale bark so it shows against black, ending in a band across the forehead. At first it ran through the hair sphere and was invisible.</li>
+<li><strong>The cradleboard</strong> is held across the body in both arms, with the baby's head at the top.</li>
+</ul>
+<p><img alt="sheet B" src="../img/study_B_age_sex_x_dress.png" /></p>
+<p><em>study. Sheet B, age and sex × dress at 24 px. Elders have grey hair and a stoop.</em></p>
+<h2>Where it falls short</h2>
+<ul>
+<li><strong>Bare children at 24 px are 1-px sticks</strong> (rows 5–7 above). A child needs a bigger head and a 2-px torso; the critic said so and it's the first thing I'd fix.</li>
+<li><strong>The rain hat's crown at 24 px</strong> can read as "a small cross or star on the head". The low cone and knob help but it's still fussy; one pixel of dark knob on a flat pale disk would be cleaner.</li>
+<li><strong>The buckskin shirt and leggings read as pale pyjamas.</strong> The sleeve fringe exists in the code but hardly shows.</li>
+<li><strong>The Plateau queues are invisible below 24 px.</strong></li>
+<li><strong>No reference ever showed these garments in motion.</strong> A licensed museum or tribal illustration of people wearing cedar-bark skirts and capes would be worth more than any photograph I found.</li>
+</ul></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 7</span><a href="../howto/01-draw-at-size.html">1. Draw at size: capsules, clean lines, and why not to shrink →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

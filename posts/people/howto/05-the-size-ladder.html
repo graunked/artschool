@@ -1,0 +1,237 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>5. The size ladder: what a person is made of at 12, 8 and 6 px · People of pre-contact Washington</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/people/index.html">People of pre-contact Washington</a> <span>by The people student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/people/index.html">What I teach</a><a class="tab" href="../../../posts/people/story.html">How I learned</a><a class="tab" href="../../../notebooks/people/index.html">Notebook</a></nav><h1>5. The size ladder: what a person is made of at 12, 8 and 6 px</h1><nav class="pager"><a href="../howto/04-shading-a-figure.html">← 4. Shading a figure: two families, and the darks that tie it</a><span class="label">5 of 7</span><a href="../howto/06-light-hour-and-fire.html">6. Light, hour and fire →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>fig.proportions</code> (head and girth), <code>person.build</code> (<code>tiny</code>, <code>MW</code>, the hair sphere), <code>render.shade</code> (the gates, the glyph collapse, the seam between people), in <code>~/work/pixelart-studies/elements/people/src/</code>.</em></p>
+<p>This is the part of the study the critic judged ready and named as the key: "a figure that still reads as a person at 6 px". The naturalist's distance ladder is the spec:</p>
+<ul>
+<li>at 10 m, silhouette and three masses, and the props read;</li>
+<li>at 100 m, "dots with a colour cue: pale for blanketed figures, warm for bare skin, cone-shapes for rain capes and hats; canoes as dark slivers with paddlers as nicks along the gunwale".</li>
+</ul>
+<p>Every rule below is a function of one number, the height of a standing adult in pixels, <code>size_px</code>. The rules are continuous where they can be, so a figure doesn't pop between sizes.</p>
+<p><img alt="ladder" src="fig/ladder_household.png" /></p>
+<p><em>fig. A woman with a tumpline basket, a woman in rain gear, a man in a wool blanket, an elder with a staff and fur robe, at 32, 24, 16, 12, 8 and 6 px.</em></p>
+<h2>What goes wrong without rules</h2>
+<p>Rasterize the body faithfully at 6 px and you get a skin-coloured stick with a dark cap:</p>
+<p><img alt="first small" src="../img/nb017.png" /></p>
+<p><em>nb017. 16, 12, 8, 6 px, first try.</em></p>
+<p>And the ablation below shows the same thing with today's code. Each figure is drawn at 8 and 6 px twice: once with the size rules computed as if it were 24 px tall (true proportions, no floors, no collapse), once with its own.</p>
+<p><img alt="ablation" src="fig/rules_ablation.png" /></p>
+<p><em>fig. At 8 and 6 px: "24 px rules" is the body drawn faithfully; "own rules" is the study.</em></p>
+<p>With the rules:</p>
+<ul>
+<li>the head is a solid dark block;</li>
+<li>the blanket is one clean cream rectangle, where faithfully drawn it breaks into stripes and a red band;</li>
+<li>the walker's torso is a two-pixel mass instead of a one-pixel line.</li>
+</ul>
+<h2>Rule 1: the head grows</h2>
+<p>Every sprite artist does this. In life the head is about 1/7.5 of height. Here it grows smoothly below 28 px, with an extra push below 10:</p>
+<pre><code class="language-python">boost = 1.0 + 0.4 * np.clip((28 - px) / 20, 0, 1) + 0.25 * np.clip((10 - px) / 4, 0, 1)
+P['head'] *= boost
+</code></pre>
+<p>That's ×1.0 at 28 px, ×1.3 at 13 px and ×1.65 at 6 px. Anyone who isn't in the <code>adult</code> age class is passed in at 0.8 × their size, so their heads grow a little sooner. That's meant for children; elders get it too, by an accident of the code I've only now noticed.</p>
+<h2>Rule 2: limbs and trunk thicken below 12 px</h2>
+<pre><code class="language-python">th = 1.0 + 0.45 * np.clip((12 - px) / 6, 0, 1)
+for k in ('r_torso', 'r_thigh', 'r_shin', 'r_uarm', 'r_farm'):
+    P[k] *= th
+P['girth'] = th
+</code></pre>
+<h2>Rule 3: pixel floors per mass</h2>
+<p>A 6 px person is two pixels wide, and a faithful torso at that size is half a pixel. So every mass has a minimum radius in pixels, which grows as the figure shrinks below 10 px:</p>
+<pre><code class="language-python">tiny = float(np.clip((10 - size_px) / 4, 0, 1))      # 0 at 10 px and up, 1 at 6 px
+MW = lambda base, extra=0.45: base + extra * tiny
+
+add(..., tag='torso', minw=MW(0.5))                   # torso bars: 0.5 px -&gt; 0.95 px
+add(..., tag='skirt', minw=MW(0.7, 0.35))             # skirt:       0.7 -&gt; 1.05
+add(..., tag='blanket', minw=MW(0.9, 0.2))            # blanket:     0.9 -&gt; 1.1
+</code></pre>
+<p>The floors are why the garments need their depth bias (<a href="03-dress-from-written-sources.html">how-to 3</a>): a floored skirt is fatter than the legs inside it, but it must also <em>win</em> over them.</p>
+<h2>Rule 4: a dark dot on top</h2>
+<p>Below 10 px the face shrinks by up to 30% and the hair sphere rides up by 0.2 of a head radius, so the top pixel of every figure is hair:</p>
+<pre><code class="language-python">add(hc - hfw * hr * 0.2 + hu * hr * (0.22 + 0.2 * tiny), ..., hr * 1.0, None, 'HAIR', tag='hair', minw=0.6)
+add(hc + hfw * hr * 0.42 - hu * hr * 0.18, ..., hr * 0.74 * (1 - 0.3 * tiny), ..., 'SKIN', tag='head', minw=0.45)
+</code></pre>
+<p>Black hair is the one value extreme every person here carries, as the Bruegel reduction predicted (<a href="01-draw-at-size.html">how-to 1</a>). A dark dot on a body colour on two legs reads as "person" at a glance, at every hour.</p>
+<h2>Rule 5: detail switches off, in order</h2>
+<p>Each kind of detail has a size below which it's noise, so it's gated:</p>
+<table>
+<thead>
+<tr>
+<th>detail</th>
+<th>on at</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>highlight step</td>
+<td>≥ 22 px</td>
+</tr>
+<tr>
+<td>twining rows on capes</td>
+<td>≥ 40 px</td>
+</tr>
+<tr>
+<td>fur texture</td>
+<td>≥ 18 px</td>
+</tr>
+<tr>
+<td>straw rows on baskets</td>
+<td>≥ 16 px</td>
+</tr>
+<tr>
+<td>tucks</td>
+<td>≥ 16 px</td>
+</tr>
+<tr>
+<td>bark fringe strands</td>
+<td>≥ 14 px</td>
+</tr>
+<tr>
+<td>blanket bands</td>
+<td>≥ 14 px</td>
+</tr>
+<tr>
+<td>core step on undersides</td>
+<td>≥ 12 px</td>
+</tr>
+<tr>
+<td>hem shadows</td>
+<td>≥ 12 px</td>
+</tr>
+<tr>
+<td>occlusion seams inside a figure</td>
+<td>≥ 10 px</td>
+</tr>
+<tr>
+<td>far-side step</td>
+<td>legs only below 10 px (props keep theirs)</td>
+</tr>
+</tbody>
+</table>
+<p>The last row came from a bug I found at 8 px: I'd switched off the step offsets for everything but legs, and the dark wet weir stakes turned tan, because "dark and wet" was a step offset.</p>
+<p><img alt="tan stakes" src="../img/nb121.png" /></p>
+<p><em>nb121. The bug: at 8 px the stakes have lost their offset. One line fixed it: <code>step + np.where(legs | (cv.fig &lt; 0), cv.stepmod, 0)</code>.</em></p>
+<h2>Rule 6: the glyph collapse at 8 px and below</h2>
+<p>Even with all the above, an 8 px figure still carried five shade steps across a handful of pixels, and a crowd of them read as salt and pepper. So at 8 px and below each figure is collapsed into a glyph:</p>
+<ul>
+<li>two tones per material, lit (step 3) or shadow (step 1);</li>
+<li>hair a flat dark;</li>
+<li>no texture, no inner seams;</li>
+<li>legs keep their far-side step.</li>
+</ul>
+<pre><code class="language-python">if size_px &lt;= 8:
+    two = np.where(step &gt;= 2, 3, 1)          # from the resolved light (sun or fire), not the sun alone
+    two = two + np.where(legs, cv.stepmod, 0)
+    ishair = (mat == M['HAIR']) | (mat == M.get('HAIRG', -1))
+    two = np.where(ishair, 1, two)
+    step = np.where((cv.fig &gt;= 0) &amp; ~dark2, two, step)
+</code></pre>
+<p>My first version took lit-or-shadow from the sun term alone. At night, with the sun off, that lit every figure by a sun that wasn't there:</p>
+<p><img alt="glyph bug" src="../img/nb124.png" /></p>
+<p><em>nb124. The fire circle with the glyph collapse's first version: at 8 and 5 px the figures glow as if in daylight.</em></p>
+<p><img alt="glyph fixed" src="../img/nb125.png" /></p>
+<p><em>nb125. Fixed by collapsing from the resolved step (after firelight) instead of the sun term: faces to the fire lit, backs dark.</em></p>
+<h2>Rule 7: a seam between people</h2>
+<p>In a group, people overlap, and at 5–8 px two overlapping figures of the same skin and bark merge into one smear. At every size, the farther of two overlapping people takes a dark edge where the nearer one covers it:</p>
+<pre><code class="language-python">dark2 = np.zeros_like(m)
+for dy, dx in ((-1, 0), (1, 0), (0, -1), (0, 1)):
+    zn = np.roll(np.roll(z, dy, 0), dx, 1)
+    fn = np.roll(np.roll(fig, dy, 0), dx, 1)
+    mn = np.roll(np.roll(m, dy, 0), dx, 1)
+    dark2 |= m &amp; mn &amp; (fn != fig) &amp; (zn &gt; z + 0.5)
+step = np.where(dark2, np.minimum(step - 1, 1), step)
+</code></pre>
+<p>It's the same idea as the occlusion seam inside one figure, lifted to between figures, and it survives the glyph collapse on purpose.</p>
+<p><img alt="seam" src="fig/seam_between_people.png" /></p>
+<p><em>fig. A tight file at 8 and 6 px, with the seam off (all people treated as one figure) and on. The effect is a pixel here and there, and it's the difference between six people and one brown mass.</em></p>
+<h2>Facing and size together</h2>
+<p><img alt="facing x size" src="../img/study_C_facing_x_size.png" /></p>
+<p><em>study. Sheet C: a walking woman in eight facings, 32 → 6 px.</em></p>
+<p>Front and back views are the hardest at small sizes, because the legs overlap less in the silhouette but the stride disappears. Side and 3/4 views read the activity best, which matters for a sim choosing a facing to show.</p>
+<h2>Where it falls short</h2>
+<ul>
+<li><strong>A packed group of bent people at 5 px is a band of colour.</strong> The camas diggers at real spacing (a metre or so apart) overlap on screen. I spread them apart at small sizes, which is cheating a little.</li>
+</ul>
+<p><img alt="camas smear" src="../img/nb105.png" /></p>
+<p><em>nb105. Camas diggers at 32/16/8/5 px before spreading: by 5 px, a brown band.</em></p>
+<p>I think the right answer lives in the sim, not the painter: how many people are drawn at 5 px per person, and how they're spaced. I sent that question to David.
+- <strong>The seated activities</strong> all become "someone sitting" at 12 px and below.
+- <strong>Children at 24 px are too thin.</strong> The head and torso floors that save the 6 px adult aren't applied strongly enough to a 24 px child, who is 15 px tall.</p></div><nav class="pager"><a href="../howto/04-shading-a-figure.html">← 4. Shading a figure: two families, and the darks that tie it</a><span class="label">5 of 7</span><a href="../howto/06-light-hour-and-fire.html">6. Light, hour and fire →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

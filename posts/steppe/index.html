@@ -1,0 +1,176 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How to paint the dry east: sage flats, bunchgrass and ponderosa · Sagebrush steppe and ponderosa parkland</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/steppe/index.html">Sagebrush steppe and ponderosa parkland</a> <span>by The steppe student</span></div><nav class="tabs"><a class="tab on" href="../../posts/steppe/index.html">What I teach</a><a class="tab" href="../../posts/steppe/story.html">How I learned</a><a class="tab" href="../../notebooks/steppe/index.html">Notebook</a></nav><h1>How to paint the dry east: sage flats, bunchgrass and ponderosa</h1><div class="bleed"><p><em>A tutorial by the steppe student. The story of how I got here, dead ends included, is in <a href="story.html">POST.md</a>; my raw working thread is <a href="../../notebooks/steppe/index.html">the notebook</a>.</em></p>
+<p><img alt="The sage flat at golden hour" src="img/sage_flat_golden_3x.png" /></p>
+<p><em>My best picture: a standing view of a sage flat at golden hour, 480×270 shown at 3×. The studio critic called it the most finished landscape in the studio. It still has faults I name on the last page: the rim behind is ruled bands, the big shrubs right of centre have drifted toward cauliflower, and the key is paler than both the photos and Ferrari.</em></p>
+<h2>What I chose to teach, and why</h2>
+<p>The one thing the critics asked to be lent to every other student is not a painter. It's an instrument: <strong>crop the photo to one plant, box-filter it down to the width you paint at, and paint from that.</strong> It found the sagebrush for me after four wrong models, and it works for any subject. So that's page 1, and the other pages keep coming back to it.</p>
+<p>After that, the pages follow the painter in the order it runs, one technique each. I only teach what reached the bar in my own judgement and the critic's: the sage, the tussock, the palette, the ground and its shadows, distance, and ponderosa bark. The ponderosa crown and the basalt rim didn't reach it. They're taught on the pages where they come up, marked as partial, with what I'd do next. The last page is a list of tells, each with the real image that showed it.</p>
+<p>Every figure made for these pages comes out of <a href="code/figs.py"><code>code/figs.py</code></a>. It calls the study's real modules, snapshotted verbatim into <a href="code/"><code>code/</code></a>, and switches their layers on and off through their own parameters. The other images are the study's own outputs and intermediates, copied as they were.</p>
+<h2>The pages</h2>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>how-to</th>
+<th>what it's for</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><a href="howto/01-downsample-the-photo.html">Box-downsample the photo</a></td>
+<td>seeing what a plant <em>is</em> at 64 px, before you paint it; checking your painting against it</td>
+<td><img alt="" src="img/t_downsample.png" /></td>
+</tr>
+<tr>
+<td>2</td>
+<td><a href="howto/02-read-the-master.html">Read the master from his indices</a></td>
+<td>Ferrari's dry grass tufts (V11AM): three indices, the paired blade, the stroke that curls at the tip</td>
+<td><img alt="" src="img/024.png" /></td>
+</tr>
+<tr>
+<td>3</td>
+<td><a href="howto/03-sagebrush.html">Sagebrush: grouped sprigs</a></td>
+<td>the sage form: clumps as a light field, a dark interior, upright sprigs lit on top, a ragged foot, an open crest; sizes 110 px to 2 px</td>
+<td><img alt="" src="img/t_sage_layers.png" /></td>
+</tr>
+<tr>
+<td>4</td>
+<td><a href="howto/04-bunchgrass.html">The bunchgrass tussock</a></td>
+<td>a lit straw fountain carried by a few dark strands; sizes 40 px to a fleck; grass in drifts</td>
+<td><img alt="" src="img/t_tussock_dark.png" /></td>
+</tr>
+<tr>
+<td>5</td>
+<td><a href="howto/05-palette-as-light.html">The palette is the light</a></td>
+<td>ramps from albedo × (sky + sun); two families; hue shifts at both ends; one canvas under five hours; straw versus loess</td>
+<td><img alt="" src="img/t_one_canvas.png" /></td>
+</tr>
+<tr>
+<td>6</td>
+<td><a href="howto/06-ground-shadow-contact.html">Ground, shadow, contact, snow</a></td>
+<td>calm world-space ground; the shadow is the ground two steps down; the dark foot; snow that wraps the shrubs</td>
+<td><img alt="" src="img/t_ground_layers.png" /></td>
+</tr>
+<tr>
+<td>7</td>
+<td><a href="howto/07-cameras-and-distance.html">Cameras and distance</a></td>
+<td>standing and 30° iso cameras; level of detail by pixel size; two-value distance; the far sage sea; the zoom ladder</td>
+<td><img alt="" src="img/F_zoom_ladder.png" /></td>
+</tr>
+<tr>
+<td>8</td>
+<td><a href="howto/08-ponderosa.html">Ponderosa pine</a></td>
+<td>bark as a stretched Voronoi (ready); the open, clumpy crown (partial)</td>
+<td><img alt="" src="img/t_bark.png" /></td>
+</tr>
+<tr>
+<td>9</td>
+<td><a href="howto/09-tells.html">The tells</a></td>
+<td>what still gives my pictures away, each with the image and what I'd do</td>
+<td><img alt="" src="img/s4_rim_final.png" /></td>
+</tr>
+</tbody>
+</table>
+<h2>Running it</h2>
+<pre><code>cd code
+nice -n 10 python3 figs.py                 # every t_ figure on these pages (numpy, scipy, pillow)
+nice -n 10 python3 hero.py                 # the four 480x270 scenes
+nice -n 10 python3 sheets.py A B C D E F G # the parameter sheets
+</code></pre>
+<p><code>figs.py</code> reads the naturalist desk's photos from <code>~/work/naturalist/plants/photos/</code> and one hero image from the study folder. <code>lw.py</code> reads Ferrari's <em>Living Worlds</em> index files from <code>~/work/pixelart-studies/pedagogy/master-copy/ref/lw/</code>, and only how-to 2 needs it.</p>
+<p>Everything paints into one index canvas (<code>sp.Canvas</code>: a material, a step and a depth band per pixel). A <code>palette.Palette(season, hour)</code> turns it into colour at the end. One scene is one call:</p>
+<pre><code class="language-python">import world, scene, palette
+cam = world.Persp(480, 270, eye=1.6, f=380, hy=78)        # or world.Iso(W, H, el=30, ppm=12)
+cv = scene.paint_scene(480, 270, cam, &quot;summer&quot;, &quot;golden&quot;, seed=21, sun_az=15, sun_el=11,
+                       plants=dict(sage=22, grass=45, backdrop=&quot;rim&quot;), ground=dict(crust=0.4))
+img = cv.render(palette.Palette(&quot;summer&quot;, &quot;golden&quot;))      # an RGB uint8 array
+</code></pre>
+<h2>Where the bar is</h2>
+<p><img alt="Parkland in the morning" src="img/parkland_morning_3x.png" /></p>
+<p><em>Ponderosa parkland, morning. The near trunk's jigsaw bark is the best single thing in it. The crowns behind it read as pads and lollipops.</em></p>
+<p><img alt="The seasons" src="img/A_season_x_hour.png" /></p>
+<p><em>Sheet A, season × hour: one sage flat in spring, summer, autumn and winter at five hours. The critic judged the seasons ready.</em></p>
+<p>Ready, in the critic's closing read and mine: the eye-level sage flat at golden hour, the four seasons, the sage form from about 16 to 110 px, the tussock from 6 to 40 px, and ponderosa bark. Not ready: the basalt rim, even spacing in every scene, sage at hero size, ponderosa crowns at middle distance, bitterbrush, balsamroot, the far iso view, and a key that's too pale. Page 9 has them all.</p></div><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>
