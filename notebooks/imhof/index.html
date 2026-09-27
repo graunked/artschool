@@ -1138,7 +1138,7 @@ python3 code/contact.py 0 100 sheets/_contact_000.png; ls pages | wc -l
 from PIL import Image
 im=Image.open(&#x27;pages/p-070.png&#x27;).convert(&#x27;L&#x27;); print(im.size)
 im.crop((200,300,1000,1100)).save(&#x27;(tmp))
-&quot;; mkdir -p /tmp/claude-501; ls (tmp)
+&quot;; mkdir -p (tmp); ls (tmp)
 
 # output:
 (2039, 3381)
@@ -1263,7 +1263,7 @@ g) Colors of spot heightsand depths ....... 0.0... 0. e ccc cece eee 100
 === 009
 XI Table of Contents
 
-11. Assigning height value</pre></details><details class="step"><summary><code>Bash: cd /tmp/claude-501; curl -s -o t.png -w &quot;%{http_code} %{content_type}\n&quot; &quot;https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/14/8580/5780.jpeg&quot;; fil</code></summary><pre>cd /tmp/claude-501; curl -s -o t.png -w &quot;%{http_code} %{content_type}\n&quot; &quot;https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/14/8580/5780.jpeg&quot;; file t.png
+11. Assigning height value</pre></details><details class="step"><summary><code>Bash: cd (tmp); curl -s -o t.png -w &quot;%{http_code} %{content_type}\n&quot; &quot;https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/14/8580/5780.jpeg&quot;; fil</code></summary><pre>cd (tmp); curl -s -o t.png -w &quot;%{http_code} %{content_type}\n&quot; &quot;https://wmts.geo.admin.ch/1.0.0/ch.swisstopo.pixelkarte-farbe/default/current/3857/14/8580/5780.jpeg&quot;; file t.png
 
 # output:
 200 image/jpeg
@@ -1290,7 +1290,7 @@ t.png: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment l
 27: Historical Developments 9  Let us turn again to the cartographic forms of terrai
 28: 
 29: 
-30:</pre></details><details class="step"><summary><code>Bash: cd /tmp/claude-501; curl -s &quot;https://data.geo.admin.ch/api/stac/v0.9/collections/ch.swisstopo.swissalti3d/items?bbox=8.00,46.57,8.01,46.58&amp;limit=5&quot; | python3 -c &quot; import json,sys; </code></summary><pre>cd /tmp/claude-501; curl -s &quot;https://data.geo.admin.ch/api/stac/v0.9/collections/ch.swisstopo.swissalti3d/items?bbox=8.00,46.57,8.01,46.58&amp;limit=5&quot; | python3 -c &quot;
+30:</pre></details><details class="step"><summary><code>Bash: cd (tmp); curl -s &quot;https://data.geo.admin.ch/api/stac/v0.9/collections/ch.swisstopo.swissalti3d/items?bbox=8.00,46.57,8.01,46.58&amp;limit=5&quot; | python3 -c &quot; import json,sys; </code></summary><pre>cd (tmp); curl -s &quot;https://data.geo.admin.ch/api/stac/v0.9/collections/ch.swisstopo.swissalti3d/items?bbox=8.00,46.57,8.01,46.58&amp;limit=5&quot; | python3 -c &quot;
 import json,sys; d=json.load(sys.stdin)
 for f in d[&#x27;features&#x27;]:
   print(f[&#x27;id&#x27;]); [print(&#x27;  &#x27;,k, v[&#x27;href&#x27;]) for k,v in f[&#x27;assets&#x27;].items() if &#x27;_2_&#x27; in k or k.endswith(&#x27;2_2056_5728.tif&#x27;)]
@@ -1311,7 +1311,7 @@ swissalti3d_2024_2643-1158
    swissalti3d_2024_2643-1158_2_2056_5728.xyz.zip https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2024_2643-1158/swissalti3d_2024_2643-1158_2_2056_5728.xyz.zip
 swissalti3d_2025_2643-1157
    swissalti3d_2025_2643-1157_2_2056_5728.tif https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2643-1157/swissalti3d_2025_2643-1157_2_2056_5728.tif
-   swissalti3d_2025_2643-1157_2_2056_5728.xyz.zip https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2643-1157/swissalti3d_2025_2643-1157_2_2056_5728.xyz.zip</pre></details><details class="step"><summary><code>Bash: cd /tmp/claude-501; curl -s &quot;https://wmts.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml&quot; -o caps.xml; ls -la caps.xml; python3 - &lt;&lt;&#x27;EOF&#x27; import re t=open(&#x27;(tmp)</code></summary><pre>cd /tmp/claude-501; curl -s &quot;https://wmts.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml&quot; -o caps.xml; ls -la caps.xml; python3 - &lt;&lt;&#x27;EOF&#x27;
+   swissalti3d_2025_2643-1157_2_2056_5728.xyz.zip https://data.geo.admin.ch/ch.swisstopo.swissalti3d/swissalti3d_2025_2643-1157/swissalti3d_2025_2643-1157_2_2056_5728.xyz.zip</pre></details><details class="step"><summary><code>Bash: cd (tmp); curl -s &quot;https://wmts.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml&quot; -o caps.xml; ls -la caps.xml; python3 - &lt;&lt;&#x27;EOF&#x27; import re t=open(&#x27;(tmp)</code></summary><pre>cd (tmp); curl -s &quot;https://wmts.geo.admin.ch/EPSG/2056/1.0.0/WMTSCapabilities.xml&quot; -o caps.xml; ls -la caps.xml; python3 - &lt;&lt;&#x27;EOF&#x27;
 import re
 t=open(&#x27;(tmp)).read()
 i=t.find(&#x27;&lt;TileMatrixSet&gt;&#x27;); 
@@ -3896,7 +3896,7 @@ CARGO_TARGET_DIR=~/work/voxsim/target-slide-shot. Logs in runs/slide/.
 ~/work/voxsim-wt/place-skykomish/renders/sky/i4s/i4_mt_index_low.png
 ~/work/voxsim-wt/place-skykomish/renders/sky/i4s/i4_river_low.png
 ~/work/voxsim-wt/place-skykomish/renders/sky/i4s/i4_bar_land.png
-~/work/voxsim-wt/place-skykomish/renders/sky/i4s/i4_summit_view.png</pre></details><details class="step"><summary><code>Bash: cd /tmp/claude-501; python3 -c &quot; from PIL import Image fs=[&#x27;~/work/voxsim-wt/place-enchant/renders/enchant/i2/u_region_iso.png&#x27;,&#x27;~/work/voxsim-wt/place-yakima/renders/y/p46/y2_hero</code></summary><pre>cd /tmp/claude-501; python3 -c &quot;
+~/work/voxsim-wt/place-skykomish/renders/sky/i4s/i4_summit_view.png</pre></details><details class="step"><summary><code>Bash: cd (tmp); python3 -c &quot; from PIL import Image fs=[&#x27;~/work/voxsim-wt/place-enchant/renders/enchant/i2/u_region_iso.png&#x27;,&#x27;~/work/voxsim-wt/place-yakima/renders/y/p46/y2_hero</code></summary><pre>cd (tmp); python3 -c &quot;
 from PIL import Image
 fs=[&#x27;~/work/voxsim-wt/place-enchant/renders/enchant/i2/u_region_iso.png&#x27;,&#x27;~/work/voxsim-wt/place-yakima/renders/y/p46/y2_hero_cliffband_eve.png&#x27;,&#x27;~/work/voxsim-wt/place-skykomish/renders/sky/i4u/i4_mt_index_far.png&#x27;,&#x27;~/work/voxsim-wt/place-skykomish/renders/sky/i4t/i4_townwall_from_s.png&#x27;]
 for f in fs: print(f, Image.open(f).size)
@@ -6615,7 +6615,7 @@ copy_161.png
 copy_165_r2.png
 copy_165_r4.png
 copy_178_12.png
-copy_178_15.png</pre></details><details class="step"><summary><code>Bash: cd /tmp/claude-501; python3 - &lt;&lt;&#x27;EOF&#x27; import re t=open(&#x27;caps.xml&#x27;).read() ids=set(re.findall(r&#x27;&lt;ows:Identifier&gt;(ch\.[^&lt;]*)&lt;/ows:Identifier&gt;&#x27;,t)) for i in sorted(ids):     if any(k </code></summary><pre>cd /tmp/claude-501; python3 - &lt;&lt;&#x27;EOF&#x27;
+copy_178_15.png</pre></details><details class="step"><summary><code>Bash: cd (tmp); python3 - &lt;&lt;&#x27;EOF&#x27; import re t=open(&#x27;caps.xml&#x27;).read() ids=set(re.findall(r&#x27;&lt;ows:Identifier&gt;(ch\.[^&lt;]*)&lt;/ows:Identifier&gt;&#x27;,t)) for i in sorted(ids):     if any(k </code></summary><pre>cd (tmp); python3 - &lt;&lt;&#x27;EOF&#x27;
 import re
 t=open(&#x27;caps.xml&#x27;).read()
 ids=set(re.findall(r&#x27;&lt;ows:Identifier&gt;(ch\.[^&lt;]*)&lt;/ows:Identifier&gt;&#x27;,t))
