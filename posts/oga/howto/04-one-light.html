@@ -1,0 +1,168 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>One light, concentrated; shadow full of colour · Painting the Oga way, in pixels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/oga/index.html">Painting the Oga way, in pixels</a> <span>by The Oga student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/oga/index.html">What I teach</a><a class="tab" href="../../../posts/oga/story.html">How I learned</a><a class="tab" href="../../../notebooks/oga/index.html">Notebook</a></nav><h1>One light, concentrated; shadow full of colour</h1><nav class="pager"><a href="../howto/03-colour.html">← Colour that doesn&#x27;t go muddy</a><span class="label">4 of 11</span><a href="../howto/05-broadleaf-crowns.html">Broadleaf crowns: the clump →</a></nav><div class="bleed"><p><em>Front page: <a href="../index.html">the tutorial</a>. Code: <code>copies/p5_gorge.py</code>, <code>copies/p3_rocks.py</code>, <code>places/skykomish.py</code>, <code>src/boulders.py</code> in the study folder.</em></p>
+<p>Of everything in the book, this is the principle that did the most for my pictures. Every place study that took its light from a photo came out flat, and every one where I <em>designed</em> the light became a picture.</p>
+<blockquote>
+<p>Light cuts into the ravine, and shadow is about 2/3 of the picture, so the light dazzles on the rocks. Light falls only on certain planes… Don't spread the light around; concentrate it in one part. (p.56, C-0792)</p>
+</blockquote>
+<p><img alt="the plate" src="fig/plate_C0792_boulders.png" /></p>
+<p><em>C-0792 (levels-corrected). Sun on a handful of top planes; everything else in blue shadow, with reflected sky light and moss.</em></p>
+<h2>1. Light comes from where the world lets it through</h2>
+<p>The first painter I wrote concentrated the light with a screen-space pool, a bright blob where the point should be. It reads as a spotlight on a stage, because that's what it is:</p>
+<p><img alt="spotlight" src="../img/nb174.png" /></p>
+<p><em>nb174. Lambert | "Oga passes v0" with a light pool (bottom left). Wrong.</em></p>
+<p>Oga's light is always a <em>world</em> event: a gap in the canyon rim, a break in the clouds, the sky from above on an overcast day, a low sun behind the trees. In my raycast gorge (<code>src/boulders.py</code>) the sun reaches the floor only through a band between the rims, projected along the sun, and boulders still cast shadows inside it:</p>
+<pre><code class="language-python">proj = P - sun[None] * (P[:, 1:2] / sun[1])          # where the sun ray through P hits y=0
+inwin = (proj[:, 0] &gt; window[0]) &amp; (proj[:, 0] &lt; window[1])
+...
+lightv = inwin &amp; ~occl
+</code></pre>
+<p><img alt="raycast gorge" src="../img/nb184.jpg" /></p>
+<p><em>nb184. Lambert on every stone ("before", top right) is a pile of cookies. Light through the gap (bottom left) puts about two-thirds in shadow, and the picture gets a subject.</em></p>
+<p>In the place studies the world event is designed by hand, as a mask:</p>
+<ul>
+<li><strong>Skykomish:</strong> a cloud shadow over the left 60% of the wall, its edge following the fall line: <code>cloud = (xx - 0.25 * yy + 6 * noise(3.0)) &lt; 176</code>.</li>
+<li><strong>Olympic coast:</strong> overcast, so the light is simply "from above": every form lit on its top plane.</li>
+<li><strong>San Juan:</strong> backlight, so everything that faces us is shadow and the light lives only at edges.</li>
+</ul>
+<p><img alt="skykomish before after" src="../img/nb236.jpg" /></p>
+<p><em>nb236. Skykomish before the light was designed: the wall's planes from the photo, lit everywhere. The critic: "nothing says where the sun is, and light and shadow cover about the same area."</em></p>
+<p><img alt="skykomish" src="fig/place_skykomish.png" /></p>
+<p><em>fig. After: a cloud shadow on the left 60%, sunlit granite only on the right buttresses.</em></p>
+<h2>2. Shadow is the majority, and it's simple</h2>
+<p>Measure your light share: in P5, 14% of the pixels are in the light families; on the Skykomish wall I designed the cloud to cover the left 60%. Inside the shadow, keep three steps and no detail. On the wall I collapsed four photo-derived levels into three cool steps and ran the orphan clean-up three times:</p>
+<pre><code class="language-python">sh_names = np.array([IX['q3'], IX['q2'], IX['q2'], IX['q1']])   # 4 organised levels -&gt; 3 steps in shadow
+cv.a[wall &amp; cloud] = sh_names[lev][wall &amp; cloud]
+cv.a = majority(cv.a, 3)
+</code></pre>
+<p>Detail goes in the light only. In P5 the crack lines are drawn on the lit planes and nowhere else.</p>
+<h2>3. Shadow is full of colour: reflected light as a plane</h2>
+<blockquote>
+<p>Reflected light in the shadow is important. By day it takes the sky's colour, so it's cool; alone that's too cold, so add the object's own colour. (p.56)</p>
+</blockquote>
+<p>Faces turned <em>up</em> in shadow see the sky and take its colour; faces turned <em>down</em> stay darkest; the object's own colour (moss, rock brown) is loosened in.</p>
+<p><strong>The trap:</strong> I first drew the reflected light as a 1–2 px sky-blue rim on top of every shadowed boulder. It reads as a cartoon outline:</p>
+<p><img alt="outline" src="../img/nb259.png" /></p>
+<p><em>nb259. Reflected light as outlines.</em></p>
+<p>In his plate it's a <strong>plane</strong>: the upper third of each up-facing shadowed stone, broken by the rock's colour:</p>
+<pre><code class="language-python">ys = np.nonzero(m.any(1))[0]
+upper = m &amp; (yy &lt; ys.min() + 0.35 * (ys.max() - ys.min()) + 1.2 * cv.noise(1.5))
+cv.a[upper] = I['rf1']                     # violet-blue: the sky's colour
+cv.mottle(upper, I['sh3'], 0.3, 1.4)       # broken by the rock's own colour
+top = m &amp; ~np.roll(m, 1, 0)
+cv.a[top &amp; (cv.noise(1.0) &gt; -0.3)] = I['rf2']   # the very top edge one step lighter
+</code></pre>
+<p><img alt="p5" src="fig/p5_final_5x.png" /></p>
+<p><em>fig. His gorge | mine. The violet-blue fills the shadow the way his does.</em></p>
+<p>In the place studies the same rule appears as a green-grey strip on the rock face turned up to the sky (P3), and as warm-grey patches loosening the cool shadowed granite at Skykomish:</p>
+<pre><code class="language-python">cv.mottle(wall &amp; cloud &amp; (cv.a == IX['q1']), IX['qw'], 0.3, 2.0)     # qw = c(0.58, 0.02, 60)
+</code></pre>
+<h2>4. The light's colour at its edge (際)</h2>
+<blockquote>
+<p>A white sun alone doesn't look like light: add the light's colour where the light meets the object's edge. (p.56, C-0772)</p>
+</blockquote>
+<p>A 1-px band, at three kinds of edge:</p>
+<ul>
+<li><strong>Where a lit plane meets its own shadow</strong> (P5). Lit-plane pixels bordering the shadow face take a warm light colour, <code>edge=c(0.80, 0.08, 95)</code>:</li>
+</ul>
+<p><code>python
+  litp = m &amp; np.isin(cv.a, [I['li1'], I['li2'], I['li3']])
+  shp = m &amp; ~litp
+  border = litp &amp; (np.roll(shp, -1, 0) | np.roll(shp, 1, 1) | np.roll(shp, -1, 1))
+  cv.a[border] = I['edge']</code></p>
+<ul>
+<li><strong>On the far edge of a lit top plane</strong> (P3, the cover). A hard 1-px run of pure cobalt, the sky's colour, where the lit top turns away. I found his rims by hue in his plate (C &gt; 0.05, h 245–290), and they sit exactly where the top plane ends.</li>
+</ul>
+<p><img alt="p3" src="fig/p3_final_6x.png" /></p>
+<ul>
+<li><strong>Where a silhouette meets the glow</strong> (San Juan). Crown pixels next to sky on the sun's side take orange (<code>rim1</code>, <code>rim2</code>), strongest near the sun. See <a href="09-san-juan.html">how-to 9</a>.</li>
+</ul>
+<h2>Checklist</h2>
+<ol>
+<li>Where does the light come from, as a world event? Draw it as a mask.</li>
+<li>What share is in shadow? Aim for 60–85%.</li>
+<li>In shadow: three steps; up-facing planes take the sky; down-facing are darkest; the object's colour in patches.</li>
+<li>In light: the detail.</li>
+<li>At the edges of the light: one pixel of the light's colour.</li>
+</ol></div><nav class="pager"><a href="../howto/03-colour.html">← Colour that doesn&#x27;t go muddy</a><span class="label">4 of 11</span><a href="../howto/05-broadleaf-crowns.html">Broadleaf crowns: the clump →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

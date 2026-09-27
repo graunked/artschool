@@ -1,0 +1,165 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Broadleaf crowns: the clump · Painting the Oga way, in pixels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/oga/index.html">Painting the Oga way, in pixels</a> <span>by The Oga student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/oga/index.html">What I teach</a><a class="tab" href="../../../posts/oga/story.html">How I learned</a><a class="tab" href="../../../notebooks/oga/index.html">Notebook</a></nav><h1>Broadleaf crowns: the clump</h1><nav class="pager"><a href="../howto/04-one-light.html">← One light, concentrated; shadow full of colour</a><span class="label">5 of 11</span><a href="../howto/06-conifers-and-far-ridges.html">Conifers and far ridges: the staggered brush →</a></nav><div class="bleed"><p><em>Front page: <a href="../index.html">the tutorial</a>. Code: <code>copies/p1_foliage.py</code> (v2; v1 is kept as <code>copies/p1_foliage_v1.py</code>), <code>src/vocab.py</code> <code>clump</code>, <code>clump_mass</code>.</em></p>
+<p>P1 is a 72×60 crop of C-0007's right side (p.60): broadleaf crowns on a slope seen from slightly above, lit from the upper right, with deep holes between them and a small stippled bush as the point.</p>
+<p><img alt="his crowns" src="../img/nb207.png" /></p>
+<p><em>nb207. His crowns, area-reduced to 72 px, at 8×. Rounded clumps lit warm on top, near-black olive in the holes, and in the dark mass on the right, dim clumps one value above the hole.</em></p>
+<h2>Stage 1: the notan, organised</h2>
+<p>Three values from his brightness, smoothed a pixel so they stay shapes, with the orphans cleaned up. About half the area is hole:</p>
+<pre><code class="language-python">Ls = gaussian_filter(L, 1.0)
+q = np.quantile(Ls, [0.45, 0.72])
+cv.a[:] = np.where(Ls &lt; q[0], I['hole'], np.where(Ls &lt; q[1], I['dim2'], I['mid2']))
+meadow = gaussian_filter(((hue &lt; 122) &amp; (L &gt; 0.55)).astype(float), 1.5) &gt; 0.55
+cv.a[meadow] = I['mead']
+cv.a = majority(cv.a, 2)
+</code></pre>
+<p>This alone is very Oga: masses readable "by silhouette alone" (p.47). It's the ground stage, and it's his layout by carbon transfer (<a href="02-copying-a-passage.html">how-to 2</a>). The rest is mine.</p>
+<h2>Four wrong marks</h2>
+<p>Each read as a <em>texture</em> and not as leaves:</p>
+<p><img alt="plates" src="../img/nb208.png" /></p>
+<p><em>nb208. Flat lit "plates" with serrated tops stamped at his bright points: mushrooms in rows.</em></p>
+<p><img alt="sheets and edges" src="../img/nb210.png" /></p>
+<p><em>nb210. Lit sheets with "leafy edges": teeth hanging below, a lip on every top edge. Everything got a halo.</em></p>
+<p><img alt="watershed" src="../img/nb214.png" /></p>
+<p><em>nb214. Watershed "members", each crown lit on its sun side, rounded and swelled. At 1× it read as trees for the first time; at 8× it's Voronoi polygons with sawtooth edges.</em></p>
+<p>The cold critic's read: "sawtooth scales, like feathers or fern fronds … one cool green family, no warm end and no deep end … the dark block is flat, dead fill; his dark still holds dim clumps."</p>
+<h2>The mark: a rounded clump at four light levels</h2>
+<p>One mark, drawn the way a brush tip would lay a leaf cluster. It's a slightly wide lumpy ellipse (3 and 5 lobes). Pixels facing the sun (upper right) near the rim take the <strong>cap</strong>, pixels at the lower left near the rim take the <strong>crescent</strong> (where the clump tucks under the next one), and the rest is <strong>body</strong>:</p>
+<pre><code class="language-python">def clump(cv, x, y, r, level, seed=0):
+    &quot;&quot;&quot;a rounded leaf-clump. r in px (1.5-3). Light from the upper right.&quot;&quot;&quot;
+    cap, body, cres = (cv_index(cv, k) for k in LEVELS[level])
+    rr = np.random.default_rng(abs(int(seed)))
+    R = int(np.ceil(r)) + 2
+    tilt = rr.uniform(-0.25, 0.25)
+    for dy in range(-R, R + 1):
+        for dx in range(-R, R + 1):
+            u, v = dx * np.cos(tilt) + dy * np.sin(tilt), -dx * np.sin(tilt) + dy * np.cos(tilt)
+            ang = np.arctan2(v, u)
+            rad = r * (1 + 0.18 * np.cos(3 * ang + seed) + 0.1 * np.cos(5 * ang + 2 * seed))
+            d = np.hypot(u / 1.2, v) / rad
+            if d &gt; 1:
+                continue
+            s = (dx * 0.6 - dy * 0.8) / (r + 1e-6)          # toward the sun
+            idx = body
+            if s &gt; 0.5 and d &gt; 0.45:
+                idx = cap
+            elif s &lt; -0.45 and d &gt; 0.6:
+                idx = cres
+            cv.put(x + dx, y + dy, idx)
+</code></pre>
+<p>The four levels are four (cap, body, crescent) triplets, each one family down from the last. <strong>Dim</strong> clumps sit in the holes so the dark mass still holds life:</p>
+<pre><code class="language-python">LEVELS = {  # (cap, body, crescent)
+    'lit+': ('lit3', 'lit2', 'mid1'), 'lit': ('lit2', 'lit1', 'mid1'),
+    'mid':  ('lit1', 'mid2', 'dim2'), 'dim': ('mid1', 'dim2', 'hole'),
+}
+</code></pre>
+<h2>Organising the crowd</h2>
+<p>The clumps sit on a jittered 4-px grid with alternate rows offset, painted <strong>far (top) to near (bottom)</strong> so nearer clumps overlap farther ones. Size grows toward the viewer. His organised brightness at each clump picks the level. In the darkest 30% only a third of the clumps are drawn, so holes stay holes:</p>
+<pre><code class="language-python">qd, qm, ql, qp = np.quantile(Ls[~meadow], [0.30, 0.52, 0.72, 0.9])
+for (x, y) in pts:                       # sorted by y
+    v = Ls[yi, xi]
+    if v &lt; qd:
+        if r.uniform() &lt; 0.35:
+            clump(cv, x, y, 2.0, 'dim', ...)
+        continue
+    level = 'dim' if v &lt; qm else ('mid' if v &lt; ql else ('lit' if v &lt; qp else 'lit+'))
+    rad = 2.2 + 1.4 * (y / H) + (0.4 if level.startswith('lit') else 0)
+    clump(cv, x, y, rad, level, ...)
+</code></pre>
+<p>Finally the point: sunflecks only where his plate is yellow <em>and</em> my clump is lit.</p>
+<p><img alt="detail" src="fig/p1_detail_8x.png" /></p>
+<p><em>fig. His crowns | mine, 10×.</em></p>
+<p><img alt="at size" src="fig/p1_foliage_2x.png" /></p>
+<p><em>fig. At 2× and 1×.</em></p>
+<h2>Colour trap</h2>
+<p>My first v2 palette went ochre-yellow in the lights, overdoing "no warm end" (nb224). His lights are fresh mid-green, and yellow belongs only to the hot spots. The final lights are h 116–130, chroma rising with value (<a href="03-colour.html">how-to 3</a>).</p>
+<h2>Reusing it</h2>
+<p><code>src/vocab.py</code> has the same mark with named palette slots, and <code>clump_mass(cv, mask, ix, light, levels, r_range, step, hole)</code> does the grid, the ordering and the dim-in-holes rule for any mask and any light field. I used it for:</p>
+<ul>
+<li>the Skykomish maple, mostly in shadow;</li>
+<li>the larch band at Enchantments (small radius, gold palette);</li>
+<li>the Yakima willows, as tall clumps (two stacked, lit from the upper left, with stem gaps every third column);</li>
+<li>the coast's salal band;</li>
+<li>the lumps of the driftwood root, where it failed (<a href="11-where-it-breaks.html">how-to 11</a>).</li>
+</ul></div><nav class="pager"><a href="../howto/04-one-light.html">← One light, concentrated; shadow full of colour</a><span class="label">5 of 11</span><a href="../howto/06-conifers-and-far-ridges.html">Conifers and far ridges: the staggered brush →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

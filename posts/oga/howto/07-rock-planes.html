@@ -1,0 +1,163 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Rock: planes decided by lines · Painting the Oga way, in pixels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/oga/index.html">Painting the Oga way, in pixels</a> <span>by The Oga student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/oga/index.html">What I teach</a><a class="tab" href="../../../posts/oga/story.html">How I learned</a><a class="tab" href="../../../notebooks/oga/index.html">Notebook</a></nav><h1>Rock: planes decided by lines</h1><nav class="pager"><a href="../howto/06-conifers-and-far-ridges.html">← Conifers and far ridges: the staggered brush</a><span class="label">7 of 11</span><a href="../howto/08-the-grass-plane.html">Grass: a plane first, then the strokes →</a></nav><div class="bleed"><p><em>Front page: <a href="../index.html">the tutorial</a>. Code: <code>copies/p3_rocks.py</code>, <code>src/vocab.py</code> <code>facet_rock</code>, <code>fall_strokes</code>.</em></p>
+<p>P3 is the near rocks of the cover (steps 7, 10 and 11), 72×90 px.</p>
+<p><img alt="his rocks" src="../img/nb221.png" /></p>
+<p><em>nb221. His rocks, reduced, at 7×. A long lit slab running up to the right, pale lavender-pink; the shadow faces warm dark olive-brown; along the far edge of each lit top, a hard line of pure cobalt.</em></p>
+<p>What the cover says about them:</p>
+<ul>
+<li>step 10: "lustrous deep colours in the rock shadows";</li>
+<li>step 11: "raise the rock texture";</li>
+<li>p.56: reflected light takes the sky's colour, loosened by the object's own colour.</li>
+</ul>
+<h2>v1: planes by drawn lines, mottled faces</h2>
+<p>Each rock was an outline, a lit top polygon inside it, broad mottled patches on the shadow face, and a cobalt line drawn on the rim:</p>
+<p><img alt="v1" src="../img/nb222.png" /></p>
+<p><em>nb222. v1 by stage. At 2× the slab and the rim carry.</em></p>
+<p>The critic at 5×:</p>
+<ul>
+<li>the slab edge is a jagged staircase;</li>
+<li>the shadow faces are three-brown camouflage;</li>
+<li>the upper boulder floats on the sky;</li>
+<li>the grass is noise.</li>
+</ul>
+<h2>v2: facets, one step of unevenness, clean edges</h2>
+<p>Every rock is an outline plus <strong>facets drawn as polygons</strong>, each facet one flat colour. The slab's edges run on clean 1:1 steps. The facets follow the light:</p>
+<ul>
+<li>the top plane takes the sky light (pink-warm at its upper edge, lavender in the body, darker at its lower end);</li>
+<li>the face turned up to the sky takes a cool green-grey reflected strip;</li>
+<li>the lower faces are darkest.</li>
+</ul>
+<p>Pure flat facets looked like vector art (nb229). Oga's uneven paint (塗りムラ) is part of the material. The rule that fixed it: <strong>unevenness stays inside the facet and within one step</strong>. Each facet gets broad patches of its <em>adjacent</em> step only:</p>
+<pre><code class="language-python">def facets(cv, outline, faces, base='s2', seed=0):
+    &quot;&quot;&quot;a rock: outline filled with the base shadow colour, then facet polygons, each one flat.&quot;&quot;&quot;
+    m = cv.mass(outline, I[base], wet=0.0)
+    NXT = {'s1': 's2', 's2': 's3', 's3': 's4', 's4': 's3', 'refl': 'refl2', 'top1': 'top2', 'top2': 'top1'}
+    for poly, idx in faces:
+        f = cv.mass(poly, I[idx], wet=0.0, where=m)
+        cv.mottle(f, I[NXT.get(idx, idx)], 0.28, 2.6)       # broad patches of the adjacent step only
+    cv.mottle(m &amp; (cv.a == I[base]), I[NXT.get(base, base)], 0.28, 2.6)
+    return m
+
+# rock B: the long slab, edges on clean 1:1 steps
+mB = facets(cv, [(0, 64), (10, 60), (22, 50), (36, 36), (38, 34), (46, 34), (53, 40), (59, 48), (65, 56), (67, 70), (63, 90), (0, 90)],
+            [([(0, 70), (36, 34), (40, 34), (46, 36), (0, 82)], 'top2'),                 # the top plane
+             ([(46, 36), (53, 41), (60, 49), (63, 54), (52, 56), (42, 50), (40, 44)], 'refl'),  # the strip turned up to the sky
+             ([(42, 50), (52, 56), (63, 54), (66, 66), (46, 70), (30, 62)], 's1'),
+             ([(30, 62), (46, 70), (66, 66), (67, 70), (63, 90), (20, 90), (12, 80)], 's3'),   # lower face
+             ([(20, 90), (0, 90), (0, 86), (12, 80)], 's4')])
+</code></pre>
+<p>Then the finishing:</p>
+<pre><code class="language-python">dist_top = (xx + yy - 70) / np.sqrt(2)             # distance from the 1:1 top edge
+cv.a[slab &amp; (dist_top &lt; 1.6)] = I['top1']          # warm light along the slab's upper edge
+cv.a[slab &amp; (xx + yy &gt; 82) &amp; (xx &lt; 16)] = I['top3']   # the lower-left end darkens
+for k in range(7):                                 # plane streaks: brush direction follows the plane
+    x0 = 6 + k * 5
+    cv.line([(x0, 70 - x0 + 5), (x0 + 3, 70 - x0 + 2)], I['warm'] if k % 2 else I['top1'])
+cv.line([(46, 35), (53, 41), (60, 49), (65, 56)], I['rim'])                      # cobalt: the sky at the edge
+cv.line([(0, 83), (12, 71), (24, 59), (34, 49), (40, 43), (46, 37)], I['s4'])     # the tuck under the slab
+</code></pre>
+<p>The shrubs behind became olive masses with 2–3 px holes of sky, so the upper rocks sit <em>in</em> something, and the yellow flowers gathered into two clusters.</p>
+<p><img alt="p3" src="fig/p3_final_6x.png" /></p>
+<p><em>fig. His | mine, 6×.</em></p>
+<h2>The same rule on a wall</h2>
+<p>On the Skykomish granite the facets are too many to draw by hand, so the planes come from the photo's values, organised (smoothed 1 px, four quantile levels, orphan clean-up). The rules stay:</p>
+<ul>
+<li>lit planes in the lit family, and in shadow one simple cool family;</li>
+<li>one step of warm loosening in the shadow;</li>
+<li>a sky-coloured rim where a sunlit plane turns under into a recess;</li>
+<li>fall-line strokes on the lit planes only.</li>
+</ul>
+<pre><code class="language-python">litm = wall &amp; ~cloud &amp; np.isin(cv.a, [IX['g1'], IX['g2']])
+dark_below = np.roll(np.isin(cv.a, [IX['q2'], IX['q3'], IX['q4']]), -1, 0)
+cv.a[litm &amp; dark_below &amp; (rr.uniform(size=(H, W)) &lt; 0.6)] = IX['rim']
+V.fall_strokes(cv, litm, 'g3', IX, n=45, lens=(2, 7), drift=0.1, seed=seed)
+</code></pre>
+<p><img alt="skykomish edge" src="fig/skykomish_edge.png" /></p>
+<p><em>fig. Where the cloud edge crosses the Index wall, 6×: shadowed granite in three cool steps on the left, the sunlit buttress on the right.</em></p>
+<h2>A note on the first try at this wall</h2>
+<p>v1 drew the wall's joints as vertical facets from imagination, and they read as a striped curtain:</p>
+<p><img alt="curtain" src="../img/nb235.jpg" /></p>
+<p><em>nb235. Facets invented rather than observed.</em></p>
+<p>The book's reference page (p.63) says photos are hints, never copied into the space or the composition. Take the forms from observation and make the light your own decision. My failure there was inventing the forms.</p></div><nav class="pager"><a href="../howto/06-conifers-and-far-ridges.html">← Conifers and far ridges: the staggered brush</a><span class="label">7 of 11</span><a href="../howto/08-the-grass-plane.html">Grass: a plane first, then the strokes →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

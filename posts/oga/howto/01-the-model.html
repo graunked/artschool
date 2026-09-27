@@ -1,0 +1,204 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Reading Oga&#x27;s book: the model · Painting the Oga way, in pixels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/oga/index.html">Painting the Oga way, in pixels</a> <span>by The Oga student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/oga/index.html">What I teach</a><a class="tab" href="../../../posts/oga/story.html">How I learned</a><a class="tab" href="../../../notebooks/oga/index.html">Notebook</a></nav><h1>Reading Oga&#x27;s book: the model</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 11</span><a href="../howto/02-copying-a-passage.html">Copying a passage →</a></nav><div class="bleed"><p><em>Front page: <a href="../index.html">the tutorial</a>. The full model, with every plate and page, is <code>MODEL.md</code> in the study folder; this is the part a pixel painter uses.</em></p>
+<p>Kazuo Oga, <em>男鹿和雄画集Ⅱ</em> (Ghibli THE ART series, 2005). 148 scanned pages in Japanese:</p>
+<ul>
+<li>the making of the cover painting in thirteen photographed steps (pp.4–11);</li>
+<li>Chapter 1, "Techniques of <em>Mononoke</em>" (技法, pp.36–63);</li>
+<li>Chapter 2, "Expression in <em>Pompoko</em>" (表現, pp.88–108);</li>
+<li>a long conversation with the art director Naoya Tanaka (pp.128–139).</li>
+</ul>
+<p>The scan's image number is the printed folio plus two. Write that at the top of your notes.</p>
+<p><img alt="the book's shape" src="../img/nb157.jpg" /></p>
+<p><em>nb157. The front matter as a contact sheet. Make these first, twenty pages to a sheet, to see the book's shape before reading.</em></p>
+<h2>How the book teaches</h2>
+<p>It never states its model as a list. Each principle comes with one painting, often the colour board beside the final background, and Oga or Tanaka says what changed and why. <strong>The plate is the teaching.</strong> I read every page as half-page crops at about 1.15×, so I could read the Japanese and look at the painting in the same glance:</p>
+<pre><code class="language-python"># work/crop.py IDX part [scale]   part: t,b (halves), tl,tr,bl,br, or x0,y0,x1,y1 fractions
+P={'t':(0,0,1,.52),'b':(0,.48,1,1),'tl':(0,0,.52,.52),'tr':(.48,0,1,.52),'bl':(0,.48,.52,1),'br':(.48,.48,1,1)}
+f=P[part] if part in P else tuple(map(float,part.split(',')))
+c=im.crop((int(f[0]*W),int(f[1]*H),int(f[2]*W),int(f[3]*H)))
+</code></pre>
+<p><img alt="p.44" src="../img/nb030.jpg" /></p>
+<p><em>nb030. p.44, "unmuddied mixing" (濁らない混色), C-0081: the greens that bridge light and shadow.</em></p>
+<h2>The model, compressed</h2>
+<p>Each principle has the book's term, the page, and the rule I took from it. The rules in <strong>bold</strong> are the ones that carried into pixels and have a how-to.</p>
+<table>
+<thead>
+<tr>
+<th>Principle</th>
+<th>Book</th>
+<th>Rule</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Ground stage</strong> (地塗り)</td>
+<td>pp.46–49, cover steps 5–8</td>
+<td>Settle light direction, overall colour and atmosphere at the lowest level of detail, "as close to finished as possible". Detail is a thin last layer that must not break it.</td>
+</tr>
+<tr>
+<td><strong>Grasp the crowd</strong> (群れを捉える)</td>
+<td>p.48, C-1646</td>
+<td>A mass of like things is one organised impression with a few extracted members, never member by member. "Drawing everything crushes the space."</td>
+</tr>
+<tr>
+<td><strong>Coloured greys</strong></td>
+<td>pp.48, 57, 103 (C39-5)</td>
+<td>Neutrals are always tinted: brown-, green-, purple-, red-, yellow-grey. In low light the greys carry the whole range of hue.</td>
+</tr>
+<tr>
+<td><strong>Unmuddied mixing</strong></td>
+<td>p.44 (C-0081), p.45 (C-0804)</td>
+<td>A big value range is held by <em>saturated mid-tones</em>; accents laid in unmixed; many half-mixed colours side by side.</td>
+</tr>
+<tr>
+<td><strong>Living brushwork</strong></td>
+<td>pp.50–51</td>
+<td>"Know beforehand what shape each brush motion makes." Moss is not drawn leaf by leaf. In light, a few lit marks stand for the unpainted mass (C-0822).</td>
+</tr>
+<tr>
+<td><strong>Space and planes</strong> (抜け, 面)</td>
+<td>pp.52–55</td>
+<td>"Intentionally severing connected space gives depth" (C-0064). The ground is one plane with undulations; near grass seen from above, far from the side (C-0095).</td>
+</tr>
+<tr>
+<td><strong>The light source</strong></td>
+<td>pp.56–57, 94–97</td>
+<td>"Don't spread the light around; concentrate it." Shadow about 2/3 (C-0792). Reflected light takes the sky's colour, loosened with the object's own. The light's colour at its edge (際, C-0772). Snow: two shadow families (p.96).</td>
+</tr>
+<tr>
+<td><strong>Density at the points</strong></td>
+<td>pp.58–59</td>
+<td>"Concentrate density at the points and the whole feels dense." A cut's length decides how much it gets.</td>
+</tr>
+<tr>
+<td><strong>Omission</strong></td>
+<td>pp.60–61</td>
+<td>Keep form, colour and light; drop members. Shadow contrast softens with distance (C-0007 board vs background).</td>
+</tr>
+<tr>
+<td><strong>Air</strong></td>
+<td>pp.98–99</td>
+<td>Far things approach the sky colour; dry air gives crisp distance, humid air narrows the range.</td>
+</tr>
+<tr>
+<td><strong>Seasonal note</strong></td>
+<td>pp.104–108</td>
+<td>One seasonal flower works like a <em>kigo</em> (season word): a minimum of objects conveys the season.</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="the gorge plate" src="../img/nb053.jpg" /></p>
+<p><em>nb053. p.56: C-0772 (the sun's colour) above C-0792 (the gorge, shadow about two-thirds). These two plates became <a href="04-one-light.html">how-to 4</a>.</em></p>
+<p><img alt="C-0064" src="../img/nb045.jpg" /></p>
+<p><em>nb045. p.52, "awareness of space and planes": C-0064 at the foot of the page. A ridge line and a band of tree shadow sever the near meadow from the far village.</em></p>
+<h2>The cover's working order (pp.4–11)</h2>
+<p>This is the most practical part of the book, because it's a procedure:</p>
+<ol>
+<li>Pencil straight onto the paper; stretch it wet.</li>
+<li><strong>Ground, far to near:</strong>
+   - sky (white over everything, then grey and celeste worked in);
+   - the far peak painted <em>into</em> the wet sky with the sky's own colours, conifers made by "the flat brush shifted vertically";
+   - middle rock;
+   - near shrubs with "a flat brush with its tip splayed on purpose";
+   - fine branches already in the ground.</li>
+<li>Dry.</li>
+<li><strong>One deliberately strong touch</strong> on the middle rocks to judge balance, then "add only where it's weak".</li>
+<li>Lustrous darks in the shadows; the darks make the lights look lacking, so vivid brights; "don't rely on value difference alone".</li>
+<li>Rock texture; bright leaf shapes to make the shrub's contour stand out.</li>
+<li>Near leaves, grass, flowers; step back; about 11 hours from the ground stage.</li>
+</ol>
+<p><img alt="step 7" src="../img/nb014.jpg" /></p>
+<p><em>nb014. Step 7, "whole colour": the splayed flat brush on the shrubs.</em></p>
+<p><img alt="finished" src="../img/nb020.jpg" /></p>
+<p><em>nb020. The finished cover on the desk.</em></p>
+<h2>One measurement trap</h2>
+<p>I measured his plates in OKLab and found his darkest 2% at L 0.35, against 0.20 for photos. <em>Oga lifts his black point</em>, I thought. The printed text on the same pages measured L 0.29–0.35: it was the printing and the scan. Correct each plate to its own page's ink and paper first (<code>work/plates.py</code>):</p>
+<pre><code class="language-python">k=np.median(a[o[:max(50,len(o)//1000)]],0); w=np.median(a[o[-len(o)//100:]],0)   # page black, page white
+out=np.clip((im-k)/(w-k),0,1)
+</code></pre>
+<p>After correction his black point is like a photo's. And whole-picture statistics (shadow share, grey share, tint count) barely separate his plates from photos of the same subjects at all. What makes a picture his is <em>where</em> things go. Measure passages, not pages.</p>
+<p><img alt="survives" src="fig/00_survives.png" /></p>
+<p><em>fig. What does survive a global look: his paintings, area-reduced to 160 px, still read almost completely. The ground-stage claim, seen from the other side.</em></p>
+<p>Next: <a href="02-copying-a-passage.html">copying a passage</a>, which is where the model starts to mean anything.</p></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 11</span><a href="../howto/02-copying-a-passage.html">Copying a passage →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

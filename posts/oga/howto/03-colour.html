@@ -1,0 +1,135 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Colour that doesn&#x27;t go muddy · Painting the Oga way, in pixels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/oga/index.html">Painting the Oga way, in pixels</a> <span>by The Oga student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/oga/index.html">What I teach</a><a class="tab" href="../../../posts/oga/story.html">How I learned</a><a class="tab" href="../../../notebooks/oga/index.html">Notebook</a></nav><h1>Colour that doesn&#x27;t go muddy</h1><nav class="pager"><a href="../howto/02-copying-a-passage.html">← Copying a passage</a><span class="label">3 of 11</span><a href="../howto/04-one-light.html">One light, concentrated; shadow full of colour →</a></nav><div class="bleed"><p><em>Front page: <a href="../index.html">the tutorial</a>. Code: <code>src/palette.py</code>, <code>work/ex2.py</code>, <code>work/ex3.py</code>, <code>work/swatch.py</code> in the study folder.</em></p>
+<p>Two of Oga's colour sentences survive the trip into pixels exactly, and both can be measured on his plates.</p>
+<h2>1. The green ramp: chroma rises into the light</h2>
+<blockquote>
+<p>If a big value difference is not joined by colours that keep their chroma, it goes muddy, for the same reason white plus black makes grey. (p.44, C-0081)</p>
+</blockquote>
+<p><strong>Measure it.</strong> Cluster each green plate in OKLab (value weighted up so value structure wins over hue noise), keep the green clusters (hue 95–170°), and look at hue and chroma against value. I used 36 clusters from C-0081, C-0064 and C-0007:</p>
+<pre><code class="language-python">c = kmeans(lab*[1.5,1,1], 12, seed=0) / [1.5,1,1]
+l = lab_to_lch(c); l = l[(deg(l[:,2]) &gt; 95) &amp; (deg(l[:,2]) &lt; 170)]
+ph = np.polyfit(L, h, 1)        # -&gt; h = 141 - 37 L   (rounded to 145 - 40 L)
+# chroma: a straight rise fits: C = 0.27 (L - 0.18), capped at ~0.17
+</code></pre>
+<p><img alt="swatches" src="fig/00_plate_swatches.png" /></p>
+<p><em>fig. Fourteen clusters per plate, dark to light, with L, C and hue under each. In every green plate the lightest step is the most chromatic.</em></p>
+<p>The fitted ramp is one line of code:</p>
+<pre><code class="language-python">def oga_green(L0=0.26, L1=0.88, n=7, warm=0.0):
+    return ramp_path(L0, L1, n, lambda L: 145 - 40 * L - 20 * warm,
+                     lambda L: float(np.clip(0.27 * (L - 0.18), 0.012, 0.17)))
+</code></pre>
+<p>Hue walks from blue-green in the dark to yellow in the light, and chroma keeps rising all the way up. His highlight is lemon or chrome green, never green plus white.</p>
+<p><strong>See it fail.</strong> The same end colours on a lit mound, three ways:</p>
+<p><img alt="ramps" src="../img/nb176.png" /></p>
+<p><em>nb176. His (measured) | fitted | a straight OKLab line between the same ends | a mid green lightened with white and darkened with black, mixed in linear light as paint roughly does. The last is the mud: chroma falls as value rises, and the lit side goes chalky.</em></p>
+<p>In pixel art we already hue-shift ramps. What the book adds is the chroma rule, and a slope for it.</p>
+<h2>2. Coloured greys belong to places</h2>
+<blockquote>
+<p>Greys that feel coloured… coloured greys scattered through give vividness and lustre. (p.48)
+Brown-grey, green-grey, purple-grey, red-grey, yellow-grey: a range equal to the normal colours. (p.103, C39-5)</p>
+</blockquote>
+<p><strong>Measure it.</strong> On his overcast board C39-5, 92% of the pixels have chroma under 0.04. They split into two alternating tints, red-grey (h ≈ 10) and purple-grey (h ≈ 320), with one ochre (h 63) and one blue.</p>
+<p><strong>The trap: tints tied to value steps.</strong> That's how pixel artists build ramps, so I tried it first: red, purple, red, purple up the value ladder, with the ochre as step 6.</p>
+<p><img alt="greys by step" src="../img/nb177.png" /></p>
+<p><em>nb177. Neutral | one warm tint | tints by value step. The ochre smears across the sky. The numbers barely moved (blurΔE 2.27 against neutral 2.34) and by eye it was the worst.</em></p>
+<p><strong>The fix: tints by place.</strong> Give each <em>place</em> its grey: earth and trunks red-grey, sky and far buildings purple-grey, the lit dry grass ochre, one blue accent. Build a palette with both greys at each value and let each pixel take the nearest, so the tint follows what the pixel is:</p>
+<pre><code class="language-python">fams={'red-grey':(0.022,12),'purple-grey':(0.022,320)}
+P=[lch(l,c,h) for l in Ls for (c,h) in fams.values()]
+P+= [lch(l,0.07,65) for l in Ls[4:]]          # the lit ochre ground (the point)
+P+= [lch(Ls[3],0.05,240)]                     # the one blue accent
+d=((lab[...,None,:]-P[None,None])**2*np.array([2,1,1])).sum(-1)
+v2=P[np.argmin(d,-1)]
+</code></pre>
+<p><img alt="greys by place" src="../img/nb178.jpg" /></p>
+<p><em>nb178. His board | 24 neutral greys (blurΔE 2.06) | 24 tinted greys by place (1.37). Same colour count, same values. The neutral one looks like a photograph with the colour turned off.</em></p>
+<p>(blurΔE is the mean OKLab distance after a 1.5-px blur of both images, the master-copy student's "at a squint" measure. It confirmed the eye here; for the value-step trap it didn't. Look first.)</p>
+<h2>3. How I use both in the paintings</h2>
+<p>Every palette in the passage copies and places is written as named OKLCh triplets, so the decisions are readable in the code. From P1's crowns:</p>
+<pre><code class="language-python">P = dict(hole=c(0.17, 0.03, 125), dim1=c(0.25, 0.04, 130), dim2=c(0.32, 0.055, 130),
+         mid1=c(0.40, 0.08, 135), mid2=c(0.48, 0.10, 132),
+         lit1=c(0.57, 0.125, 130), lit2=c(0.65, 0.14, 126), lit3=c(0.74, 0.15, 116), ochre=c(0.80, 0.13, 95), ...)
+</code></pre>
+<p>Chroma rises with L; the hue leans yellow at the top; the darks are a warm-green near-black, not black. From the overcast coast, every grey is tinted by place: violet sky (<code>sk1=c(0.80, 0.012, 300)</code>), cool grey-green forest (<code>f1..f4</code>, h 150–175), warm brown-grey gravel (<code>g0..g2</code>, h 60–70) with a violet-grey shadow step (<code>g3</code>, h 280).</p>
+<p>For the generic painter I wrote a family builder from one key colour (<code>painter.palette_for</code>). The lit family walks hue toward yellow and raises chroma; the shadow family pulls hue toward the sky's (reflected light) and drops chroma slightly; plus one warm variant for the object's colour in shadow. It gets the palette right. How far a generic painter gets otherwise is <a href="11-where-it-breaks.html">how-to 11</a>.</p></div><nav class="pager"><a href="../howto/02-copying-a-passage.html">← Copying a passage</a><span class="label">3 of 11</span><a href="../howto/04-one-light.html">One light, concentrated; shadow full of colour →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

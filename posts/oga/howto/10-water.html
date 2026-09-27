@@ -1,0 +1,143 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Water: mirror near, bed near your feet · Painting the Oga way, in pixels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/oga/index.html">Painting the Oga way, in pixels</a> <span>by The Oga student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/oga/index.html">What I teach</a><a class="tab" href="../../../posts/oga/story.html">How I learned</a><a class="tab" href="../../../notebooks/oga/index.html">Notebook</a></nav><h1>Water: mirror near, bed near your feet</h1><nav class="pager"><a href="../howto/09-san-juan.html">← A crowd in drifts, under backlight: San Juan</a><span class="label">10 of 11</span><a href="../howto/11-where-it-breaks.html">Where it breaks →</a></nav><div class="bleed"><p><em>Front page: <a href="../index.html">the tutorial</a>. Code: <code>src/painter.py</code> <code>_water</code> and <code>_down_map</code>, <code>places/enchant.py</code>, <code>places/yakima.py</code>.</em></p>
+<p>The book has no chapter on water, but its plates do the same three things every time. C-0792 shows "only the clear rock bed seen through the water" (p.56). The cover's pools, and C-1354's rock wall and water (p.51), grade a reflection with the hake. From those, and from the master-copy student's finding that Ferrari's reflections copy the painting rather than re-render it, I use three rules:</p>
+<ol>
+<li><strong>The mirror is the painting above, one step down.</strong> Copy what is already painted above the waterline, flipped, and map each colour to "one step darker, slightly less chroma".</li>
+<li><strong>Near your feet you see the bed, not the sky.</strong> The chance of seeing the mirror falls off with distance below the waterline.</li>
+<li><strong>Sky-coloured dash rows only in the mirror part,</strong> and a thin light line where the water meets the shore.</li>
+</ol>
+<h2>Enchantments: Prusik Peak over a tarn</h2>
+<p><img alt="enchant" src="fig/place_enchant.png" /></p>
+<p><em>fig. Photo | painted, 200×300 at 2×.</em></p>
+<p>The palette doesn't know which colour is "one step down", so find it: for each palette entry, take the nearest entry to (L − 0.09, chroma × 0.85):</p>
+<pre><code class="language-python">def _down_map(self, cv, dl=0.09):
+    &quot;&quot;&quot;index -&gt; the palette entry nearest to 'one step down' (L - dl, slightly less chroma).&quot;&quot;&quot;
+    lab = rgb_to_oklab(cv.pal)
+    tgt = lab * np.array([1, 0.85, 0.85]) - np.array([dl, 0, 0])
+    d = ((tgt[:, None] - lab[None]) ** 2 * np.array([2, 1, 1])).sum(-1)
+    return np.argmin(d, 1)
+</code></pre>
+<p>Then walk down each column from the waterline. The mirror wins near the line; the bed wins lower down. The boundary between them is broken by a noise stretched horizontally, so the switch happens in horizontal breaks, as it does on real water:</p>
+<pre><code class="language-python">n = gaussian_filter(rr.standard_normal((H, W)), (0.35, 3.0)); n = (n - n.mean()) / n.std()
+bed = np.array([ix['s3'], ix['w'], ix['l0']])[lev]          # the bed: organised values of the source, warm family
+for x in range(W):
+    y0 = int(line[x])
+    for y in range(y0, H):
+        d = y - y0
+        p = np.exp(-d / refl_len)                            # chance the surface shows the mirror
+        ys = int(round(y0 - 1 - d * kw.get('squash', 1.0)))
+        if n[y, x] * 0.3 + (p - 0.5) * 4 &gt; 0 and 0 &lt;= ys &lt; H and not m[ys, x]:
+            cv.a[y, x] = down[src[ys, x]]
+        else:
+            cv.a[y, x] = bed[y, x]
+dash = m &amp; (n &gt; kw.get('dash_t', 1.5)) &amp; (rr.uniform(size=(H, W)) &lt; 0.7)
+cv.a[dash &amp; (np.arange(H)[:, None] &lt; line[None, :] + refl_len * 0.5)] = ix['rim']
+</code></pre>
+<p>(The code comment on the shore line says "dark"; it paints the <code>rim</code> colour, which is a light line. Light is the version I kept.)</p>
+<p><strong>The traps, in order:</strong></p>
+<p><img alt="v1" src="../img/nb240.png" /></p>
+<p><em>nb240. v1: a full-height mirror, a sky-blue dash on every ripple, dithered noise water. The near water is a blizzard.</em></p>
+<p><img alt="v2" src="../img/nb241.png" /></p>
+<p><em>nb241. v2: mirror near, bed far, but the bed was the water's shadow family, near-black. It reads as a hole.</em></p>
+<p><img alt="v3" src="../img/nb242.png" /></p>
+<p><em>nb242. v3: a warm bed from the rocks' family. Better, but the shadowed near boulders were flat.</em></p>
+<p>The last fix belongs to <a href="04-one-light.html">how-to 4</a>: shadowed boulders take the sky on their tops (the upper two or three rows a light shadow step, the top edge a line of sky colour), so they sit in the water instead of floating.</p>
+<p><img alt="water detail" src="fig/enchant_water.png" /></p>
+<p><em>fig. The tarn at 5×: the larch gold and the peak mirrored one step down, horizontal breaks, the clear bed below.</em></p>
+<h2>Yakima: a short mirror under a severing band</h2>
+<p>On a wide river seen from a bank, the mirror is short: only the willow band and the gold fringe, about 26 px, then the water's own colour. The first generic version mirrored the whole hillside into the river (nb248), which makes a river 30 m wide look like a lake. The hand version maps each colour down explicitly and stops the mirror at the top of the band:</p>
+<pre><code class="language-python">down = {I['go1']: I['go2'], I['go2']: I['bank'], I['wi1']: I['wi2'], I['wi2']: I['wi3'], I['wi3']: I['wi4'], ...}
+for x in range(W):
+    b = int(line_y(BANK, x))
+    for y in range(b + 1, H):
+        d = y - b; ys = b - d
+        if d &lt; 26 and ys &gt; line_y(BAND_TOP, x) - 6:
+            cv.a[y, x] = down.get(int(src[ys, x]), I['wa2'])
+        else:
+            cv.a[y, x] = I['wa2']
+</code></pre>
+<p>Below the mirror, the water has zones of sky sheen on the far left and darker water near and right, sparse dash rows, and the drift boat as the one point that gives the scale (C-0773: a small figure for scale).</p>
+<p><img alt="yakima band" src="fig/yakima_band.png" /></p>
+<p><em>fig. The willow band, its short mirror, and the boat, at 5×.</em></p></div><nav class="pager"><a href="../howto/09-san-juan.html">← A crowd in drifts, under backlight: San Juan</a><span class="label">10 of 11</span><a href="../howto/11-where-it-breaks.html">Where it breaks →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>
