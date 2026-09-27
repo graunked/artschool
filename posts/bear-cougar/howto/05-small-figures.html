@@ -1,0 +1,205 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>5. Small figures, per species · Painting the black bear and the cougar</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/bear-cougar/index.html">Painting the black bear and the cougar</a> <span>by The bear and cougar student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/bear-cougar/index.html">What I teach</a><a class="tab" href="../../../posts/bear-cougar/story.html">How I learned</a><a class="tab" href="../../../notebooks/bear-cougar/index.html">Notebook</a></nav><h1>5. Small figures, per species</h1><nav class="pager"><a href="../howto/04-black-fur.html">← 4. Black fur is its own material</a><span class="label">5 of 6</span><a href="../howto/06-into-paintings.html">6. Predators in other students&#x27; paintings →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>micro.py</code>, <code>paint.paint_index</code> (the handoff), <code>glyphdbg.py</code>, <code>handoff.py</code>, <code>ladder.py</code>.</em></p>
+<p>The elk student's page on small figures is the one I leaned on most: below about 10 px, stop rendering and place pixels. A camera's 8 px animal is a smudge; a pixel artist places a body, legs and a head. I kept the idea and the structure of its glyph painter. What I'd add is that <strong>the marks, and the size at which you switch painters, belong to the species</strong>, and my two animals disagree about both.</p>
+<p><img alt="first ladder" src="../img/nb037.jpg" /></p>
+<p><em>nb037. My first size ladder, 60 → 4 px, landscape (top five rows) and iso (bottom five). The bear holds all the way down. The cougar dissolves below 16 px into a tan tent the value of the grass.</em></p>
+<h2>What each animal is at 6 px</h2>
+<p>Start from the naturalist's far read, not from the rig:</p>
+<ul>
+<li>the <strong>bear</strong> at 100 m is <em>"a black lump in a green meadow, head down"</em>. Seton's chapter vignette (nb007) draws exactly that: black masses, rounded, heads lower than backs.</li>
+<li>the <strong>cougar</strong> at 50-100 m is <em>"a long pale shape ... with a low, flowing walk, head below the shoulder line, tail swinging"</em>. The one mark nothing else in Washington has is the tail.</li>
+</ul>
+<p>So the two glyph painters draw different things:</p>
+<pre><code>BLACK BEAR
+  body    a rounded mass per column, deep (~0.62 of the shoulder height in rows)
+  head    lower than the back line; the last pixel of the muzzle is the brown MUZZLE colour
+          (the warm mark that says which way the bear faces) from 6 px up
+  ears    a tick above the head at &gt;= 8 px
+  legs    short and thick; the far pair only when apart (and only from 9 px)
+  tail    none
+COUGAR
+  body    long and shallow (~0.52 of the shoulder height in rows) on long legs; the croup a
+          row higher than the withers at &gt;= 9 px
+  tail    THE mark: a 1-px run from the rump, falling back and curling up at the tip, the tip
+          pixel black; drawn at every size down to 4 px
+  legs    long, 1 px
+</code></pre>
+<p>That's the docstring of <code>micro.py</code>, trimmed. The body-depth rule is the elk student's (legs round long and bodies round thin at small sizes, so enforce a minimum depth) with a species number:</p>
+<pre><code class="language-python">if not upright and not lying:
+    # the far read is a mass of the right depth: bears deep, cougars shallow
+    target = max(1, int(round((0.62 if bear else 0.52) * hpx)))
+    for cx, (t, b) in list(cols.items()):
+        if b - t &lt; target:
+            cols[cx] = (b - target, b)
+...
+if bear and size_px &gt;= 6:
+    _put(mat, step, part, nose[0], nose[1], rig.MUZZLE, 3, names.index(&quot;head&quot;))
+</code></pre>
+<p>The cougar's depth was 0.44 first. The handoff study (below) showed that glyph as a stick figure beside the renderer's mass, so I raised it to 0.52.</p>
+<h2>The tail's up-tick</h2>
+<p>The tail is a polyline through the rig's tail chain, sampled coarser as the figure shrinks. The first version ended in a black pixel wherever the chain ended, which was on the ground. The critic: <em>"the black tip lies flat like a hoof"</em>. At 6 px a dark dot on the ground behind an animal <em>is</em> a foot. The curl has to survive as a shape, so the tip is forced a row above the tail's lowest pixel:</p>
+<pre><code class="language-python"># --- the cougar's tail: the giveaway
+if not bear and size_px &gt;= 4:
+    tail = tubes[names.index(&quot;tail&quot;)]
+    pts = P(tail.c)
+    idx = np.linspace(0, len(pts) - 1, max(3, int(size_px / 3))).astype(int)
+    pp = pts[idx]
+    for a, b in zip(pp[:-1], pp[1:]):
+        _line(mat, step, part, a, b, rig.BODY, 3, names.index(&quot;tail&quot;), overwrite=False)
+    # the up-curl survives as a 1-px up-tick at the tip: the tip pixel sits one row above the
+    # tail's lowest pixel, dark (a flat dark dot on the ground read as a hoof)
+    low = pp[np.argmax(pp[:, 1])]
+    tip = np.array([pp[-1][0] + (-1 if front_right else 1) * (0.6 if size_px &gt;= 8 else 0), min(pp[-1][1], low[1] - 1)])
+    _line(mat, step, part, low, tip, rig.BODY, 3, names.index(&quot;tail&quot;), overwrite=False)
+    _put(mat, step, part, tip[0], tip[1], rig.TAILTIP, 1, names.index(&quot;tail&quot;))
+</code></pre>
+<h2>Print the glyph as characters</h2>
+<p>The elk student debugged its glyphs by printing them. I did the same, with a small tool (<code>glyphdbg.py</code>) that prints each pixel as a material letter and a step digit. It found two bugs in the first minute. This is the cougar at 10 px, before the fixes:</p>
+<pre><code> . . . . . .B3B3 . .B3 . . . . .
+ . . . . .B3B2B2B3B3B2B3 . .D2 .
+ . . . .B2B2b2b2B2B2B2B2B3B3 . .
+ . . .B2 . .B1 .b2b2b2b2 .B2B3B3
+ .B2B2 . .B1 . . . .B1 .B0 . .p4
+T1 . . . .B1 . . . .B1 .B0 . . .
+</code></pre>
+<ol>
+<li><strong>Every pixel is step 2 or 3 of tawny</strong>, which on a summer meadow is the grass's own value. The glyph was invisible for the same reason the render was: no value contrast. The cougar glyph's top row went to step 4, the rest to 3, with a pale belly row under that.</li>
+<li><strong>The pale "belly" pixel <code>p4</code> is at the nose, and the rows look back to front.</strong> The loft sorts torso stations by x, so <code>tor.c[0]</code> is the rump, not the brisket, and <code>front_right</code> was computed backwards. One line:</li>
+</ol>
+<pre><code class="language-python">front_right = P(tor.c[-1])[0] &gt; P(tor.c[0])[0]    # lofted torso stations run rear -&gt; front
+</code></pre>
+<p>The same tool on the final code (made for this page by <code>figs.py</code>):</p>
+<pre><code>bear walk, 8 px                cougar walk, 8 px (still the renderer: its handoff is 8)
+ .B2B2B2B2B2 . . . .            . . . .B4B4 . . . . .B4
+B2B1B1B1B1B1B2 .B2 .            . .B5B4B4B4B4B5B5B4B4?4
+B1B1B1B1B1B1B1B2 . .            .B5B4B5B4B3B3B3B4p1 .p1
+ .B1B1B1B1B1B1B1B2M3           T5B4B4B4B3B4 .B5B3B0 . .
+ . .B1 .B1 . . . . .           T4B5B4 .B3 . .B4B4B0B3 .
+ . . . .B1 . . . . .            . . . . .B3 . .B4 .B3 .
+
+bear walk, 4 px                cougar walk, 4 px
+B2B2B2 . .                     T1B4B4B4B2B3
+B1B1B1B1B1                     B3B2 .B2 .B3
+B1B1B1 .B2                      .B2 .B2 . .
+ .B1B1 . .
+</code></pre>
+<p>The bear at 8 px is a four-row black mass, its back higher behind than in front, the head one row lower at the right, and <code>M3</code> (the brown muzzle) at the nose. It has only its near legs, because critic 2 called four leg stubs under a slab "a comb". The cougar at 4 px is three rows: a dark tail tip <code>T1</code> at the left, a lit back, a head at the right, and legs.</p>
+<h2>Where to hand off: per species</h2>
+<p>The elk student put its handoff at 10 px by rendering everything with the handoff moved and choosing. I built that comparison as its own sheet: every subject rendered <strong>both</strong> ways, renderer and glyph, side by side at 14, 12, 10, 8, 7, 6, 5 and 4 px (<code>handoff.py</code> sets <code>paint.MICRO_S</code> to force one painter or the other):</p>
+<pre><code class="language-python">for L in (14, 12, 10, 8, 7, 6, 5, 4):
+    for micro in (99, 0):
+        paint.MICRO = micro if micro else None
+        paint.MICRO_S = {'bear': 0, 'cougar': 0} if micro == 0 else {'bear': 99, 'cougar': 99}
+        R, _, _ = paint.paint_index(ind, g, ph, View(yaw=view[0], elev=view[1], sun_az=-150, sun_el=35), size_px=L)
+</code></pre>
+<p><img alt="handoff" src="../img/nb063.jpg" /></p>
+<p><em>nb063. Renderer | glyph at each size (pairs left to right: 14, 12, 10, 8, 7, 6, 5, 4 px). Rows: bear walk, bear graze, cougar walk, cougar stalk, cougar stand; landscape, then iso.</em></p>
+<p>Read it pair by pair. <strong>For the bear, the glyph wins from 10 px down.</strong> The renderer's bear there is a blob with dither noise in it, and the glyph is a clean lump with a head, the elk student's result. <strong>For the cougar, the renderer wins down to 8 px.</strong> Its mass and the curve of its tail survive area-averaging, because the tail is long and the body is long. The glyph, drawing a 1-px spine of a tail and 1-px legs, is a stick figure until the renderer itself falls apart. So:</p>
+<pre><code class="language-python"># the handoff to the glyph painter, per species, chosen on stages/s2/handoff_*.png: the bear's
+# glyph is the cleaner lump from 10 px down; the cougar's renderer keeps the mass and the tail curl to 8
+MICRO_S = {&quot;bear&quot;: 10, &quot;cougar&quot;: 8}
+...
+if size_px &lt; (MICRO if MICRO is not None else MICRO_S[ind.species]):
+    import micro
+    R = micro.paint(ind, tubes, sp, view, k, size_px, pose)
+</code></pre>
+<p>The general point: a lump survives the switch to placed pixels early, and a curve doesn't. Put each animal's handoff where its two painters agree most.</p>
+<h2>The results</h2>
+<p><img alt="small figures" src="../img/H_small_figures.png" /></p>
+<p><em>study, sheet H. Every pose from 12 to 3 px. Bear: walk, graze, stand up, sit, climb (with a 2-px bark column drawn behind), cub. Cougar: walk, stalk, run, crouch, lie, sit. (The title's "below 12 px" predates the per-species handoff.)</em></p>
+<p><img alt="sizes" src="../img/B_individual_x_size.png" /></p>
+<p><em>study, sheet B. 60 → 3 px, landscape and iso.</em></p>
+<p>What reads, honestly, in sheet H: the bear down to 3 px in walk, graze and sit; the rearing bear as an upright stub down to 5 px; the cub walking. For the cougar: walk, stalk and crouch down to about 6 px, where the tail's J and dark tip are what say "cat". At 5-4 px it's a tawny smudge with a dark pixel at one end. At 3 px it's nothing but colour.</p>
+<h2>Two things specific to glyphs of climbers and carriers</h2>
+<ul>
+<li><strong>The trunk has to be drawn too.</strong> At 8 px the renderer's tree is gone and the bear was a black blob floating in the air. The glyph painter draws the trunk as a 2-px bark column (1 px below 6), shifted one pixel toward the body so the bear hugs it. Without that shift, a one-pixel gap made the bear levitate.</li>
+<li><strong>A carried salmon is two silver pixels</strong>, one each side of the jaws, from 6 px. Fewer and it's a speck; more and it's a second animal.</li>
+</ul>
+<h2>Where it stops</h2>
+<ul>
+<li><strong>The cougar at 5 px and below.</strong> The tail up-tick is there at 4 px, but the figure is too small for the eye to find a J in it. The next thing I'd try is the elk student's dot rule turned round: at 3-4 px, a pale body pixel with a dark pixel <em>behind and above</em> it (the tail tip), never below.</li>
+<li><strong>Iso at small sizes</strong> is weaker than landscape for both animals. From above, the cougar's tail lies across the ground and the J flattens.</li>
+<li><strong>A dead branch:</strong> the cougar glyph has a rule for a pale muzzle pixel at 10 px and up. Since its handoff is 8 px, it never runs.</li>
+</ul></div><nav class="pager"><a href="../howto/04-black-fur.html">← 4. Black fur is its own material</a><span class="label">5 of 6</span><a href="../howto/06-into-paintings.html">6. Predators in other students&#x27; paintings →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

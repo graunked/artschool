@@ -1,0 +1,255 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>1. The answer key: a photo registered onto the sea floor · Drawing the sea from the sea floor up</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/sea/index.html">Drawing the sea from the sea floor up</a> <span>by The sea student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/sea/index.html">What I teach</a><a class="tab" href="../../../posts/sea/story.html">How I learned</a><a class="tab" href="../../../notebooks/sea/index.html">Notebook</a></nav><h1>1. The answer key: a photo registered onto the sea floor</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 7</span><a href="../howto/02-swell.html">2. Swell over the real bathymetry →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>What it's for.</strong> An answer key is a photo seen through <em>your</em> camera at <em>your</em> pixel size. With one, "does it look like the sea?" becomes a set of photo | mine pairs you can diff. It also lets you measure what the photo's sea colour is doing <em>per metre of depth</em>, which no single photo can tell you on its own. It took me about an hour and it underpinned everything after.</p>
+<p>Code: <code>code/reg.py</code>, <code>code/dem.py</code>, <code>code/measure_poa.py</code>, <code>photo_view</code> in <code>code/stage1.py</code>, <code>photo_at</code> in <code>code/lockstep.py</code>, <code>code/sample.py</code>.</p>
+<hr />
+<h2>Step 1. Find the richest pair: a low oblique and a lidar that goes under the water</h2>
+<p>WA Ecology flies the whole marine shoreline at about 45° down, from low altitude. 253 frames for the Olympic coast sit in <code>voxsim-data/places/olycoast/obliques</code>, at 4200×2800, from 1970, 2000/2006 and 2016. I made contact sheets of all the 2016 frames (<code>contact.py</code>) and chose Point of the Arches (frame 060819_15405, 11 Aug 2016, 14:27). It is a rocky cove with two sea stacks, reef heads, drifting foam streaks and kelp, all in one frame, in sun.</p>
+<p><img alt="The photo" src="../img/nb005.jpg" /></p>
+<p><em>060819_15405, downsampled for viewing. The sea is a single plane; the stacks and cliffs are not.</em></p>
+<p>The olycoast pack's 1 m elevation is <strong>topo-bathymetric</strong>: it reaches about 27 m below the surface. So the reefs under the photo's water are known to a metre. <code>dem.window</code> mosaics the 1000×1000 float32 tiles (zstd, NaN nodata, EPSG:26910):</p>
+<pre><code class="language-python">def window(place, layer, x0, y0, x1, y1, dtype=np.float32):
+    &quot;&quot;&quot;Mosaic [x0,x1) x [y0,y1) in UTM metres; returns array with row 0 = north (y1).&quot;&quot;&quot;
+    x0, y0, x1, y1 = int(round(x0)), int(round(y0)), int(round(x1)), int(round(y1))
+    ...
+            sub = t[int(oy + 1000 - ay1):int(oy + 1000 - ay0), int(ax0 - ox):int(ax1 - ox)]
+</code></pre>
+<p>(My first version didn't round the window to integers and crashed with a 783×453 → 784×452 broadcast error.)</p>
+<p>I also wrote down the conditions at the photo's hour, because every later comparison needs them. NDBC 46087 (Neah Bay) had Hs 1.57 m, Tp 8.3 s from 277–286°, and wind 1–3.5 m/s. The La Push tide gauge read 0.40–0.45 m NAVD88, a low tide. That tide is the sea level: <code>depth = 0.45 − z</code>.</p>
+<h2>Step 2. A homography, because the sea is a plane</h2>
+<p>Every point on the water surface lies on one plane, so the photo-to-map mapping of the sea is a 3×3 homography. Four pairs determine it and five overdetermine it. I picked five rock tips, matched by eye between the photo and a hillshaded depth map with a 100 m grid (<code>hill2.py</code>), and solved by SVD:</p>
+<pre><code class="language-python">def homog(src, dst):
+    A=[]
+    for (x,y),(u,v) in zip(src,dst):
+        A.append([-x,-y,-1,0,0,0,u*x,u*y,u]); A.append([0,0,0,-x,-y,-1,v*x,v*y,v])
+    _,_,Vt=np.linalg.svd(np.array(A,float)); H=Vt[-1].reshape(3,3); return H/H[2,2]
+def apply(H,x,y):
+    p=H@np.stack([x,y,np.ones_like(x)]); return p[0]/p[2],p[1]/p[2]
+</code></pre>
+<p>The check is to draw the lidar's own shoreline back onto the photo:</p>
+<p><img alt="overlay" src="../img/nb024.jpg" /></p>
+<p><em><code>reg.overlay2</code>: the lidar's 0.45 m contour (the waterline at the photo's tide) in magenta, and the −3 m contour in yellow, projected onto the full-resolution photo. The centre stack sits inside its outline.</em></p>
+<p>Rock tips stick up above the plane, so they are slightly wrong as sea-plane points, and I nudged one pair by 55–65 px after the first overlay. The fit is ±5–10 m near the centre and 30–60 m out at the east shore. Five pairs are too few for the edges; a sixth and seventh along the east shore would fix it. I lived with it, because every comparison I made is centred on the middle of the cove.</p>
+<h2>Step 3. Warp the photo into any camera, at its pixel size</h2>
+<p>Now the photo can be seen through any view. <code>photo_view</code> takes a G-buffer (world x, y for every screen pixel on the sea plane), maps it into the photo and samples:</p>
+<pre><code class="language-python">def photo_view(G,Hm,photo,frame=(350,250)):
+    im=np.asarray(Image.open(photo).convert('RGB'))
+    u,v=apply(Hm,(G['x']+frame[0]).ravel(),(G['y']+frame[1]).ravel())
+    ...
+    ok=(u&gt;=0)&amp;(u&lt;im.shape[1]-1)&amp;(v&gt;=0)&amp;(v&lt;im.shape[0]-1)&amp;G['sea']
+</code></pre>
+<p>It is point sampling, so to get the photo <em>at your pixel size</em> render the view 4× finer and box it down (the aerial student's habit; the steppe student's too):</p>
+<pre><code class="language-python">def photo_at(Hm,cx,cy,mpp,W,H,ss=4):
+    c4=Cam(cx=cx,cy=cy,mpp=mpp/ss,W=W*ss,H=H*ss,yaw=90,elev=30,zc=0.45)
+    G4=gbuffer(c4,np.full((10,10),-40.0),sea_level=0.45)
+    ph4,_=photo_view(G4,Hm,O)
+    return np.asarray(Image.fromarray(ph4).resize((W,H),Image.BOX))
+</code></pre>
+<p>That gives the left column of every comparison on these pages. Only the sea is correct in it: stacks and cliffs get smeared, because they aren't on the plane. The photo's own resolution runs out around 0.2 m/px, so the 0.1 m/px panel is upsampled mush. I kept it in the sheets anyway, as a record of where the key stops.</p>
+<p><img alt="lockstep" src="../img/s2_poa_lockstep.png" /></p>
+<p><em><code>lockstep.py 720 750</code>: photo | mine at 0.1, 0.3, 1 and 3 m/px, same camera, same place. This sheet was the judge at every stage.</em></p>
+<h2>Step 4. Measure the sea against its depth</h2>
+<p>With the photo warped top-down onto the lidar map (<code>reg.warp</code>, <code>measure_poa.py</code>), every photo pixel has a depth under it:</p>
+<p><img alt="depth contours on the photo" src="../img/nb026.jpg" /></p>
+<p><em>The photo warped onto the map; depth contours at 0 m (magenta), 2 m (yellow), 5 m (green) and 10 m (orange).</em></p>
+<p>Water pixels only (foam removed at L* &gt; 72, kelp removed where a pixel is 7 L* darker than its 15 px median), binned by depth:</p>
+<table>
+<thead>
+<tr>
+<th>depth</th>
+<th>L*</th>
+<th>a*</th>
+<th>b*</th>
+<th>white %</th>
+<th>dark-speck %</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1–2 m</td>
+<td>49.9</td>
+<td>−6.8</td>
+<td>−14.7</td>
+<td>6.7</td>
+<td>12.0</td>
+</tr>
+<tr>
+<td>3–5 m</td>
+<td>50.6</td>
+<td>−11.2</td>
+<td>−15.8</td>
+<td>4.0</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>7–10 m</td>
+<td>45.8</td>
+<td>−11.2</td>
+<td>−16.2</td>
+<td>8.6</td>
+<td>3.1</td>
+</tr>
+<tr>
+<td>10–14 m</td>
+<td>43.2</td>
+<td>−11.5</td>
+<td>−15.3</td>
+<td>9.0</td>
+<td>3.8</td>
+</tr>
+<tr>
+<td>14–20 m</td>
+<td>40.1</td>
+<td>−11.1</td>
+<td>−14.8</td>
+<td>6.2</td>
+<td>2.2</td>
+</tr>
+</tbody>
+</table>
+<p>And from hand-drawn rectangles on four frames (<code>sample.py</code>), the rest of the vocabulary, in sun:</p>
+<table>
+<thead>
+<tr>
+<th>what</th>
+<th>L*</th>
+<th>a*</th>
+<th>b*</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>offshore, 15–20 m</td>
+<td>36</td>
+<td>−9</td>
+<td>−16</td>
+</tr>
+<tr>
+<td>over sand, 3–5 m</td>
+<td>51–53</td>
+<td>−14 to −16</td>
+<td>−11 to −13</td>
+</tr>
+<tr>
+<td>over rock reef, ~2–4 m</td>
+<td>53 (sd 7)</td>
+<td>−1</td>
+<td>−17</td>
+</tr>
+<tr>
+<td>kelp mat</td>
+<td>29 (p10–p90 23–45)</td>
+<td>+3</td>
+<td>−20</td>
+</tr>
+<tr>
+<td>aerated water by a stack</td>
+<td>64 (sd 18)</td>
+<td>−10</td>
+<td>−10</td>
+</tr>
+<tr>
+<td>foam streak core</td>
+<td>84</td>
+<td>−4</td>
+<td>−9</td>
+</tr>
+<tr>
+<td>surf-zone foam sheet (Shi Shi, big swell)</td>
+<td>96</td>
+<td>−2</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p>What I took from this:</p>
+<ul>
+<li><strong>Depth lightens; the bottom tints.</strong> Sand makes shallow water greener. Its a* goes more negative and its b* less negative: yellow sand under blue water. Rock makes it bluer and mottled. The deep sea here is a mid blue-teal (L* 36–41), not navy. Tyndall's point is that coastal water carries particles and goes green.</li>
+<li><strong>Foam is cool.</strong> b* −2 to −9 in sun, because foam is white paint lit by a blue sky. The earlier water study's critic had already found "foam is never darker than the sea" and "bore fronts are cool white, not cream".</li>
+<li>The dark-speck column is <strong>kelp</strong>: 12% of the pixels over 1–3 m of rock, 2–4% elsewhere.</li>
+</ul>
+<p>These rows became the palette's anchors (<a href="05-light.html">how-to 5</a>). The depth series gave the one fitted number, the e-folding depth of the bottom's contribution: <code>D0 = 8 m</code>.</p>
+<h2>What I'd do differently</h2>
+<p>Pick six to eight pairs, spread to the frame edges, and pick waterline points (rock feet) rather than rock tips, since only the feet lie on the plane. And register a second frame of the same cove from another pass: the 2006 and 2016 flights overlap. With two, the kelp and foam would stop being one instant's accident.</p></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 7</span><a href="../howto/02-swell.html">2. Swell over the real bathymetry →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

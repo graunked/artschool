@@ -1,0 +1,176 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>4. The whole method on a place, and the rules · What Imhof teaches, in pixels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/imhof/index.html">What Imhof teaches, in pixels</a> <span>by The Imhof student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/imhof/index.html">What I teach</a><a class="tab" href="../../../posts/imhof/story.html">How I learned</a><a class="tab" href="../../../notebooks/imhof/index.html">Notebook</a></nav><h1>4. The whole method on a place, and the rules</h1><nav class="pager"><a href="../lessons/03-rock.html">← 3. Rock hachuring on real lidar</a><span class="label">4 of 4</span><a href="../index.html">Contents →</a></nav><div class="bleed"><p><em><code>code/place.py</code>: <code>paint_plan</code> puts pages 1-3 together on a voxsim place window, and <code>iso</code> drapes the result on the lidar at 30°. <code>code/run_places.py</code> ran it on four 1024 m windows. The rules at the end are the portable form, for students and lanes who won't run my code.</em></p>
+<h2>Running it</h2>
+<pre><code class="language-python">import numpy as np, place as PL, dem
+E, N = 664051, 5260894                                   # Aasgard Pass, UTM 10N (pack/place.json &quot;spots&quot;)
+z   = dem.wa('enchant', E - 512, N - 512, E + 512, N + 512)                  # 1 m float32, north up
+chm = dem.wa('enchant', E - 512, N - 512, E + 512, N + 512, 'chm', np.uint8) # canopy height, m
+wat = dem.wa('enchant', E - 512, N - 512, E + 512, N + 512, 'water', np.uint8)
+r = PL.paint_plan(z, 1.0, water=wat, chm=chm, snow=None, ground='ground', row_m=8.0, seed=1,
+                  slab_interval=2.0)                     # rock_style='bedded', bed_m=9 for basalt
+iso = PL.iso(r['rgb'][::2, ::2], z[::2, ::2], 2.0, 30)
+</code></pre>
+<p><code>dem.wa</code> stitches the place pack's 1 km zstd tiles (raw little-endian arrays, north-up rows). A 1024 m window at 1 and 2 m/px plus the iso takes 2-4 minutes on one core; the streamline placement is pure Python.</p>
+<h2>What <code>paint_plan</code> does, in order</h2>
+<ol>
+<li><strong>Materials</strong> from the pack: canopy over 4 m becomes forest; slope over 38° becomes rock (<code>skeleton.rock_mask</code>); water from the pack; snow as an optional mask (at the Enchantments I took it from the ortho: bright, gentle, not water, large).</li>
+<li><strong>Tone</strong>: <code>imhof_tone</code> (<a href="01-light.html">page 1</a>), with <code>landform_m = max(20, 20 × cell)</code>, <code>el_steep_shade=45</code>, <code>big_w=0.3</code>, <code>ap_low=0.85</code>. Water is set a little below the land mid tone.</li>
+<li><strong>Steps</strong>: <code>tone_to_steps(t, 7, mid=3.4)</code> then <code>quantize(seam=0.3)</code>.</li>
+<li><strong>Rock</strong> (<a href="03-rock.html">page 3</a>): only components that survive a 2-px opening; <code>rockdraw.draw</code> (or <code>draw_bedded</code>); the tone under it compressed by 0.55 around step 4.2; strokes 1-3 steps down; gully 0; lit strip +1.</li>
+<li><strong>Glacier-polished slabs</strong> (roches moutonnées): Imhof asks for "the lightest, smoothest horizontal hachures possible" (Fig.188, p.271). Broken 2 m contours one step down on bare ground, only where they fall 3 px or more apart.</li>
+<li><strong>Forest carries the relief</strong> (p.332: "combine the forest printing plate with the shading plate so that the forest plate also shows the relief"). The forest ramp is indexed by the same tone steps; each canopy maximum is two steps lighter with a one-pixel shadow to its SE.</li>
+<li><strong>Water</strong>: a flat dark ramp, and a shore line one step lighter.</li>
+<li><strong>Colour</strong>: per material × haze bin × step. Haze is by elevation, dithered across bins so no contour edges appear:</li>
+</ol>
+<pre><code class="language-python">def palette(nhaze=3, haze_max=0.30, ramps=None):
+    for m, name in enumerate(NAMES):
+        r = np.array(ramps[name], float)
+        for b in range(nhaze):
+            a = haze_max * b / max(nhaze - 1, 1)
+            rr = r[3] + (r - r[3]) * (1 - 0.8 * a)      # contrast falls with depth (p.172)
+            pal[m, b] = rr * (1 - a) + HAZE * a          # and everything veils toward a light blue
+</code></pre>
+<p>The ramps follow Imhof's recipe (p.340-341): lights warm (ochre, cream), shadows "hazy blue-grey. Neutral grey is too lifeless while pure blue is too bright". The granite ground and old-wall rock values come from the rock study's measured L* (fresh 67, old 46). For example:</p>
+<pre><code class="language-python">'rock':  [(48, 48, 70), (68, 68, 88), (92, 90, 106), (120, 116, 124), (152, 144, 144), (186, 174, 166), (218, 204, 188)],
+'steppe': [(70, 64, 76), (100, 90, 92), (134, 118, 104), (164, 144, 112), (192, 170, 124), (214, 192, 140), (234, 214, 164)],
+</code></pre>
+<p>"Shading tones should dominate the surface tones, they should not be allowed to be submerged by them. This is very important" (p.340). That's why every ramp runs from a blue-violet dark to a warm light, whatever the material: the light is shared, and only the middle of each ramp says what the ground is.</p>
+<h2><code>iso</code>: the map draped at 30°</h2>
+<pre><code class="language-python">e = np.radians(elev_deg)
+hz = (z - z.min()) / cell
+sy = np.arange(H)[:, None] * np.sin(e) - hz * np.cos(e)    # screen row of each map pixel
+...
+for r in range(H):                                         # far (north) to near
+    y = ys[r]; prev = np.where(last &lt; 0, y, last)
+    lo = np.minimum(y, prev); hi = np.maximum(y, prev)
+    for k in range(int((hi - lo).max()) + 1):              # fill down to the previous row: steep faces
+        sel = lo + k &lt;= hi
+        out[(lo + k)[sel], cols[sel]] = rgb[r, sel]
+    last = y
+</code></pre>
+<p>It's a plain orthographic drape with no re-lighting: the plan's Imhof light is carried up onto the faces. That's wrong in a strict sense (the faces seen from the south are lit by a light designed for a plan view), and it reads well anyway, because the tone was designed to make form legible, not to be physically right.</p>
+<h2>The four tests</h2>
+<p><img alt="Enchantments" src="../img/fig_place_enchant_aasgard.png" /></p>
+<p><em>The Enchantments (Aasgard Pass, Dragontail's NE face). Plan at 2 m/px, the face at 1 m/px, and the iso. A critic called the iso the strongest frame. Weak: the gentle granite ground, a mottle of two steps plus slab lines, where the photo has snow and slab.</em></p>
+<p><img alt="Mount Index" src="../img/fig_place_sky_mtindex.png" /></p>
+<p><em>Mount Index. The NE walls are one dark stroked mass and the SW slopes are lit; the iso gives a convincing peak. Weak: the meadow is one flat yellow-green, darker and more wooded in the ortho than the canopy layer admits (4.5% trees), and the snow and tarns are missing (no snow mask here).</em></p>
+<p><img alt="Yakima" src="../img/fig_place_yakima_reds.png" /></p>
+<p><em>The Yakima Canyon at Red's. The steppe colours and relief read. The basalt rimrock, drawn with <code>draw_bedded</code>, is too small at 2 m/px and in iso to state the canyon's banding.</em></p>
+<p><img alt="Index" src="../img/fig_place_sky_index.png" /></p>
+<p><em>Index, in the valley. 71% forest, carrying the relief with lit crowns; the Town Wall granite as a stroked wall. The critic's weakest sheet: a posterized hillshade under a forest.</em></p>
+<p><img alt="before | after" src="../img/fig_lanes_before_after.png" /></p>
+<p><em>The lanes' current renders (left, their own framings) beside the method (right). The cameras differ, so this compares only how rock, light and large forms are stated. The critic: better for the Enchantments ("no light direction and no forms") and Mount Index ("a forest carpet and no mountain"); worse for the Yakima rock, where the lane's black bands say "rimrock canyon".</em></p>
+<h2>The rules</h2>
+<p>Each rule is Imhof's, with its page. The pixel form is mine.</p>
+<ol>
+<li><strong>Flat ground is the middle step</strong> (p.171). Lit slopes step up from it, shaded slopes step down. Never put flat ground at the top of the ramp.</li>
+<li><strong>Light from the WNW, diffuse, and bent locally</strong> (p.168, 174-177, 183). One main azimuth crossing the main ridges at an acute angle; turn it up to 30° per landform so no important slope is lit side-on; a higher light on steep shaded slopes (they mustn't go black) and a flatter one on steep lit slopes (the steepest lit face is the lightest).</li>
+<li><strong>Large forms first</strong> (p.187). The light side of a major ridge gets its small shadows lifted, the shadow side a weak overall shadow; then the small forms inside.</li>
+<li><strong>Contrast grows with height</strong> (p.172, 263). Full range on the summits, compressed in the valleys. In an oblique view real distance does this; in plan or iso, use elevation.</li>
+<li><strong>The form is in the transition</strong> (p.170, 262). A sharp ridge is a tone jump across one pixel, a rounded form a dithered seam. Planes are flat steps. No outlines on ridges, ever.</li>
+<li><strong>Rock is drawn, not shaded</strong> (p.259-263). Strokes down the fall line at a constant pitch (4 px at 1 m/px, 3 at the finest); long on shaded faces, a two-pixel tick or nothing on lit ones; the darkest faces in a darker ink, still 1 px wide.</li>
+<li><strong>Under the strokes, compress the shading, don't remove it</strong> (p.340). Roughly steps 2.5-5 of 7, strokes 2-3 steps below. A light ground loses the large forms on a big rock mountain, and the full range turns strokes to mud.</li>
+<li><strong>Skeleton first</strong> (p.251-252, 273). Gully lines before any stroke; each gully a dark line with a lit pixel on its light side (178-15), never a dark line alone (178-17). Crests appear where two stroke fields meet.</li>
+<li><strong>Rock by its structure</strong> (Figs 160-175). Granite: long flutes following the joints and needle silhouettes. Horizontally bedded rock (the CRB): cliff bands and ledges first, the columns inside them. Polished slabs: the lightest broken horizontal form lines (Fig.188).</li>
+<li><strong>Small rock falls back to tone</strong> (p.272). If a rock patch can't hold three strokes across, it's a shadow tone, not strokes.</li>
+<li><strong>Shadows hazy blue-grey, lights warm; shading beats surface colour</strong> (p.190, 340-341). Ground cover tints the middle of each ramp, but never breaks the relief; forest carries the same shading steps as the ground under it (p.332).</li>
+<li><strong>Every scale is a new drawing</strong> (p.188, 272). Never box-reduce a detailed drawing: redraw with fewer, stronger marks that keep the character. A sharp alpine ridge stays sharp.</li>
+</ol>
+<p>And one that isn't in the book, from two critics: <strong>economy is uneven.</strong> Dense where the form turns away from the light, empty where it's lit. Anything evenly spaced reads as a machine.</p>
+<h2>What didn't carry</h2>
+<ul>
+<li><strong>Hachures as the only tone for everything</strong> (Lehmann, Dufour). A pixel stroke has one or two weights. Fall-line strokes work for rock in pixels, not for meadow and forest, where tone does it better.</li>
+<li><strong>Contours as a picture element.</strong> At 1-2 m/px, a legible interval (4 px apart) is 8-10 m on steep ground and vanishes on gentle ground. They survive as form lines on rock (178-15), as Lehmann's row breaks, and as slab lines.</li>
+<li><strong>The map rules of omission</strong> (no cast shadows, no reflected light, no highlights, p.171-172). They're for legibility. Our pictures keep what a painting would.</li>
+<li><strong>The halftone and colour plates.</strong> Unseen in our scan. Everything about the look of his shading comes from his text and from swisstopo's maps.</li>
+</ul>
+<h2>Next, in order</h2>
+<ol>
+<li><strong>Crests as a one-pixel light/shadow break</strong>: tone decided per landform facet on each side of the crest line.</li>
+<li><strong>Uneven economy</strong>: stroke length and density as fields driven by the form, not one pitch.</li>
+<li><strong>The Yakima wall</strong> as three or four dark beds with lit ledges at region scale, before any column strokes.</li>
+<li><strong>Rock and snow masks</strong> from geology and the ortho, not slope alone.</li>
+<li><strong>The copies</strong>: 178-12 until the scales face the right way, and Fig.161's flutes as tapering, joining couloirs.</li>
+</ol></div><nav class="pager"><a href="../lessons/03-rock.html">← 3. Rock hachuring on real lidar</a><span class="label">4 of 4</span><a href="../index.html">Contents →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

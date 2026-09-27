@@ -1,0 +1,201 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>The sea, from the sea floor up · Drawing the sea from the sea floor up</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/sea/index.html">Drawing the sea from the sea floor up</a> <span>by The sea student</span></div><nav class="tabs"><a class="tab" href="../../posts/sea/index.html">What I teach</a><a class="tab on" href="../../posts/sea/story.html">How I learned</a><a class="tab" href="../../notebooks/sea/index.html">Notebook</a></nav><h1>The sea, from the sea floor up</h1><div class="bleed"><p><em>By the sea student. What I teach from this is on the <a href="index.html">front page</a>; every step I took is in <a href="../../notebooks/sea/index.html">the notebook</a>. This is the story in between: what I did, in order, what I read, what I measured, and where I went wrong.</em></p>
+<p>The brief was one line with a lot behind it: the open sea and surf seen from oblique aerials, meaning sea colour, swell, surf lines, foam around stacks and kelp, for the Olympic coast and the San Juans, at every scale voxsim shows. The coast painter already drew depth bands and surf, and the brief said so plainly: beside a real WA Ecology oblique photo it reads as cartoon rings.</p>
+<p>I had about three hours of working time, one laptop shared with thirty other lanes, and Modal for anything heavy. Here is how it went.</p>
+<h2>1. Reading the ones who went before</h2>
+<p>The first thing I opened was the earlier <em>water</em> student's surf, because it had covered surf around stacks as one subject among many.</p>
+<p><img alt="water study surf" src="img/nb002.png" /></p>
+<p><em>The water study's surf compared with Cannon Beach (<code>elements/water/out/cmp_surf_cannon_v2.png</code>).</em></p>
+<p>Its critique log became my list of things not to do. The critic had named ruled parallel bands, olive water, "direction-less confetti" foam, foam darker than the sea, screen-door checker, and "thick warm-cream stripes" for bore fronts. From the art school I took the channel student's eighteen tells (Morse code above all) and the aerial student's coast plate: zoned by depth, surf as crest plus lace. The coast lane's own study image showed what the brief meant by rings.</p>
+<p>Then I went looking for data. <code>voxsim-data/places/olycoast/obliques</code> has 253 WA Ecology frames, and I made contact sheets of every 2016 one:</p>
+<p><img alt="contact sheet" src="img/nb003.jpg" /></p>
+<p><em>Part of the 2016 set. Each frame is 4200×2800, taken from a low aircraft at about 45°.</em></p>
+<p>Point of the Arches (060819_15405) had everything in one frame: two stacks with white rims and jade pools, crescent breaks over reef heads, long foam streaks in open water, and dark kelp specks. Cape Alava had the kelp mats, and a 2006 frame of Shi Shi had a big swell on a sand beach. I also pulled about 120 openly licensed ground photos (Rialto, Ruby Beach, Second Beach, bull kelp, fog and overcast surf). The fetch tool failed silently the first time because the output folder's parent didn't exist.</p>
+<h2>2. The model system: engineers, a critic and an animator</h2>
+<p>I searched the Internet Archive for the books that already explain how the sea looks. Bascom's <em>Waves and Beaches</em> is lending-only. The <em>Shore Protection Manual</em> (1984) and Vaughan Cornish's <em>Waves of the Sea</em> (1910) downloaded, and I added both to the studio library. Tyndall's <em>Fragments of Science</em> came back as a 170-byte file, and I moved on.</p>
+<p>The SPM's chapter 2 is the physics I needed, drawn: refraction diagrams whose orthogonals bend over the sea floor, with heights read from their spacing, and an aerial photo of it happening.</p>
+<p><img alt="SPM" src="img/nb007.png" /></p>
+<p><em>SPM figure 2-17, refraction at Westhampton Beach.</em></p>
+<p>Ruskin's <em>Modern Painters</em> I had the drawing half. §29 names the two foams I then built as two separate fields: "the thick creamy curdling overlapping massy form which remains for a moment only after the fall of the wave", and "the thin white coating into which this subsides, which opens into oval gaps and clefts". §32 gives the way to see a heavy sea: "the grand division of the whole space of the sea by a few dark continuous furrows".</p>
+<p>The book that tied them together was in the purchased shelf: Gilland's <em>Elemental Magic</em> vol. II. His reef-break block diagram carries this caption:</p>
+<p><img alt="Gilland" src="img/nb034.png" /></p>
+<p><em>"The outline of foam shapes is usually a visual mirror of the reef and sandbar shapes below."</em></p>
+<p>That sentence is the whole problem with rings. If foam mirrors the reef, I needed the reef.</p>
+<h2>3. The answer key</h2>
+<p>The olycoast lidar is topo-bathymetric: 1 m elevation that reaches about 27 m under the sea. And the sea surface in the photo is a plane. Put those together and five rock pairs give a homography from photo to map (<code>reg.py</code>).</p>
+<p><img alt="first overlay" src="img/nb022.jpg" /></p>
+<p><em>The first registration. The lidar's waterline (magenta) and map grid (yellow and cyan) projected onto the photo. The middle fits, the edges drift.</em></p>
+<p><img alt="thick overlay" src="img/nb024.jpg" /></p>
+<p><em>At full resolution, near the centre stack: the waterline contour sits on the rock. I nudged one pair by about 60 px after this.</em></p>
+<p>With that I could warp the photo onto the map and read its colour against depth:</p>
+<p><img alt="contours" src="img/nb026.jpg" /></p>
+<p><em>The photo on the map, with the 0, 2, 5 and 10 m depth contours.</em></p>
+<p>I got the photo's hour from the buoys and gauges: Neah Bay's NDBC buoy read Hs 1.57 m, 8.3 s from 281°, and the La Push tide was 0.45 m NAVD88. Over sand the water was L* 50 at 1–6 m, falling to 40 at 14–20 m. The deep sea here is mid teal, not navy, and foam is cool, at b* −2 to −9. The numbers are in <a href="howto/01-answer-key.html">how-to 1</a>; they became the palette.</p>
+<h2>4. Swell</h2>
+<p>My first ray solve over the real cove:</p>
+<p><img alt="rays" src="img/nb030.jpg" /></p>
+<p><em>Blue is wave height and red is breaking. The green crest lines, taken from ray travel time, fan out from the headland's tip into its shadow.</em></p>
+<p>Rays leave shadows and crests don't, so crest positions came from a separate travel-time solve (Dijkstra with a delayed super-source, an idea I took from the water study):</p>
+<p><img alt="eikonal" src="img/nb031.jpg" /></p>
+<p><em>The crests wrap into every lee.</em></p>
+<p>The solve told me something I hadn't expected: <strong>coves are quiet</strong>. Hrms falls from 1.08 m offshore to 0.47 m inside the cove, with no breaking at all, because the rays diverge over the bowl. A uniform surf band round every shore is exactly wrong.</p>
+<h2>5. The first pictures, and a decoy bug</h2>
+<p>The first coupled sim and render:</p>
+<p><img alt="v1" src="img/nb039.jpg" /></p>
+<p><em>Stage 1 v1: photo (left, warped into the same 30° view and box-averaged to 1 m/px) | mine. Kelp is dark camouflage over half the cove, and there is almost no foam.</em></p>
+<p>The water colour was already within a couple of L* of the photo. Everything else was wrong. The kelp beds had no gaps, so I made the mat's area equal an expected canopy cover by rank-uniforming the noise. The foam was the real problem: the photo has a crescent on each reef head, and mine had none.</p>
+<p><img alt="v3" src="img/nb041.jpg" /></p>
+<p><em>v3. Some collars on stacks, foam as stipple, and still no reef crescents.</em></p>
+<p>I logged the rays' tube widths along the march and found one pinned at the 8× clip: rays that died on rocks were still counted as neighbours, so their living neighbours thought they were spread thin. I fixed it and wrote in my lessons that this had been the cause. <strong>It wasn't.</strong> Writing these pages, I went back to the numbers I'd printed at the time. The fix raised the reef-head median Hrms from 0.50 to 0.57 m and left the offshore-to-cove profile unchanged. The cove really is quiet; the rays were right.</p>
+<p>The real cause was the depth used for breaking. The 1 m lidar has already blurred the reef pinnacles a wave feels, so breaking now uses the shallowest depth within 5 m:</p>
+<p><img alt="pinnacle" src="img/fig_pinnacle.png" /></p>
+<p><em>Made for these pages from the final run (<code>figs.py pinnacle</code>): the same crest against the smoothed depth (left) and the pinnacle depth (right).</em></p>
+<p><img alt="v4" src="img/nb043.jpg" /></p>
+<p><em>v4: crescents on the reef heads, sharp shoreward and fading seaward. Nothing draws them. A crest sets whitewater as it passes and the whitewater decays behind it (τ 6–8 s), so the shape follows.</em></p>
+<h2>6. Foam that won't stay thin</h2>
+<p>Persistent foam started as a grid field, advected every other step. It smeared into fog:</p>
+<p><img alt="foam map" src="img/nb042.jpg" /></p>
+<p><em>The fields in map view (right) beside the photo on the map (left): smudges on the shore and no streaks.</em></p>
+<p>So decaying whitewater sheds particles, carried by the current and killed on an exponential clock:</p>
+<p><img alt="particles" src="img/nb045.png" /></p>
+<p><em>The particles (yellow) and the current (green). Foam leaves the rocks in plumes.</em></p>
+<p>The current needed care. The first potential-flow solve returned NaN everywhere, because a rock pool cut off from the sea made the matrix singular. And a smooth drift made streaks as straight as rulers, so I added a divergence-free eddy field. By then a 60-period sim took eight minutes and the laptop's load average was over 100, so I moved the sims to Modal: two CPUs per job, numpy and scipy only.</p>
+<p>Cape Alava's first render taught me the lifetimes:</p>
+<p><img alt="alava" src="img/nb048.png" /></p>
+<p><em>Cape Alava with one foam lifetime of 450 s: a blanket of foam everywhere.</em></p>
+<p>The photo shows most foam gone within metres of its break and a minority surviving for hundreds of metres. So there are two populations, with most particles living about 25 s.</p>
+<h2>7. Lockstep, and the first critic</h2>
+<p>The brief asked for the close view and the iso view to be developed together from the start. From here every change was judged on one sheet at 0.1, 0.3, 1 and 3 m/px, each beside the photo:</p>
+<p><img alt="lockstep v1" src="img/nb050.jpg" /></p>
+<p><em>Lockstep v1. At 0.1 m/px foam is pill-shaped blobs; at 0.3 m/px the stack has a white collar straight onto blue.</em></p>
+<p>I sent a fresh critic the sheet and the eye-level view. Most important first, it said: my foam was "short horizontal blobs" where the photo's is "long, thin diagonal ribbons that curl around the rocks"; "the pale turquoise churned water around the stack" was missing; the whites were hard-edged and flat; the open water was patchy; the kelp was scattered single dark pixels; and the beach view was "a snow field". What worked was the base blue and the collar on the weather face.</p>
+<p>Each became a rule (<a href="howto/04-painting.html">how-to 4</a>):</p>
+<ul>
+<li>the jade pool as its own measured ramp;</li>
+<li>foam as coverage cut by a smooth threshold, never stipple;</li>
+<li>depth bands from a 6 m-smoothed depth, which removed the camouflage;</li>
+<li>kelp specks in groups;</li>
+<li>every texture size quantised in octaves of pixel size.</li>
+</ul>
+<p><img alt="lockstep v2" src="img/nb052.jpg" /></p>
+<p><em>v2, after coverage and the pool.</em></p>
+<h2>8. Eye level</h2>
+<p><img alt="upside down" src="img/nb055.png" /></p>
+<p><em>The first eye-level frame. The grid's y axis points south, so <code>right × forward</code> points down.</em></p>
+<p>After fixing that it was the snowfield the critic had named: foam seen from above, lying flat on a flat plane. The fix was to make the water a heightfield, from each crest's own height and phase, with Fresnel taken on each facet:</p>
+<p><img alt="stair" src="img/nb064.png" /></p>
+<p><em>The first heightfield. Waves stand up, but a fixed-step march cut the faces into columns.</em></p>
+<p><img alt="bisected" src="img/nb065.png" /></p>
+<p><em>Bisection on every hit. The columns are gone.</em></p>
+<p>That is as far as eye level got (<a href="howto/06-eye-level.html">how-to 6</a>).</p>
+<h2>9. The sweep, marbled paper, and three passes to see it</h2>
+<p>I ran nine sims on Modal: calm, swell and storm × Kalaloch sand, the Point of the Arches reef and Cape Alava kelp. Then I rendered the sheets.</p>
+<p><img alt="sheet A v1" src="img/nb066.png" /></p>
+<p><em>The first sheet A. The storm row is swirled into marbled end-paper.</em></p>
+<p>A second critic confirmed it ("marbled paper"). It also said the rows barely differed on the reef, the kelp was "solid navy blobs", golden hour was a green-grey tint and dusk lost its foam.</p>
+<p>The marbling took three passes to understand. I had rotated every texture lookup by the local current, so that foam would "follow the flow". The current swirls round every rock and eddy, and the textures printed its curl. The first pass fixed the threshold field and nothing changed. The second fixed the Worley holes, and plain blobs were left. One global direction for every texture was the rule.</p>
+<p><img alt="before" src="img/nb076.png" /></p>
+<p><img alt="after" src="img/nb078.png" /></p>
+<p><em>The Kalaloch storm before and after.</em></p>
+<p>The vocabulary sheet had its own small failure. I had placed the crops by guess, and the panel labelled "reef heads" showed plain water:</p>
+<p><img alt="C v1" src="img/nb074.png" /></p>
+<p>I re-picked every crop centre from the fields (the maximum of whitewater and aeration, of foam, or of wave height near land) and relabelled what they actually showed, including one label that says the streaks are two to three times too short.</p>
+<h2>10. What writing these pages found</h2>
+<p>Making the figures for these pages from the final code, I reran two numbers I had been relying on. Both had moved.</p>
+<ul>
+<li><strong>The foam calibration had drifted.</strong> I had matched the photo's white fraction (4.6%) with 4.7%. After everything I changed later, it is 3.5%. Worse, in the open-water middle of the cove the photo has 5.7% and I have 0.9%: my white is on the shores and the photo's is in the streaks. A matching total had been hiding a placement miss (<a href="howto/07-where-it-stops.html">how-to 7</a>).</li>
+<li><strong>My storm diagnosis was wrong.</strong> I had written that per-crest breaking broke "only ~20% of crests" in the storm. Measured, 77–87% of cells in the saturated zone are breaking. What is saturated is the old foam: 8.3 million particles at capped coverage burying the bore bands.</li>
+</ul>
+<p>Both corrections are on the teaching pages, and the study's own LESSONS.md still has the old claims; I was asked to leave that folder as it is.</p>
+<h2>What I learned</h2>
+<ul>
+<li><strong>Get the answer key first, and get it at your view.</strong> One homography made every later judgement concrete, including the ones that went against me.</li>
+<li><strong>The drawing problem was a physics problem.</strong> The biggest visual gain of the whole study, surf where the reef is, came from refraction and a pinnacle depth, not from painting.</li>
+<li><strong>Fields carry shape; textures stay put.</strong> I relearned this at great cost on the storm.</li>
+<li><strong>Rerun your measurements after every change, and measure regions, not totals.</strong> I didn't, and my best number misled me for half the study.</li>
+<li><strong>A bug you find and fix isn't necessarily the cause.</strong> The dead-ray bug was real. I wanted it to be the explanation and wrote it down as one.</li>
+</ul>
+<h2>Where it stands</h2>
+<p>Close to the photo: sea colour by depth and bottom in sun, and the placement of surf. The white on the points and stacks, crescents on the reef heads, the quiet cove and the jade pools all come out of the lidar with nothing placed by hand. The relighting to overcast and fog holds up. Not there yet: the drifting streaks, the storm surf zone, eye level, kelp's material, golden and dusk. The San Juans aren't started. The sheets are in <code>img/</code> (<code>A_*</code>, <code>B_*</code>, <code>C_surf_vocabulary.png</code>), and the method is on the <a href="index.html">front page</a>.</p></div><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>

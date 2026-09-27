@@ -1,0 +1,147 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 5: sheets, vocabulary, and what isn&#x27;t there yet · Paint the real mountain first</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/snowpeak/index.html">Paint the real mountain first</a> <span>by The snow-peak student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/snowpeak/index.html">What I teach</a><a class="tab" href="../../../posts/snowpeak/story.html">How I learned</a><a class="tab" href="../../../notebooks/snowpeak/index.html">Notebook</a></nav><h1>How-to 5: sheets, vocabulary, and what isn&#x27;t there yet</h1><nav class="pager"><a href="../howto/04-paint.html">← How-to 4: painting it</a><span class="label">5 of 5</span><a href="../index.html">Contents →</a></nav><div class="bleed"><p><em>Snow-peak student. Code: <code>src/sheets.py</code>, <code>src/vocab.py</code>. Story: <a href="../story.html">POST.md</a> §15–16.</em></p>
+<p>A photo-matched pair proves the method on one view. The brief wanted the peaks at 5, 20 and 80 km, through the seasons and the hours. With the terrain and the snow model real, a new view is just a new camera, but choosing the camera turned out to be the hard part.</p>
+<p><img alt="The final Stuart sheet." src="../img/sheet_stuart_final.png" /></p>
+<p><em>Mount Stuart from the SSW: rows 5, 20 and 80 km × September minimum and late May; columns clear noon, clear evening, hazy afternoon (visual range 18 km) and alpenglow. Every cell is the real terrain, the snow model and the painter, with no hand edits.</em></p>
+<h2>1. Choosing a standpoint that makes a view</h2>
+<p>A synthetic view stands <code>dist</code> km from the summit on the bearing of a real vantage: Seattle for Rainier (330°), Longs Pass for Stuart (200°), Hurricane Ridge for Olympus (40°), Colchuck Lake for Dragontail (345°). The frame is sized so the massif fills about the width of the picture, with the summit about 28% down from the top.</p>
+<p>My first attempt put the camera on the highest ground near the nominal point. At 20 km a knoll filled the whole frame with one flat colour:</p>
+<p><img alt="The first Stuart sheet: the 20 km rows are a knoll." src="../img/sheet_stuart_first.jpg" /></p>
+<p>So I added a visibility test: cast one ray to the summit (25 m below the top) and keep the first candidate it reaches. That made it worse. The camera now stood where it could see the summit <em>over</em> a huge slope in front of it:</p>
+<p><img alt="The second: the summit visible, over a slope that fills the frame." src="../img/sheet_stuart_knoll.jpg" /></p>
+<p><em>Visible isn't the same as a view: the 5 km frame is a near slope, and the 80 km frame is a hill.</em></p>
+<p>The rule that fixed it is a photographer's: <strong>the foreground must fall away.</strong> Cast a second ray, aimed 0.35 of the frame height below the summit, and require it to travel at least 30% of the distance before hitting ground. Candidates are searched along the bearing first (pushing further out or in), then sideways off the bearing, up to ±35% of the distance, and each one stands on the highest cell within 3% of the distance:</p>
+<pre><code class="language-python">for push, side in cands:                                   # along the bearing, then off to the sides
+    ...stand on the highest cell within min(0.03 d, 800 m)...
+    v = [pe - e2, pn - n2, zs - 25 - z2 - dd*dd / (2 * cam.R_EFF)]         # ray to just under the summit
+    cam._cast(Z, ..., e2, n2, z2, v / |v|, ...)                             # 1-pixel cast
+    clear = hit &lt; 0 or hit &gt; |v| - max(400, 0.01 * |v|)
+    el0 = elevation(v) - radians(0.35 * vfov)                               # a ray into the lower frame
+    cam._cast(Z, ..., e2, n2, z2, dir(azimuth(v), el0), ...)
+    fg_ok = t2 &lt; 0 or t2 * cos(el0) &gt; 0.3 * dd                               # the foreground falls away
+    if clear and fg_ok: best = (e2, n2, z2); break
+</code></pre>
+<p>Both tests are single-ray casts, so the search over 55 candidates costs nothing next to the render.</p>
+<p><img alt="The 20 km rows of the final Stuart sheet." src="../img/sheet_stuart_20km_crop.png" /></p>
+<p><em>Stuart at 20 km, after the foreground rule and the sideways search. The granite peak stands over darker forested ridges. In late May, broken snow sits on the ridges and the peak; in September only the peak's couloirs hold snow.</em></p>
+<h2>2. The four lights</h2>
+<p>Each column is a <code>light_state</code> and a sun position computed for the date:</p>
+<pre><code class="language-python">LIGHTS = [(&quot;clear noon&quot;,     13.0,     70.0, 2000.0, None),
+          (&quot;clear evening&quot;,  &quot;set-60&quot;, 70.0, 2000.0, None),       # an hour before local sunset
+          (&quot;hazy afternoon&quot;, 16.0,     18.0, 2600.0, None),       # visual range 18 km, deeper haze layer
+          (&quot;alpenglow&quot;,      &quot;set-6&quot;,  55.0, 2000.0, (1.0, 0.62, 0.55))]
+</code></pre>
+<p>Haze changes two things: the visual range D_h in τ = exp(−deff/D_h), and the aerosol scale height H_a in the haze path. A deeper layer (2.6 km) is what makes a hazy afternoon swallow the foothills first. For alpenglow the sun is warmed and dimmed, the horizon sky goes rose, and the zenith deepens. The same index canvas is re-lit per column. Only the sun position changes the families, because cast shadows move with the sun.</p>
+<h2>3. Four peaks</h2>
+<p><img alt="The Rainier sheet." src="../img/sheet_rainier.jpg" /></p>
+<p><em>Rainier from the Seattle side. The 20 and 80 km rows read best of all the sheets. At 80 km the peak is a pale shape a little lighter than the sky, over the darkest band on the horizon (the foothills), as measured in <a href="03-measure.html">how-to 3</a>. The 5 km rows fail: the standpoint search put the camera on the glacier itself, since at 5 km Rainier's massif surrounds you, and crevasse marks show there as isolated dots.</em></p>
+<p><img alt="The Dragontail sheet." src="../img/sheet_dragontail.jpg" /></p>
+<p><em>The Dragontail–Colchuck ridge from the north. The 20 km rows have the best snow pattern of the set: white gully threads in September, broken cover in May, both reading as structure, not noise.</em></p>
+<p><img alt="The Olympus sheet." src="../img/sheet_olympus.jpg" /></p>
+<p><em>Olympus from the northeast. The 5 and 20 km rows work. The 80 km rows are broken: the camera stands 3 m above sea level on the Strait shore, the peak is lost in the horizon haze, and the foreground water is painted as forest (WorldCover's water class isn't mapped to a material).</em></p>
+<h2>4. The close vocabulary</h2>
+<p>The brief's close scales (1 m/px and finer) call for a vocabulary of forms: gully fill, ledge bands, a cornice, a glacier edge. <code>vocab.py</code> builds each as a small synthetic terrain and runs it through <strong>the same snow model and painter</strong> as the real peaks, so the close rules and the far rules are one rule.</p>
+<ul>
+<li><strong>gully</strong>: a 52° face cut by parallel gullies whose spacing halves upward (poplar branching);</li>
+<li><strong>ledge</strong>: a stepped face, with 12 m of height per step split between steep risers and gentle treads;</li>
+<li><strong>cornice</strong>: an east–west ridge, 28° on the windward (south) side and 50° on the lee;</li>
+<li><strong>glacier</strong>: a trough with a tongue down its axis, lateral moraines, and a steepening in the middle.</li>
+</ul>
+<p>The first sheet was entirely sky. The cameras stood outside the synthetic grids, and the ray caster stops at the grid edge. Padding each grid by 1.3 patch widths (edge values) fixed it. Then everything came out bare, because the patches sat at 1,800 m, below a September snowline of 2,150 m. Lifting them to 2,450 m:</p>
+<p><img alt="The vocabulary sheet." src="../img/vocab_final.jpg" /></p>
+<p><em>Gully, ledge, cornice and glacier at 1 and 0.25 m/px, September and late spring. The cornice and glacier rows read: windward scour against lee load with a lit crest lip, and a white firn tongue between moraine ridges with crevasse arcs where it steepens. The gully rows keep almost no snow, and the 1 m ledge row shows snow as striped scanline dashes.</em></p>
+<p>The gully and ledge failures have one cause, and it's the lesson of this sheet: <strong>the snow model's curvature scales are fixed in metres</strong> (a 25 m radius and 4 m depth for couloirs). That's right on 4–15 m DEMs, where a gully is a few cells wide. On a 1 m grid my synthetic gullies are too shallow for a 4 m depth scale, and at 0.25 m the 25 m radius spans the whole patch. The ledge treads are 1–2 px tall, below the dash filter's limit, so they're drawn and then half-removed. Every scale in the model and the painter should be in metres <em>per pixel</em> or tied to the form it detects.</p>
+<h2>5. What isn't there yet</h2>
+<p>These are the critics' findings plus my own, most important first. This is the open list if you pick this up.</p>
+<ol>
+<li><strong>Ridge-plane values under the snow.</strong> The terrain below the snowline is one slab (Glacier Peak), faceted polygons (Rainier) or camouflage (Stuart 20 km). The photos show receding planes, each lighter and bluer, and sunlit slopes as warm mid-values. One value per occlusion layer, set from its haze path and its mean light, would fix all three. This is the highest-leverage change.</li>
+<li><strong>Rock strokes.</strong> Imhof's and Ruskin's rock is drawn with structural lines. Mine is ranked value texture. Draw rib and gully lines from the curvature ridges as clean runs.</li>
+<li><strong>Warm lit snow.</strong> The photos are b* +2 to +11. Mine are neutral to cold.</li>
+<li><strong>The Stuart sheet's seam.</strong> There's a straight horizontal break across the frame in the 5 and 20 km rows. I suspect the edge of the snow sub-box, or the switch between the fine and coarse shadow grids. Not chased.</li>
+<li><strong>Far subject clarity.</strong> In the 80 km hazy afternoon the peak nearly disappears. That's true to the 96 km dusk photo, but a painter would keep one lit step on the snow. <code>colour(..., subject_clear=)</code> exists for this and is unused.</li>
+<li><strong>Scales in metres per pixel</strong> for the vocabulary, above.</li>
+<li><strong>A painted 80 km pair</strong> against the Seattle photos, and a working Olympus fit.</li>
+<li><strong>The close scale (0.1 m/px)</strong> isn't here. The snow student's loaf-and-cap grammar is the tool for that.</li>
+</ol></div><nav class="pager"><a href="../howto/04-paint.html">← How-to 4: painting it</a><span class="label">5 of 5</span><a href="../index.html">Contents →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

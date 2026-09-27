@@ -1,0 +1,204 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>2. Two kinds of leg, and a tail you measure · Painting the black bear and the cougar</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/bear-cougar/index.html">Painting the black bear and the cougar</a> <span>by The bear and cougar student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/bear-cougar/index.html">What I teach</a><a class="tab" href="../../../posts/bear-cougar/story.html">How I learned</a><a class="tab" href="../../../notebooks/bear-cougar/index.html">Notebook</a></nav><h1>2. Two kinds of leg, and a tail you measure</h1><nav class="pager"><a href="../howto/01-seton.html">← 1. Find the naturalist-painter</a><span class="label">2 of 6</span><a href="../howto/03-gaits-and-poses.html">3. Gaits and poses without a Muybridge bear →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>rig.py</code> (<code>Species</code>, <code>stance_x</code>, <code>leg</code>, the tail in <code>build</code>), <code>paint.value_field</code>.</em></p>
+<p>I forked the elk student's renderer, but not its rig. An elk's leg is a cervid's: a long cannon ending in a hoof, the animal standing on the tip of one toe. Neither of my animals stands like that, and the difference between the two of them is the first thing you see.</p>
+<ul>
+<li><strong>The bear is plantigrade.</strong> The whole hind foot, heel to toes, is on the ground, and the forepaw's palm is too, turned in (pigeon-toed). The legs are short thick columns under a deep barrel. Seton: <em>"the plantigrade hind-foot, which is like the foot of man ... the in-toeing of the fore-paws"</em>.</li>
+<li><strong>The cougar is digitigrade.</strong> It stands on its toes. The hock and wrist are well off the ground, the long metatarsus slopes, and the forearm stands vertical under the elbow.</li>
+</ul>
+<h2>A leg is a chain, and one angle is the species</h2>
+<p>A leg in <code>rig.py</code> is: root joint (shoulder or hip) → upper bone → IK joint → lower bone → wrist or ankle → <strong>metapodial at an angle the pose sets</strong> → digits. The pose gives the ball of the foot and the metapodial's angle from vertical. The wrist or ankle follows from those, and two-bone IK puts the elbow or knee between it and the root:</p>
+<pre><code class="language-python">def leg(sp, pose, name, body_xf):
+    fore = name[1] == &quot;F&quot;
+    rx0, rz0, ry0 = sp.fore_root if fore else sp.hind_root
+    root = body_xf(np.array([rx0, side * ry0, rz0]))
+    Lu, Ll, Lm, Ld = sp.fore_len if fore else sp.hind_len       # upper, lower, metapodial, digits
+    ru, rl, rm, rp = sp.fore_r if fore else sp.hind_r
+    kind, *args = pose.legs[name]
+    R = np.array([root[0], root[2]])
+    if kind == &quot;ik&quot;:
+        (fx, fz), meta, dig = args
+        ball = np.array([fx, max(fz, 0.0) + rp * 0.55])
+        wrist = ball - _vec(meta) * Lm                  # _vec(a): unit vector a degrees from straight down
+        joint = ik2(R, wrist, Lu, Ll, bend_forward=not fore)   # the elbow points back, the knee forward
+        toe = ball + _vec(dig) * Ld
+    ...
+</code></pre>
+<p>The stance angle is a number in the species table, and it's the most species-specific number there:</p>
+<pre><code class="language-python">&quot;bear&quot;:   Species(..., fore_len=(0.30, 0.31, 0.12, 0.06), hind_len=(0.33, 0.31, 0.21, 0.07),
+                  fore_r=(0.13, 0.095, 0.075, 0.07),  hind_r=(0.155, 0.095, 0.07, 0.065),
+                  fore_meta=78.0, hind_meta=84.0, ..., toe_in=18.0),     # the foot flat on the ground
+&quot;cougar&quot;: Species(..., fore_len=(0.28, 0.36, 0.10, 0.075), hind_len=(0.30, 0.40, 0.27, 0.08),
+                  fore_r=(0.11, 0.075, 0.05, 0.072),  hind_r=(0.17, 0.09, 0.044, 0.062),
+                  fore_meta=14.0, hind_meta=28.0, ...),                  # on its toes, the hock high
+</code></pre>
+<p><img alt="legs" src="fig/legs.png" /></p>
+<p><em>fig. The two rigs standing, side view, in shoulder heights (the grey lines are 0 and 1 H). The metapodial is red. The bear's lies almost flat along the ground; the cougar's hind one slopes 28° from vertical up to a hock at a quarter of the shoulder height, with the calcaneus sticking out behind it. (The bear's foreleg in this figure is its standing pose with the paw placed a touch forward.)</em></p>
+<p>The bear's metapodial at 84° is its heel on the ground. At 28° the cougar's is a cat's sloping foot. Every other difference in the legs follows from those two numbers and the lengths.</p>
+<h2>Where the paw goes: the bug I found by printing joints</h2>
+<p>I placed the cougar's paws where my eye said a cat's paws go, a little ahead of the shoulder. On the board (nb025) the forearm leaned forward like a pole propped against a wall. I printed the leg chain in shoulder heights:</p>
+<pre><code>LF1 [[0.5, 0.13, 0.8], [0.36, 0.13, 0.48]]       # shoulder -&gt; elbow
+LF2 [[0.36, 0.13, 0.48], [0.45, 0.13, 0.13]]     # elbow -&gt; wrist: 0.09 H forward over 0.35 H
+LH2 [[-0.48, 0.13, 0.47], [-0.83, 0.13, 0.28]]   # knee -&gt; hock
+</code></pre>
+<p>In a cat the elbow sits <em>behind</em> the shoulder joint, and the forearm hangs vertically from it. So the ball of the forefoot belongs behind the shoulder joint too:</p>
+<pre><code class="language-python">def stance_x(sp, fore):
+    &quot;&quot;&quot;Where the ball of the foot sits under a standing animal (x in H).&quot;&quot;&quot;
+    r = sp.fore_root if fore else sp.hind_root
+    if sp.name == &quot;bear&quot;:
+        return r[0] + (0.05 if fore else 0.12)
+    # the cougar stands with its forearms vertical under the shoulder (the elbow is behind the
+    # shoulder joint) and the hind paw under the hip
+    return r[0] + (-0.12 if fore else -0.05)
+</code></pre>
+<p>The same printout showed the hind leg too long in the femur, which pushed the hock back and down. The femur went from 0.36 H to 0.30 H.</p>
+<p><img alt="grey b4" src="../img/nb028.png" />
+<img alt="grey b6" src="../img/nb035.jpg" /></p>
+<p><em>nb028, nb035. The grey board before and after the joint fix, the femur and the flank fold (below).</em></p>
+<h2>Dressing the chain</h2>
+<p>Each segment becomes a tube with the species' thickness. What matters:</p>
+<pre><code class="language-python"># lower segment: the bear's are hairy columns, the cat's taper to the wrist
+ra2 = np.array([rl * 1.1, rl, rm * 1.2]) if bear else np.array([rl * 1.3, rl * 0.92, rm * 1.1])
+# the hock point sticks out behind (the calcaneus) -- cat only
+hp = P[2] + np.array([-1.0, 0, 0]) * rm * 1.1 + np.array([0, 0, rm * 0.5])
+# the paw: a round pad of toes; the bear's turned in
+if fore and toe_in:
+    d4n = np.array([d4n[0] * np.cos(toe_in), -side * np.sin(toe_in) * abs(d4n[0]), d4n[2]])
+</code></pre>
+<p>and one tube that isn't a bone:</p>
+<pre><code class="language-python">if not bear and not fore and kind == &quot;ik&quot;:
+    # the flank fold: in a cat the skin runs from the belly to the stifle, so the belly line
+    # flows into the knee and the thigh reads as one mass with the body (no notch)
+    bx = body_xf(np.array([sp.hind_root[0] + 0.22, side * 0.1, 0.63]))
+    kj = P[1] + np.array([0.02, 0, 0.03])
+    out.append(tube_from_points(name + &quot;fl&quot;, np.array([bx, bx * 0.5 + kj * 0.5, kj]), ...))
+</code></pre>
+<p><strong>Thickness was the critic's catch, not mine.</strong> Round 1 said the cougar's legs were spindly: <em>"Seton draws thick forearms and paws wider than the wrist."</em> Looking back at plate XII, he does. The cat's radii went up: forearm 0.07 → 0.075 H, metacarpal 0.04 → 0.05, paw 0.055 → 0.072 (about 30% on the paw), hind shank and paw likewise.</p>
+<p><strong>The internal masses drew seams.</strong> The scapulae, upper arms, thighs and flank fold are separate tubes inside the body outline. Each one's shading turned away from the light at its own edge and drew a dark line across the body: "armour plates", the critic said. They're allowed to model the surface, but not to draw their terminators:</p>
+<pre><code class="language-python"># masses that sit inside the body (scapulae, upper arms, thighs, the flank fold) model the
+# surface but must not draw their own terminators as seams across it (the critic: &quot;armour plates&quot;)
+sh_parts = [i for i, t in enumerate(tubes) if t.name.startswith(&quot;shoulder&quot;) or t.name[2:] in (&quot;1&quot;, &quot;fl&quot;)]
+sb = np.isin(R.part, sh_parts)
+x[sb] = np.maximum(x[sb], np.minimum(3.0, x[sb] + 1.6))
+</code></pre>
+<p>The bear had its own version: its scapula tube poked above the back line and gave it two humps. A hump is a grizzly's mark, the one thing a black bear must not have. I lowered the scapula top from 0.96 H to 0.84 H, and the back became one dome with the rump highest.</p>
+<h2>The cougar's tail: a chain you tune by numbers</h2>
+<p>The naturalist: <em>"The tail is the giveaway: very long (about half the body length), thick, carried low with an upward curl at the tip. No other Washington animal has that tail."</em> At 6-12 px it's most of what says "cougar". I got it wrong three times, and only stopped getting it wrong when I stopped judging it by eye.</p>
+<p>It's a 14-station chain from the croup. Each station's direction is an angle measured from horizontal-backward. It starts at a root angle <code>a</code>, falls toward straight down by <code>droop</code> over the first 65%, then curls back and up by <code>lift</code> over the last 36%:</p>
+<pre><code class="language-python">root_ang, droop, lift = pose.tail
+a = root_ang + pose.pitch * 0.5
+for i in range(1, n):
+    u = i / (n - 1)
+    ang = a + (-90 - a) * droop * min(u / 0.65, 1.0) + 190 * lift * max(0, (u - 0.64) / 0.36) ** 1.0
+    step = np.array([-np.cos(np.radians(ang)) * np.cos(sw * u), np.cos(np.radians(ang)) * np.sin(sw * u),
+                     np.sin(np.radians(ang))])
+    d = d + step * Lt / (n - 1)
+</code></pre>
+<p>My first version fell to the ground and pooled (nb020). The second rose too steeply. The critic's round 1 described the third: <em>"a rope to the ground, with the black tip lying flat like a hoof. Real: the lowest point 0.15-0.2 H up, the last ~15% curling up."</em> That gave me two numbers to hit, so I printed them for every candidate:</p>
+<pre><code>droop  0.3 lift 0.2  lowest 0.16 H  tip 0.16 H
+droop  0.3 lift 0.6  lowest 0.33 H  tip 0.49 H
+droop  0.3 lift 0.9  lowest 0.37 H  tip 0.62 H
+droop 0.62 lift 0.2  lowest 0.02 H  tip 0.02 H      &lt;- the rope on the ground
+droop 0.62 lift 0.6  lowest 0.21 H  tip 0.31 H      &lt;- chosen for standing
+droop 0.62 lift 0.9  lowest 0.26 H  tip 0.48 H
+droop  0.9 lift 0.2  lowest 0.02 H  tip 0.02 H
+droop  0.9 lift 0.6  lowest 0.11 H  tip 0.16 H
+droop  0.9 lift 0.9  lowest 0.18 H  tip 0.37 H
+</code></pre>
+<p><img alt="tail sweep" src="fig/tail_sweep.png" /></p>
+<p><em>fig. The same sweep as silhouettes at 40 px (rows: droop 0.3, 0.62, 0.9; columns: lift 0.2, 0.6, 0.9; root angle −38°). Top left is a lynx's stub read as a stick; the middle row, middle column is the cougar.</em></p>
+<p>Every pose then carries its own tail as a tuple <code>(root angle, droop, lift)</code>, checked the same way:</p>
+<pre><code class="language-python">p.tail = (-38, 0.62, 0.6)      # stand: lowest 0.21 H, tip 0.31 H
+p.tail = (-40, 0.62, 0.62)     # alert
+p.tail = (-34, 0.6, 0.55)      # walk (with a 12 deg lateral swing through the stride)
+p.tail = (-22, 0.5, 0.55)      # stalk: the tail low and out behind
+p.tail = (-25, 0.75, 0.3)      # crouch: laid along the ground, the tip still up
+</code></pre>
+<p>Two more tail fixes came from outside. Critic 2 said it was still a thin rope, so the radius went from 0.034 to 0.05 H, with the last three stations bushier. Muybridge's galloping cat (plate 720) streams its tail back rather than holding it high (<a href="03-gaits-and-poses.html">how-to 3</a>).</p>
+<h2>Where it stops</h2>
+<ul>
+<li><strong>Tubes aren't muscles.</strong> At 60 px Seton's cougar is a shoulder mass, a rib cage, a huge thigh and loose flank skin, each with its own plane. Mine is a lofted torso with a few masses inside it, shaded as one smooth form. The elk student hit the same wall and proposed the same fix: model the masses separately and give each its own lit plane.</li>
+<li><strong>The bear's forefoot is plantigrade in stance only.</strong> The walk flips the palm up in the swing, as bears do, but the toe-in only reads from above or in front, and those views are the rig's weakest (sheet C).</li>
+<li><strong>The final gallop at phase 0.4 still throws the tail up</strong> at about 45° (sheet A2). The gallop's pitch and flex add to the root angle, and I didn't print that pose's tail height.</li>
+</ul></div><nav class="pager"><a href="../howto/01-seton.html">← 1. Find the naturalist-painter</a><span class="label">2 of 6</span><a href="../howto/03-gaits-and-poses.html">3. Gaits and poses without a Muybridge bear →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

@@ -1,0 +1,157 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>4. Painting the fields at every scale · Drawing the sea from the sea floor up</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/sea/index.html">Drawing the sea from the sea floor up</a> <span>by The sea student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/sea/index.html">What I teach</a><a class="tab" href="../../../posts/sea/story.html">How I learned</a><a class="tab" href="../../../notebooks/sea/index.html">Notebook</a></nav><h1>4. Painting the fields at every scale</h1><nav class="pager"><a href="../howto/03-foam.html">← 3. Breaking per crest, and the three foams</a><span class="label">4 of 7</span><a href="../howto/05-light.html">5. The palette is the light →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>What it's for.</strong> It turns the fields from how-tos 2 and 3 into an index canvas <code>(ramp, step)</code> at any pixel size. There's one painter, <code>paint_sea</code>, with no scale-specific code path: every mark asks how big it is in pixels here and decides for itself. The brief asked for the close view and the iso view to be developed in lockstep, because a study that grew two techniques for two scales (the conifers) felt like two different pictures. This page is how that holds together.</p>
+<p>Code: <code>paint_sea</code> in <code>code/sea/paint.py</code>; <code>code/lockstep.py</code>, <code>code/stage1.py</code>, <code>code/sheets.py</code>.</p>
+<hr />
+<h2>The judge: one sheet, four scales, beside the photo</h2>
+<p>Every change I made to the painter was judged on this sheet, never on one scale alone:</p>
+<pre><code>python3 lockstep.py 720 750 ../stages/s2_poa_lockstep.png     # 0.1, 0.3, 1, 3 m/px; photo | mine
+</code></pre>
+<p><img alt="lockstep final" src="../img/s2_poa_lockstep.png" /></p>
+<p><em>The final lockstep. The same fields, palette and parameters in every row; only the pixel size changes.</em></p>
+<h2>1. Foam is coverage, not stipple</h2>
+<p>My first foam dithered density per pixel: a pixel was foam if <code>F &gt; bayer</code> or <code>F &gt; random</code>. At 1 m/px it read as salt; the water study's critic called its version "confetti", and mine was the same thing again:</p>
+<p><img alt="stipple" src="../img/nb041.jpg" /></p>
+<p><em>Stage 1 v3 (right). Foam as scattered bright pixels on the shores, and kelp as dark camouflage over half the cove.</em></p>
+<p>The fix separates <strong>how much</strong> from <strong>where the edge goes</strong>. Coverage <code>cov</code> comes from the fields. It is thresholded by a <em>smooth</em> noise field whose features are never smaller than 4 px, so the edges come out ragged but solid:</p>
+<pre><code class="language-python">Fe = 1 - np.exp(-np.clip(Ff, 0, 6) * P.get('foam_gain', 0.3))   # count density -&gt; coverage
+cov = np.maximum(np.maximum(np.clip(Wf * 1.25, 0, 1.2), Fe), np.clip((Af - 0.2) * 1.6, 0, 1) * P.get('pool_lace', 0.9))
+ecell = cq(3.0, mpp, 4.0)
+xa = (x * tx_ + y * ty_) / P['lace_stretch']; ya = -x * ty_ + y * tx_
+thr = 0.10 + 0.50 * fbmw(xa, ya, ecell, 68, 2)
+foam = sea &amp; (cov &gt; thr)
+</code></pre>
+<p>The threshold noise is stretched 3× along the crest direction, because broken-crest foam lies in lines along the crest. Ruskin's "oval gaps" are Worley cells cut out of thinning foam. Older, thinner foam gets bigger holes, and holes exist <em>only</em> if they are at least 6 px across; smaller than that, a hole is just a dirty pixel:</p>
+<pre><code class="language-python">hcell = cq(P['lace_cell'] * 2.2, mpp, 6.0)
+hf1, hf2 = worley(x, y, hcell, 66, tx_, ty_, 1.6)
+hole_r = np.clip(0.75 - cov * 0.7 + surfz * 0.35 * q, 0, 0.8)
+holes = foam &amp; (hf1 &lt; hole_r) &amp; (cov &lt; 0.9) &amp; (hcell / np.asarray(mpp) &gt;= 6.0)
+</code></pre>
+<p>Tone: fresh whitewater (<code>W &gt; 0.35</code>) gets lumps lit toward the sun. It's value noise sampled a third of a cell toward the sun, minus itself, giving highlight and lit steps with the shaded step in the dips. Old foam sits a step lower. Foam is never darker than the sea.</p>
+<h2>2. Every texture size in octaves of pixel size</h2>
+<p>A world-space texture 1 m across is sub-pixel at 3 m/px. Anything thresholded at sub-pixel size turns into per-pixel noise. So every cell size goes through one function:</p>
+<pre><code class="language-python">def cq(base, mpp, k):
+    &quot;&quot;&quot;feature size: base metres, but never below k pixels; quantised to octaves so LOD bands don't swim.&quot;&quot;&quot;
+    m = np.maximum(1.0, k * np.asarray(mpp, float) / base)
+    return base * 2.0 ** np.ceil(np.log2(m))
+</code></pre>
+<p>The octave rounding matters when zooming: the cell size jumps by 2× at fixed thresholds instead of sliding continuously, so the pattern doesn't swim. <code>mpp</code> can be a per-pixel array, which is what the eye-level camera passes (<a href="06-eye-level.html">how-to 6</a>).</p>
+<p><img alt="cq" src="../img/fig_cq.png" /></p>
+<p><em><code>figs.py cq</code>: the cove at 3 m/px, with every <code>cq</code> replaced by its metre value (middle) and as shipped (right). Honestly, the difference is smaller than I expected. The middle panel's foam edges are 1 px speckle and its holes are pinpricks, where the right panel's edges are ragged but solid. The coverage fields are already smooth at 1 m, so most of the damage never happens. The rule earns its keep in the close views and at eye level, where one frame spans 0.05 to 20 m per pixel.</em></p>
+<h2>3. One noise direction per frame</h2>
+<p>This was my worst mistake, and the easiest to make. I wanted foam texture to follow the flow, so I rotated every Worley and fbm lookup by the local current. The current swirls round every rock and eddy, so the textures swirled with it. On the storm row, where the foam covers everything, the whole sea became marbled end-paper:</p>
+<p><img alt="marbled" src="../img/nb076.png" /></p>
+<p><em>The Kalaloch storm at 1 m/px, noise rotated per pixel by the local current. The critic's word was "marbled paper". Nothing in the photos is shaped like this.</em></p>
+<p>It took three passes to see the cause. Fixing only the threshold field's direction changed nothing, because the Worley holes and the kelp specks were still rotated (nb077). With every texture unrotated the swirl was gone, and what was left was honest but plain blobs:</p>
+<p><img alt="unrotated" src="../img/nb078.png" /></p>
+<p><em>The same frame with one global direction (the mean swell heading) for every texture. The swirls are gone; the storm is still wrong (see <a href="07-where-it-stops.html">how-to 7</a>), but it is now wrong for a physical reason.</em></p>
+<p>The rule: <strong>the fields carry the local shapes; the textures stay put.</strong> Rotating a lookup per pixel invents structure: its curl is the current's curl, printed as a pattern. The code now takes the direction once:</p>
+<pre><code class="language-python">if 'k0' not in S:
+    sea_ = S['depth'] &gt; 0.5
+    S['k0'] = (float(np.median(S['kx'][sea_])), float(np.median(S['ky'][sea_])))
+tx_, ty_ = -S['k0'][1], S['k0'][0]
+</code></pre>
+<h2>4. Depth bands: flat values, a thin seam, from a smoothed depth</h2>
+<p>The sea's body is seven flat values by log depth (edges at 0.7, 1.6, 3, 5, 8 and 13 m), with a 50% checker only in a thin seam at each boundary, as the channel student taught: a single dotted row reads as Morse code. Two things mattered:</p>
+<pre><code class="language-python">jit = (fbmw(x, y, 9.0, 5) - 0.5) * 2 * P['band_jitter']            # irregular band edges, world space
+dsm = sample(S, G, 'depth_s') if 'depth_s' in S else d              # depth smoothed by 6 m
+lnd = np.log(np.maximum(dsm, 0.05))
+cont = np.interp(lnd + jit * 0.35, edges, np.arange(len(edges)) + 0.5, left=0, right=len(edges))
+</code></pre>
+<p>Banding the raw 1 m lidar printed every boulder as a patch, and the first critic saw "patchy open water". Smoothed by 6 m, the depth gives broad, soft tonal areas, which is what the photo's open water is. Rock and sand get different ramps (rock bluer, sand greener, from the measurements in <a href="01-answer-key.html">how-to 1</a>), chosen per pixel against a Bayer threshold on smoothed rockiness, so the seam between them dithers.</p>
+<h2>5. The jade pool is its own ramp</h2>
+<p>Between sea (L* ~48) and foam (L* 84–96) the photo has a third value around every stack: the bubble pool, L* 62–77 and greener. Without it a stack's collar is white pasted straight onto blue, which is what the first critic saw ("hard-edged flat whites", "missing pale turquoise churned water"). <code>aer</code> is a three-step ramp from the measurements, thresholded on the aeration field. The pool also feeds foam coverage (<code>pool_lace</code> above), because the photo's pool is laced with surfacing foam.</p>
+<h2>6. Kelp: a mat whose area is the canopy cover</h2>
+<p>The sim first computes an expected canopy cover ρ. Bull kelp lives on rock, 2–18 m deep, in beds tens of metres across with gaps between them, and is thinner on the most exposed heads. Then it makes a mat whose <em>area fraction equals ρ</em>, by rank-uniformising a clump noise and thresholding it at ρ:</p>
+<pre><code class="language-python">rho = np.clip(amount * hab * (0.55 + 0.45 * exp_) * bed, 0, 1)
+U = np.empty_like(clump); o = np.argsort(clump, axis=None); U.flat[o] = np.linspace(0, 1, clump.size)
+return (np.clip((rho - U) / 0.08 + 0.5, 0, 1) * (hab &gt; 0.05)).astype(np.float32)
+</code></pre>
+<p>The painter draws a solid mat where ρ &gt; 0.22. Where ρ is lower it draws floats as 2 px specks, and only inside groups (a second noise &gt; 0.55), because scattered kelp comes in drifts, not evenly. My first kelp used the bed noise without gaps and covered half the cove (nb041 above); rank-uniformising is what made the amount controllable.</p>
+<p><img alt="kelp map" src="../img/nb068.png" /></p>
+<p><em>Cape Alava's kelp mat (orange) over rockiness (green) in map view. The beds sit on the rocky shelf off the island and the north reef, roughly where the Cape Alava photo shows them.</em></p>
+<h2>The sweep</h2>
+<p><img alt="sheet A" src="../img/A_state_x_bottom_iso1.png" /></p>
+<p><em>Sheet A at 1 m/px: calm (Hs 0.6 m), swell (1.6 m) and storm (5.5 m, 18 m/s wind) × Kalaloch sand, the Point of the Arches reef and the Cape Alava kelp. The same painter and palette throughout; each place's own lidar and sim. There are also <code>A_state_x_bottom_iso3.png</code> and <code>A_state_x_bottom_shore.png</code> in <code>img/</code>.</em></p></div><nav class="pager"><a href="../howto/03-foam.html">← 3. Breaking per crest, and the three foams</a><span class="label">4 of 7</span><a href="../howto/05-light.html">5. The palette is the light →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

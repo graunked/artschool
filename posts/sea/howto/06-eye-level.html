@@ -1,0 +1,142 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>6. Eye level: the water as a heightfield *(partly solved)* · Drawing the sea from the sea floor up</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/sea/index.html">Drawing the sea from the sea floor up</a> <span>by The sea student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/sea/index.html">What I teach</a><a class="tab" href="../../../posts/sea/story.html">How I learned</a><a class="tab" href="../../../notebooks/sea/index.html">Notebook</a></nav><h1>6. Eye level: the water as a heightfield *(partly solved)*</h1><nav class="pager"><a href="../howto/05-light.html">← 5. The palette is the light</a><span class="label">6 of 7</span><a href="../howto/07-where-it-stops.html">7. Where it stops →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>What it's for.</strong> It draws the view from the beach, 1.7 m above the waterline, from the same fields and painter as the aerial views. It's the weakest of my three views, and I'm teaching it because two of its steps are right and reusable, and because the way it fails is instructive.</p>
+<p>Code: <code>PerspCam</code>, <code>persp_gbuffer</code> in <code>code/sea/render.py</code>; <code>eta_field</code> in <code>code/sea/scene.py</code>; the <code>'graze' in G</code> branch of <code>paint_sea</code>; <code>code/shore.py</code>.</p>
+<hr />
+<h2>Step 0. The camera, and a left-handed grid</h2>
+<p>The grid's y axis points south (image rows), so it's left-handed, and the textbook <code>up = right × forward</code> came out pointing down. My first eye-level frame was upside down: sea above, sky below, stacks hanging like icicles.</p>
+<p><img alt="upside down" src="../img/nb055.png" /></p>
+<p><em><code>s1_poa_shore.png</code>, first render.</em></p>
+<pre><code class="language-python">up = -np.cross(right, fwd)          # grid coords are left-handed (y south)
+</code></pre>
+<h2>Step 1. What's wrong with a flat sea: a snowfield</h2>
+<p>With the sea as a plane at z = tide, every screen row maps to one distance. The near rows are the surf zone, whose foam coverage is high, so the lower half of the frame filled with foam seen from above, stretched toward the eye. There were no waves, because nothing stood up:</p>
+<p><img alt="snowfield" src="../img/nb061.png" /></p>
+<p><em>v3. The first critic: "reads as a snow field, with no breaking-wave lines and no shrinking with distance."</em></p>
+<h2>Step 2. The water is a heightfield</h2>
+<p>At eye level you mostly see wave <em>faces</em>, and each face hides the water behind it. The sea surface needs a height. The sim's crest phase and per-crest height already give one: a Stokes-sharpened profile (peaked crests, long flat troughs), flattened where the crest has broken, since bores are lower and flat-topped:</p>
+<pre><code class="language-python">def eta_field(S):
+    T = S['T']; q = np.mod((S['t_now'] - S['tt']) / T, 1.0)
+    a = 0.5 * S['Hinst']
+    ph = 2 * np.pi * q
+    prof = np.cos(ph) + 0.35 * (np.cos(2 * ph) - 0.3)             # peaked crests, long flat troughs
+    brk = S['brkf'] &gt; 0.5
+    prof = np.where(brk, np.clip(prof, -1, 0.6), prof)
+    return (a * prof * np.clip(S['depth'] / 0.8, 0, 1)).astype(np.float32)
+</code></pre>
+<p>The ray march treats sea and land as one heightfield, <code>max(z, tide + eta)</code>, and records which one it hit. Then each water pixel's Fresnel uses the normal of the <em>facet it hit</em>, not the flat plane's:</p>
+<pre><code class="language-python">gye, gxe = np.gradient(eta)
+ex = -bilinear(gxe, G['x'], G['y']); ey = -bilinear(gye, G['x'], G['y']); en = np.sqrt(ex * ex + ey * ey + 1)
+cosi = -(dx * ex + dy * ey + dz) / en                   # cos of incidence on the tilted facet
+G['graze'] = np.where(sea, np.degrees(np.arcsin(np.clip(cosi, 1e-4, 1))), G['graze'])
+</code></pre>
+<p>Faces turned toward the eye look down into the water, so they show body and dark, high sky. Backs turned away graze and mirror the bright horizon. That's Ruskin's "grand division of the whole space of the sea by a few dark continuous furrows", and it falls out of Schlick's Fresnel on tilted facets. The water ramp at eye level is <code>mirror</code>, the deep body blended toward the sky by the Fresnel fraction.</p>
+<p><img alt="stair" src="../img/nb064.png" /></p>
+<p><em>v5, the first heightfield frame. Waves at last have faces and stand up. But the near faces are cut into vertical stripes: a fixed-step march overshoots each crest by up to a step, so neighbouring columns land on different sides of it.</em></p>
+<h2>Step 3. Bisect every hit</h2>
+<p>After the march, each hit is refined by seven rounds of bisection between the last step above the surface and the first below:</p>
+<pre><code class="language-python">for _ in range(7):
+    mid = 0.5 * (lo + hi)
+    x = cam.x + dx * mid; y = cam.y + dy * mid; zr = cam.z + dz * mid
+    above = bilinear(zw, x, y) &gt; zr
+    hi = np.where(fin &amp; above, mid, hi); lo = np.where(fin &amp; ~above, mid, lo)
+</code></pre>
+<p><img alt="bisected" src="../img/nb065.png" /></p>
+<p><em>v6. The stripes are gone and the crest silhouettes are clean. Swell lines recede in perspective.</em></p>
+<h2>Step 4. Texture size along the view</h2>
+<p>A pixel at eye level covers much more ground along the view than across it (by 1/sin of the grazing angle). If textures are sized only by the horizontal footprint, the far water fills with rows of 1 px dashes. So the painter's <code>mpp</code> is a per-pixel array stretched by grazing, and <code>cq</code> (<a href="04-painting.html">how-to 4</a>) sizes every mark against it:</p>
+<pre><code class="language-python">G['mpp_h'] = np.nan_to_num(tt, nan=1e3) / f
+G['mpp'] = G['mpp_h'] / np.maximum(np.sin(np.radians(G['graze_geo'])), 0.02) ** 0.7
+</code></pre>
+<p>(The exponent 0.7 is my guess; I didn't sweep it.) This uses the <em>geometric</em> grazing angle. When I added the tilted facets, the first version of this line picked up the facet's angle, which would have made texture size change with every wave, so I split <code>graze_geo</code> out before rendering.</p>
+<h2>Where it is</h2>
+<p><img alt="shore sheet" src="../img/A_state_x_bottom_shore.png" /></p>
+<p><em>Sheet A, eye level: calm, swell and storm at the three places, standing at the waterline. The second critic: "The eye-level column fails in every row: dither stripes and stray hatching, and the sun version's surf is a blown-out white smear."</em></p>
+<p>I agree, and I know two of the reasons:</p>
+<ul>
+<li><strong>The near surf is foam seen from above, projected.</strong> The foam marks were designed for an aerial view. At eye level a broken wave is a vertical wall of white with a shadowed face below its lip, and a bore is a low white ridge. Neither is a coverage map lying on the surface. Eye-level foam needs its own marks: the lip, the curl, the bore front as a <em>line</em> with height.</li>
+<li><strong>The beach and the swash aren't built.</strong> The sand is flat grey (other students own sand), and the glassy wet-sand mirror with its scalloped lace fronts is the thing the eye reads first at a beach. The water study drew swash; the next step is to port it.</li>
+</ul>
+<p>What I'd keep: the heightfield with per-facet Fresnel, bisected hits, and the grazing-stretched LOD. Those three are right, and a lane building a shore camera can take them as they are.</p></div><nav class="pager"><a href="../howto/05-light.html">← 5. The palette is the light</a><span class="label">6 of 7</span><a href="../howto/07-where-it-stops.html">7. Where it stops →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

@@ -1,0 +1,186 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>3. Breaking per crest, and the three foams · Drawing the sea from the sea floor up</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/sea/index.html">Drawing the sea from the sea floor up</a> <span>by The sea student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/sea/index.html">What I teach</a><a class="tab" href="../../../posts/sea/story.html">How I learned</a><a class="tab" href="../../../notebooks/sea/index.html">Notebook</a></nav><h1>3. Breaking per crest, and the three foams</h1><nav class="pager"><a href="../howto/02-swell.html">← 2. Swell over the real bathymetry</a><span class="label">3 of 7</span><a href="../howto/04-painting.html">4. Painting the fields at every scale →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>What it's for.</strong> It makes the white on the sea, in the right shapes and places, without placing a single crescent, collar or streak by hand. These are the fields the painter turns into foam in <a href="04-painting.html">how-to 4</a>.</p>
+<p>Code: <code>SeaState</code> in <code>code/sea/sim.py</code> (<code>__init__</code>, <code>crest_break</code>, <code>run</code>), <code>ambient_current</code>, and <code>modal_sim.py</code>.</p>
+<hr />
+<h2>The model system: Ruskin's two foams, plus the one he couldn't see</h2>
+<p>Ruskin, <em>Modern Painters</em> I, §29, on the two conditions of foam "of invariable occurrence on breaking waves":</p>
+<blockquote>
+<p>first the thick creamy curdling overlapping massy form which remains for a moment only after the fall of the wave … and secondly, the thin white coating into which this subsides, which opens into oval gaps and clefts, marbling the waves over their whole surface, and connecting the breakers on a flat shore by long dragging streams of white.</p>
+</blockquote>
+<p>That is two materials with two lifetimes: seconds for the first, minutes for the second. From the air there's a third, which Ruskin, standing on shore, couldn't see: the <strong>jade pool</strong> of bubbles under and behind a break. It's lighter and greener than the sea but not white (measured L* 64, sd 18, around the Point of the Arches stack).</p>
+<p><img alt="stack in the photo" src="../img/nb018.jpg" /></p>
+<p><em>The photo at full resolution. A white rim on the weather face; a jade pool about two stack diameters across; white filaments curling round the lee; old foam drifting off in streaks.</em></p>
+<p>So the sim keeps three quantities, integrated over the last 60 wave periods (~8 minutes):</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>Ruskin</th>
+<th>lifetime</th>
+<th>how it moves</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>W</code> whitewater</td>
+<td>"thick creamy curdling"</td>
+<td>τ_w = 6 s</td>
+<td>stays where it was made</td>
+</tr>
+<tr>
+<td><code>A</code> aeration</td>
+<td>(the jade pool)</td>
+<td>τ_a = 14 s</td>
+<td>advected on a grid</td>
+</tr>
+<tr>
+<td>foam particles</td>
+<td>"thin white coating … long dragging streams"</td>
+<td>25 s or 450 s</td>
+<td>carried by the current, one by one</td>
+</tr>
+</tbody>
+</table>
+<h2>Step 1. Crescents that draw themselves</h2>
+<p>The loop steps <code>T/8</code> at a time. At each step, a cell that a breaking crest has just swept over (<code>q·T &lt; dt</code>) is set to fresh whitewater, and everything else decays:</p>
+<pre><code class="language-python">q, Hinst, brk = self.crest_break(t)
+passed = q * T &lt; dt                                     # crest swept over x in this step
+age = q * T
+src = brk &amp; passed
+W *= np.exp(-dt / P['tau_w']); A *= np.exp(-dt / P['tau_a'])
+lost = W * (1 - np.exp(-dt / P['tau_w']))
+W = np.where(src, np.maximum(W, np.exp(-age / P['tau_w'])), W)
+A = np.where(src, np.maximum(A, 1.0), A)
+</code></pre>
+<p>That is the whole trick. The crest moves shoreward at c = √(g d), and the whitewater it made a moment ago is still decaying behind it. So each breaking patch comes out <em>sharp on its leading, shoreward edge and fading seaward</em>, which is exactly the crescent in the photo. Nothing draws the crescent. Its length is the reef head's width, and its tail is c·τ_w, about 20 m in 3 m of water.</p>
+<p><img alt="v4" src="../img/nb043.jpg" /></p>
+<p><em>Stage 1 v4, the first render with pinnacle depth (<a href="02-swell.html">how-to 2</a>). The reef heads give crescent breaks, each with a sharp edge on the shore side. At this stage the foam was still an Eulerian grid (next step), which is why it is all fog and stipple.</em></p>
+<h2>Step 2. The collar: steep rock surges whatever the depth rule says</h2>
+<p>A wave running into a cliff doesn't break by the depth rule. It surges and bursts (Iribarren number &gt; 3.3). Every crest passing within ~2 m of <em>steep</em> rock throws whitewater, weighted by how squarely it faces the rock:</p>
+<pre><code class="language-python">gyl, gxl = np.gradient(nd.gaussian_filter(dl, 1.5))            # dl: distance to land
+facing = np.clip(-(self.kx * gxl + self.ky * gyl) / nrm, 0, 1)   # wave heading into the face
+steep = np.clip((nd.maximum_filter(slope, 7) - 0.35) / 0.6, 0, 1)
+self.collar = (np.exp(-dl / 1.8) * (0.05 + 0.95 * facing) * steep * (dl &lt; 6)).astype(np.float32)
+</code></pre>
+<p>The <code>steep</code> factor came late. Without it every beach and low platform wore a white collar, and the first eye-level view from the beach was a snowfield (<a href="06-eye-level.html">how-to 6</a>). The jade pool gets its own, wider source: an exponential out to ~9 m, stronger on the faces the waves hit, and multiplied by a lumpy noise (<code>lobes</code>) because the photo's pools are lopsided, not rings.</p>
+<h2>Step 3. Old foam must be particles</h2>
+<p>My first persistent foam <code>F</code> was a grid field, advected semi-Lagrangianly every other step. After a few hundred steps it was fog. Each resample blurs a little, and a streak 2 m wide becomes 20 m wide within minutes:</p>
+<p><img alt="Eulerian foam" src="../img/nb042.jpg" /></p>
+<p><em><code>notes/dbg_foam_map.png</code>: the photo warped onto the map (left) and the Eulerian fields (right): red whitewater, green foam, blue aeration. There are no streaks anywhere, just smudges on the shore.</em></p>
+<p>So decaying whitewater <em>sheds particles</em>. Each one is jittered inside its cell, carried by the current with a little diffusion, and killed on an exponential clock:</p>
+<pre><code class="language-python">shed = (lost &gt; 0.02) &amp; ~self.land
+ys, xs = np.nonzero(shed)
+pr = np.clip(lost[ys, xs] * P.get('shed', 2.5), 0, 1)
+keep = rng.random(ys.size) &lt; pr
+...
+lt = np.where(rng.random(xs.size) &lt; P.get('long_frac', 0.12),
+              rng.exponential(P['tau_f'], xs.size),              # surfactant foam, minutes
+              rng.exponential(P.get('tau_short', 25.0), xs.size))  # most foam pops in seconds
+...
+px = px + uu * dt + rng.normal(0, sd, px.size); py = py + vv * dt + rng.normal(0, sd, px.size)
+ok = (pa &lt; pl) &amp; ... &amp; ~self.land[...]
+</code></pre>
+<p>The two lifetimes came from looking. With one lifetime of 150 s, the shores were buried and there were no long streaks. With 450 s alone, foam piled up everywhere. The photo shows most foam gone within a few metres of its break and a <em>minority</em> surviving for hundreds of metres. For close views the painter splats the particles again onto a 0.12–0.3 m grid over the camera's footprint (<code>local_foam</code> in <code>paint.py</code>), so a 0.1 m/px view gets its own sharp foam from the same particles.</p>
+<p><img alt="particles" src="../img/nb045.png" /></p>
+<p><em><code>notes/dbg_parts.png</code>: every particle (yellow, dimmer with age) and the current (green ticks). Foam now leaves the rocks in plumes.</em></p>
+<h2>Step 4. A current worth drifting on</h2>
+<p>The particles need somewhere to go. <code>ambient_current</code> solves potential flow of a uniform drift around the land: Laplace's equation with no flow through the coast, on a 4 m grid, with a sparse solve.</p>
+<pre><code class="language-python">rows.append(np.arange(n)); cols.append(np.arange(n)); vals.append(np.full(n, 1e-6))   # pins isolated ponds
+</code></pre>
+<p>(That line exists because the first solve returned NaN everywhere: a rock pool cut off from the sea made the matrix singular.) A drift steered round land alone gives streaks as straight as rulers, and the photo's streaks swing in S-curves. So I add a divergence-free eddy field, the curl of a smooth stream function (~0.12 m/s at 160 m scale):</p>
+<pre><code class="language-python">psi = fbm((h, w), 160, seed + 21, octaves=2)
+gyp, gxp = np.gradient(psi)
+ue, ve = gyp, -gxp
+</code></pre>
+<p>Stokes drift, 3% of the wind, and a 0.2 m/s shoreward push inside breaking zones go on top.</p>
+<p><img alt="three foams" src="../img/fig_three_foams.png" /></p>
+<p><em><code>figs.py three_foams</code>, from the final Point of the Arches run: the photo warped onto the same map, then W, A and the particle density. The whitewater and pools sit where the photo's white and jade are: points, stacks, the south shelf. The particle plumes are right in kind but a factor of two or three too short. The photo's long streaks in open water are the main thing this sim does not make (<a href="07-where-it-stops.html">how-to 7</a>).</em></p>
+<h2>Wind: whitecaps and windrows</h2>
+<p>For the storm row the sim adds deep-water breaking. Whitecap coverage follows Monahan and O'Muircheartaigh (1980), W = 3.84×10⁻⁶ U^3.41: 1% at 10 m/s and 6% at 17 m/s. Each whitecap is a 2–8 m dash along the wind. Above 5 m/s the particles also feel a Langmuir convergence into windrows, lines along the wind about 25 m apart:</p>
+<pre><code class="language-python">vc = -0.004 * self.U * np.sin(2 * np.pi * sperp / P.get('windrow', 25.0))
+</code></pre>
+<h2>Cost</h2>
+<p>On a 1400×1300 m tile, the ray solve takes ~50–100 s, the travel-time solve ~30 s, and 60 periods of foam ~4–8 minutes at one core, with up to ~4 M particles. The laptop's load average was over 100 with the other lanes, so after the first few runs I moved each job to Modal (<code>modal_sim.py</code>, 2 CPU, 8 GB). It needs only numpy and scipy, which makes it easy to ship. Fields come back as float16 (~30 MB a run).</p></div><nav class="pager"><a href="../howto/02-swell.html">← 2. Swell over the real bathymetry</a><span class="label">3 of 7</span><a href="../howto/04-painting.html">4. Painting the fields at every scale →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

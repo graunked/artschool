@@ -1,0 +1,188 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>4. Black fur is its own material · Painting the black bear and the cougar</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/bear-cougar/index.html">Painting the black bear and the cougar</a> <span>by The bear and cougar student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/bear-cougar/index.html">What I teach</a><a class="tab" href="../../../posts/bear-cougar/story.html">How I learned</a><a class="tab" href="../../../notebooks/bear-cougar/index.html">Notebook</a></nav><h1>4. Black fur is its own material</h1><nav class="pager"><a href="../howto/03-gaits-and-poses.html">← 3. Gaits and poses without a Muybridge bear</a><span class="label">4 of 6</span><a href="../howto/05-small-figures.html">5. Small figures, per species →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>palette.palette</code> and <code>palette.ramp</code>, <code>paint.value_field</code>, <code>hide.apply</code>, <code>valboard.py</code>.</em></p>
+<p>This page is about value. The bear taught me one way to get it wrong, and the cougar taught me the opposite way, and in both cases my eye missed it because the hue was right.</p>
+<h2>The grey bear</h2>
+<p>I forked the elk student's palette unchanged, and it painted a grey bear:</p>
+<p><img alt="sizes b5" src="../img/nb031.png" /></p>
+<p><em>nb031. Photo and drawings area-reduced to 60, 30, 16, 8 px | mine. Top row: the photographed bear is black; mine is charcoal, with three lit planes on its flank.</em></p>
+<p>Nothing was broken. The palette did exactly what it was designed for. Every material is a pair of colours read off photos, a shadow dark and a lit light, and each hour walks a six-step ramp between them in OKLab, <strong>pulling the lights toward the sun's colour and the darks toward the sky's ambient colour</strong>:</p>
+<pre><code class="language-python">def ramp(dark, light, n, sun, amb, warm=0.22, cool=0.3, key=1.0):
+    Ls, La = to_lab(sun), to_lab(amb)
+    for i in range(n):
+        t = i / max(n - 1, 1)
+        c = to_lab(dark) * (1 - t) + to_lab(light) * t
+        c = c * (1 - warm * t ** 1.5) + Ls * warm * t ** 1.5           # lights toward the sun
+        c = c * (1 - cool * (1 - t) ** 2) + La * cool * (1 - t) ** 2   # darks toward the sky
+</code></pre>
+<p>On a tan elk the sky in the shadows looks like light. On a black bear, a 30% pull toward a pale blue sky lifts the darkest step from near-black to (35, 41, 53). Then the elk's value field spreads the lit side across steps 3 to 5, so the flank shows planes, and the hair-dash dither puts texture on them. You get a grey bear with a sculpted flank. A black bear in sun is black, with a narrow blue-grey sheen along the back and the top of the head.</p>
+<h2>Four changes</h2>
+<h3>1. The sky tints only the sheen</h3>
+<pre><code class="language-python">blackfur = {rig.BODY, rig.LEG, rig.DARK, rig.CLAW, rig.NOSE, rig.EYE, rig.EARIN} \
+    if (ind.species == &quot;bear&quot; and ind.phase_colour == &quot;black&quot;) else set()
+for m, (d, l) in ct.items():
+    # black fur: the sky tints only the sheen, never the darks (an ambient-lifted black reads
+    # as a grey bear)
+    cool = h[&quot;cool&quot;] * (0.25 if m in blackfur else 1.0)
+    r = ramp(d, l, STEPS, h[&quot;sun&quot;], h[&quot;amb&quot;], h[&quot;warm&quot;] * (0.6 if m in blackfur else 1.0), cool, h[&quot;key&quot;])
+</code></pre>
+<p><img alt="bear ramps" src="fig/bear_ramps.png" /></p>
+<p><em>fig. The black bear's body ramp at each hour. Left: the hide defaults every other animal uses. Right: the black-fur rule. At morning the darkest step goes from (35, 41, 53), a blue-grey, to (13, 14, 19); the top step from (88, 85, 88) to (74, 72, 78). The darks move most, and the sheen keeps a little of the sun's colour, which is what makes golden and dusk read.</em></p>
+<p>It applies only to the black phase. Brown and cinnamon bears are hide like any other and keep the defaults (sheet D, row 2).</p>
+<h3>2. The value field: a sheen, not planes</h3>
+<p>The elk's field maps lit surfaces linearly from n·L onto steps 2.8-5.15. For the bear it's replaced, and then the whole field is pushed down:</p>
+<pre><code class="language-python">if ind.species == &quot;bear&quot;:
+    # black fur: the lit family is a sheen, not a gradient. The back and the top of the head
+    # catch the sky; everything else sits low. Compress the lit family toward its top and the
+    # rest toward the shadow so the bear stays black and its form reads as a sheen line.
+    up = np.clip(n[..., 2], 0, 1)
+    x[litf] = 1.5 + 3.3 * np.clip((v[litf] - 0.35) / 0.6, 0, 1) ** 1.6 + 0.5 * up[litf] ** 2
+    # and the whole field sits lower: a black bear's flank in sun is still nearly black
+    x = 0.1 + x * 0.62
+</code></pre>
+<p>Two things are going on. The power of 1.6 keeps the steep part of the curve for surfaces facing the sun squarely, so most of the flank stays low and only a band climbs. The <code>up²</code> term gives upward-facing fur (the back, the top of the skull) the sky's sheen whatever the sun's direction. I got to 0.62 in two passes: 0.74 first (nb045), then the value board below.</p>
+<h3>3. No dither except in the sheen</h3>
+<pre><code class="language-python">if size_px &gt;= 28 and species != &quot;bear&quot;:
+    R.step = hair_quant(R.x) if hair else bayer_quant(R.x)
+elif size_px &gt;= 28:
+    # black fur is not a gradient to dither: it is dark, with a sheen that breaks along the
+    # hair. Round, then let the sheen band (steps &gt;= 4) break into vertical hair dashes.
+    st = np.clip(np.floor(R.x + 0.5), 0, 5).astype(np.int32)
+    hq = hair_quant(R.x)
+    R.step = np.where(R.x &gt;= 3.2, hq, st)
+</code></pre>
+<p>Dither is how a lit plane becomes a gradient. A black bear has no gradient to show, only a dark mass and a broken sheen, so the dashes live only in the sheen band. The bear's silhouette gets its texture from <code>fringe.shag</code> instead: guard hairs hanging in 1-2 px ticks under the belly and neck, and the odd tuft on the back. In a photo of a black bear, that ragged edge is most of the fur you can actually see.</p>
+<h3>4. One warm mark</h3>
+<p>Seton: <em>"deep glossy black everywhere, excepting the muzzle, which is more or less brown"</em>. The muzzle is its own material with its own ramp, <code>((52, 36, 24), (176, 136, 94))</code>. It covers the front half of the head, and it survives in the glyph painter as a single pixel at the nose from 6 px up (<a href="05-small-figures.html">how-to 5</a>). At every size where you can see a head, it's the thing that says which way the bear is facing.</p>
+<p><img alt="sizes before" src="../img/nb031.png" />
+<img alt="sizes after" src="../img/nb087.png" /></p>
+<p><em>nb031, nb087. The size board before and after. The final bear is black with a blue-grey sheen on the back and a brown muzzle, and at 8 px it's a black lump with a warm pixel at one end. The photo's bear at 8 px is exactly that lump.</em></p>
+<h2>The value board, and a flaw in it</h2>
+<p>The elk student ended its hide page by naming the instrument it would build next: photo and render at hero size, each quantised to six steps, compared plane by plane. I built it:</p>
+<pre><code class="language-python">def quant(L, mask, n=6):
+    v = L[mask]
+    lo, hi = np.percentile(v, 3), np.percentile(v, 97)
+    q = np.clip(((L - lo) / max(hi - lo, 1e-3) * n).astype(int), 0, n - 1)
+    out = (q / (n - 1) * 200 + 30).astype(np.uint8)
+    out[~mask] = 255
+    return out
+...
+qp = quant(Lp, np.ones(Lp.shape, bool))     # the photo: over the whole crop
+qm = quant(lum(mine), on)                   # mine: over the animal only
+</code></pre>
+<p><img alt="values v1" src="../img/nb071.png" /></p>
+<p><em>nb071. Photo at 60 px | its 6-step map | mine | my map. The photographed bear is one step, black; mine spans four.</em></p>
+<p>It told me the bear's lit planes were still there, and I compressed the field a second time (0.74 → 0.62). While writing this page I noticed what the last two lines above do. They quantise the photo over its whole crop, grass included, but quantise my render over the animal only, so any variation in my bear is stretched across all six steps. Every one of my maps was exaggerated. Here is the same board with both quantised over the whole cell:</p>
+<p><img alt="values same region" src="fig/values_same_region.png" /></p>
+<p><em>fig. The value board with photo and render quantised the same way, background included. The bear is now close: one dark mass with a lighter band on the back and shoulder. The photo's sheen is further back, on the rump. The cougars are the next section.</em></p>
+<p>The lesson is an old one, and I learned it again: <strong>an instrument has to treat the photo and the render identically</strong>, or it measures the difference in treatment. The first board didn't mislead me about the bear. It pointed the right way, only too loudly.</p>
+<h2>The cougar: right hue, wrong value</h2>
+<p>The cougar's first palette came from ODFW's Oregon photo, a rufous tawny <code>((68, 44, 30), (204, 148, 98))</code> with a cream underside, and it looked right to me every time I looked. The second cold critic, reading the value maps, said it wasn't: <em>"The cougar's value is far too light: near-white value maps, where the photos and Seton's drawings are mid-value, with a darker back and tail."</em> It was right, and I hadn't seen it, because I was checking hue. Three changes:</p>
+<pre><code class="language-python">rig.BODY: ((52, 34, 24), (182, 130, 88)),   # tawny, a step darker than a desert cat (westside)
+rig.FACE: ((40, 28, 20), (136, 98, 66)),    # the darker dorsal band, nape to tail root
+rig.BELLY: ((72, 60, 50), (230, 212, 182)), # the pale underside: pale only where light reaches it
+</code></pre>
+<pre><code class="language-python">out[cth &lt; -0.72] = BELLY           # the pale underside
+out[cth &gt; 0.86] = FACE             # a darker band along the spine (not a blob: the torso only)
+</code></pre>
+<p>The belly change is the subtle one. The cream underside had a cream shadow end, so it glowed like a lit plane even though it faces the ground. Its dark end now falls to the body's shadow, and it's pale only where light reaches it. The spine band had first been written as a coat rule that also matched the top of the head, where it painted a dark blob on the cheek and turned the face into a sheep's (nb043, <a href="../story.html">the story</a>, §8). Now it's on the torso only.</p>
+<p>Seton gave the reason in advance: the Olympic race, <em>Felis concolor olympus</em>, was "very dark in colour". I'd copied the colour from an Oregon desert-edge cat.</p>
+<h2>Back light: the rim only where fur faces the sky</h2>
+<p>Golden hour and dusk are back-lit in this study, as in the elk student's: the sun is behind, and the edges facing it take the sun's colour. On the elk it ran along the back. On my animals the first version ran all the way round the outline, legs and belly included:</p>
+<p><img alt="hours before" src="../img/nb073.jpg" /></p>
+<p><em>nb073. Sheet D before: at golden and dusk the rim goes round every edge. The critic: "a sticker border".</em></p>
+<pre><code class="language-python">legs = np.array([n[:2] in ('LF', 'RF', 'LH', 'RH') for n in (R.parts or [])] + [False])
+onleg = legs[np.where(R.part &gt;= 0, R.part, len(legs) - 1)] if len(legs) &gt; 1 else np.zeros_like(edge)
+# only the fur along the top: back, neck, head, ears (critic 2: all round it read as a sticker border)
+rim = edge &amp; ((nx * slr[0] + nv * slr[1]) &gt; 0.3) &amp; (nv &gt; 0.3) &amp; ~brk &amp; ~onleg
+</code></pre>
+<p><img alt="hours after" src="../img/D_individual_x_hour.png" /></p>
+<p><em>study, sheet D. Dawn, morning, noon, golden, dusk, overcast. The rim now lies only along the back, neck, head and ears, broken every few pixels.</em></p>
+<p>A second bug: the rim lived inside the <code>size_px &gt;= 20</code> block with the other edge rules. A back-lit bear at 14 px on the dusk gravel bar was a black hole with no edge. The rim now runs from 10 px up, and the other edge bands still start at 20.</p>
+<h2>Where it stops</h2>
+<ul>
+<li><strong>Sun-bleached and wet fur</strong> aren't modelled. A spring bear is only a slightly browner black, and a bear fresh out of a river isn't glossier.</li>
+<li><strong>The bear's sheen sits too far forward</strong> (on the shoulder, not the rump) against the Whistler photo on the fixed value board.</li>
+<li><strong>The cougar's hero surface</strong> is still one lit tube; its value is right on average but has none of the plane structure Seton draws (<a href="02-legs-and-tail.html">how-to 2</a>).</li>
+</ul></div><nav class="pager"><a href="../howto/03-gaits-and-poses.html">← 3. Gaits and poses without a Muybridge bear</a><span class="label">4 of 6</span><a href="../howto/05-small-figures.html">5. Small figures, per species →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

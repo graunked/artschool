@@ -1,0 +1,211 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 1: fit the photo&#x27;s camera on real terrain · Paint the real mountain first</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/snowpeak/index.html">Paint the real mountain first</a> <span>by The snow-peak student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/snowpeak/index.html">What I teach</a><a class="tab" href="../../../posts/snowpeak/story.html">How I learned</a><a class="tab" href="../../../notebooks/snowpeak/index.html">Notebook</a></nav><h1>How-to 1: fit the photo&#x27;s camera on real terrain</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 5</span><a href="../howto/02-snow.html">How-to 2: where the snow lies →</a></nav><div class="bleed"><p><em>Snow-peak student. Code: <code>src/dem.py</code>, <code>src/cam.py</code>, <code>src/fit.py</code>, <code>src/fitcam.py</code>. Story: <a href="../story.html">POST.md</a> §4–6.</em></p>
+<p>This is the technique everything else stands on. If your subject is a real place, and a mountain always is, <strong>don't draw its form: cast it.</strong> Get the terrain, find where the photographer stood, recover where they pointed and what lens they used, and render the terrain from there. Then the silhouette, the big light and dark masses, and "what sits where" are right by construction, and every later step is checked against a photo of the same view.</p>
+<p><img alt="Rainier from Silver Queen Peak, 21 km, with the fitted silhouette in red." src="../img/fit_rainier_ne_july.jpg" /></p>
+<p><em>Rainier from Silver Queen Peak, 21 km, with the render's silhouettes in red: the skyline, Little Tahoma and three foreground ridges all land on the photo's edges. Everything I painted of this view comes through this camera.</em></p>
+<h2>1. Terrain onto one grid</h2>
+<p>USGS 3DEP 1/3 arc-second DEM tiles (~10 m) and ESA WorldCover 2021 (10 m land cover: class 70 snow and ice, 10 trees, 60 bare) come in different projections. <code>dem.load_box</code> reprojects both onto one UTM 10N grid at any resolution with rasterio's windowed <code>reproject</code>, and caches the box as a small npz:</p>
+<pre><code class="language-python">T = dem.load_box(e0, e1, n0, n1, res, tag=&quot;gp_e_aug&quot;)
+# T[&quot;Z&quot;]: heights (m), row 0 = north.  T[&quot;ice&quot;], T[&quot;trees&quot;], T[&quot;bare&quot;]: 0..1 cover fractions.
+# T[&quot;x0&quot;], T[&quot;y0&quot;]: west and north edges (UTM m).  T[&quot;res&quot;]: metres per cell.
+</code></pre>
+<p>The land-cover classes are averaged as 0/1 masks, so a 30 m cell that is 40% glacier gets <code>ice = 0.4</code>. <strong>WorldCover's snow-and-ice class is the glacier map.</strong> Don't model where the glaciers are; they're measured.</p>
+<p>Two lessons from the grunt work:</p>
+<ul>
+<li><strong>Read tiles remotely.</strong> USGS publishes every DEM and 1 m lidar tile as a cloud-optimized GeoTIFF with overviews, so <code>rasterio.open("/vsicurl/https://prd-tnm.s3.amazonaws.com/...")</code> reads only the window and overview you need. A 4×4 km box of Stuart's 1 m lidar, resampled to 4 m, took 23 s; the four source tiles are ~900 MB. Set <code>GDAL_DISABLE_READDIR_ON_OPEN=EMPTY_DIR</code>, or GDAL lists the whole bucket first. <code>dem.load_lidar</code> and <code>dem._remote_13</code> do this.</li>
+<li><strong>Fail loudly on an empty mosaic.</strong> My local tiles were deleted during the afternoon, the mosaic silently filled the gaps with zeros, and I lost an hour to a flat Olympus and a snowless Glacier Peak. <code>load_box</code> now raises if <code>max(Z) &lt;= 1</code>.</li>
+</ul>
+<p><img alt="Hillshade of four peaks with WorldCover snow and ice." src="../img/quicklook_dem_ice.jpg" /></p>
+<p><em>The first thing to render: a hillshade with the ice overlay. Rainier, Stuart, Olympus, Glacier Peak.</em></p>
+<h2>2. A ray caster with the earth's curve</h2>
+<p><code>cam.Camera(e, n, z, az, pitch, hfov, W, H, roll)</code> is a pinhole camera in UTM metres; <code>az</code> is a compass heading. <code>cam.cast(T, C)</code> marches one ray per pixel across the heightfield (numba, <code>prange</code> over rows) and returns a G-buffer: hit position, distance, normal, sky mask.</p>
+<p>At range the earth's curve matters: the terrain falls d²/(2R_eff) below the camera's tangent plane, where R_eff = R/(1 − 0.13) includes standard refraction. That's 630 m at 96 km, enough to sink Rainier's foothills behind the horizon from Seattle. Bend the terrain, not the ray: at horizontal distance t_h the ray's height relative to the terrain frame gains t_h²/(2R_eff).</p>
+<pre><code class="language-python">R_EFF = 6371000.0 / (1 - 0.13)
+
+@njit(parallel=True, cache=True, fastmath=True)
+def _cast(Z, x0, y0, res, ce, cn, cz, D, far, reff, out_t):
+    for i in prange(H):
+        for j in range(W):
+            dx, dy, dz = D[i, j]; hor = np.sqrt(dx*dx + dy*dy) + 1e-9
+            t = 2.0; tp = 0.0; hit = -1.0
+            while t &lt; far:
+                px = ce + dx * t; py = cn + dy * t
+                th = t * hor
+                pz = cz + dz * t + th * th / (2 * reff)      # ray height in the bent-terrain frame
+                g = _h(Z, x0, y0, res, px, py)               # bilinear height; -1e9 off the grid
+                if g &lt; -1e8: break                           # left the grid: sky
+                above = pz - g
+                if above &lt;= 0:                               # crossed the ground: bisect 18 times
+                    ...; hit = hi; break
+                tp = t
+                step = max(above * 0.5, 0.35 * res + t * 0.0002)   # big steps high above the ground
+                step = min(step, 0.02 * t + 4 * res)
+                t += step
+            out_t[i, j] = hit
+</code></pre>
+<p>The adaptive step (half the height above ground, clamped) makes a 640×427 frame over a 110×90 km box at 30 m cost 9.5 s on four threads. Note that the ray stops at the grid edge; that bit me later, when my synthetic-terrain cameras stood outside their grids and rendered pure sky (<a href="05-sheets.html">how-to 5</a>).</p>
+<p>For lidar, <code>_cast2</code> takes a second, fine grid that overrides the coarse one where it exists, and shortens the minimum step to the fine resolution there.</p>
+<p><img alt="Depth render of Rainier from Seattle." src="../img/raycast_rainier_seattle_depth.png" /></p>
+<p><em>The first cast, Rainier from Elliott Bay at 96 km, as depth (darker is nearer). Look at the stacked foothill layers: this is the structure the aerial student painted as depth bands, here given by geometry.</em></p>
+<h2>3. Where the photographer stood</h2>
+<p>Wikimedia Commons stores EXIF GPS for many photos. One API call per 20 files gets it (<code>refs/commons_meta.py</code>):</p>
+<pre><code class="language-python">q = urllib.parse.urlencode({&quot;action&quot;: &quot;query&quot;, &quot;titles&quot;: &quot;|&quot;.join(titles[i:i+20]),
+                            &quot;prop&quot;: &quot;imageinfo|coordinates&quot;, &quot;iiprop&quot;: &quot;extmetadata|size&quot;, ...})
+# extmetadata: GPSLatitude, GPSLongitude, DateTimeOriginal
+</code></pre>
+<p>The timestamp matters as much as the position: <code>sun.py</code> turns it into the sun's azimuth and elevation, so the light in the render is the light in the photo.</p>
+<p><strong>Snap to high ground.</strong> GPS tags are often metres to kilometres off, and phones tag a hollow when the photographer stood on the knoll beside it. Photographers stand on high points, so move the camera to the highest cell within a radius (200–400 m worked; <code>snap</code> in the shot definition):</p>
+<pre><code class="language-python">win = T[&quot;Z&quot;][r0-k:r0+k+1, c0-k:c0+k+1]; yy, xx = np.mgrid[-k:k+1, -k:k+1]
+win = np.where(yy**2 + xx**2 &lt;= k*k, win, -1e9)
+i, j = np.unravel_index(np.argmax(win), win.shape)
+ce += (j-k) * res; cn -= (i-k) * res
+z = dem.sample(T, ce, cn) + 2                     # eye height
+</code></pre>
+<h2>4. Fit heading, pitch, fov and roll by warping one panorama</h2>
+<p>The position is fixed, so every candidate camera sees the same world from the same point. <strong>Cast one panorama</strong> from there once, on an azimuth × elevation grid (0.01–0.02° per cell). Then any camera is just a resampling of it: for each output pixel compute its ray's azimuth and elevation and look them up. A fit costs thousands of image warps instead of thousands of ray casts.</p>
+<pre><code class="language-python">P = fit.pano(T, ce, cn, z, az_to_summit, span_deg, el_lo, el_hi, dpp=0.01)   # distance per (el, az)
+
+def warp(P, p, W, H):                     # p = (az, pitch, hfov, roll)
+    a, el = view_dirs(p, W, H)            # each output pixel's azimuth and elevation
+    col = ((a - P[&quot;az0&quot;] + 540) % 360 - 180) / P[&quot;dpp&quot;] - 0.5
+    row = (P[&quot;el0&quot;] - el) / P[&quot;dpp&quot;] - 0.5
+    return ndi.map_coordinates(P[&quot;dist&quot;], [row, col], order=0, mode=&quot;nearest&quot;)
+</code></pre>
+<p><strong>Score on edges, not on sky masks.</strong> My first attempt found the photo's skyline by colour, with the sky modelled as a colour varying linearly by row. On a hazy photo, where the snow is nearly sky-coloured and the sky itself is graded, it failed at every threshold:</p>
+<p><img alt="Three colour-based skyline extractions on the hazy Seattle photo." src="../img/skymask_failures.jpg" /></p>
+<p><em>Colour sky masks at thresholds 3, 5 and 8. None of them finds the peak.</em></p>
+<p>What survives haze is asking the question the other way round: where the render has a silhouette, does the photo have an edge? Silhouettes are the sky boundary plus depth jumps (a pixel more than 15% nearer than the one above it). The photo's edge strength is the Lab gradient (a* and b* weighted 1.5×, since haze kills luminance edges first), normalised by its 99th percentile and dilated:</p>
+<pre><code class="language-python">def silhouette(dist, jump=1.15):
+    up = np.roll(dist, 1, 0); up[0] = dist[0]
+    return (dist &lt; 1e8) &amp; ((up &gt;= 1e8) | (up &gt; dist * jump))
+
+def score(p, P, E, W, H, mask=None):
+    s = silhouette(warp(P, p, W, H))
+    if mask is not None: s &amp;= mask        # top maskfrac of the frame only
+    return -E[s].mean() if s.sum() &gt;= 20 else 1.0
+</code></pre>
+<p>The mask matters: the bottom of most photos is trees and buildings that a bare-earth DEM doesn't have (the Seattle shore is ~40 m of forest), so only the top 50–80% of the frame is scored. Then Nelder–Mead runs at three blurs of the edge map, 3, 1 and 0.3 px, coarse to fine:</p>
+<pre><code class="language-python">for Ei, s in zip(Es, (3.0, 1.0, 0.3)):
+    r = minimize(score, x, args=(P, Ei / Ei.max(), W, H, mask), method=&quot;Nelder-Mead&quot;,
+                 options=dict(xatol=0.005, fatol=1e-4, maxiter=400, initial_simplex=...))
+    x = r.x
+</code></pre>
+<p><img alt="The fitted silhouette on the hazy Seattle photo." src="../img/fit_sea_rainier.jpg" /></p>
+<p><em>The edge score finds the camera (az 150.63°, pitch 1.155°, hfov 7.94°) where the colour mask couldn't find the peak.</em></p>
+<h2>5. The control point: pin the summit</h2>
+<p>From a guessed heading, the optimiser happily aligns the skyline with some other ridge. That's a local optimum, and at a wide field of view there are many. The fix is to use what you know: <strong>where the summit is in the photo.</strong> I click it once (<code>summit=(x/W, y/H)</code> in the shot definition). For a range of fields of view, the camera that puts the summit's real bearing and elevation on that pixel is fully determined except for roll. Score each and start the optimiser from the best:</p>
+<pre><code class="language-python">az_s = np.degrees(np.arctan2(ez - ce, nz - cn))                          # bearing to the real summit
+el_s = np.degrees(np.arctan2(zs - z - dd*dd / (2 * 6371000 / 0.87), dd)) # its elevation, curvature included
+for fv in np.linspace(*s[&quot;fovs&quot;], 26):
+    f = 0.5 / np.tan(np.radians(fv) / 2); ar = H / 480
+    dx = np.degrees(np.arctan((s[&quot;summit&quot;][0] - 0.5) / f))
+    dy = np.degrees(np.arctan((0.5 - s[&quot;summit&quot;][1]) * ar / f))
+    p = (az_s - dx, el_s - dy, fv, 0.0)
+    sc = fit.score(p, P, Eb, 480, H, M)
+    if best is None or sc &lt; best[0]: best = (sc, p)
+x0 = best[1]
+</code></pre>
+<p>With this, Silver Queen (21 km), Stuart (5.6 km) and Glacier Peak (12 km) each fitted on the first run:</p>
+<p><img alt="Stuart and Glacier Peak with fitted silhouettes." src="../img/fit_stuart_gp.jpg" /></p>
+<p><em>Stuart from the south (top) and Glacier Peak from the east (bottom). Scores −0.90 and −0.81; the failed fits scored around −0.5.</em></p>
+<p>A shot is one dictionary in <code>fitcam.SHOTS</code>:</p>
+<pre><code class="language-python">&quot;gp_e_aug&quot;: dict(photo=REF + &quot;Glacier_Peak_Washington/commons_Glacier_Peak_7118_JPG_3c1ed509.jpg&quot;,
+    cam=(48.1439, -120.9588), agl=2, snap=400, peak=&quot;glacierpeak&quot;, res=15, pad=(25000,15000,20000,20000),
+    fov=30, span=90, el=(-15,20), time=(2003,8,30,9,20), maskfrac=0.55,
+    summit=(668/1280, 158/960), fovs=(15,50), crop=(0,20,320,150), rock=&quot;dacite&quot;),
+</code></pre>
+<p><code>python3 fitcam.py gp_e_aug</code> writes the camera to <code>cache/cams.json</code> and an overlay to <code>stages/fit_gp_e_aug.png</code>. <strong>Always look at the overlay.</strong> The score alone doesn't tell you whether a fit is right.</p>
+<h2>When it fails</h2>
+<p>Two fits failed, and they're worth as much as the successes:</p>
+<ul>
+<li><strong>Rainier's west side (September, alpenglow).</strong> The GPS tag sat in a hollow with a hill 200 m away blocking everything but the summit:</li>
+</ul>
+<p><img alt="Panorama from the west-side tag: a near hill blocks the view." src="../img/pano_west_hollow.png" /></p>
+<p>Snapping to 300 m, then 1.5 km, and finally a 9×9 km position search (<code>possearch.py</code>: local high points on a 1 km grid, each with a coarse panorama and a control-point scan) all gave weak, near-equal scores (−0.52 to −0.54) at unrelated places. <strong>The tag is not where the photo was taken.</strong> The tell: no candidate stands out. A real fit scores well clear of its neighbours.</p>
+<p><img alt="The failed west-side fit." src="../img/fit_rainier_w_failed.jpg" /></p>
+<ul>
+<li><strong>Olympus from Hurricane Ridge (telephoto, 25 km).</strong> It locked onto a wrong ridge line. I suspect my summit click wasn't Olympus. In a telephoto of a jagged range, <em>identify the summit from the map before clicking</em>.</li>
+</ul>
+<p>What the camera can't give you: anything not in a bare-earth DEM (trees, buildings), and detail finer than the DEM. At 10 m, Stuart's granite gullies were rounded away, and the snow model couldn't find them until I switched to 4 m lidar (<a href="02-snow.html">how-to 2</a>).</p></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 5</span><a href="../howto/02-snow.html">How-to 2: where the snow lies →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

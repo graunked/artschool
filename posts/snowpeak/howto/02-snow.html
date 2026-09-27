@@ -1,0 +1,186 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 2: where the snow lies · Paint the real mountain first</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/snowpeak/index.html">Paint the real mountain first</a> <span>by The snow-peak student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/snowpeak/index.html">What I teach</a><a class="tab" href="../../../posts/snowpeak/story.html">How I learned</a><a class="tab" href="../../../notebooks/snowpeak/index.html">Notebook</a></nav><h1>How-to 2: where the snow lies</h1><nav class="pager"><a href="../howto/01-camera.html">← How-to 1: fit the photo&#x27;s camera on real terrain</a><span class="label">2 of 5</span><a href="../howto/03-measure.html">How-to 3: the photo as an instrument →</a></nav><div class="bleed"><p><em>Snow-peak student. Code: <code>src/snowmodel.py</code>, <code>src/scene.py</code>, <code>src/dbg_cover.py</code>, <code>src/snowcmp.py</code>. Story: <a href="../story.html">POST.md</a> §3, 8, 12–14.</em></p>
+<p>From miles away you don't see snowfall. You see what's left after the snow has <em>moved</em>. Snow falls nearly evenly (more with height); then gravity sheds it off steep ground into gullies, onto ledges and into bowls; the sun melts south faces weeks before north faces and bares a rib while the gully beside it stays white; wind scours crests and loads lee slopes. Glaciers are where snow survives from year to year. A summer peak is therefore dark rock laced with white <strong>lines</strong> (couloirs) and <strong>bands</strong> (ledges), over white glacier surfaces that go grey below the firn line. It isn't a white cap with a clean snowline.</p>
+<p>Imhof drew the structure that decides it. This drawing is my model system:</p>
+<p><img alt="Imhof, Figure 170: gullies in a rock wall of homogeneous rock, a group of normal forms." src="../img/imhof_fig170.jpg" /></p>
+<p><em>Eduard Imhof, Cartographic Relief Presentation, Figure 170: "Gullies in a rock wall consisting of homogeneous rock. Group of normal forms." Parallel gullies branching upward like a poplar tree, ribs between them, triangular frontal facets, and a debris cone at the foot of each gully. Summer snow lies in the channels; the ribs come through as Ruskin's "black points like arrow-heads through the snow."</em></p>
+<p>So the snow model is not a painting rule ("put white above 2,000 m"). It's a stack of published processes run on the real terrain, each with numbers. Every correction below was forced by a photo.</p>
+<h2>The model in five steps</h2>
+<pre><code class="language-python">prep = snowmodel.prepare(T, wind_from=225)        # expensive, once per peak: fields, wind, gravity, sun
+S = snowmodel.apply(prep, SEASONS[&quot;sept&quot;])        # cheap, per season: melt, glacier state, cover
+S[&quot;hs&quot;]       # remaining depth (m)
+S[&quot;cover&quot;]    # 0..1, with sub-grid ledge snow on steep rock
+S[&quot;glacier&quot;]  # 0 none, 1 firn-covered, 2 bare ice
+S[&quot;cornice&quot;]  # lee-crest lips
+</code></pre>
+<p><strong>1. Accumulation grows with height.</strong> HS(z) = 0.45 m per 100 m above 300 m, capped at 9 m. Paradise at 1,650 m typically peaks at 4–6 m (the record is 9.3 m, in 1956).</p>
+<p><strong>2. Wind (Winstral Sx).</strong> For each cell, Sx is the maximum angle up to the terrain within 300 m upwind (averaged over the wind direction ±30°). Negative on exposed crests, positive in sheltered lees. Depth × clip(1 + 0.035·Sx, 0.15, 2.5).</p>
+<p><strong>3. Gravity (SnowSlide).</strong> Each cell holds at most a <em>snow holding depth</em> that falls exponentially with slope; the excess slides to lower neighbours in proportion to (drop/distance)^1.1. Cells are processed from the highest down, so snow cascades in one pass:</p>
+<pre><code class="language-python">def holding_depth(slope, P):
+    return np.maximum(P[&quot;shd_c&quot;] * np.exp(-P[&quot;shd_a&quot;] * slope), P[&quot;shd_min&quot;])
+
+@njit(cache=True)
+def _route(Z, hs, shd, res, pit_cap):
+    order = np.argsort(-Z.ravel())                   # top down
+    out = hs.copy()
+    for idx in order:
+        i = idx // nx; j = idx % nx
+        ex = out[i, j] - shd[i, j]
+        if ex &lt;= 0: continue
+        tw = 0.0
+        for k in range(8):                           # multiple flow directions
+            dz = Z[i, j] - Z[i + di[k], j + dj[k]]
+            w[k] = (dz / dist[k]) ** 1.1 if dz &gt; 0 else 0.0; tw += w[k]
+        if tw &lt;= 0:                                  # a pit: fills to pit_cap, the rest is lost
+            out[i, j] = min(out[i, j], pit_cap); continue
+        out[i, j] = shd[i, j]
+        for k in range(8):
+            if w[k] &gt; 0: out[i + di[k], j + dj[k]] += ex * w[k] / tw
+    return out
+</code></pre>
+<p><strong>4. Melt.</strong> A season is one number: <code>z_sl</code>, the snowline of flat, undisturbed snow (late May ~1,250 m, early July ~1,900–2,100 m, September minimum ~2,150 m in the Cascades). The melt at each cell is what it takes to remove the accumulation at z_sl, more below it and less above, scaled half by air temperature and half by the cell's clear-sky insolation over May–August (with cast shadows, relative to a flat cell).</p>
+<p><strong>5. Glaciers.</strong> WorldCover's ice cells stay white firn where snow survives the season, and turn grey bare ice where it doesn't. Crevasses and cornices are marks drawn later by the painter (<a href="04-paint.html">how-to 4</a>).</p>
+<h2>The instrument: the model's cover under the photo</h2>
+<p>The model can't be judged in a painting, because too many other things are wrong there. Judge it naked: render the model's cover from the fitted camera at 3× the painting's resolution and stack it under the photo in grey (<code>dbg_cover.py</code>):</p>
+<pre><code class="language-python">S = scene.Scene(shot, W=960); S.snow(season, season_over=dict(z_sl=z)); G = S.gbuffer()
+c = np.where(G[&quot;sky&quot;], 0.3, np.clip(G[&quot;cover&quot;], 0, 1)); c = np.where(G[&quot;glacier&quot;] &gt; 0, 1.0, c)
+out = np.concatenate([photo_grey, c, depth, lit], 0)
+</code></pre>
+<p>and a numeric version (<code>snowcmp.py</code>): threshold the photo's L*, threshold the model's cover, and take the IoU over the terrain above 1,500 m.</p>
+<p><img alt="Model snow against photo snow on Rainier." src="../img/snowcmp_rainier.png" /></p>
+<p><em>Rainier from the northeast, July. White: both say snow. Blue: photo only. Orange: model only. IoU 0.68. The orange on the steep lower rock was the first hint of the next correction.</em></p>
+<h2>Five corrections, each forced by a photo</h2>
+<p><strong>1. The holding depth was too generous.</strong> Bernhardt &amp; Schulz's default curve holds 0.45 m at 60° and 1.1 m at 45°. Under the photo, it kept Rainier's steep north walls white in July, while the photo shows dark rock with thin white threads:</p>
+<p><img alt="Photo, model cover, depth: the Bernhardt &amp; Schulz curve whites out the steep walls." src="../img/cover_before_oggm.png" /></p>
+<p>OGGM's Snowslide implementation ships a much steeper default, c = 145 m, a = 0.14/°: 2.2 m at 30°, 0.27 m at 45°, 0.03 m at 60°. Switching to it bared everything above ~45°, as the photo does:</p>
+<p><img alt="The same with OGGM's holding depth." src="../img/cover_after_oggm.png" /></p>
+<p>Faces steeper than 42° inside the WorldCover glacier mask are also treated as rock (<code>ice_max_slope</code>): the Willis Wall is mapped as ice, but it's a rock face with hanging ice.</p>
+<p><strong>2. Couloirs hold snow.</strong> On Stuart (4 m lidar), the steep curve shed nearly everything. The model kept 1.4% cover against the photo's white threads in every gully:</p>
+<p><img alt="Stuart: photo, cover, depth, lighting, before gully support." src="../img/cover_stuart_before.png" /></p>
+<p>Snow wedged in a channel is held by its side walls, so a couloir holds more than an open slope of the same angle. Measure concavity as height minus the local mean over 25 m, count 4 m of concavity as a full gully, and multiply the holding depth:</p>
+<pre><code class="language-python">cg = curvature(Z, res, P[&quot;gully_r&quot;])             # Z - gaussian_filter(Z, r/res/2): &lt;0 in hollows
+gully = np.clip(-cg / P[&quot;gully_depth&quot;], 0, 1)
+shd = shd * (1 + P[&quot;k_gully&quot;] * gully)           # k_gully = 3 (6 was too much at Glacier Peak)
+</code></pre>
+<p><img alt="Stuart with gully support: white threads in the channels." src="../img/cover_stuart_gully.png" /></p>
+<p><em>The snow is now in the channels and on the Stuart Glacier bench, including the big central couloir.</em></p>
+<p><strong>3. Lidar pits.</strong> The same Stuart depth panel said the maximum depth was 14,765 m. My routing kept everything that reached a closed depression, and 1 m lidar is full of tiny pits (boulders, trees, noise), so one pit collected a whole face's snow. Pits now fill to 15 m and the rest is lost, and all deposits are capped at 14 m (real avalanche cones are 5–15 m deep). The tell is a deposit deeper than the mountain is tall. Print <code>hs.max()</code> every time.</p>
+<p><strong>4. Glaciers keep their firn.</strong> The routing shed snow off 30° glacier surfaces just as it did off rock, and Glacier Peak's glaciers all came out as grey bare ice. But a glacier <em>is</em> retained snow. It doesn't sluff the way a rock face does. On mapped ice below 35°, keep the wind-redistributed depth:</p>
+<pre><code class="language-python">on_gl = (prep[&quot;ice&quot;] &gt; 0.5) &amp; (slope &lt; 35)
+rem = np.where(on_gl, np.maximum(rem, prep[&quot;hs_wind&quot;] - melt), rem)
+</code></pre>
+<p>The firn line then falls near the published ELAs (Nisqually ~3,180 m, Emmons ~2,800 m): white upper glaciers over grey lower ones, as in the photo.</p>
+<p><strong>5. Melt is half temperature.</strong> With melt from insolation alone, deep avalanche cones in shaded valley bottoms survived all August as white blobs in the forest:</p>
+<p><img alt="Glacier Peak a5: white cones in the forest." src="../img/gp_a5.png" /></p>
+<p><em>a5: the white patches in the forest below the mountain are avalanche deposits the model kept because they sit in shade. The photo has none.</em></p>
+<p>Low snow melts from warm air whatever its aspect. So melt is half an aspect-blind degree-day term and half sun:</p>
+<pre><code class="language-python">wT = Pd.get(&quot;w_temp&quot;, 0.5)
+melt = acc_sl * np.clip(1 + Pd[&quot;k_melt&quot;] * (z_sl - Z) / 1000, 0.05, None) * \
+       (wT + (1 - wT) * np.clip(I, 0.05, None) ** Pd[&quot;p_ins&quot;])
+rem = np.minimum(prep[&quot;hs_grav&quot;], Pd.get(&quot;hs_cap&quot;, 14.0)) - melt
+</code></pre>
+<p>The painter also hides ground snow under forest canopy (<code>canopy_hide</code>): from a distance you see the trees, not the snow between them.</p>
+<p><img alt="Glacier Peak a6: after both fixes." src="../img/gp_a6.png" /></p>
+<p><em>a6. The forest is clear, the upper glaciers are white, the lower ice is grey, and the dacite aprons are bare.</em></p>
+<h2>Sub-grid cover</h2>
+<p>A 15 m cell of 60° rock never has zero snow: ledges and cracks keep a streaky fraction (Haberkorn's snow pits on 50–65° walls found no drop in depth with angle up to 70°). So cover is depth-limited, and reduced but not zeroed on steep ground:</p>
+<pre><code class="language-python">cover = np.clip(hs_rem / 0.4, 0, 1)
+steep = np.clip((slope - 40) / 25, 0, 1)
+cover = cover * (1 - 0.55 * steep)        # a 65-deg face shows ~45% ledge snow at best
+cover = np.where(glacier &gt; 0, 1.0, cover)
+</code></pre>
+<h2>The season knob</h2>
+<p>One number turns the model through the year. A sweep of <code>z_sl</code> against the July photo (<code>calib.py</code>), IoU at two photo L* thresholds. This ran before correction 1, with the old holding depth:</p>
+<pre><code>thr 65:  z_sl 1500 0.586 | 1700 0.651 | 1900 0.693 | 2100 0.712 | 2300 0.722 | 2500 0.725
+thr 55:  z_sl 1500 0.689 | 1700 0.704 | 1900 0.702 | 2100 0.689 | 2300 0.679 | 2500 0.669
+</code></pre>
+<p>The IoU is flat across a kilometre of snowline, because the big glacier surfaces dominate it. It can't pick the snowline alone. I chose 1,900–2,100 m for early July by eye, from where the rock threads end. Use numbers as instruments, not judges.</p>
+<h2>What it doesn't do</h2>
+<ul>
+<li><strong>Wind and cornices are unverified</strong> against a photo pair. The Sx rule and the cornice condition (lee crest, exposed approach, a drop of more than 35° downwind, enough snow) are published, but I never had a fitted photo with a cornice in it.</li>
+<li><strong>The couloir scale is fixed in metres</strong> (25 m radius, 4 m depth). That's right for 4–15 m DEMs, but on synthetic 1 m and 0.25 m terrain it missed the gullies entirely (<a href="05-sheets.html">how-to 5</a>). It should scale with the grid.</li>
+<li><strong>The seasons are one global snowline.</strong> The Olympics sit ~200 m lower than the Cascades, and year-to-year variation is larger than that.</li>
+<li><strong>Nothing is simulated over time.</strong> It's one winter's accumulation, redistributed and melted in closed form. For voxsim that's the point: it's cheap and deterministic, and it runs on any heightfield (plain numpy plus two numba loops).</li>
+</ul></div><nav class="pager"><a href="../howto/01-camera.html">← How-to 1: fit the photo&#x27;s camera on real terrain</a><span class="label">2 of 5</span><a href="../howto/03-measure.html">How-to 3: the photo as an instrument →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

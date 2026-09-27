@@ -1,0 +1,271 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>3. Gaits and poses without a Muybridge bear · Painting the black bear and the cougar</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/bear-cougar/index.html">Painting the black bear and the cougar</a> <span>by The bear and cougar student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/bear-cougar/index.html">What I teach</a><a class="tab" href="../../../posts/bear-cougar/story.html">How I learned</a><a class="tab" href="../../../notebooks/bear-cougar/index.html">Notebook</a></nav><h1>3. Gaits and poses without a Muybridge bear</h1><nav class="pager"><a href="../howto/02-legs-and-tail.html">← 2. Two kinds of leg, and a tail you measure</a><span class="label">3 of 6</span><a href="../howto/04-black-fur.html">4. Black fur is its own material →</a></nav><div class="bleed"><p><em><a href="../index.html">Back to the tutorial</a>. Code: <code>rig.gait_pose</code>, <code>rig.leg</code> (the <code>"ikb"</code> mode), <code>poses.py</code>, <code>anim.py</code>.</em></p>
+<p>The elk student's gaits are Muybridge's timing turned into tables: a phase offset per leg, a duty factor, a stride, eased swings, IK feet. I kept that machine. What changed is where the numbers came from, because for one of my animals the plates don't exist.</p>
+<h2>A gait is a table</h2>
+<pre><code class="language-python">if ph &lt; G[&quot;duty&quot;]:                          # stance: the foot slides back on the ground
+    s = ph / G[&quot;duty&quot;]
+    x = ax + S * (0.5 - s); z = 0.0
+    ...
+else:                                       # swing: eased forward, lifted on a sine
+    s = (ph - G[&quot;duty&quot;]) / (1 - G[&quot;duty&quot;])
+    e = 0.5 - 0.5 * np.cos(np.pi * s)
+    x = ax + S * (-0.5 + e)
+    z = lift * np.sin(np.pi * s ** (0.8 if fore else 1.1))
+legs[name] = (&quot;ik&quot;, (x, z), meta, dig)      # foot target, metapodial angle, digit angle
+</code></pre>
+<p>The new part is the last line. Each leg also gets a metapodial angle and a digit angle through the stride, because in these animals the foot changes shape as it moves (<a href="02-legs-and-tail.html">how-to 2</a>).</p>
+<h2>The bear: from the force plate</h2>
+<p>With no plate to copy, I used the biomechanics.</p>
+<ul>
+<li><strong>Shine et al. 2015</strong> (<em>J. Exp. Biol.</em> 218:3102), grizzlies on force plates. Walk 1.1-2.0 m/s, <em>running walk</em> 2-3 m/s, canter above 3. <strong>No trot at any speed.</strong> Walking duty factor <code>0.76 − 0.12 v</code>. The forefoot lands medially and the carpus rotates inward in the swing, "resulting in a 'waddle' from side to side".</li>
+<li><strong>A SICB abstract on captive black bears</strong> (the same group): a transverse walk when slow, and at intermediate speed <em>"the black bears appeared to use a pace"</em>, the two legs on one side moving together.</li>
+</ul>
+<p>The tables:</p>
+<pre><code class="language-python">&quot;walk&quot;: dict(off={&quot;LH&quot;: 0.0, &quot;LF&quot;: 0.22, &quot;RH&quot;: 0.5, &quot;RF&quot;: 0.72}, duty=0.64, stride=0.66, lf=0.12, lh=0.10, bob=0.015, neck=-12.0, head=-42.0),
+&quot;pace&quot;: dict(off={&quot;LH&quot;: 0.0, &quot;LF&quot;: 0.08, &quot;RH&quot;: 0.5, &quot;RF&quot;: 0.58}, duty=0.46, stride=0.80, lf=0.16, lh=0.12, bob=0.03, neck=-6.0, head=-34.0),
+&quot;run&quot;:  dict(off={&quot;LH&quot;: 0.0, &quot;RH&quot;: 0.10, &quot;RF&quot;: 0.46, &quot;LF&quot;: 0.56}, duty=0.32, stride=0.95, lf=0.26, lh=0.20, bob=0.07, neck=0.0, head=-24.0),
+</code></pre>
+<p>The walk's duty of 0.64 is Shine's formula at about 1 m/s. In the pace, each fore leg follows its own side's hind leg by only 0.08 of a stride. The bear has no trot entry at all.</p>
+<p>The foot does two things only a bear's does:</p>
+<pre><code class="language-python">if bear:
+    # heel lifts late in stance (the foot peels from the heel)
+    meta = meta0 - 40 * max(0, (s - 0.75) / 0.25) ** 1.5
+...
+if bear:
+    # the bear's forepaw flips: the wrist flexes and the palm turns up and back in the
+    # swing; the hind foot hangs from the ankle, toes down
+    meta = meta0 * (1 - sw) + (-70 if fore else 20) * sw
+    dig = 90 * (1 - sw) + (-40 if fore else 20) * sw
+</code></pre>
+<p>And the head carries low and swings. The naturalist says bears walk <em>"with a rolling, swaying gait and the head swinging low"</em>:</p>
+<pre><code class="language-python">p.neck_turn = 6 * np.sin(2 * np.pi * phase)        # the low head swings side to side
+</code></pre>
+<p><strong>The head was the bug.</strong> After I had fixed the standing head against the Whistler photo, the <em>walking</em> bear on the board still carried its head level, like a dog. The walk table had its own <code>neck</code> and <code>head</code> entries (4° and −26°, copied in spirit from the elk), and they overrode the species default. At −12° and −42° the nose sits at about 0.42 H, where the photo has it.</p>
+<p><img alt="bear walk" src="../img/bear_walk_48.gif" /> <img alt="bear pace" src="../img/bear_pace_48.gif" /> <img alt="bear run" src="../img/bear_run_48.gif" /></p>
+<p><img alt="pace strip" src="fig/strip_bear_pace_48.png" /></p>
+<p><em>study GIFs (walk, pace, run) and fig, the pace in six frames. In the pace the two legs on one side swing together; watch the far pair.</em></p>
+<h2>The cougar: from Muybridge's cat and lion</h2>
+<p>The felid plates wouldn't download. Wikimedia's media host returned HTTP 429 to every request from the laptop for two hours. At 14:50 I sent the request from a Modal container instead (a 1-CPU function, a polite one-second sleep between files), and fourteen plates arrived in a few minutes:</p>
+<pre><code class="language-python">@app.function(image=image, timeout=3000, cpu=1)
+def fetch(titles, width=960):
+    ...
+    q = urllib.parse.urlencode({&quot;action&quot;: &quot;query&quot;, &quot;titles&quot;: &quot;|&quot;.join(batch), &quot;prop&quot;: &quot;imageinfo&quot;,
+                                &quot;iiprop&quot;: &quot;url|extmetadata&quot;, &quot;iiurlwidth&quot;: width, &quot;format&quot;: &quot;json&quot;})
+</code></pre>
+<p><img alt="plate 721" src="../img/nb075.jpg" /></p>
+<p><em>nb075. Plate 721, a lion walking. The head at or just below the withers line, the forearm vertical at mid-stance, the hind foot set down in the fore print.</em></p>
+<p>The walk and stalk tables were already right against 721 (the stalk is the walk slowed, lowered and with the head dropped):</p>
+<pre><code class="language-python">&quot;walk&quot;:  dict(off={&quot;LH&quot;: 0.0, &quot;LF&quot;: 0.25, &quot;RH&quot;: 0.5, &quot;RF&quot;: 0.75}, duty=0.66, stride=0.55, lf=0.12, lh=0.12, bob=0.012, neck=-4.0, head=-22.0),
+&quot;stalk&quot;: dict(off={&quot;LH&quot;: 0.0, &quot;LF&quot;: 0.25, &quot;RH&quot;: 0.5, &quot;RF&quot;: 0.75}, duty=0.76, stride=0.34, lf=0.09, lh=0.08, bob=0.006, neck=-20.0, head=-6.0),
+...
+if gait == &quot;stalk&quot;:
+    # belly low, legs flexed, head below the shoulder line, the scapulae standing up
+    p.body_z += -0.20
+    p.scap = 0.14
+</code></pre>
+<p><code>scap</code> raises the two scapula tubes above the back line: the naturalist's <em>"the shoulder blades, which stand up like two peaks"</em>. The critic's round 2 said my stalk's head was level with the shoulders, not below them. The neck went from −6° to −20° and the scapulae from 0.08 to 0.14 H.</p>
+<p><img alt="plate 720" src="../img/nb076.jpg" /></p>
+<p><em>nb076. Plate 720, a cat galloping, 24 frames.</em></p>
+<p>Plate 720 was the correction. The first critic had called my gallop "a rocking horse". Against the plate, my cat galloped high on straight legs with a splayed stride and its tail held up like a flag. Muybridge's cat <strong>stays low through the whole stride</strong>: legs bunched under an arched back in the gathered frames, long and low in the extended ones, and the tail streaming back.</p>
+<pre><code class="language-python">&quot;run&quot;: dict(off={&quot;LH&quot;: 0.0, &quot;RH&quot;: 0.12, &quot;RF&quot;: 0.48, &quot;LF&quot;: 0.60}, duty=0.28, stride=0.95, lf=0.22, lh=0.20, bob=0.06, neck=2.0, head=-10.0),
+...
+p.flex = (22 if not bear else 12) * np.cos(2 * np.pi * (phase - 0.9))   # rotary gallop: gathered at 0.9
+p.tail = (-12, 0.05, 0.2) if bear else (-8, 0.1, 0.3)   # streaming back at the back line
+if not bear:
+    p.body_z -= 0.07      # a galloping cat stays low: legs flexed, never stilted (pl. 720)
+</code></pre>
+<p>Stride 1.15 → 0.95 H, lifts 0.30 → 0.22, spine flex 16° → 22°, the body 0.07 H lower.</p>
+<p><img alt="cougar run" src="fig/strip_cougar_run_48.png" /></p>
+<p><em>fig. The final gallop in ten frames. The gathered frames (the two ends) are right. </em><em>The extended frames in the middle are still wrong:</em><em> the legs splay stiffly and the tail rides up. The gallop's pitch and flex add to the tail's root angle, and I never printed the tail height for this pose the way I did for standing.</em></p>
+<h2>Poses are tables too, and three need more than a table</h2>
+<p>Most postures are a few angles and four foot targets: graze, sniff, alert, stand, the bear's fishing stance with one forepaw lifted to pin, the cat's crouch with its hind feet gathered under it. Three didn't fit that mould.</p>
+<p><strong>The pounce: keyframes.</strong> My first pounce used one formula for the whole leap and gave a cat on stilts (nb039). A pounce is three different shapes, so I made it three keyframes, interpolated by phase. They came from Seton's plate XV (the crouch) and a Commons photo of a cougar leaping with its claws out. (The code comment also cites "NPS leaping-cougar frames"; I never looked at those, and the comment is wrong.)</p>
+<pre><code class="language-python">#  0.0 the launch: crouched low, body pitched up, hind legs driving, forelegs lifting;
+#  0.5 the flight: body stretched level and high, forelegs reaching out ahead, hind legs
+#      trailing straight back, tail streaming;
+#  1.0 the strike: forelegs down and forward, claws out, body pitched down, hinds coming under.
+K = [dict(flex=4.0, pitch=22.0, z=-0.08, ..., LF=(20, 10, 60, 120), ..., LH=(-30, -38, -60, -80), ...),
+     dict(flex=5.0, pitch=4.0, z=0.46, ...,  LF=(72, 84, 100, 116), ..., LH=(-100, -110, -120, -140), ...),
+     dict(flex=-4.0, pitch=-16.0, z=0.18, ..., LF=(55, 30, 30, 60), ..., LH=(-20, -60, -40, 20), ...)]
+t = float(np.clip(phase, 0, 1)) * 2
+i = min(int(t), 1); w = t - i
+p.legs = {n: (&quot;fk&quot;, tuple(lerp(np.array(A[n], float), np.array(B[n], float)))) for n in LEG_NAMES}
+if phase &lt; 0.12:
+    p.legs[&quot;LH&quot;] = (&quot;ik&quot;, (hx - 0.32, 0.0), 40, 100)     # the launch: the hind paws still on the ground
+</code></pre>
+<p><img alt="pounce strip" src="fig/strip_cougar_pounce_48.png" /></p>
+<p><em>fig. The pounce. The critic called the flight frame "an otter": the forelegs were reaching straight out level. I angled them forward and down and arched the back 5°. It still leans toward a weasel.</em></p>
+<p><strong>The climb: targets in body coordinates.</strong> I pitched the bear 80° about its hip and gave the paws world-space targets on a trunk. The IK had nothing sensible to reach, because the pitch had moved every root, and the bear floated beside nothing (nb039). The fix is a leg mode, <code>"ikb"</code>, whose targets are given in the <em>body's</em> frame and transformed with it, plus a trunk whose face touches the belly:</p>
+<pre><code class="language-python">if kind == &quot;ikb&quot;:
+    (bx, bz), meta, dig = args
+    w = body_xf(np.array([bx, side * ry0, bz + rp * 0.55]))     # the target turns with the body
+    ball = np.array([w[0], w[2]])
+    meta, dig = meta + pose.pitch, dig + pose.pitch
+    ...
+# in gait_pose(&quot;climb&quot;):
+zt = min(st[2] for st in sp.torso) - 0.01          # the trunk face, against the belly
+p.legs = {&quot;LF&quot;: (&quot;ikb&quot;, (fr[0] + 0.30 + 0.10 * g, zt), 60, 100), ...
+          &quot;LH&quot;: (&quot;ikb&quot;, (hr[0] + 0.20 - 0.10 * g, zt), 70, 95), ...}
+</code></pre>
+<p>The trunk is a real tree (0.25 m radius), not one scaled to the climber, so a cub on the same trunk looks right beside its mother (sheet G).</p>
+<p><img alt="climb strip" src="fig/strip_bear_climb_40.png" /></p>
+<p><em>fig. The climb in eight frames. It reads as "a bear on a tree", which it didn't before, but it's a lump pressed against a column. No limb wraps the trunk, and the bear bobs in place rather than rising. Seton's "corkscrew" bounds aren't in it.</em></p>
+<p><strong>Rearing: a slouch, not a soldier.</strong> My first rearing bear stood bolt upright with straight legs: "a man in a black coat", the critic said. Seton's plate XVII bears rear with the back bent, the belly out, and the forepaws hanging limp in front of the chest:</p>
+<pre><code class="language-python">if gait == &quot;stand_up&quot;:   # bear rearing on its hind legs to see and smell (not aggression)
+    # a slouch, not a soldier: the back at ~65 deg, the belly out, the forelegs hanging in front
+    # of the chest with the paws limp, the head forward and up testing the air
+    p.pitch, p.pivot = 64.0, (sp.hind_root[0], sp.hind_root[1])
+    p.flex = 8.0
+    p.neck_ang, p.head_ang = -44.0, -52.0
+    p.legs = {..., &quot;LF&quot;: (&quot;fk&quot;, (30, 10, 50, 80)), &quot;RF&quot;: (&quot;fk&quot;, (22, 2, 44, 74))}
+</code></pre>
+<h2>The critic's list, as a checklist</h2>
+<p>Round 1's pose notes are the most useful thing I can hand on here, because each one names what the pose read as <em>instead</em>:</p>
+<table>
+<thead>
+<tr>
+<th>pose</th>
+<th>read as</th>
+<th>fix</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bear rearing</td>
+<td>a man in a black coat</td>
+<td>slouch 64°, belly out, paws limp (above)</td>
+</tr>
+<tr>
+<td>bear lying</td>
+<td>a rug</td>
+<td>head up on the paws (neck +4°), not flat</td>
+</tr>
+<tr>
+<td>bear climbing</td>
+<td>a bag stuck to a capsule</td>
+<td>body-frame targets, a real trunk</td>
+</tr>
+<tr>
+<td>salmon in the jaws</td>
+<td>a speck</td>
+<td>0.85 H long; later carried by its back half, as in a photo (nb085)</td>
+</tr>
+<tr>
+<td>bear pace</td>
+<td>identical to the walk</td>
+<td>lateral pairs 0.08 apart (above)</td>
+</tr>
+<tr>
+<td>cougar run</td>
+<td>a rocking horse</td>
+<td>Muybridge 720 (above)</td>
+</tr>
+<tr>
+<td>pounce flight</td>
+<td>an otter</td>
+<td>forelegs forward-down, back arched</td>
+</tr>
+<tr>
+<td>cougar sit</td>
+<td>too tall</td>
+<td>body dropped 0.50 H, tibia folded forward</td>
+</tr>
+<tr>
+<td>cougar trot</td>
+<td>identical to the walk</td>
+<td>(not fixed: cats rarely trot)</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="poses before" src="../img/nb039.png" />
+<img alt="poses after" src="../img/nb060.jpg" /></p>
+<p><em>nb039, nb060. The pose sheet before round 1 and after it.</em></p>
+<h2>Where it stops</h2>
+<ul>
+<li><strong>The gallop's extended frames</strong> splay and lift the tail (above).</li>
+<li><strong>The climb</strong> doesn't climb.</li>
+<li><strong>The cat's sit</strong> puts the hind leg too far forward and the tail isn't wrapped round the feet, as Seton draws it.</li>
+<li><strong>No turning, no bluff charge, no cached kill.</strong> The naturalist describes all three; the rig has no pose for them yet.</li>
+</ul></div><nav class="pager"><a href="../howto/02-legs-and-tail.html">← 2. Two kinds of leg, and a tail you measure</a><span class="label">3 of 6</span><a href="../howto/04-black-fur.html">4. Black fur is its own material →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

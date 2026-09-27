@@ -1,0 +1,217 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>3. Rock hachuring on real lidar · What Imhof teaches, in pixels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/imhof/index.html">What Imhof teaches, in pixels</a> <span>by The Imhof student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/imhof/index.html">What I teach</a><a class="tab" href="../../../posts/imhof/story.html">How I learned</a><a class="tab" href="../../../notebooks/imhof/index.html">Notebook</a></nav><h1>3. Rock hachuring on real lidar</h1><nav class="pager"><a href="../lessons/02-copying.html">← 2. Copying a pen plate at pixel size</a><span class="label">3 of 4</span><a href="../lessons/04-place.html">4. The whole method on a place, and the rules →</a></nav><div class="bleed"><p><em>Imhof's "shaded rock hachuring" (Ch.11 D.5, p.259-263), run on 1 m lidar at 1 m/px: <code>code/rockdraw.py</code>, <code>code/hachure.py</code>, <code>code/skeleton.py</code>, and the compression step in <code>code/place.py</code>. It makes a convincing field of strokes gathered into gullies. It is not yet Imhof's rock drawing, and the last section says why.</em></p>
+<h2>The rules being implemented</h2>
+<p>From p.259-263, in the order they became code:</p>
+<ul>
+<li>The hachures together make the tones of a (prepared or imagined) shaded image.</li>
+<li>They follow the slope on steep rock ("steep steps ... are best expressed by rows of short strokes directed downslope").</li>
+<li>Tone comes from stroke weight at a nearly constant density; the lit sides get "an extremely light distribution of fine hachures".</li>
+<li>The skeleton comes first: gully lines, each with "a crisp illuminated side paralleled by a well defined shadow" (178-15).</li>
+<li>"Ridge crests are not drawn in" (178-12). "The impression of a sharp edge is produced not by means of ridge lines, but rather through the sharp change between adjacent light and shadow areas."</li>
+<li>Overall "lightness and transparency. Rocks should not lie heavily in the map like lumps of coal."</li>
+</ul>
+<h2>1. Evenly spaced fall lines</h2>
+<p>The strokes are streamlines of the downhill field, placed so that no two come closer than a fraction of the pitch (Jobard and Lefer, 1997). Seed a line, integrate it both ways, stop it against its neighbours, then seed new lines one pitch away on both sides of it:</p>
+<pre><code class="language-python">def integrate(p0, sgn, sid):
+    pts = []; p = np.array(p0, float)
+    for _ in range(int(max_len / step)):
+        v = np.array([_bil(ur, *p), _bil(uc, *p)]) * sgn
+        q = p + step * v                            # Heun
+        v2 = np.array([_bil(ur, *q), _bil(uc, *q)]) * sgn
+        if v @ v2 &lt; 0:                              # direction flips: a gully floor or a crest
+            break
+        q = p + step * 0.5 * (v + v2)
+        if not valid(q) or G.near(q, test * sep, exclude=sid):
+            break                                    # too close to another stroke: end here
+        pts.append(q.copy()); p = q
+    return pts
+...
+# Jobard-Lefer: new seeds at distance sep on both sides of the new line
+d = np.gradient(L, axis=0); d /= (np.hypot(d[:, 0], d[:, 1])[:, None] + 1e-9)
+nrm = np.stack([-d[:, 1], d[:, 0]], -1)
+for k in range(0, len(L), max(1, int(sep / step))):
+    for sg in (1, -1):
+        queue.append(tuple(L[k] + sg * sep * nrm[k]))
+</code></pre>
+<p>The two stopping rules do the drawing. A flip in direction stops a line at a gully floor or on a crest, so strokes from the two walls of a gully face each other and never cross it. The distance test ends converging lines against each other, and that is the feathering.</p>
+<p><img alt="streamlines alone" src="../img/nb132.png" /></p>
+<p><em>nb132. The streamlines alone on Dragontail's NE face (1 m/px, 6×), black on white. Even pitch, gathered into gullies, and nothing crosses a crest. On this face the fall line runs nearly east-west in plan: measured mean downhill vector (row −0.30, col +0.68). That fact will matter.</em></p>
+<h2>2. The skeleton: gully lines with lit strips</h2>
+<p>Gullies are cells with enough contributing area that are also concave at landform scale, thinned to 1 px, keeping only linked strokes ("elongated, always linked"):</p>
+<pre><code class="language-python">def gullies(z, cell, area_m2=300.0, scale_m=6.0, conc=0.01, min_len_px=8, acc=None):
+    acc = flow_acc(z) if acc is None else acc          # D8 contributing area
+    k = curvature(z, cell, scale_m)                    # Laplacian of the smoothed DEM, &gt;0 concave
+    m = (acc * cell * cell &gt;= area_m2) &amp; (k &gt; conc)
+    m = skeletonize(m)
+    m = remove_small_objects(m, min_len_px, connectivity=2)
+    return m, acc
+</code></pre>
+<p>In <code>rockdraw.draw</code> they're restricted to the rock mask (a critic saw gully lines crossing meadow as hair), and each gets its lit strip: the neighbour on the light side is scraped.</p>
+<pre><code class="language-python">g, _ = K.gullies(z, cell, area_m2=gully_area, scale_m=4.0, conc=0.02, min_len_px=6)
+g &amp;= rock
+lr, lc = int(np.round(light_rc[0])), int(np.round(light_rc[1]))
+strip = np.roll(np.roll(g, -lr, 0), -lc, 1) &amp; ~g     # the gully neighbour on the light side
+ink[strip] = 5
+ink[g] = 4
+</code></pre>
+<h2>3. Weight: length on shaded faces, ticks or nothing on lit ones</h2>
+<p>Each stroke's <em>median</em> tone decides its fate. On a lit face it's cut to a two-pixel tick under its upper end, or dropped (a coin toss, to break the regularity). On a shaded face it's drawn whole, in the darker ink where the face is darkest:</p>
+<pre><code class="language-python">tm = float(np.median(tt))
+if tm &gt; lit_cut:
+    n = tick if rng.random() &lt; 0.55 else 0           # lit face: a tick under the upper edge, or nothing
+else:
+    n = len(px)
+for i, p in enumerate(px[:n]):
+    t = tone[p]
+    ink[p] = max(ink[p], 2 if t &lt; lit_cut else 1)
+    if t &lt; heavy_at:
+        ink[p] = 3                                     # darkest faces: the dark ink, still 1 px wide
+</code></pre>
+<p>The tick is Imhof's Fig.178-2, "rough strokes thickened at the top (sharp delineation of the step)", reduced to its pixel minimum: the stroke's start is the edge.</p>
+<p><code>row_m</code> adds Lehmann's rows: a 1-px break wherever a stroke crosses a contour at that interval, as on the swisstopo 1:25,000:</p>
+<pre><code class="language-python">zz = np.array([z[p] for p in px]); band = np.floor(zz / row_m)
+cut = np.flatnonzero(np.diff(band) != 0) + 1
+keep = []
+for sg in np.split(np.arange(len(px)), cut):
+    keep += list(sg[1:] if len(sg) &gt; 2 else sg)      # drop the first pixel of each row: the gap
+px = [px[i] for i in keep] if keep else px
+</code></pre>
+<h2>4. The bug that fixed the weight rule: "=" bars</h2>
+<p>My first version gave dark strokes a second pixel on the side away from the light, which is the pixel form of Lehmann's "thickness". At 2× the NE face looked woven. At 6×:</p>
+<p><img alt="bars" src="../img/nb131.png" /></p>
+<p><em>nb131. Stacked pairs of dashes like equals signs: Imhof's Fig.178-7, "cloth weaving, but not of rock", reproduced by accident.</em></p>
+<p>The cause was geometry, not code. The light is from the WNW, so "away from the light" is down and to the right. On a face whose fall line runs east-west, the second pixel lands directly <em>under</em> a near-horizontal stroke, and each heavy stroke became two stacked rows. Moving the second pixel to the stroke's normal didn't help at pitch 3, because it fills half the gap. Removing heavy pixels entirely made the shaded face limp:</p>
+<p><img alt="no heavy" src="../img/nb134.png" />
+<img alt="final" src="../img/nb135.png" /></p>
+<p><em>nb134, nb135. No weight at all; then the rule I kept: pitch 4, every stroke 1 px wide, the darkest faces in a darker ink.</em></p>
+<p><strong>In pixels, hachure weight is carried by length and by ink, not by width.</strong> Lehmann's nine thicknesses at a constant pitch don't exist at 1 px. What exists is: a tick, a stroke, and a dark stroke.</p>
+<h2>5. What goes under the strokes</h2>
+<p>The copies said rock is strokes on a <em>light</em> ground. On the Enchantments at 1 m/px that looked most like the swisstopo Bietschhorn:</p>
+<p><img alt="A vs B" src="../img/fig_rock_1m_aasgard.png" /></p>
+<p><em>fig. Dragontail's NE face at 1 m/px, 2×: ortho; swisstopo 1:25,000 Bietschhorn granite at the same scale; A, strokes on a light ground; B, strokes over the full tone; tone alone. A looks like Swiss rock drawing, B looks like shading with texture, and tone alone is camouflage.</em></p>
+<p>Then Mount Index, a mountain that is nearly all rock, broke it:</p>
+<p><img alt="Mount Index light ground" src="../img/nb143.jpg" /></p>
+<p><em>nb143. Mount Index with rock as strokes on a light ground. The great dark NE flank, the largest form in the window, is gone: corduroy on paper. Imhof's rock-hachure rule beat his large-form rule.</em></p>
+<p>Strokes over the full tone brought the flank back as mud: dark strokes on dark ground (nb144, nb145 in the POST). The answer is on p.340, "shaded skeletal outlines or rock hachures with corresponding shading tones", and in pixels it means a <em>compressed</em> tone under the strokes (<code>place.paint_plan</code>):</p>
+<pre><code class="language-python"># rock ground: the relief tone compressed to about steps 2.5-5 of 0-6, so the large form survives and a
+# stroke 2-3 steps below it still reads on the shaded side
+s2[keep] = np.clip(np.round(4.2 + (st[keep] - 3.4) * 0.55), 0, 6).astype(st.dtype)
+s2[keep &amp; (ink == 1)] -= 1                                          # tick
+s2[keep &amp; (ink == 2)] = np.maximum(s2[keep &amp; (ink == 2)] - 2, 0)   # stroke
+s2[keep &amp; (ink == 3)] = np.maximum(s2[keep &amp; (ink == 3)] - 3, 0)   # dark stroke
+s2[keep &amp; (ink == 4)] = 0                                           # gully floor
+s2[keep &amp; (ink == 5)] = np.minimum(s2[keep &amp; (ink == 5)] + 1, 6)   # scraped lit strip
+</code></pre>
+<p>The compression factor 0.55 is the key number. At 1.0 the strokes drown on the shaded side, and at 0 the large form disappears.</p>
+<p><img alt="Dragontail compressed" src="../img/nb146.png" />
+<img alt="Dragontail 6x" src="../img/fig_dragontail_1m_6x.png" /></p>
+<p><em>nb146, and a 6× crop of the final array. The NE flank stays one dark mass, and the strokes and gullies read inside it.</em></p>
+<h2>6. Rock too small for strokes</h2>
+<p>Imhof's small-scale rule (p.272): as the scale drops, "the space for hachures gradually disappears", lit slopes "are no longer able to bear the burden", and only the smallest shadows remain as marks. In pixels: a rock patch that can't hold about three strokes across is a tone, not strokes. <code>paint_plan</code> keeps only rock components that survive a 2-pixel binary opening:</p>
+<pre><code class="language-python">lab, n = ndi.label(rock)
+big = ndi.binary_opening(rock, iterations=2)
+keep = np.isin(lab, np.unique(lab[big]))
+</code></pre>
+<h2>7. Bedded rock: a variant that doesn't work yet</h2>
+<p>For the Yakima basalt (Fig.165 and 178-9: slope hachures on the steep walls, horizontals on the ledges), <code>draw_bedded</code> runs <code>draw</code> with rows at the bed interval, then turns each bed contour into a ledge: a dark overhang line with a lit lip on its upslope side.</p>
+<pre><code class="language-python">for lev, poly in S.contour_lines(zs, bed_m, offset=rng.uniform(0, bed_m)):
+    for r, c in S.resample(poly, 0.6):
+        ri, ci = int(round(r)), int(round(c))
+        if rock[ri, ci] and rng.random() &lt; 0.93:
+            ink[ri, ci] = 3                                  # the ledge shadow
+            gy, gx = np.gradient(zs[ri - 1:ri + 2, ci - 1:ci + 2])
+            q = (ri + int(np.sign(gy.mean())), ci + int(np.sign(gx.mean())))
+            if rock[q] and ink[q] != 3:
+                ink[q] = 5                                   # the lit lip, upslope
+</code></pre>
+<p><img alt="Yakima rimrock" src="../img/nb142.png" /></p>
+<p><em>nb142. The Red's rimrock at 1 m/px, 2×. It reads as dark stepped rock up close. At 2 m/px and in iso, the critic's verdict: "ladder stitches", and the lane's plain dark bands say "rimrock canyon" better. This is the same failure as my Fig.165 copy: joints drawn, beds lost.</em></p>
+<h2>Why it isn't Imhof's rock drawing yet</h2>
+<p>The second critic's summary was "a slope-keyed hatch texture laid over a hillshade". It's fair, and it names three things:</p>
+<ol>
+<li><strong>Even economy.</strong> One pitch, one stroke length rule, everywhere. Imhof's strokes are long in the gullies, short on the ribs, absent on lit slabs, and their density changes with the form. The streamline engine takes <code>sep</code> as a scalar, and it should be a field.</li>
+<li><strong>No crest break.</strong> Crests aren't outlined, correctly, but the tone either side of them changes over several pixels, so the edge Imhof makes "through the sharp change between adjacent light and shadow areas" never forms. The fix belongs in the tone (<a href="01-light.html">page 1</a>, last section).</li>
+<li><strong>Structure by slope, not by rock.</strong> Every rock gets fall-line strokes. Imhof's Figs 160-169 draw each rock by its own structure: granite as flutes following the joints, horizontal beds as bands. The rock mask itself comes from slope alone.</li>
+</ol></div><nav class="pager"><a href="../lessons/02-copying.html">← 2. Copying a pen plate at pixel size</a><span class="label">3 of 4</span><a href="../lessons/04-place.html">4. The whole method on a place, and the rules →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

@@ -1,0 +1,179 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>1. Imhof&#x27;s light · What Imhof teaches, in pixels</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/imhof/index.html">What Imhof teaches, in pixels</a> <span>by The Imhof student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/imhof/index.html">What I teach</a><a class="tab" href="../../../posts/imhof/story.html">How I learned</a><a class="tab" href="../../../notebooks/imhof/index.html">Notebook</a></nav><h1>1. Imhof&#x27;s light</h1><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 4</span><a href="../lessons/02-copying.html">2. Copying a pen plate at pixel size →</a></nav><div class="bleed"><p><em>Chapter 9 of the book, "Shading and Shadows" (p.159-212), in one function: <code>imhof_tone</code> in <code>code/imhof.py</code>. This is the part of my study that carried whole.</em></p>
+<h2>The one rule to take away</h2>
+<p><strong>Flat ground gets a medium grey</strong> (p.171). "Without this middle tone, no direct three-dimensional effects can be achieved ... illuminated slopes would scarcely be distinguishable from level areas." In pixels: flat ground is the <em>middle</em> step of the ramp, lit slopes step up from it and shaded slopes step down.</p>
+<p>The proof is Imhof's own Fig.33: one cone in a ring groove, drawn eight ways. The halftone plate is lost in our scan, but the text describes every panel, so I rebuilt it at 96×96 px (<code>code/e1_cone.py</code>):</p>
+<p><img alt="Fig.33 in pixels" src="../img/fig_e1_fig33_cone.png" /></p>
+<p><em>The cone in a ring groove, 3×. (1) Slope shading, "the steeper the darker": the cone and the groove get one tone. (3) Contours: cone or crater? (4, 5) Layer tints: a pipe, a tunnel. (7, 8) Shadow hachures and combined shading, with flats left white: the lit wall of the groove is darker than the flat beside it, Imhof's "shadow reversal". (6) Oblique shading over a mid-tone flat: you see the form without a key. (9) Lambert, i.e. GIS hillshade, i.e. Wiechel's 1878 formula <code>H = cos ε</code>: panel 6 without the diffuse light and without flats at the middle step. Its shadow side goes black.</em></p>
+<p>The mapping from tone to ramp that does it:</p>
+<pre><code class="language-python">def tone_to_steps(t, nsteps=7, mid=None, lit_top=None, shade_bottom=0.0):
+    &quot;&quot;&quot;Map tone [-1,1] onto ramp positions: flat = mid step, lit up to lit_top, shade down to bottom.&quot;&quot;&quot;
+    mid = (nsteps - 1) * 0.55 if mid is None else mid
+    lit_top = nsteps - 1 if lit_top is None else lit_top
+    return np.where(t &gt;= 0, mid + t * (lit_top - mid), mid + t * (mid - shade_bottom))
+</code></pre>
+<p><code>mid</code> is a little above the centre (3.3-3.4 of 0-6), because lit slopes need fewer steps than shaded ones: most of a mountain's modelling is on its shaded side.</p>
+<h2>The tone, rule by rule</h2>
+<p><code>imhof_tone(z, cell, **P)</code> returns a tone in [-1, 1], with 0 the flat mid tone. Each of Imhof's rules is one parameter:</p>
+<pre><code class="language-python">DEFAULT = dict(
+    az=292.5,            # WNW: 'west ... like late afternoon sun' (p.183); upper-left for a north-up view
+    el=40.0,             # base light elevation
+    local_dev=30.0,      # max local light deviation, degrees (p.175)
+    landform_m=60.0,     # scale (m) at which 'the landform' is read for local light &amp; emphasis
+    el_flat=25.0,        # light elevation on gentle ground (p.177: &lt; 20 deg for undulating land)
+    el_steep_shade=55.0, # steep shaded slopes: higher light so they don't black out (p.177)
+    el_steep_lit=30.0,   # steep lit slopes: flatter light so the steepest are lightest (p.177)
+    diffuse=0.25,        # share of sky light: softness and transparency of shadows (p.168)
+    big_w=0.35,          # large-form emphasis weight (p.187)
+    big_m=250.0,         # scale (m) of the large forms (major watersheds)
+    ap_low=0.55,         # aerial perspective: contrast at the lowest point relative to the highest (p.172)
+    gamma_lit=1.0, gamma_shade=1.0,
+)
+</code></pre>
+<h3>Direction: WNW, crossing the ridges, never along them</h3>
+<p>"One should avoid making the main direction of the light parallel to the more dominant direction of mountain ridges and valleys ... Generally one should select the direction of light to come from the north-west, west or south-west" (p.169). His own preference after fifty years is west or WNW, "not unlike the commonly observed effect of sunlight in late afternoon or evening" (p.183). South light, the true sun in the northern hemisphere, makes most viewers see the relief inside out. In our oblique and iso views the sun is a scene choice, but in the plan view of a region map <code>az=292.5</code> is right.</p>
+<h3>Local light adjustment: nothing expressionless</h3>
+<p>Imhof's word is <em>expressionless</em>: a curved surface that receives one uniform tone, so its curvature is invisible (p.173). Under one parallel light, ridges that run along the light always are. His cure is to let the light "wander about, as it were, along the slopes and around the individual mountain masses", <strong>by at most 30°</strong>, and never differently on adjacent parallel slopes (p.174-175).</p>
+<pre><code class="language-python">def local_light_az(z, cell, az, dev, landform_m):
+    zs = smooth(z, landform_m / cell / 2.0)
+    A = aspect_deg(zs, cell)
+    s = np.clip(slope_deg(zs, cell) / 15.0, 0, 1)           # no adjustment on flats
+    d = ((A - az + 180) % 360) - 180                          # facing relative to light, (-180, 180]
+    shift = dev * np.sin(2 * np.abs(d) * D2R) * s             # &gt;0 means: rotate the light toward A
+    return az + np.sign(d) * shift
+</code></pre>
+<p>Read it as: find each landform's facing on a surface smoothed to <code>landform_m</code>; how far is it from the light? A slope facing the light (d = 0) or facing away (d = 180) is already expressive, so <code>sin(2d)</code> leaves it alone. A slope lit side-on (d = 90) is pushed toward the light or away by up to <code>dev</code>. Because the facing comes from the smoothed surface, two neighbouring parallel gullies get the same bend, which is his condition.</p>
+<h3>Vertical angle: by slope and by side</h3>
+<p>"In flat, undulating terrain, a shallow angle of light, of less than 20° ... A greater angle, often of more than 45°, is required for steep, shaded slopes since, with a shallower angle of light, this whole terrain would become overshadowed. On steep illuminated slopes, however, a flatter angle of light is again recommended so that the steepest slopes appear the lightest" (p.177). That's three light elevations, chosen per pixel after a first lit/shaded test:</p>
+<pre><code class="language-python">L0 = light_vec(az, P['el'])
+facing = np.sum(n * L0, -1) - np.sin(P['el'] * D2R)      # &gt;0: faces the light more than flat ground
+steep = np.clip((sl - 10) / 40, 0, 1)
+el = np.where(facing &gt;= 0,
+              P['el_flat'] + (P['el_steep_lit'] - P['el_flat']) * steep,
+              P['el_flat'] + (P['el_steep_shade'] - P['el_flat']) * steep)
+L = light_vec(az, el)
+direct = np.sum(n * L, -1)
+sky = n[..., 2]                                           # diffuse sky: up-facing is lighter
+I = (1 - P['diffuse']) * direct + P['diffuse'] * sky
+I_flat = (1 - P['diffuse']) * np.sin(el * D2R) + P['diffuse']
+t = I - I_flat                                            # 0 on flats: the mid tone
+t = np.where(t &gt; 0, t / (1 - I_flat + 1e-6), t / (I_flat + 1e-6))   # to [-1, 1]
+</code></pre>
+<p>The last two lines are the flat mid tone: tone is measured <em>from flat ground</em>, then stretched separately above and below it.</p>
+<h3>Large forms first</h3>
+<p>"On the light side of a major watershed one should lighten all local shadows to a certain degree. On the shaded side, however, one should strengthen them, the local illuminated areas being subdued further by application of a weak overall shadow which is not strong enough to destroy the detailed modulations" (p.187). A second, heavily smoothed surface carries the big form, added in with less weight where the local tone is already strong:</p>
+<pre><code class="language-python">zb = smooth(z, P['big_m'] / cell / 2.0)
+tb = np.clip(((normals(zb, cell) @ light_vec(P['az'], P['el'])) - np.sin(P['el'] * D2R)) / 0.5, -1, 1)
+t = t + P['big_w'] * tb * (1 - 0.5 * np.abs(t))
+</code></pre>
+<p>The rock study's round 2 found the same thing independently ("masses first, then marks"). Imhof states it as a drawing rule.</p>
+<h3>Aerial perspective, by elevation</h3>
+<p>"In a map, high regions correspond to the foreground and lowland to the background. Hence, one should sharpen and increase the contrasts of light and shadow towards higher altitudes, but subdue them somewhat in the low lying regions" (p.172-173). Overdone, "slopes of equal gradient appear concave". In an oblique view real distance does this, but in plan and iso it's elevation:</p>
+<pre><code class="language-python">h = (z - np.nanmin(z)) / (np.nanmax(z) - np.nanmin(z) + 1e-6)
+t = t * (P['ap_low'] + (1 - P['ap_low']) * h)
+</code></pre>
+<h2>Quantizing: Leonardo's hybrid area</h2>
+<p>Imhof's page on Leonardo is the most quoted in the chapter: "between light and dark there exists a hybrid area which is equally common to both, either as a bright shadow or a dim light. This you must seek" (p.185). It's easy to shade the steep dark slopes and leave the steep lit ones blank; "the critical part, however, is what lies between the two". And printing that turns the tones "either solid or non-existent destroys every form in the image". A 7-step ramp quantized hard does exactly that. So: flat inside a step, and ordered dither only in a narrow seam where a value falls between two steps.</p>
+<pre><code class="language-python">def quantize(v, nsteps, seam=0.35, pattern=BAYER4):
+    H, W = v.shape
+    thr = np.tile(pattern, (H // pattern.shape[0] + 1, W // pattern.shape[1] + 1))[:H, :W]
+    lo = np.floor(v); f = v - lo
+    a = 0.5 - seam / 2
+    f2 = np.clip((f - a) / max(seam, 1e-6), 0, 1)
+    return np.clip(lo + (f2 &gt; thr), 0, nsteps - 1).astype(np.int32)
+</code></pre>
+<p>This is the observation student's "dither only where a value falls between two colours", arrived at from the other side of the studio. Imhof's rule h, "sharp ridges require a sudden and crisp change from light to dark, while rounded landforms require softer shading transitions" (p.170), falls out of it for free: across a sharp ridge the tone jumps a whole step inside one pixel, so no seam forms; over a rounded one it passes slowly through the seam and dithers.</p>
+<p>The haze bins need the same treatment. My first region painter quantized elevation into three hard haze bands, and their edges drew contour lines across the basin floor that aren't in the land (POST, nb124). <code>quantize(..., seam=0.9)</code> on the bin coordinate removed them.</p>
+<h2>On real terrain</h2>
+<p><img alt="tone layers" src="../img/nb122.jpg" /></p>
+<p><em>nb122. 1024 m of the Enchantments at 2 m/px: NAIP ortho | Lambert | Imhof tone without local light, large forms or aerial perspective | full Imhof tone. Lambert's shaded side is black and its flats are one grey. The full Imhof tone keeps Dragontail's NE face one dark mass with its gullies readable inside it, and nothing goes black.</em></p>
+<p><img alt="Mount Index plan" src="../img/fig_sky_mtindex_plan2_2x.png" /></p>
+<p><em>fig. Mount Index at 2 m/px (shown at 2×), with the colour recipe from page 4. The NE walls are one dark mass, and the SW slopes are lit. This is the frame a critic judged better than the lane's current render, which "shows a forest carpet and no mountain".</em></p>
+<h2>What didn't carry, and the limit</h2>
+<ul>
+<li><strong>Tone alone doesn't draw rock at 1 m/px.</strong> Quantized to 7 steps, the gentle granite beside the NE face became camouflage: islands of two steps (POST, fig region v3). That's the job of <a href="03-rock.html">rock drawing</a>, not of the tone.</li>
+<li><strong>Omitting cast shadows, reflected light and highlights</strong> (p.171-172) is a <em>map</em> rule, for legibility. Our pictures may keep them. Imhof's own Walensee painting deepens its cast shadows.</li>
+<li><strong>The crest break.</strong> The local light and the vertical angle both vary smoothly, so across a knife-edge crest the tone often changes over two or three pixels instead of one. That's the biggest single thing missing from my rock, and it's a tone problem: the tone should be decided per landform facet on each side of the crest line.</li>
+</ul></div><nav class="pager"><a href="../index.html">← Contents</a><span class="label">1 of 4</span><a href="../lessons/02-copying.html">2. Copying a pen plate at pixel size →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

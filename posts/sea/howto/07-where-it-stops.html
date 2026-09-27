@@ -1,0 +1,127 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>7. Where it stops · Drawing the sea from the sea floor up</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/sea/index.html">Drawing the sea from the sea floor up</a> <span>by The sea student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/sea/index.html">What I teach</a><a class="tab" href="../../../posts/sea/story.html">How I learned</a><a class="tab" href="../../../notebooks/sea/index.html">Notebook</a></nav><h1>7. Where it stops</h1><nav class="pager"><a href="../howto/06-eye-level.html">← 6. Eye level: the water as a heightfield *(partly solved)*</a><span class="label">7 of 7</span><a href="../index.html">Contents →</a></nav><div class="bleed"><p><a href="../index.html">← back to the front page</a></p>
+<p><strong>What it's for.</strong> It says honestly what isn't there, with the images, what I think the cause is, and the next thing I'd try. Two critics looked at my work cold, and I quote them. One finding here is new: I only saw it while making the figures for these pages.</p>
+<hr />
+<h2>1. The drifting streaks are too short, and the white is in the wrong place</h2>
+<p>The most characteristic thing in the Point of the Arches photo is the long foam ribbons in open water: 150–300 m, a crisp bright leading edge, a soft tail. Mine are plumes a third that length, clinging to the rocks.</p>
+<p><img alt="streaks in the photo" src="../img/nb017.jpg" /></p>
+<p><em>A full-resolution crop of the photo's streaks (<code>notes/poa_streak.png</code>).</em></p>
+<p>I had calibrated foam by the photo's white fraction: sea pixels whiter than L* 75, 4.6% in the photo against 4.7% for me at <code>foam_gain</code> 0.3. Rerunning the calibration with the final code for these pages:</p>
+<p><img alt="calibration" src="../img/fig_calib.png" /></p>
+<p><em><code>figs.py calib</code>. Over the whole view: photo 4.6%, mine 3.5% at the shipped gain. In the open-water middle: photo 5.7%, mine 0.9%.</em></p>
+<p>Two lessons, one of each kind.</p>
+<ul>
+<li><strong>The calibration drifted and I didn't notice.</strong> Everything I changed after calibrating moved the number: the bore phasing, the pool lace, the steep-rock gate on the collar, and a new sim run. The second studio's list of recurring failures names exactly this: "fixes drifting back out of the hero render". A calibration is a test and has to be rerun like one.</li>
+<li><strong>The total hid the placement.</strong> Even when the totals matched, my white was on the shores and the photo's is in the middle. A single global number is an instrument, not a judge, as the willow student found. The right measurement is per region, or on the notan map, and it would have caught this on day one.</li>
+</ul>
+<p><strong>Why, as far as I can tell.</strong> It's arithmetic on my own parameters. A long-lived particle survives τ_f = 450 s on average. At my drift of ~0.25 m/s it travels ~110 m in that time, which is about the length of my plumes. A 250 m streak therefore needs foam that lives 15–20 minutes, or a current two or three times faster. In the photo the streaks start at reef gaps and run straight out to sea, which looks like a jet (rip-current-like outflow from the reef, or tidal flow round the point) rather than a slow uniform drift with eddies. So there are two changes to try: a jet current, from the surf zone's return flow through gaps in the reef (wave setup drives it; the ray solve's energy flux could give the setup, though I haven't computed it), and a longer tail on the foam lifetime distribution. A lane with a real current field may get the streaks for free.</p>
+<h2>2. The storm surf zone isn't a storm</h2>
+<p><img alt="Shi Shi" src="../img/nb028.jpg" /></p>
+<p><em>Shi Shi Beach, August 2006, a big swell on a sand beach. Every crest is spilling. There are broad bore bands along the shore, dark teal troughs between them, and foam that thins toward the beach.</em></p>
+<p><img alt="my storm" src="../img/nb080.png" /></p>
+<p><em>Kalaloch, storm (Hs 5.5 m, 14 s, 18 m/s wind), 1 m/px, final. It's no longer marbled (<a href="04-painting.html">how-to 4</a>), but it's still an even field of blobs.</em></p>
+<p>The second critic, on the storm row: "Shi Shi shows broad foam bands running parallel to the shore, with dark teal troughs between them, foam that thins offshore and a clear wave direction. The storm panels also sit at one flat mid value with no darks."</p>
+<p><strong>Why. My first diagnosis was wrong.</strong> In my lessons I wrote that per-crest breaking breaks "only ~20% of crests" in the storm. Measured while writing this page, in the Kalaloch storm's saturated zone (Q_b &gt; 0.6), 77% of cells are breaking at the rendered instant; at Point of the Arches, 87%. The breaking is fine. What is saturated is the <em>old</em> foam: the storm run left 8.3 million particles, and over the surf zone their coverage <code>Fe</code> is at its cap (median 0.83, 10th percentile 0.37). The whitewater <code>W</code> does vary with the bores, 0.03 to 0.75 between the 10th and 90th percentiles, which is the band structure Shi Shi shows. But it's buried under a uniform sheet of old foam, and the threshold noise turns that sheet into even blobs. Two changes to try:</p>
+<ul>
+<li>in the surf zone, let old foam be <em>removed</em> by each passing bore (the next bore overruns and re-mixes the lace), so coverage is a sawtooth in phase, not a fill; my bore phasing only clamps it, and too weakly;</li>
+<li>give the troughs their dark: the face and trough steps exist in the painter, but the foam buries them.</li>
+</ul>
+<p>The critic's other point, that calm and swell look too alike on the reef ("swell only adds a few flecks"), is a separate problem. Summer swell barely reaches the reef heads in the cove's interior, because the rays spread it (<a href="02-swell.html">how-to 2</a>). The photo, taken at that same swell, shows more white than my swell panel does, which points back to section 1: the foam is in the wrong places.</p>
+<h2>3. Kelp is in the right places, in the wrong material</h2>
+<p>The second critic: "The beds are solid navy blobs, where the Cape Alava photo shows brownish, speckled, holey mats with ragged edges." My measurement said navy: the kelp mat's L* 29, a* +3, b* −20. I now think that number is mostly sky glare on wet blades, measured on one sunlit frame. The ground photos (<code>refs/ground/bull_kelp</code>) are brown-gold floats and blades. I compromised in the palette, which pleased neither.</p>
+<p><img alt="kelp in the photo" src="../img/nb016.jpg" /></p>
+<p><em>Cape Alava, full resolution (<code>notes/ca_kelp.png</code>): clotted lobes 3–8 m across, turquoise channels between them, satellite blobs at the edge, and white boils where waves break over rock under the mat.</em>
+ The mat shape also wants what the foam got: holes (the channels between clumps) and ragged edges from a thresholded noise, not a filled contour. The rank-uniformised mat is the right <em>amount</em> in the wrong <em>texture</em>.</p>
+<h2>4. Golden and dusk</h2>
+<p>Golden hour reads as "a green-grey tint" (second critic), and dusk loses its foam. <a href="05-light.html">How-to 5</a> has my reading: foam needs a sky-mirror term. Both of these lights are set by my reading of ground photos, not measured on obliques.</p>
+<h2>5. Not done</h2>
+<ul>
+<li><strong>The San Juans.</strong> They have no ocean swell: the sea there is wind chop and tidal current, and the foam is current lines, boils and eddy lines, not surf. The sim can run it with Hs ≈ 0 and a tidal current field, and the water study's current rules apply. I didn't render it.</li>
+<li><strong>Animation.</strong> Every mark is keyed to crest phase <code>q</code> and particle age, so a frame is a recompute at a new <code>t_now</code>. I made no clips.</li>
+<li><strong>A Ferrari master copy.</strong> His V29 surf is in the coast lane's studies; the coast lane already copied it, and I didn't make my own.</li>
+</ul>
+<h2>What I'd trust, and what I wouldn't</h2>
+<p><strong>Trust:</strong> the sea's colour by depth and bottom in sun (water median L* 47 against the photo's 48); the <em>placement</em> of surf, which comes from refraction and pinnacle depth over real lidar, with points loud, coves quiet and reef heads white; the crescent shape of each break; the jade pool; and the relighting to overcast and fog.</p>
+<p><strong>Don't trust yet:</strong> the streaks, the storm, the eye-level view, kelp's material, and my own calibration number unless you rerun it.</p></div><nav class="pager"><a href="../howto/06-eye-level.html">← 6. Eye level: the water as a heightfield *(partly solved)*</a><span class="label">7 of 7</span><a href="../index.html">Contents →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

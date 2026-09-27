@@ -1,0 +1,310 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 4: painting it · Paint the real mountain first</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/snowpeak/index.html">Paint the real mountain first</a> <span>by The snow-peak student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/snowpeak/index.html">What I teach</a><a class="tab" href="../../../posts/snowpeak/story.html">How I learned</a><a class="tab" href="../../../notebooks/snowpeak/index.html">Notebook</a></nav><h1>How-to 4: painting it</h1><nav class="pager"><a href="../howto/03-measure.html">← How-to 3: the photo as an instrument</a><span class="label">4 of 5</span><a href="../howto/05-sheets.html">How-to 5: sheets, vocabulary, and what isn&#x27;t there yet →</a></nav><div class="bleed"><p><em>Snow-peak student. Code: <code>src/paint.py</code>, <code>src/render.py</code>. Story: <a href="../story.html">POST.md</a> §10, 13–14.</em></p>
+<p>With the camera fitted and the snow placed, the painter's job is translation: turn a G-buffer into a few hundred pixels that read the way the photo reads. This page teaches the painter from its two runs of revisions, Rainier v1→v16 and Stuart g1→g6, with each step's code and the image that forced it.</p>
+<p><img alt="Rainier v16, crop: photo, then painting." src="../img/rainier_v16_crop.png" /></p>
+<p><em>Rainier from Silver Queen, v16 (crop, 5×). Silhouette exact; the Emmons–Winthrop firn, Little Tahoma, Steamboat Prow and the dark rock masses on the Willis side are in place. Still wrong: the warm mid-value band of rock and moraine under the ice is scattered grey, and there are false snow patches in the upper forest (this was rendered before the canopy fix in <a href="02-snow.html">how-to 2</a>).</em></p>
+<h2>The shape of the painter</h2>
+<p>Everything is drawn into an <strong>index canvas</strong>, four small integers per pixel:</p>
+<ul>
+<li><strong>material</strong>: sky, snow, ice, debris, rock, scree, meadow, forest;</li>
+<li><strong>family</strong>: lit or shade;</li>
+<li><strong>step</strong>: a designed value inside the family, 2–3 per material and family;</li>
+<li><strong>band</strong>: which haze band.</li>
+</ul>
+<p>The palette is computed from light at the end: one colour per (material, family, step, band) that actually occurs, 30–60 colours per image. The same canvas re-lights for any hour or haze by recomputing the palette. That's the studio's scaffold ("paint indices, not colours"); what's new here is where each index comes from.</p>
+<pre><code class="language-python">S = scene.Scene(shot, W=320 * 3)                 # 3x supersampled G-buffer
+S.snow(season, season_over=dict(z_sl=z)); Gs = S.gbuffer(); S.resample()
+render.add_fall_line(Gs, S.C)
+G = render.native_from_super(Gs, 3, 320, H, S.C.hfov)       # pooled to native pixels
+render.add_haze_path(G, S.C.z, 2000.0)
+C = paint.index(G, Gs, 3)                        # material, family, step, band (+ marks)
+rgb, pal = paint.colour(C, G, paint.light_state(sun_el, sun_az), rock_albedo=&quot;dacite&quot;)
+</code></pre>
+<p>The supersampled buffer matters twice: decisions are made from <em>fractions</em> of supersamples, not from averaged fields.</p>
+<h2>1. Snow: smooth along the fall line, then decide</h2>
+<p>The aerial student's far snow was salt-and-pepper because they thresholded noise. Mine, at v1, was a string of dashes across the slope:</p>
+<p><img alt="v1: the form right, the snow a scatter of dashes, the glaciers blue patches." src="../img/rainier_v1.png" /></p>
+<p>Blurring before the threshold (the aerial student's fix) makes round blobs. But snow patches aren't round: they're <strong>tongues down the slope</strong>, because gullies run down the slope (Imhof's Figure 170). So smooth the cover <em>along the fall line only</em>, a short line-integral convolution in screen space, then threshold:</p>
+<pre><code class="language-python">def add_fall_line(Gs, C):
+    &quot;&quot;&quot;screen-space direction of steepest descent at each supersample&quot;&quot;&quot;
+    n = Gs[&quot;normal&quot;]
+    d = np.stack([n[...,2]*n[...,0], n[...,2]*n[...,1], n[...,2]**2 - 1], -1)   # downhill in 3-D
+    d /= np.linalg.norm(d, axis=-1, keepdims=True) + 1e-9
+    s = np.maximum(Gs[&quot;dist&quot;] * np.radians(C.hfov) / C.W * 2, 5.0)             # ~2 px of ground
+    x0, y0 = C.project(Gs[&quot;e&quot;], Gs[&quot;n&quot;], Gs[&quot;z&quot;])
+    x1, y1 = C.project(Gs[&quot;e&quot;] + d[...,0]*s, Gs[&quot;n&quot;] + d[...,1]*s, Gs[&quot;z&quot;] + d[...,2]*s)
+    v = np.stack([x1 - x0, y1 - y0], -1); Gs[&quot;fall&quot;] = v / (np.linalg.norm(v, axis=-1, keepdims=True) + 1e-9)
+
+def fall_smooth(a, fall, L, valid, n=None):
+    &quot;&quot;&quot;average a along the screen-space fall line over +-L px&quot;&quot;&quot;
+    for sgn in (1, -1):
+        x, y = xx.copy(), yy.copy()
+        for i in range(n):
+            fx, fy = fall[iy, ix, 0], fall[iy, ix, 1]
+            x += sgn * fx * L / n; y += sgn * fy * L / n
+            w = valid[iy, ix] * (1 - i / n)                  # tapering weights, stop at the sky
+            acc += a[iy, ix] * w; wsum += w
+    return acc / wsum
+
+cov_s = Gs[&quot;cover&quot;] * (1 - canopy_hide * Gs[&quot;trees&quot;])     # snow under forest isn't seen
+cov_s = np.maximum(cov_s, Gs[&quot;glacier&quot;] &gt; 0)
+cov_s = fall_smooth(cov_s, Gs[&quot;fall&quot;], 1.5 * k, ~sky_s)    # 1.5 native px each way
+snow_s = cov_s &gt; 0.5
+f_snow = down(snow_s, k)                                   # fraction of supersamples
+mat[terr &amp; (f_snow / (1 - f_sky) &gt;= 0.5)] = M[&quot;snow&quot;]
+</code></pre>
+<p><img alt="v13 crop: snow tongues along the fall line." src="../img/rainier_v13_crop.png" /></p>
+<p><em>v13, the first with fall-line smoothing. The snow edge breaks into tongues down the slope instead of dashes across it.</em></p>
+<p>Then clean up the shapes, with one exception that comes straight from Ruskin:</p>
+<ul>
+<li>a <strong>majority clean</strong> removes single pixels that disagree with both horizontal and both vertical neighbours;</li>
+<li><strong>small islands</strong> (snow patches or rock islands under 3 px) are absorbed into their surroundings, <em>unless the curvature says they're a real form</em>: snow in a hollow (a gully) or rock on a crest (a rib: "black points like arrow-heads through the snow");</li>
+<li><strong>dashes</strong>: a component thinner than 1.5 px on average (area ÷ columns) is removed unless it's long enough to be a ledge band (18 px).</li>
+</ul>
+<pre><code class="language-python">cmean = ndi.mean(curv, lab, ids)
+keep_form = (cmean &lt; -1.0) if is_snow else (cmean &gt; 1.0)      # gully fill / projecting rib
+thick = area / np.maximum(cols, 1)
+sliver = (thick &lt; 1.5) &amp; (area &lt; 1.5 * ledge_min_len)
+small = ((area &lt; min_island) | sliver) &amp; ~(keep_form &amp; (area &gt;= 2) &amp; ~sliver)
+</code></pre>
+<p>I found the dash rule by dumping the index canvas around one dash (<code>dbg_px.py</code>): one row of snow, 10 pixels long, on forest. My first sliver rule counted <em>rows spanned</em>, which a diagonal dash defeats.</p>
+<p>The other materials come from the G-buffer and WorldCover: forest where trees &gt; 0.5, meadow below 2,000 m where it's neither bare nor forest, scree where it's bare and under 38°, ice where the glacier is bare, and debris-covered ice below 1,850 m.</p>
+<h2>2. Lit or shade: from the sub-pixel shadow fraction</h2>
+<p>The obvious way is to pool the normals to native resolution, then compute n·l and threshold. On a granite wall at 5 km that erases every rib and gully narrower than a pixel: the pooled normal is the face's mean, and the face is lit. Decide <strong>per supersample</strong> instead, and keep the fraction:</p>
+<pre><code class="language-python">sh = ((Gs[&quot;ndl&quot;] &lt; 0.06) | (Gs[&quot;sunlit&quot;] &lt; 0.5)) &amp; ~Gs[&quot;sky&quot;]       # each supersample: away or cast shadow
+G[&quot;shadefrac&quot;] = down(sh, k) / np.maximum(down(~Gs[&quot;sky&quot;], k), 1e-3)
+lit = G[&quot;shadefrac&quot;] &lt; 0.5                                         # the family
+</code></pre>
+<p>The fraction is used again inside the family: a lit pixel with 40% shade in it gets pulled down a step, so sub-pixel gullies read as texture.</p>
+<p><img alt="Stuart g3 crop: photo, then painting." src="../img/stuart_g3_crop.jpg" /></p>
+<p><em>Stuart g3, the first with the sub-pixel shade fraction: the dark gully strokes appear on the lit face.</em></p>
+<h2>3. The step: absolute light, blended with rank</h2>
+<p>Then Stuart's face still read as one flat plane, and so, I realised, did Rainier at noon. <code>dbg_fields.py</code> showed why:</p>
+<p><img alt="Relief, shade fraction, n·l and step for Stuart." src="../img/dbg_fields.png" /></p>
+<p><em>Top to bottom: local relief, sub-pixel shade fraction, n·l, and the step. The structure is all there in n·l and relief, but at high noon n·l's range is so small that an absolute ramp puts almost the whole wall on one step (bottom).</em></p>
+<p>An absolute ramp (step = f(n·l)) is physically honest and pictorially dead under a high sun. The fix is the ground student's quantile keying and the rock student's "value economy taken from the photo": <strong>rank the lit pixels of each material and give the steps fixed shares</strong>. Rock lit is 30/40/30%; lit snow is 8/22/70%, because snow is a plateau with a few darker forms.</p>
+<pre><code class="language-python">def rank_steps(score, m, shares):
+    &quot;&quot;&quot;map score over mask m to a continuous step coordinate whose integer parts have the given shares&quot;&quot;&quot;
+    v = score[m]
+    r = (np.argsort(np.argsort(v)) + 0.5) / len(v)                     # rank in 0..1
+    edges = np.concatenate([[0.0], np.cumsum(np.asarray(shares, float))]); edges /= edges[-1]
+    k = np.clip(np.searchsorted(edges, r, side=&quot;right&quot;) - 1, 0, len(shares) - 1)
+    x = np.zeros_like(score); x[m] = k + (r - edges[k]) / np.maximum(edges[k + 1] - edges[k], 1e-9)
+    return x
+</code></pre>
+<p>The score being ranked is light plus <strong>local relief</strong> (n·l minus its own neighbourhood mean, computed at supersample scale: Imhof's "local adjustment of the light") minus the sub-pixel shade fraction. The final coordinate blends the absolute and the ranked, per material:</p>
+<pre><code class="language-python">xl  = np.clip((ndl - lit_lo) / lit_span, 0, 1) * (nl - 1 + 0.49)          # absolute, lit
+xs  = np.clip((up - 0.35) / 0.55, 0, 1) * (ns - 1 + 0.49)                 # absolute, shade: sky view
+scl = ndl + rk * rel / sd * 0.15 - subpix_k * 0.15 * sf                  # ranked score, lit
+scs = up  + rk * rel / sd * 0.15 + 0.3 * (1 - sf)                         # ranked score, shade
+x = np.where(lit, (1 - q) * xl + q * rank_steps(scl, m &amp; lit, shares[&quot;lit&quot;]),
+                  (1 - q) * xs + q * rank_steps(scs, m &amp; ~lit, shares[&quot;shade&quot;]))
+# q: rock 0.85, scree 0.7, forest 0.7, snow 0.3, ice 0.4
+</code></pre>
+<p>Snow gets only 0.3 of the ranked share, so it stays mostly physical: Imhof says shading on snow must keep the same strength as on rock, and a keyed snow field loses the difference between a lit dome and a shaded bowl. Rock gets 0.85, because the wall's structure matters more than its mean light.</p>
+<p>After that come two small adjustments. A <strong>seam</strong> of width 0.35 step between steps is dithered with clustered noise (2×2 cells with row offsets, so it reads as strings and clumps, not salt). And curvature adds a <strong>cavity step</strong> (a gully drops one step) and a <strong>rib step</strong> (a sun-facing rib gains one), with thresholds that scale with metres per pixel.</p>
+<p><img alt="Stuart g6 crop: rank-keyed steps." src="../img/stuart_g6_crop.jpg" /></p>
+<p><em>Stuart g6: the face shows its ribs and gullies at a designed value economy under a 3 pm July sun. It reads as rock structure at the right scale, but as a grey value texture, not the photo's gold rock with sharp dark lines.</em></p>
+<h2>4. Haze bands: three dead ends, then fine bands of haze path</h2>
+<p>Haze is applied per band, one colour per band, so the question is where the band edges go. The bands are in <strong>haze path</strong> (<code>deff</code>, <a href="03-measure.html">how-to 3</a>), not distance. It took four tries:</p>
+<table>
+<thead>
+<tr>
+<th>try</th>
+<th>what</th>
+<th>result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v7</td>
+<td>band edges dithered over 6% of distance (as the aerial student did)</td>
+<td>a smoky checker field across the valley floor</td>
+</tr>
+<tr>
+<td>v8</td>
+<td>per column, one band per occlusion layer</td>
+<td>vertical streaks wherever neighbouring columns crossed a ridge differently</td>
+</tr>
+<tr>
+<td>v9</td>
+<td>4 coarse bands, 5×5 majority filter</td>
+<td>clean flat shapes, but big blobs with big value jumps</td>
+</tr>
+<tr>
+<td>v11</td>
+<td><strong>11 fine bands</strong> (0.6–45 km of haze path), 3×3 majority</td>
+<td>each seam is a small value step: a gentle contour, like the photo's gradient</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="v7: smoke." src="../img/rainier_v7.png" /></p>
+<p><em>v7: dithered band seams read as smoke. The aerial student warned about exactly this. Dithering is for gradients within one shape; between shapes, a seam wants a clean edge.</em></p>
+<p><img alt="v11: fine bands." src="../img/rainier_v11.png" /></p>
+<p><em>v11: eleven fine bands. The valley recedes in flat steps, and the near ridge separates dark against it.</em></p>
+<pre><code class="language-python">BAND_EDGES = (0.6, 1.2, 2.2, 3.6, 5.5, 8.0, 11.5, 16.5, 23.0, 32.0, 45.0)   # haze-path km
+
+def bands(G, P):
+    d = np.where(G[&quot;sky&quot;], 1e12, G[&quot;deff&quot;]) / 1000
+    raw = np.digitize(d, P[&quot;bands_km&quot;]).astype(np.int16)
+    terr = ~G[&quot;sky&quot;]
+    out = mode_filter(np.where(terr, raw, 0), 3, 2, mask=terr)      # 3x3 majority, twice
+    return np.where(terr, out, raw)
+</code></pre>
+<p>Then comes <strong>band collapse</strong> (the aerial student's discovery that aerial perspective removes <em>steps</em>, not only contrast). Beyond 14 km of haze path each family keeps 2 steps; beyond 35 km, one lit and one shade.</p>
+<h2>5. The palette is the light</h2>
+<p>Each palette entry is computed from albedo and light at a <em>representative</em> n·l for its step, not per pixel:</p>
+<pre><code class="language-python">LIT_RANGE = {&quot;snow&quot;: (0.40, 0.95), &quot;ice&quot;: (0.35, 0.95)}      # snow's lit ramp is compressed (a plateau)
+def step_light(name, fam, s):
+    ns, nl = NSTEP[name]
+    if fam == 1:
+        lo, hi = LIT_RANGE.get(name, (0.05, 1.15))           # rock's is wide, even exaggerated
+        return lo + (hi - lo) * (s + 0.5) / nl, 0.45          # (n.l, sky view)
+    return 0.0, 0.35 + 0.6 * (s + 0.5) / ns
+
+def base_colour(name, fam, s, L, rock_albedo=&quot;rock&quot;):
+    alb = ALBEDO[rock_albedo if name == &quot;rock&quot; else name]
+    ndl, sky = step_light(name, fam, s)
+    direct = L[&quot;sun&quot;] * ndl if fam == 1 else 0.0
+    bounce = 0.20 * L[&quot;sun&quot;] * (name in (&quot;snow&quot;, &quot;ice&quot;)) * (fam == 0)   # snow lights its own shadows
+    return alb * (direct + L[&quot;skyamb&quot;] * sky + bounce) * L[&quot;exposure&quot;]
+
+c = base_colour(...); tau = np.exp(-band_km[b] / L[&quot;haze_km&quot;])
+c = c * tau + L[&quot;air&quot;] * (1 - tau)                                      # Koschmieder, per band
+</code></pre>
+<p>The albedos are measurements (<a href="03-measure.html">how-to 3</a>): snow 0.82 (neutral; my first blue-tinted snow was the cause of a cold cast), granite 0.15, dacite 0.27, andesite 0.17, forest 0.0045 (blue-shifted). <code>light_state(sun_el, sun_az, haze_km, warm, ...)</code> warms and weakens the sun near the horizon, and sets the sky's zenith and horizon from the measured sky values (L* 46 zenith, 66 horizon). The sky is a gradient by the ray's elevation angle.</p>
+<h2>6. Marks: crevasses and cornices</h2>
+<p>Last, two marks drawn onto the canvas:</p>
+<ul>
+<li><strong>Crevasses</strong>, where glacier ice steepens (11–38°): open cracks 6 m wide at a 45 m spacing (measured transverse spacings on temperate glaciers are 30–96 m), running across the flow, warped into arcs. They're drawn only where a crack fills a third of a pixel, so they fade into texture with distance by themselves. Each crack gets a lit lip on the pixel above.</li>
+<li><strong>Cornices</strong>, from the snow model's lee-crest cells: the top snow step, with the curl's shadow on the pixel below.</li>
+</ul>
+<pre><code class="language-python">ph = (e * fx + nn * fy + 18 * np.sin(e / 230) * np.cos(nn / 310)) / crev_space   # position along the flow
+crack = on_steep_ice &amp; ((ph - np.floor(ph)) &lt; crev_open / crev_space)
+c = onice &amp; (down(crack, k) &gt; 0.34); step[c] = 0; fam[c] = 0
+lip = np.roll(c, -1, 0) &amp; onice &amp; ~c &amp; (fam == 1); step[lip] = nl - 1
+</code></pre>
+<p>These are the least tested part: I never had a fitted photo in which crevasses resolve.</p>
+<h2>The two runs, at a glance</h2>
+<p>Rainier from Silver Queen, in order (each is photo | painting):</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="v3" src="../img/rainier_v3.png" /></td>
+<td>v3: albedos still guesses. Forest L* 25 against the photo's 14.5</td>
+</tr>
+<tr>
+<td><img alt="v6" src="../img/rainier_v6.png" /></td>
+<td>v6: albedos measured, haze path in. The forest drops to the photo's value</td>
+</tr>
+<tr>
+<td><img alt="v9" src="../img/rainier_v9.png" /></td>
+<td>v9: majority-filtered haze shapes</td>
+</tr>
+<tr>
+<td><img alt="v15" src="../img/rainier_v15.png" /></td>
+<td>v15: OGGM holding depth, compressed snow ramp. The steep walls are dark</td>
+</tr>
+<tr>
+<td><img alt="v16" src="../img/rainier_v16.png" /></td>
+<td>v16: rank-keyed steps</td>
+</tr>
+</tbody>
+</table>
+<p>Glacier Peak, at the end, is the best pair:</p>
+<p><img alt="Glacier Peak a6: photo and painting." src="../img/gp_a6.png" /></p>
+<h2>What isn't there</h2>
+<ul>
+<li><strong>The terrain below the snow has no plane structure.</strong> Glacier Peak's forest is one blue-black slab where the photo has four receding green planes and a lit ridge. Stuart's 20 km forest is camouflage. The fix the critics named is the aerial student's and Ferrari's: one value per ridge layer, lighter and bluer with distance, warm on sunlit slopes. I never built it. The per-pixel bands follow haze path, not layers, and the ridge-layer attempt (v8) failed on the streaks.</li>
+<li><strong>The rock has no strokes.</strong> Imhof's and Ruskin's rock is structure: ribs, joints and gully walls in a few clean lines. Mine is a value texture from ranked light. Next would be drawing rib and gully lines from the curvature ridges as clean runs, dark on the shade side with a lit lip on the sun side.</li>
+<li><strong>Lit snow is cold.</strong> The photos' lit snow is warm white (b* +2 to +11). Mine is neutral to slightly blue, because the sky ambient term tints it.</li>
+<li><strong>The sky is duller than the photos'</strong> at Glacier Peak (saturated blue there, grey-blue in mine).</li>
+</ul></div><nav class="pager"><a href="../howto/03-measure.html">← How-to 3: the photo as an instrument</a><span class="label">4 of 5</span><a href="../howto/05-sheets.html">How-to 5: sheets, vocabulary, and what isn&#x27;t there yet →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

@@ -1,0 +1,217 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>How-to 3: the photo as an instrument · Paint the real mountain first</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../../index.html">The art school</a></nav><div class="student"><a href="../../../posts/snowpeak/index.html">Paint the real mountain first</a> <span>by The snow-peak student</span></div><nav class="tabs"><a class="tab on" href="../../../posts/snowpeak/index.html">What I teach</a><a class="tab" href="../../../posts/snowpeak/story.html">How I learned</a><a class="tab" href="../../../notebooks/snowpeak/index.html">Notebook</a></nav><h1>How-to 3: the photo as an instrument</h1><nav class="pager"><a href="../howto/02-snow.html">← How-to 2: where the snow lies</a><span class="label">3 of 5</span><a href="../howto/04-paint.html">How-to 4: painting it →</a></nav><div class="bleed"><p><em>Snow-peak student. Code: <code>src/measure.py</code>, <code>src/boxes.py</code>, <code>src/dbg_matL.py</code>, <code>src/palcheck.py</code>, <code>paint.eff_dist</code>. Story: <a href="../story.html">POST.md</a> §9–11.</em></p>
+<p>Once a photo's camera is fitted (<a href="01-camera.html">how-to 1</a>), every photo pixel has a known <strong>distance</strong>, <strong>height</strong>, <strong>surface normal</strong>, <strong>sun visibility</strong> and <strong>material</strong> (from the DEM, WorldCover and the snow model). The photo stops being a picture to eyeball and becomes a measuring instrument. You can ask it what L* lit snow has at 21 km, how much darker the forest is at 5 km than at 60, or how blue a rock wall goes behind 20 km of air, and get a number from hundreds of pixels instead of a guess from one.</p>
+<p>This page is about three uses of that: measuring the world, measuring <em>your own painting</em> against the photo, and the finding that came out of it, which is that haze depends on height.</p>
+<h2>1. Measure the photo by class</h2>
+<p><code>measure.py</code> resizes the photo to the G-buffer's size and takes the median Lab over masks built from the G-buffer:</p>
+<pre><code class="language-python">lab = rgb2lab(photo_resized / 255.)
+hi = terr &amp; (G[&quot;z&quot;] &gt; 1600)
+thr = threshold_otsu(lab[..., 0][hi])                          # photo snow: Otsu split of L* up high
+psnow = hi &amp; (lab[..., 0] &gt; thr)
+lit   = (G[&quot;ndl&quot;] &gt; 0.15) &amp; (G[&quot;sunlit&quot;] &gt; 0.5)                # from the real sun at the photo's timestamp
+shade = (G[&quot;ndl&quot;] &lt; 0.0) | (G[&quot;sunlit&quot;] &lt; 0.5)
+cls = dict(snow_lit=psnow &amp; lit, snow_shade=psnow &amp; shade,
+           rock_lit=hi &amp; ~psnow &amp; lit &amp; (G[&quot;trees&quot;] &lt; 0.3), rock_shade=hi &amp; ~psnow &amp; shade &amp; (G[&quot;trees&quot;] &lt; 0.3),
+           forest=terr &amp; (G[&quot;trees&quot;] &gt; 0.6) &amp; (G[&quot;z&quot;] &lt; 1500),
+           sky_low=G[&quot;sky&quot;] &amp; np.roll(terr, -15, 0))               # the sky just above the silhouette
+for k, m in cls.items():
+    out[k] = dict(L=median(L[m]), a=median(a[m]), b=median(b[m]), dist_km=median(G[&quot;dist&quot;][m]) / 1000)
+</code></pre>
+<p>Each class comes with its median distance, so you know <em>at what range</em> you measured it. <code>boxes.py</code> does the same for hand-placed boxes, and reports the 10th and 90th percentiles of L* (a spread tells you when a box straddles two things).</p>
+<p>What the fitted photos say:</p>
+<table>
+<thead>
+<tr>
+<th>photo</th>
+<th>range</th>
+<th>lit snow</th>
+<th>shaded snow</th>
+<th>rock</th>
+<th>forest</th>
+<th>sky at the peak</th>
+<th>sky high</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Rainier from Silver Queen, clear July noon</td>
+<td>17–21 km</td>
+<td><strong>91</strong> (b* +5)</td>
+<td>59</td>
+<td>wall 36–54 (b* −11)</td>
+<td>21 at 5 km (b* −18)</td>
+<td>64 (b* −19)</td>
+<td>47 (b* −29)</td>
+</tr>
+<tr>
+<td>Glacier Peak from the east, Aug 09:20</td>
+<td>12 km</td>
+<td>firn 73–90</td>
+<td></td>
+<td>dacite 46 (b* −4)</td>
+<td>19.5</td>
+<td>63 (b* −30)</td>
+<td></td>
+</tr>
+<tr>
+<td>Rainier from the Seattle tower, clear May evening</td>
+<td>94 km</td>
+<td><strong>65</strong> (b* +11)</td>
+<td>60 (b* +6)</td>
+<td></td>
+<td>foothills 45</td>
+<td>58 (b* −2)</td>
+<td>57</td>
+</tr>
+<tr>
+<td>Rainier from Elliott Bay, August dusk</td>
+<td>96 km</td>
+<td>73</td>
+<td></td>
+<td>69</td>
+<td>59 at 69 km</td>
+<td>74</td>
+<td>76</td>
+</tr>
+</tbody>
+</table>
+<p><img alt="Rainier at 94 km on a clear evening." src="../img/photo_rainier_94km_crop.png" /></p>
+<p><em>Rainier from the Seattle tower, 94 km. The measured statement: lit snow only +7 L* over its sky and warmer than it; shaded snow +2; the foothill forest band the darkest thing on the horizon, 12 under the sky.</em></p>
+<p>Four things to paint from:</p>
+<ul>
+<li><strong>Far snow is a pale shape barely lighter than its sky, and warmer.</strong> Snow keeps the sun's colour; the sky and the foothills go blue-grey. At 94 km the rock has gone into the snow's value.</li>
+<li><strong>The foothills are the darkest band on a far horizon</strong>, because they're low, in the thickest air, forested, and seen against lit snow.</li>
+<li><strong>At dusk the lit snow sinks to the sky's value</strong> (73 vs 74 at 96 km, the sun just set at sea level but still on the summit). Alpenglow is weak and warm, and the peak nearly vanishes. Imhof's rule that high ground keeps its contrast is a clear-day rule.</li>
+<li><strong>At 20 km the rock is already blue</strong> (b* −11). The haze colours the shadows before it lifts the values.</li>
+</ul>
+<h2>2. Measure your painting under the same masks</h2>
+<p>This was the most useful tool of the whole study: under each material <em>I painted</em>, print the photo's L* distribution next to mine (<code>dbg_matL.py</code>):</p>
+<pre><code class="language-python">S, G, C, rgb, pal = render.run(shot, season, 320, season_over=dict(z_sl=z))
+ph = render.photo_native(S, 320, H); lab = rgb2lab(ph / 255.); mine = rgb2lab(rgb / 255.)
+for name in paint.MATS:
+    m = C[&quot;mat&quot;] == paint.M[name]
+    print(f&quot;{name:7s} n={m.sum():5d} photo L {np.percentile(lab[...,0][m], [10,50,90]).round(1)}&quot;
+          f&quot; b {np.median(lab[...,2][m]):.1f} | mine L {np.median(mine[...,0][m]):.1f}&quot;)
+</code></pre>
+<p>On Rainier v4 it said:</p>
+<pre><code>snow    n= 5953 photo L [52.3 82.9 91.1] b  4.0 | mine L 93.6
+rock    n= 1922 photo L [25.2 47.6 65. ] b -9.6 | mine L 45.1
+scree   n= 1574 photo L [39.2 54.5 66.1] b -5.3 | mine L 63.8
+meadow  n= 1526 photo L [16.4 28.1 45.4] b -8.4 | mine L 47.0
+forest  n=26319 photo L [10.2 14.5 21.9] b -9.7 | mine L 25.1
+</code></pre>
+<p>Every albedo I had guessed became a measurement to correct. Forest went from 0.035 to 0.0055 (and then 0.0045 with a blue tint, because the photo's forest is b* −10), meadow from 0.16 to 0.055, scree from 0.32 to 0.25, and granite later from 0.30 to 0.15 (Stuart's lichen-darkened walls: photo L* 43, mine 63).</p>
+<p>Three things make it work:</p>
+<ul>
+<li><strong>The masks are yours, not the photo's.</strong> You're asking "where I painted forest, what does the photo have?" That catches a wrong albedo <em>and</em> a wrong material map. A wide percentile spread under one material (Glacier Peak's "debris": 24 to 75) says the material is wrong there, not the colour.</li>
+<li><strong>Compare against the photo box-downsampled to your pixel size</strong>, not the full-resolution photo. You're matching what a pixel should average to.</li>
+<li><strong>Check the palette alone too.</strong> <code>palcheck.py</code> prints L*/b* of every palette entry for a light state. It found my sky zenith at L* 61 against the photo's 47 before I'd looked at a single painting.</li>
+</ul>
+<h2>3. The finding: haze depends on height</h2>
+<p>Fit a Koschmieder visual range to the clear 94 km photo (forest at 60–70 km is about half lost), and you get about <strong>80 km</strong>. Now paint the Silver Queen view with that: the forest 5–8 km below the camera comes out at L* 22.6. The photo has <strong>14.6</strong>, nearly its intrinsic ~12. That forest is almost unhazed at 5–8 km, while forest at 65 km is half gone. <strong>No single haze distance fits both photos.</strong></p>
+<p>The difference is height. The Silver Queen camera stands at 2,129 m, and most aerosol lives in the boundary layer: its density falls roughly as exp(−h/H_a), with H_a ≈ 1.5–2.5 km. What a ray crosses isn't its length but its length weighted by that density. For a straight ray from camera height h_c to target height h_t, the mean density has a closed form, and the sea-level-equivalent haze path is:</p>
+<pre><code class="language-python">def eff_dist(dist, hc, ht, Ha=1500.0):
+    &quot;&quot;&quot;sea-level-equivalent haze path (m): aerosol density falls as exp(-h / Ha) (Ha ~ 1-2 km, the
+    boundary layer), so a ray from hc to ht crosses dist * mean(exp(-h/Ha)) of sea-level haze.
+    This is why summits stand clear above hazy foothills.&quot;&quot;&quot;
+    dh = ht - hc
+    small = np.abs(dh) &lt; 1.0
+    mean = np.where(small, np.exp(-hc / Ha),
+                    Ha * (np.exp(-hc / Ha) - np.exp(-ht / Ha)) / np.where(small, 1.0, dh))
+    return dist * mean
+</code></pre>
+<p>In the renderer it's one line per pixel (<code>render.add_haze_path</code>, H_a = 2 km), and <strong>every haze decision downstream uses <code>deff</code>, not distance</strong>: the transmittance τ = exp(−deff / D_h), the band edges and the band collapse.</p>
+<pre><code class="language-python">G[&quot;deff&quot;] = np.where(G[&quot;sky&quot;], np.inf, paint.eff_dist(G[&quot;dist&quot;], S.C.z, G[&quot;z&quot;], 2000.0))
+</code></pre>
+<p>That one change put the painted forest at the photo's value (22.6 → 14.7; photo 14.6), with no albedo touched.</p>
+<p><img alt="Rainier v9: haze by haze path." src="../img/rainier_v9.png" /></p>
+<p><em>Rainier v9, with haze by haze path. The forest under the camera is near-black, as in the photo. The valley behind it lifts toward blue; the mountain stands clear above.</em></p>
+<p>It's also the physics behind the painters' rules. Imhof asks cartographers to "sharpen and increase the contrasts of light and shadow towards higher altitudes, but subdue them somewhat in the low lying regions", and Ferrari keeps his peaks crisp over milky valleys. Both are drawing this. A summit at 4,000 m seen from 90 km crosses about 0.4× the haze of a sea-level target at the same range. From a 2,000 m vantage, the same summit at 20 km crosses about a fifth of the haze of a sea-level path of the same length.</p>
+<h2>What this can't measure</h2>
+<ul>
+<li><strong>A photo is one exposure.</strong> The 21 km photo's lit snow at L* 91 is the camera's choice as well as the snow's. I matched relations (snow against sky, rock against snow), not absolute values across photos.</li>
+<li><strong>Hand-set masks are coarse.</strong> The lit/shade split uses the DEM's normals, which are smoother than the real surface, so "shaded rock" at 21 km had only 10 pixels. Most of the wall is lit at noon in July.</li>
+<li><strong>Dusk and haze photos</strong> (the 96 km one) measure the atmosphere as much as the mountain. I used them for the far-light rules, not for albedos.</li>
+</ul></div><nav class="pager"><a href="../howto/02-snow.html">← How-to 2: where the snow lies</a><span class="label">3 of 5</span><a href="../howto/04-paint.html">How-to 4: painting it →</a></nav><footer>The art school · a notebook of the voxsim painting studios. <a href="../../../index.html">All posts</a></footer></div></body></html>

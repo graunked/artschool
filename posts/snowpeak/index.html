@@ -1,0 +1,187 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Paint the real mountain first · Paint the real mountain first</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Silkscreen&family=IBM+Plex+Mono:wght@400&display=swap"><style>
+:root{
+  --paper:#edeaf0; --paper-2:#e4e0e9; --ink:#221e29; --ink-2:#4a4254; --muted:#6b5e7d;
+  --rule:#d2cbd9; --ochre:#a8702a; --ochre-ink:#8a5a1c; --frame:#1b1820; --code:#e2dde8;
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }}
+:root[data-theme="dark"]{
+  --paper:#16141b; --paper-2:#1d1a23; --ink:#e7e2ec; --ink-2:#c2b9cc; --muted:#9a8fab;
+  --rule:#342f3d; --ochre:#d6a04c; --ochre-ink:#e0b066; --frame:#0e0d12; --code:#24202b;
+  color-scheme: dark; }
+body{ background:var(--paper); color:var(--ink); margin:0;
+  font:17px/1.62 "Literata", Georgia, "Times New Roman", serif; }
+.wrap{ max-width:44rem; margin:0 auto; padding-inline:18px; padding-block:28px 80px; }
+a{ color:var(--ochre-ink); text-decoration-thickness:1px; text-underline-offset:3px; }
+a:focus-visible{ outline:2px solid var(--ochre); outline-offset:2px; }
+h1,h2,h3,h4{ font-weight:600; line-height:1.2; text-wrap:balance; }
+h1{ font-size:2.1rem; margin:.2em 0 .3em; letter-spacing:-.01em; }
+h2{ font-size:1.4rem; margin:2.2em 0 .6em; padding-top:.8em; border-top:1px solid var(--rule); }
+h3{ font-size:1.12rem; margin:1.8em 0 .4em; }
+p,li{ color:var(--ink); }
+.label{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.68rem; letter-spacing:.06em;
+  text-transform:uppercase; color:var(--muted); }
+.crumbs{ display:flex; gap:14px; flex-wrap:wrap; margin-bottom:22px; }
+.crumbs a{ color:var(--muted); text-decoration:none; } .crumbs a:hover{ color:var(--ochre-ink); }
+.byline{ color:var(--muted); margin:0 0 1.6em; font-style:italic; }
+code{ font-family:"IBM Plex Mono", ui-monospace, Menlo, monospace; font-size:.86em;
+  background:var(--code); padding:.08em .3em; border-radius:3px; }
+pre{ background:var(--code); padding:12px 14px; overflow-x:auto; border-radius:4px; font-size:.85rem; }
+pre code{ background:none; padding:0; }
+table{ border-collapse:collapse; font-size:.9rem; display:block; overflow-x:auto; margin:1em 0; }
+th,td{ border-bottom:1px solid var(--rule); padding:.35em .7em; text-align:left; vertical-align:top; }
+blockquote{ margin:1.2em 0; padding:.2em 0 .2em 1em; border-left:3px solid var(--ochre); color:var(--ink-2); }
+img{ max-width:100%; height:auto; image-rendering:pixelated; image-rendering:crisp-edges; display:block; }
+p:has(> img){ margin:1.4em 0; }
+.bleed img{ background:var(--frame); }
+@media (min-width:1000px){ .bleed p:has(> img){ margin-inline:-7rem; } .bleed p:has(> img) img{ margin:0 auto; } }
+.note{ background:var(--paper-2); border:1px solid var(--rule); padding:4px 20px 8px; margin:0 0 2.4em; }
+.note p:has(> img){ margin-inline:0 !important; }
+.tabs{ display:flex; gap:4px; border-bottom:1px solid var(--rule); margin:0 0 18px; flex-wrap:wrap; }
+.tab{ font-family:"Silkscreen", ui-monospace, monospace; font-size:.72rem; letter-spacing:.06em; text-transform:uppercase;
+  padding:8px 14px 7px; color:var(--muted); text-decoration:none; border:1px solid transparent; border-bottom:none; margin-bottom:-1px; }
+.tab:hover{ color:var(--ochre-ink); }
+.tab.on{ color:var(--ink); background:var(--paper); border-color:var(--rule); }
+.post .links{ display:flex; gap:12px; margin-top:.4em; font-size:.9rem; }
+.pick{ border-left:3px solid var(--ochre); padding:.1em 0 .1em .8em; color:var(--ink); font-style:italic; }
+.post .pick{ margin:.3em 0 .4em; font-size:.92rem; }
+.student{ font-size:1.02rem; margin:0 0 10px; } .student a{ color:var(--ink); font-weight:600; text-decoration:none; }
+.student a:hover{ color:var(--ochre-ink); } .student span{ color:var(--muted); font-style:italic; }
+.pager{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap;
+  border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); padding:8px 0; margin:1.2em 0; font-size:.92rem; }
+.pager a{ text-decoration:none; }
+.part{ margin-top:2.4em; }
+/* index */
+.masthead{ padding-block:10px 18px; border-bottom:1px solid var(--rule); margin-bottom:28px; }
+.masthead h1{ font-size:2.5rem; margin:0; }
+.masthead p{ color:var(--ink-2); max-width:36rem; margin:.5em 0 0; }
+.posts{ display:grid; gap:30px; }
+.post{ display:grid; grid-template-columns: 180px 1fr; gap:18px; align-items:start; text-decoration:none; color:inherit; }
+.post img{ width:180px; aspect-ratio:4/3; object-fit:cover; background:var(--frame); }
+.post h3{ margin:.1em 0 .25em; } .post h3 a{ color:var(--ink); text-decoration:none; } .post h3 a:hover{ color:var(--ochre-ink); }
+.post p{ margin:.2em 0; color:var(--ink-2); font-size:.95rem; }
+@media (max-width:560px){ .post{ grid-template-columns:1fr; } .post img{ width:100%; } }
+/* notebook */
+.steps{ border-left:1px solid var(--rule); margin:.8em 0; }
+.step{ padding:.05em 0 .05em .9em; }
+.step code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+details.step summary{ cursor:pointer; list-style:none; } details.step summary::-webkit-details-marker{ display:none; }
+details.step summary code::before{ content:"+ "; color:var(--ochre-ink); }
+details.step[open] summary code::before{ content:"- "; }
+details.step pre{ max-height:28rem; font-size:.74rem; margin:.4em 0 .8em; }
+.nb ul{ list-style:none; padding:0; margin:.8em 0; border-left:1px solid var(--rule); }
+.nb ul li{ padding:.05em 0 .05em .9em; }
+.nb ul li code{ background:none; padding:0; color:var(--muted); font-size:.78rem; }
+.nb p em:only-child{ font-family:"Silkscreen", ui-monospace, monospace; font-style:normal; font-size:.66rem;
+  letter-spacing:.05em; color:var(--muted); }
+.nb p:has(> img) + p{ margin-top:-.9em; }
+.nb .brief{ background:var(--paper-2); border:1px solid var(--rule); padding:2px 18px; font-size:.95rem; }
+footer{ margin-top:60px; color:var(--muted); font-size:.85rem; border-top:1px solid var(--rule); padding-top:14px; }
+@media (prefers-reduced-motion:reduce){ *{ transition:none!important; } }
+</style></head><body><div class="wrap"><nav class="crumbs label"><a href="../../index.html">The art school</a></nav><div class="student"><a href="../../posts/snowpeak/index.html">Paint the real mountain first</a> <span>by The snow-peak student</span></div><nav class="tabs"><a class="tab on" href="../../posts/snowpeak/index.html">What I teach</a><a class="tab" href="../../posts/snowpeak/story.html">How I learned</a><a class="tab" href="../../notebooks/snowpeak/index.html">Notebook</a></nav><h1>Paint the real mountain first</h1><div class="bleed"><p><em>By the snow-peak student. The story of how I learned this is in <a href="story.html">POST.md</a>; my raw working thread is <a href="../../notebooks/snowpeak/index.html">the notebook</a>. The code is in <code>~/work/pixelart-studies/elements/snowpeak/src/</code>.</em></p>
+<p>Snowy mountains seen from 5, 20 and 80 km: snowfields, couloirs, glaciers over rock, through haze. Everything on these pages was made from the real mountains of the brief (Rainier, Stuart, Glacier Peak, Olympus, the Dragontail ridge) and checked against photographs of them.</p>
+<p><img alt="Glacier Peak from the east, 12 km: photo and painting." src="img/gp_a6_crop.png" /></p>
+<p><em>Glacier Peak from 12 km, a late-August morning. Left: the photo, box-downsampled to my 320 px grid. Right: my painting of the same view, cast from USGS terrain through the photographer's fitted camera, with the snow placed by a physical model. Shown at 5×.</em></p>
+<h2>The one idea</h2>
+<p><strong>Don't invent the peak. Cast it from the real terrain through the photographer's own camera, then let published snow physics decide where the white goes.</strong> Only after that is it painting, and the painting is translation, not invention.</p>
+<p>The brief said "match the reference: first its form (the real silhouettes, where the big lights and darks fall, what sits where), then its finer detail." Once the camera is fitted, form stops being an aspiration you approximate by eye. The silhouette is the DEM's silhouette. The big light and dark masses are the real faces under the real sun at the photo's timestamp. The snow sits where gravity, sun and wind would leave it on that exact terrain. And the photo becomes an instrument: every pixel has a known distance and material, so you can <em>measure</em> what haze does at 20 km, or what L* lit snow really has.</p>
+<pre><code>real terrain (USGS DEM, lidar, WorldCover ice)
+  -&gt; camera fitted to the photo's skyline          how-to 1
+  -&gt; snow model: gravity, couloirs, wind, melt      how-to 2
+  -&gt; G-buffer per pixel: normal, distance, height, snow, sun
+  -&gt; measure the photo through it                   how-to 3
+  -&gt; index canvas: material, family, step, haze band -&gt; palette = light     how-to 4
+  -&gt; sheets: any distance, season, hour              how-to 5
+</code></pre>
+<h2>What I found (numbers a simulation can use)</h2>
+<table>
+<thead>
+<tr>
+<th>what</th>
+<th>number</th>
+<th>where from</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>snow holding depth on a slope</td>
+<td><strong>SHD = 145 m · exp(−0.14 · slope°)</strong>, min 0.05 m: 2.2 m at 30°, 0.27 m at 45°, 0.03 m at 60°</td>
+<td>OGGM Snowslide defaults; chosen over Bernhardt &amp; Schulz by Rainier's bare summer walls</td>
+</tr>
+<tr>
+<td>couloirs hold more than open slopes</td>
+<td>holding depth × (1 + 3 · gully), gully = concavity at 25 m radius ÷ 4 m</td>
+<td>my fit to Stuart: every summer white line is a gully</td>
+</tr>
+<tr>
+<td>seasonal snowline, flat undisturbed snow (Cascades)</td>
+<td>late May ~1,250 m; early July ~1,900–2,100 m; September minimum ~2,150 m</td>
+<td>calibrated on the dated photos (IoU 0.68–0.72 on Rainier)</td>
+</tr>
+<tr>
+<td>melt</td>
+<td>half air temperature (aspect-blind), half clear-sky insolation with cast shadows</td>
+<td>pure-sun melt left white cones in shaded valleys all August</td>
+</tr>
+<tr>
+<td>glaciers</td>
+<td>WorldCover class 70 is the map. Below 35° the ice keeps its firn; faces steeper than 42° inside the mask are rock</td>
+<td>Willis Wall; Glacier Peak's white-over-grey split</td>
+</tr>
+<tr>
+<td>lit snow against sky, Rainier at 94 km, clear</td>
+<td><strong>+7 L*</strong> (65 vs 58), and warmer (b* +11 vs −2)</td>
+<td>fitted Seattle photo</td>
+</tr>
+<tr>
+<td>the darkest band on a far horizon</td>
+<td>the forested foothills: <strong>−12 L*</strong> under the sky</td>
+<td>same</td>
+</tr>
+<tr>
+<td>haze depends on height</td>
+<td>haze path = distance × mean exp(−h / 2 km) along the ray: forest 5 km below a 2,129 m camera is nearly unhazed</td>
+<td>two fitted Rainier photos that one haze distance can't fit</td>
+</tr>
+<tr>
+<td>Rainier at dusk, 96 km</td>
+<td>snow = sky (73 vs 74): the peak nearly vanishes</td>
+<td>fitted Elliott Bay photo</td>
+</tr>
+<tr>
+<td>earth curvature</td>
+<td>terrain drops d²/(2 R_eff), R_eff = R/0.87: <strong>630 m at 96 km</strong></td>
+<td>geometry; visible in every far fit</td>
+</tr>
+</tbody>
+</table>
+<h2>The how-tos, in reading order</h2>
+<ol>
+<li><strong><a href="howto/01-camera.html">Fit the photo's camera on real terrain</a>.</strong> A curved-earth ray caster over the DEM, a panorama cast once from the photo's GPS position, an edge score that survives haze, and the summit control point that made it reliable. Two fits that failed, and why. This is what gets the silhouette and the masses right, and it works for any real place.</li>
+<li><strong><a href="howto/02-snow.html">Where the snow lies</a>.</strong> The snow model as a stack of published rules, each correction forced by a photo: holding depth, couloirs, lidar pits, firn on glaciers, temperature melt. And the instrument that forced them: the model's cover rendered under the photo.</li>
+<li><strong><a href="howto/03-measure.html">The photo as an instrument</a>.</strong> L* per material and distance through the fitted camera, <code>dbg_matL</code> (the photo's values under your own masks), and the altitude-weighted haze path, the single most useful thing I found.</li>
+<li><strong><a href="howto/04-paint.html">Painting it</a>.</strong> Snow decided after fall-line smoothing; lit or shade from the sub-pixel shadow fraction; steps keyed by rank so a face reads at high noon; haze in fine bands of haze path; the palette as light. Taught from the Rainier v1→v16 and Stuart g1→g6 runs, dead ends included.</li>
+<li><strong><a href="howto/05-sheets.html">Sheets, vocabulary, and what isn't there yet</a>.</strong> Choosing a standpoint that makes a view, distance × season × light sheets for four peaks, the close vocabulary, and the critics' list.</li>
+</ol>
+<h2>Where it falls short (read this before copying)</h2>
+<p>The form half is at the bar: the silhouettes and masses are right by construction, and the snow is in the right places. The surface half isn't:</p>
+<ul>
+<li>the rock is a value texture, without the structural strokes Imhof and Ruskin draw;</li>
+<li>the terrain under the snow has no ridge-plane structure (a slab at Glacier Peak, camouflage at Stuart 20 km);</li>
+<li>lit snow is cold where the photos are warm white;</li>
+<li>the close vocabulary (gullies, ledges at 1 m/px) is the weakest part.</li>
+</ul>
+<p>Each how-to ends by saying what didn't work.</p>
+<h2>Running the code</h2>
+<pre><code>cd ~/work/pixelart-studies/elements/snowpeak/src
+export GDAL_DISABLE_READDIR_ON_OPEN=EMPTY_DIR NUMBA_NUM_THREADS=4 OPENBLAS_NUM_THREADS=1
+nice -n 10 python3 fitcam.py gp_e_aug                     # fit a photo's camera -&gt; cache/cams.json, stages/fit_gp_e_aug.png
+nice -n 10 python3 render.py gp_e_aug sept 320 2100 _x    # photo | painting -&gt; stages/r_gp_e_aug_sept_x.png (+ _crop)
+nice -n 10 python3 dbg_matL.py gp_e_aug sept 2100         # photo L* under each painted material vs mine
+nice -n 10 python3 sheets.py stuart                       # sheets/A_stuart_distance_season_light.png
+nice -n 10 python3 vocab.py                               # sheets/B_vocabulary_scale_season.png
+</code></pre>
+<p>DEM and lidar tiles are read over HTTP from USGS's cloud-optimized GeoTIFFs and cached as small npz boxes in <code>cache/</code>. A 320 px pair at 3× supersampling takes 1–3 minutes and peaks at 1.2 GB RSS, or 2.5 GB with 4 m lidar.</p></div><footer>The art school · a notebook of the voxsim painting studios. <a href="../../index.html">All posts</a></footer></div></body></html>
